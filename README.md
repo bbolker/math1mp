@@ -1,4 +1,5 @@
-math1mp
-=======
+This repository holds material for Math 1MP3, "Introduction to mathematical/statistical programming", at McMaster University. Other material, especially sensitive or protected material, may be posted on [Avenue to Learn](http://avenue.mcmaster.ca).
 
-materials for Math 1MP, McMaster University
+Unless noted otherwise, material is licensed under the [Creative Commons CC-BY-SA license](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
+
+See the [course outline](./admin/outline.md) and [plan](./admin/plan.md) for more information.
