@@ -1,0 +1,104 @@
+# Introduction
+
+## Administrative trivia
+
+* Instructor: Ben Bolker
+    * `bolker@mcmaster.ca`: please include `1mp3` in Subject:
+	* `http://www.math.mcmaster.ca/bolker`
+	* HH 314 (sometimes LSB 336); office hours TBA
+* TA: Jake Szamosi 
+* Grading:
+    * midterm 20%
+	* final (take-home?)    30%
+	* weekly assignments 30%
+	* project  20%
+* Laptop policy
+* Course material on [Github](https://github.com/bbolker/math1mp) and Avenue
+* Expectations of professor and students
+* Textbook (none); see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
+
+# More interesting stuff
+
+## Using computers in math and science
+
+* math users vs. understanders vs. developers
+* develop conjectures; draw pictures; write manuscripts
+* mathematical proof (e.g. [four-colo(u)r theorem](http://en.wikipedia.org/wiki/Four_color_theorem) and [other examples](http://math.stackexchange.com/questions/1084230/what-are-some-theorems-that-currently-only-have-computer-assisted-proofs)); computer algebra
+* applied math: cryptography, tomography, logistics, finance, ...
+* applied statistics: bioinformatics, Big Data/analytics, ...
+* discrete vs. continuous
+
+## Fun!
+
+### Hello, world
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+```
+
+```{r hello_world,engine='python'}
+print('hello, python world!')
+```
+
+Python as a fancy calculator:
+```{r calc,engine='python'}
+print(62**2*27/5+3)
+```
+
+## Interlude: about Python
+
+* [scripting](http://en.wikipedia.org/wiki/Scripting_language); high-level; glue; general-purpose; flexible
+* relatively modern (1990s; Python 3, 2008)
+* currently the [8th most popular computer language](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html) overall; [most popular for teaching](http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext)
+* well suited to mathematical and scientific programming ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org))
+* ex.: [Sage](http://www.sagemath.org); [BioPython](http://www.biopython.org)
+
+### the Julia set
+
+Suppose we iterate $z_{n+1}=z_{n}^2+c$ for some complex number $c$, for values of $z$ in the complex plane.
+The [Julia set](https://en.wikipedia.org/wiki/Julia_set) is the boundary of the set for which the iterations do *not* go off to infinity. (*What is the Julia set for $c=0+0i$?*)
+
+The basic method for generating pretty pictures is:
+
+* pick a value of $c$
+* for lots of different values of $z_0$
+    * keep calculating $z_{n+1}=z_n^2+c$ until $\textrm{mod}(z_{n+1})$ is greater than some threshold $T$
+	* record $T$
+* translate values of $T$ into some colour scale and plot the results	
+
+Complex arithmetic is built into Python (*What is $(2+3i)^2$=*`(complex(2,3))**2`?)
+
+Iterate by hand ...
+```{r julia1,engine='python'}
+print(complex(0.5,0.5)**2+complex(0,0.65))
+print((complex(0.5,0.5)**2+complex(0,0.65))**2+complex(0,0.65))
+print(((complex(0.5,0.5)**2+complex(0,0.65))**2+complex(0,0.65))**2)
+```
+
+Use **assignments** to simplify ...
+```{r julia2,engine='python'}
+c=complex(0,0.65)
+z0=complex(0.5,0.5)
+T=10
+z1=z0**2+c
+z2=z1**2+c
+z3=z2**2+c
+print(abs(z3)<T)
+```
+
+[Julia set program](../code/julia.py) (modified from [Ted Burke](https://batchloaf.wordpress.com/2013/02/10/creating-julia-set-images-in-python/))
+
+
+## Interfaces
+
+* command line
+* [programming editor]()
+* IDE
+* GUI
+
+## Assignment
+
+* variable name rules
+* variable name conventions (camelCase etc.)
+
+

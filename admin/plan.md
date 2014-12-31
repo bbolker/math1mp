@@ -19,7 +19,7 @@ This is an *approximate* and *preliminary* schedule for the course.  It is guara
 
 ### week 3: debugging etc.
 
-* M Jan 19 debugging 
+* M Jan 19 [debugging](http://danluu.com/teach-debugging/)
 * W Jan 21 testing
 * F Jan 23 benchmarking/profiling/optimization: Euclidean algorithm
 
