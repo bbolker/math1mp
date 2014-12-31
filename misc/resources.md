@@ -7,3 +7,4 @@
 
 * [StackOverflow "python"-tagged questions](http://stackoverflow.com/questions/tagged/python) (make sure to read, and take to heart, the [advice on how to ask questions](http://stackoverflow.com/help/how-to-ask) first!)
 
+* [Operators](http://www.tutorialspoint.com/python/python_basic_operators.htm)
