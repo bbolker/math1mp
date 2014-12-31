@@ -1,0 +1,11 @@
+1. install python 3
+https://www.python.org/downloads/
+
+2. install pycharm
+
+3. switch interpreter 
+http://stackoverflow.com/questions/19679150/how-to-set-default-pycharm-interpreter
+
+File / Defaults / Default Project / Project Interpreter
+   double-click on "pip"
+

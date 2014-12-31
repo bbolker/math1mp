@@ -35,7 +35,7 @@
 
 ## Fun!
 
-### Hello, world
+**Hello, world**
 
 ```{r opts,message=FALSE,echo=FALSE}
 library("knitr")
@@ -61,7 +61,7 @@ print(62**2*27/5+3)
 * well suited to mathematical and scientific programming ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org))
 * ex.: [Sage](http://www.sagemath.org); [BioPython](http://www.biopython.org)
 
-### the Mandelbrot set
+**the Mandelbrot set**
 
 Suppose we iterate $z_{n+1}=z_{n}^2+c$, for some complex number $c$, starting with $z_0=0$.
 The [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set) is the set for which the iterations do *not* go off to infinity. (*What happens for $c=0$? $c=-1$? $c=i$? $c=1$?*)
@@ -91,7 +91,8 @@ The basic method for generating pretty pictures is:
 	* record the final value of $n$
 * translate values of $n$ into some colour scale and plot the results	
 
-Complex arithmetic is built into Python (*What is $(2+3i)^2$=*`(complex(2,3))**2`?)
+Complex arithmetic is built into Python    
+(*What is $(2+3i)^2$=*`(complex(2,3))**2`?)
 
 [Mandelbrot set program](../code/mandelbrot.py)
 
@@ -118,7 +119,7 @@ Complex arithmetic is built into Python (*What is $(2+3i)^2$=*`(complex(2,3))**2
 
 **most important**: maintain reproducibility; well-defined **workflows**
 
-## Assignment
+# Assignment
 
 * superficially simple
     * `=` is the **assignment operator** 
@@ -172,6 +173,7 @@ not(c)
 * Less generally important, but fun
 * `+` concatenates
 * `*` replicates and concatenates
+* `in` searches for a substring
 ```{r strops,eval=FALSE}
 a = "xyz"
 b = "abc"
@@ -179,14 +181,49 @@ a+1  ## error
 a+b
 b*3
 (a+" ")*5
+b in a
 ```
 
 ## Regular expressions
 
-This is a very large
+Large topic -- somewhat more advanced than 'basic programming', but interesting.
 
+What if we are looking for some number, but we don't know what number?
 ```{r re}
 import re
-bool(re.match('From', 'Fromage'))
+bool(re.search('[0-9]', 'Plan 9'))
 ```
+
+----------------------------------------------------------
+   Pattern   Description                                           
+-----------  ---------------------------------------------
+ `^`         Beginning of line
+ 
+ `$`	     End of line    
+ 
+ `.`         Any single character except newline
+ 
+ `[...]`	 Any single character in brackets         
+ 
+ `[^...]`	 Any single character **not** in brackets 
+ 
+ `re*`	     0 or more occurrences of preceding expression
+ 
+ `re+`	     1 or more occurrence of preceding expression
+ 
+ `re?`	     0 or 1 occurrence of preceding expression  
+ 
+ `re1|re2`   match `re1` or `re2`
+ 
+ `()`        grouping
+ 
+----------------------------------------------------------
+
+* How would you test whether a string contains a numeric value at the end (e.g. "Plan 99")?
+* What if the string might contain a comma (e.g. "Plan 99,478")?
+* What if you're looking for the abbreviations of rooms in Hamilton Hall (my office is HH314)?
+* ... rooms in LSB *or* HH?
+
+# Lists, arrays, and indexing
+
 
