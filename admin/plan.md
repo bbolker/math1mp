@@ -5,15 +5,15 @@ This is an *approximate* and *preliminary* schedule for the course.  It is guara
 ### week 1: basics
 
 * M Jan 5  introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
-* W Jan 7  data types; boolean expressions; string operations; regular expressions
-* F Jan 9  [lists, arrays and indexing](http://xkcd.com/163/)
+* W Jan 7  data types; logical operations; string operations; regular expressions
+* F Jan 9  lists; indexing and slicing
 
 <!-- editors (xkcd butterfly?) -->
 <!-- variable naming and conventions; http://www.gps.alaska.edu/jeff/Classes/GEOS436+636/02_fundamentals.pdf; **assignment**: set up Python and write a couple of trivial programmes -->
 
 ### week 2: flow control
 
-* M Jan 12 flow control; if/then, loops
+* M Jan 12 conditionals, loops
 * W Jan 14 flow control; while
 * F Jan 16 flow charts
 
@@ -29,7 +29,7 @@ This is an *approximate* and *preliminary* schedule for the course.  It is guara
 * W Jan 28  ... continued
 * F Jan 32 importing modules
 
-### week 5: tuples, lists and dictionaries
+### week 5: tuples and dictionaries (and arrays?)
 
 * M Feb 2  tuples, lists and dictionaries
 * W Feb 4 ... continued

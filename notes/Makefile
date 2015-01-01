@@ -8,7 +8,7 @@
 	pandoc -s -S -t latex -V documentclass=tufte-handout $*.md -o $*.tex
 
 %.pdf: %.tex
-	pdflatex --interaction=nonstopmode %*
+	pdflatex --interaction=nonstopmode $*
 
 
 

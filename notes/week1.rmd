@@ -51,6 +51,8 @@ Python as a fancy calculator:
 print(62**2*27/5+3)
 ```
 
+* *reference*: [Python intro section 3.1.1](https://docs.python.org/3/tutorial/introduction.html)
+
 ## Interlude: about Python
 
 * [scripting](http://en.wikipedia.org/wiki/Scripting_language); high-level; glue; general-purpose; flexible
@@ -103,7 +105,7 @@ Complex arithmetic is built into Python
 
 ## Interfaces
 
-* command line
+* command line/console (PyCharm: `View/Tool Windows/Python Console`)
 * programming editor
 * integrated development environment (IDE)
 * **not** MS Word! ![skull](pix/skullcross_tiny.png)
@@ -117,7 +119,7 @@ Complex arithmetic is built into Python
 * integrated debugging tools
 * integrated project management tools
 
-**most important**: maintain reproducibility; well-defined **workflows**
+* **most important**: maintain reproducibility; well-defined **workflows**
 
 # Assignment
 
@@ -133,7 +135,7 @@ Complex arithmetic is built into Python
      * *dynamic* typing
 	 * (relatively) *strong* typing
          * try `print(type(x))` for different possibilities (`x=3`; `x=3.0`; `x="a"`)
-		 * *what is the result of `x=a`?*
+		 * *what happens if you try `x=a`?*
 		 * **don't be afraid to experiment!**
 ```{r eval=FALSE}
 x=3
@@ -170,6 +172,8 @@ not(c)
 
 ## String operations
 
+*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.2
+
 * Less generally important, but fun
 * `+` concatenates
 * `*` replicates and concatenates
@@ -186,7 +190,7 @@ b in a
 
 ## Regular expressions
 
-Large topic -- somewhat more advanced than 'basic programming', but interesting.
+Large topic -- somewhat more advanced than 'basic programming', but worth a digression.
 
 What if we are looking for some number, but we don't know what number?
 ```{r re}
@@ -224,6 +228,85 @@ bool(re.search('[0-9]', 'Plan 9'))
 * What if you're looking for the abbreviations of rooms in Hamilton Hall (my office is HH314)?
 * ... rooms in LSB *or* HH?
 
-# Lists, arrays, and indexing
+# Lists and indexing
 
+*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
 
+## Lists
+
+* Use square brackets `[]` to set up a **list**
+* Lists can contain anything but usually homogeneous
+* Put other variables into lists
+* Put lists into lists!
+* `range()` makes a **range** but you can turn it into a list with `list()`
+
+* *Make a list that runs from 101 to 200*
+* *Make a list that  ... *
+
+## Indexing and slicing
+
+**Indexing**
+
+* Extracting elements is called **indexing** a list
+* Indexing [starts from zero](http://xkcd.com/163/)
+* Negative indices count backward from the end of the string   
+(-1 is the last element)
+* Indexing a non-existent element gives an error
+
+![slicing](pix/string-slicing.png)
+
+**Slicing**
+
+* Extracting sets of elements is called [**slicing**](http://stackoverflow.com/questions/509211/explain-pythons-slice-notation)
+* Slicing non-existent element(s) gives a truncated result
+* Slicing specifies *start*, *end*, *step* (or "stride")
+* Leaving out a bit goes from the beginning/to the end
+* Slicing works on strings too!
+
+```{r slice_ex,eval=FALSE}
+x[:]        # everything
+x[a:b]      # element a (zero-indexed) to b-1
+x[a:]       # a to end
+x[:b]       # beginning to b
+x[a:b:n]    # from a to b-1 in steps of n
+```
+
+* generate list of odd numbers from 3 to 15
+* reverse a string?
+
+**Other list operations**
+
+* Lots of things you can do with lists!
+* Distinguish between *copying* lists and modifying them in-place
+* Distinguish between *functions* and *methods* `foo(x)` vs. `x.foo()`
+    * appending:
+    * list [*methods*](http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch14s07.html)
+    * appending and extending:
+```{r append}
+x = [1,2,3]
+y = [4,5]
+x.append(y)
+print(x)
+```
+```{r extend}
+x = [1,2,3] # reset x
+y = [4,5]
+x.extend(y)
+print(x)
+```
+Can use `+` as a shortcut for extending:
+```{r operate}
+x = [1,2,3]
+y = [4,5]
+z = x+y
+print(z)
+```
+
+* `x.insert(position,value)`: inserts 
+* `x.remove(value)`:
+* `x.pop(position)` (or `del x[position]` or `x[position]=[]`)
+* `x.reverse()` (or `x[::-1]`)
+* `x.sort()`: what it says
+* `x.count(value)`: number of occurrences of `value`
+* `x.index(value)`: first occurrence of `value`
+* `len(x)`: length
