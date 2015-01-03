@@ -1,0 +1,119 @@
+---
+title: "conditionals and flow control (week 2)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python')
+```
+
+# Conditionals and flow control
+
+* **Conditionals**: Do something *if* something else is true
+* **Flow control**: Go to different places in the code: especially, repeat calculations
+* Everything we need for interesting programs (["the rest is commentary"](http://en.wikipedia.org/wiki/Hillel_the_Elder))
+* Technically we can compute *anything*: [Turing machines](http://en.wikipedia.org/wiki/Turing_machine) ([xkcd](http://xkcd.com/205/))
+
+# Conditionals
+
+* Do something *if* something is true
+* `if` statement ([reference](https://docs.python.org/3/tutorial/controlflow.html)
+```{r if1}
+if False:
+    print("no")
+```
+* else-if (`elif`) and `else` [clauses](http://xkcd.com/764/)
+```{r if2,eval=FALSE}
+if (x<=0):
+    print("what??")
+elif(x==1):
+    print("one")
+elif(x==2):
+    print("two")
+else:
+    print("many")
+```
+* not too much else to say
+* we can do more than one thing; use a *code block*
+
+**example**
+
+## while 
+
+* repeat code many times, *while* some logical statement is true
+([reference](http://python_while_loop.jpg))
+
+For example:
+![while loop](http://www.tutorialspoint.com/images/python_while_loop.jpg)
+```{r while1}
+x = 17
+while x>1:
+    x = x/2
+```
+
+Maybe we want to know how many steps that took:
+```{r while1B}
+x = 17
+n = 0
+while x>1:
+    x = x/2
+    n = n+1
+```
+
+* **What is the answer?**
+* Can you get the same answer using `import math` and `math.log(x,2)` (and maybe `round()` or `math.floor`)?
+
+* We can use logical operators to combine
+
+```{r while1C}
+x = 17
+n = 0
+while x>1 and n<3:
+    x = x/2
+    n = n+1
+```
+
+
+## for loops
+
+* what if we want to repeat a fixed number of times?  We could use something like
+
+```{r while2,eval=FALSE}
+n = 0
+while n<n_max:
+    # do stuff
+    n = n+1
+```
+
+Or we could use a `for` loop:
+
+```{r for1,eval=FALSE}
+for n in range(0,n_max):
+    # do stuff
+```
+
+* does this repeat `n_max` or `n_max+1` times? (hint: try it out, and/or use `list(range(...))` ...)
+
+* more generally, we can use `for` to iterate over *any list*: for example, we can write a change-writing program.
+
+```{r intdiv}
+total=5.73
+toonies = 5.73 // 2 ## integer division
+total = total - 2*toonies
+```
+
+```{r change,eval=FALSE}
+total = 5.73
+res = []   # empty list
+denoms = list(2,1,0.25,0.1,0.5)
+for d in denoms:
+    # do stuff
+```
+
+Write a program to make change.
+
+Let's look at the [Mandelbrot program](../code/mandelbrot.py) again ...
+
+(add lots of examples)

@@ -10,5 +10,7 @@
 %.pdf: %.tex
 	pdflatex --interaction=nonstopmode $*
 
+clean:
+	rm -f *.log *.aux *.md *.out texput.log
 
 

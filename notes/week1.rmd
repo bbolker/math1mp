@@ -29,7 +29,7 @@
 * math users vs. understanders vs. developers
 * develop conjectures; draw pictures; write manuscripts
 * mathematical proof (e.g. [four-colo(u)r theorem](http://en.wikipedia.org/wiki/Four_color_theorem) and [other examples](http://math.stackexchange.com/questions/1084230/what-are-some-theorems-that-currently-only-have-computer-assisted-proofs)); computer algebra
-* applied math: cryptography, tomography, logistics, finance, ...
+* applied math: cryptography, tomography, logistics, finance, fluid dynamics, ...
 * applied statistics: bioinformatics, Big Data/analytics, ...
 * discrete vs. continuous
 
@@ -56,7 +56,7 @@ print(62**2*27/5+3)
 ## Interlude: about Python
 
 * [scripting](http://en.wikipedia.org/wiki/Scripting_language); high-level; glue; general-purpose; flexible
-    * contrast: *domain-specific* scripting languages (MATLAB, R, PHP)
+    * contrast: *domain-specific* scripting languages (MATLAB, R, PHP, Mathematica, Maple)
 	* contrast: general-purpose *compiled* languages (Java, C, C++)
 * relatively modern (1990s; Python 3, 2008)
 * currently the [8th most popular computer language](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html) overall; [most popular for teaching](http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext)
