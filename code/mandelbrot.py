@@ -16,7 +16,7 @@ for i in range(0,250):
         while abs(z) < 2 and n <= nmax:
             z = z*z + c
             n = n+1
-        r[i,j] = n/nmax  ## note: Py3
+        r[i,j] = n
 plt.imshow(r) # set up graph
 plt.show()    # display graph
 
