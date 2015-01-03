@@ -20,3 +20,4 @@
 ## Other
 
 * https://www.pythonanywhere.com/try-ipython/ 
+* http://www.emacswiki.org/emacs/PythonProgrammingInEmacs

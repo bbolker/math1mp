@@ -8,8 +8,11 @@ Revision: `r as.character(Sys.time())`
 
 ### Lectures
 
+* MW 11:30-12:20, F 13:30-14:20 (all in BSB/106)
+
 ### Labs and assignments
 
+* T 12:30-13:20, [JHE/233A](http://www.mcmaster.ca/uts/lab_facilities/labs/lab_info/jhe.html)
 * Labs start on Tuesday 6 Jan.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
 * For-credit assignments, approximately weekly, will be submitted in a dropbox on Avenue.
 
