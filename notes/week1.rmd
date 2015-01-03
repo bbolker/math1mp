@@ -1,3 +1,9 @@
+---
+title: "introduction (week 1)"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+author: Ben Bolker
+---
+
 # Introduction
 
 ## Administrative trivia
@@ -56,8 +62,9 @@ print(62**2*27/5+3)
 ## Interlude: about Python
 
 * [scripting](http://en.wikipedia.org/wiki/Scripting_language); high-level; glue; general-purpose; flexible
-    * contrast: *domain-specific* scripting languages (MATLAB, R, PHP, Mathematica, Maple)
-	* contrast: general-purpose *compiled* languages (Java, C, C++)
+    * contrast: *domain-specific* scripting languages (MATLAB, R, Mathematica, Maple)
+	* contrast: *general-purpose* scripting languages (Perl, PHP)
+	* contrast: general-purpose *compiled* languages (Java, C, C++) ("close to the metal")
 * relatively modern (1990s; Python 3, 2008)
 * currently the [8th most popular computer language](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html) overall; [most popular for teaching](http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext)
 * well suited to mathematical and scientific programming ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org))

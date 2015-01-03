@@ -3,8 +3,8 @@
 Revision: `r as.character(Sys.time())`
 
 ### Personnel
-* *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). E-mail `bolker@mcmaster.ca`; **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**. Office hours TBD; meetings during office hours are preferred but other times may be available by appointment. For more information about me, see [my web page](http://www.math.mcmaster.ca/bolker). 
-* *Teaching assistant*: Jake Szamosi
+* *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). When e-mailing, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**. Office hours TBD; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
+* *Teaching assistant*: Jake Szamosi (`teaching@jcszamosi.ca`)
 
 ### Lectures
 

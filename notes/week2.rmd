@@ -1,6 +1,6 @@
 ---
 title: "conditionals and flow control (week 2)"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "`r format(Sys.time(), '%d %B %Y')`"
 author: Ben Bolker
 ---
 
