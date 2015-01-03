@@ -4,6 +4,8 @@ This is an *approximate* and *preliminary* schedule for the course.  It is guara
 
 ### week 1: basics
 
+Notes ([HTML](http://htmlpreview.github.io/?https://github.com/bbolker/math1mp/blob/master/admin/week1.html), [PDF](../notes/week1.pdf))
+
 * M Jan 5  introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
 * W Jan 7  data types; logical operations; string operations; regular expressions
 * F Jan 9  lists; indexing and slicing

@@ -1,6 +1,6 @@
 ---
 title: "introduction (week 1)"
-date: "`r format(Sys.time(), '%d %B %Y')`"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
 author: Ben Bolker
 ---
 
@@ -23,7 +23,11 @@ author: Ben Bolker
 * Expectations of professor and students
 * Textbook (none); see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
 * Course content: reasonable balance among
-    * nitty-gritty practical programming instruction
+    * nitty-gritty practical programming instruction:
+	
+> ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](http://www.ankitpanda.com/pythonicity/))
+
+* <!-->
     * conceptual foundations of computing/computer science
     * context/culture of mathematical/scientific computing
     * interesting applications
@@ -315,5 +319,8 @@ print(z)
 * `x.reverse()` (or `x[::-1]`)
 * `x.sort()`: what it says
 * `x.count(value)`: number of occurrences of `value`
-* `x.index(value)`: first occurrence of `value`
+* `x.index(value)`: first occurrence of `value` 
+* `value in x`: does `value` occur in `x`? (or `logical(x.count(value)==0)`)
 * `len(x)`: length
+
+**Note**: [pythonicity](http://blog.startifact.com/posts/older/what-is-pythonic.html) vs. [TMTOWTDI](http://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it)

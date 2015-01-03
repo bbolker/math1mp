@@ -1,6 +1,6 @@
 ---
 title: "conditionals and flow control (week 2)"
-date: "`r format(Sys.time(), '%d %B %Y')`"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
 author: Ben Bolker
 ---
 
@@ -112,8 +112,39 @@ for d in denoms:
     # do stuff
 ```
 
-Write a program to make change.
+Let's write a program to make change.
 
 Let's look at the [Mandelbrot program](../code/mandelbrot.py) again ...
 
-(add lots of examples)
+### Pythonicity
+
+From [Secret Weblog](http://blog.startifact.com/posts/older/what-is-pythonic.html):
+
+```{r pyloop1,eval=FALSE}
+i = 0
+while i < mylist_length:
+   do_something(mylist[i])
+   i += 1  ## or i=i+1
+```
+
+vs.
+
+```{r pyloop2,eval=FALSE}
+for i in range(mylist_length):
+   do_something(mylist[i])
+```
+
+vs.
+
+```{r pyloop3,eval=FALSE}
+for element in mylist_length:
+   do_something(element)
+```
+
+**Criteria**:
+* speed 
+* memory use
+* simplicity (code length)
+* simplicity (avoid modules)
+* simplicity (avoid abstractions)
+* pythonicity
