@@ -65,7 +65,8 @@ print(62**2*27/5+3)
 
 ## Interlude: about Python
 
-* [scripting](http://en.wikipedia.org/wiki/Scripting_language); high-level; glue; general-purpose; flexible
+* [programming languages](http://crashworks.org/if_programming_languages_were_vehicles/)
+    * Python: [scripting](http://en.wikipedia.org/wiki/Scripting_language); high-level; glue; general-purpose; flexible
     * contrast: *domain-specific* scripting languages (MATLAB, R, Mathematica, Maple)
 	* contrast: *general-purpose* scripting languages (Perl, PHP)
 	* contrast: general-purpose *compiled* languages (Java, C, C++) ("close to the metal")
@@ -141,6 +142,7 @@ Complex arithmetic is built into Python
          * what is legal? (letters, numbers, underscores, start with a letter)
 	     * what is customary? [convention](https://www.python.org/dev/peps/pep-0008/#id30) is `variables_like_this`
 	     * what works well? `v` vs. `temporary_variable_for_loop`
+		 * parallels with file names; directory/folder organization
 * variables can be of different [**types**](https://docs.python.org/3/library/stdtypes.html)
      * built-in: integer (`int`), floating-point (`float`), complex, **Boolean** (`bool`: `True` or `False`),
      * *dynamic* typing
