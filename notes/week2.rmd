@@ -96,7 +96,11 @@ for n in range(0,n_max):
 
 * does this repeat `n_max` or `n_max+1` times? (hint: try it out, and/or use `list(range(...))` ...)
 
-* more generally, we can use `for` to iterate over *any list*: for example, we can write a change-writing program.
+* more generally, we can use `for` to iterate over *any list*.
+
+![for loop](http://courses.cs.ut.ee/2011/programmeerimine/uploads/Raamat/_images/flowchart_for.png)
+
+For example, we can write a change-writing program.
 
 ```{r intdiv}
 total=5.73
@@ -107,14 +111,18 @@ total = total - 2*toonies
 ```{r change,eval=FALSE}
 total = 5.73
 res = []   # empty list
-denoms = list(2,1,0.25,0.1,0.5)
+denoms = list(2,1,0.25,0.1,0.05)
 for d in denoms:
     # do stuff
 ```
 
-Let's write a program to make change.
+* start with `total`, use `denoms` above
 
-Let's look at the [Mandelbrot program](../code/mandelbrot.py) again ...
+1. program to see how many pennies are left (how could we do this much more easily?)
+2. **or** print out change as we go along
+3. **or** save results as an array
+
+Now let's look at the [Mandelbrot program](../code/mandelbrot.py) again ...
 
 ### Pythonicity
 
@@ -142,6 +150,7 @@ for element in mylist_length:
 ```
 
 **Criteria**:
+
 * speed 
 * memory use
 * simplicity (code length)
