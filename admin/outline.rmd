@@ -4,7 +4,7 @@ Revision: `r as.character(Sys.time())`
 
 ### Personnel
 * *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). When e-mailing, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**. Office hours TBD; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
-* *Teaching assistant*: Jake Szamosi (`teaching@jcszamosi.ca`)
+* *Teaching assistant*: Jake Szamosi (`teaching@jcszamosi.ca`). When emailing, **please allow at least one full business day for responses.** Please note also that **I do not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help from me is during tutorial but, time permitting, I may be available for extra help outside of that hour.
 
 ### Lectures
 
