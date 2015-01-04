@@ -33,6 +33,13 @@ author: Ben Bolker
     * context/culture of mathematical/scientific computing
     * interesting applications
 
+## Installing Python
+
+* Everyone must have access to a computer with Python3 installed
+    * You can find the official Python3 installer [here](https://www.python.org/downloads/). **Make sure you install version 3.4.2 NOT version 2.7.9**
+* We are recommending that you use PyCharm to write your programs and test things out.
+    * You can find the PyCharm installer [here](https://www.jetbrains.com/pycharm/download/). **The first time you run PyCharm, make sure you choose python 3.4.2 from the drop-down menu**
+
 # More interesting stuff
 
 ## Using computers in math and science
