@@ -1,5 +1,7 @@
 ## MATH 1MP, Introduction to mathematical/scientific programming
 
+Revision: `r as.character(Sys.time())`
+
 This is an *approximate* and *preliminary* schedule for the course.  It is guaranteed to change.
 
 ### week 1: basics
