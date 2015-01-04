@@ -2,4 +2,4 @@ This repository holds material for Math 1MP3, "Introduction to mathematical/stat
 
 Unless noted otherwise, material is licensed under the [Creative Commons CC-BY-SA license](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
-The user-facing version of this site (convenient access to HTML and PDF versions of notes etc.) is at the corresponding [http://bbolker.github.io/math1mp/](Github page).
+The user-facing version of this site (convenient access to HTML and PDF versions of notes etc.) is at the corresponding [Github page](http://bbolker.github.io/math1mp/).
