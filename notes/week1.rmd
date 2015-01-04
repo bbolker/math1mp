@@ -13,6 +13,7 @@ author: Ben Bolker
 	* `http://www.math.mcmaster.ca/bolker`
 	* HH 314 (sometimes LSB 336); office hours TBA
 * TA: Jake Szamosi 
+    * `teaching@jcszamosi.ca`: please allow one full business day for response
 * Grading:
     * midterm 20%
 	* final (take-home?)    30%
