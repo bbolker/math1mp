@@ -19,5 +19,8 @@
 
 ## Other
 
-* https://www.pythonanywhere.com/try-ipython/ 
+* [IPython notebooks](https://www.pythonanywhere.com/try-ipython/ )
 * http://www.emacswiki.org/emacs/PythonProgrammingInEmacs
+* [Python code examples](http://alternativeto.net/software/codingbat/?platform=online)
+* [R/Python/MATLAB dictionary](http://mathesaurus.sourceforge.net/)
+* [Python visualizer](http://pythontutor.com/visualize.html#mode=edit)
