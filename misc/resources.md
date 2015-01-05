@@ -15,6 +15,7 @@
 
 * Official [Python documentation](https://docs.python.org/3/)
 * [built-in functions](https://docs.python.org/3.3/library/functions.html)
+* An optional textbook is available inexpensively at [Practical Programming](https://pragprog.com/book/gwpy2/practical-programming)
 
 
 ## Other
