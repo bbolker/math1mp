@@ -36,7 +36,11 @@ author: Ben Bolker
 ## Installing Python
 
 * Everyone must have access to a computer with Python3 installed
-    * You can find the official Python3 installer [here](https://www.python.org/downloads/). **Make sure you install version 3.4.2 NOT version 2.7.9**
+    * Here are detailed instructions for installing Python3
+        * [On Windows](https://pragprog.com/book/gwpy2/practical-programming#windows)
+        * [On Mac OS X](https://pragprog.com/book/gwpy2/practical-programming#osx)
+        * [On Linux](https://pragprog.com/book/gwpy2/practical-programming#linux)
+        * On Mac and Linux, once Python3 is installed you can run it directly from the Terminal by typing python3. On Windows, go to the Start menu and find Python3.
 * We are recommending that you use PyCharm to write your programs and test things out.
     * You can find the PyCharm installer [here](https://www.jetbrains.com/pycharm/download/). **The first time you run PyCharm, make sure you choose python 3.4.2 from the drop-down menu**
 
