@@ -192,9 +192,11 @@ not(d)
 not(c)
 ```
 
+* **operator precedence**: same issue as [order of operations in arithmetic](http://xkcd.com/992/); `not` has higher precedence than `and`, `or`.  When in doubt use parentheses ...
+
 From [CodingBat](http://codingbat.com/prob/p120546):
 
-We have two monkeys, a and b, and the parameters `a_smile` and `b_smile` indicate if each is smiling. We are in trouble if they are both smiling or if neither of them is smiling. Return `True` if we are in trouble. 
+> We have two monkeys, a and b, and the parameters `a_smile` and `b_smile` indicate if each is smiling. We are in trouble if they are both smiling or if neither of them is smiling. Return `True` if we are in trouble. 
 
 ```
 monkey_trouble(True, True) → True
@@ -202,7 +204,6 @@ monkey_trouble(False, False) → True
 monkey_trouble(True, False) → False
 ```
 
-* **operator precedence**: same issue as [order of operations in arithmetic](http://xkcd.com/992/); `not` has higher precedence than `and`, `or`.  When in doubt use parentheses ...
 
 ## String operations
 
@@ -275,10 +276,10 @@ bool(re.search('[0-9]', 'Plan 9'))
 * Use square brackets `[]` to set up a **list**
 * Lists can contain anything but usually homogeneous
 * Put other variables into lists
-* Put lists into lists!
+* Put lists into lists! ("yo dawg ...")
 * `range()` makes a **range** but you can turn it into a list with `list()`
 
-* *Make a list that runs from 101 to 200*
+* *Set up a list that runs from 101 to 200*
 * *Make a list that  ... *
 
 ## Indexing and slicing
@@ -295,7 +296,7 @@ bool(re.search('[0-9]', 'Plan 9'))
 
 **Slicing**
 
-* Extracting sets of elements is called [**slicing**](http://stackoverflow.com/questions/509211/explain-pythons-slice-notation)
+* Extracting (consecutive) sets of elements is called [**slicing**](http://stackoverflow.com/questions/509211/explain-pythons-slice-notation)
 * Slicing non-existent element(s) gives a truncated result
 * Slicing specifies *start*, *end*, *step* (or "stride")
 * Leaving out a bit goes from the beginning/to the end
@@ -309,15 +310,20 @@ x[:b]       # beginning to b
 x[a:b:n]    # from a to b-1 in steps of n
 ```
 
-* generate list of odd numbers from 3 to 15
+* generate a list of odd numbers from 3 to 15
 * reverse a string?
 
 **Other list operations**
 
 * Lots of things you can do with lists!
-* Distinguish between *copying* lists and modifying them in-place
-* Distinguish between *functions* and *methods* `foo(x)` vs. `x.foo()`
-    * appending:
+* Lists are **mutable**
+```{r list_mut}
+x = [1,2,3]
+y = x
+y[2] = 17
+print(x)
+```
+* *functions* vs. *methods* `foo(x)` vs. `x.foo()`
     * list [*methods*](http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch14s07.html)
     * appending and extending:
 ```{r append}
@@ -332,7 +338,7 @@ y = [4,5]
 x.extend(y)
 print(x)
 ```
-Can use `+` as a shortcut for extending:
+Can use `+` and `+=` as shortcut for extending:
 ```{r operate}
 x = [1,2,3]
 y = [4,5]
@@ -340,9 +346,9 @@ z = x+y
 print(z)
 ```
 
-* `x.insert(position,value)`: inserts 
-* `x.remove(value)`:
-* `x.pop(position)` (or `del x[position]` or `x[position]=[]`)
+* `x.insert(position,value)`: inserts (or `x=x[0:position]+[value]+x[position+1:len(x)]`)
+* `x.remove(value)`: removes *first* value
+* `x.pop(position)` (or `del x[position]` or `x=x[0:position]+x[position+1:len(x)]`)
 * `x.reverse()` (or `x[::-1]`)
 * `x.sort()`: what it says
 * `x.count(value)`: number of occurrences of `value`
