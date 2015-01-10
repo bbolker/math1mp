@@ -1,0 +1,39 @@
+
+From http://blog.gmarceau.qc.ca/2009/05/speed-size-and-dependability-of.html , 
+http://benchmarksgame.alioth.debian.org/u32/summarydata.php:
+
+```{r getdat}
+if (!file.exists("summarydata.html")) {
+    download.file("http://benchmarksgame.alioth.debian.org/u32/summarydata.php",
+                  dest="summarydata.html")
+}
+rr <- readLines("summarydata.html")
+```
+
+```{r procdat}
+first.line <- grep("name,lang",rr)
+rr <- rr[-(1:(first.line-1))]
+rr2 <- head(strsplit(rr,"<br/>")[[1]],-1)
+getline <- function(x) {
+    read.csv(text=gsub("%","",gsub("% ",",",x)),header=FALSE)
+}
+rr3 <- do.call(rbind,lapply(rr2[-1],getline))
+cn <- strsplit(rr2[1],",")[[1]]
+cn2 <- gsub("\\(.*\\)","",c("name",cn[2:9],paste0("load",1:3),"elapsed"))
+names(rr3) <- cn2
+```
+
+```{r reduce_dat}
+library("dplyr")
+rr4 <- rr3 %>% select(lang,size,cpu) %>% group_by(lang) %>%
+    summarise(size=mean(size),cpu=mean(cpu))
+```
+
+```{r plot}
+library("ggplot2"); theme_set(theme_bw())
+ggplot(rr4,aes(x=size,y=cpu))+ ##geom_point(alpha=0.4)+
+    scale_x_log10()+scale_y_log10()+
+    geom_text(aes(label=lang),size=3)
+```
+
+Ugly.  Oh well.

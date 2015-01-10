@@ -1,0 +1,64 @@
+---
+title: "square roots of negative numbers"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,echo=FALSE,error=TRUE}
+knitr::opts_chunk$set(engine="python")
+```
+
+I was wondering whether there was an easier way or a shortcut for writing `complex(a,b)` to get a complex number of the form $a+bi$ (or $a+bj$, in keeping with Python's use of `j` for $\sqrt{-1}$.  It took me a little while, but the way that I tried to get there may be interesting.
+
+First, I tried to take the square root of -1:
+```{r}
+print(-1**0.5)
+```
+This didn't work due to a logical but surprising glitch: the *operator precedence* (i.e., the order in which operators get executed) is higher for the power operator `**` than for the **unary minus** operator `-`.  In other words, Python interprets `-1**0.5` as `-(1**0.5)`, not `(-1)**0.5`.
+
+Then I guessed that there might be a square-root function called `sqrt()`: this is common in a lot of computer languages
+
+```{r error=TRUE}
+sqrt(-1)
+```
+
+Using a little bit of additional information (that there is an extra library, or *module*, in Python called `math`, and that the following is the way to access it):
+
+```{r error=TRUE}
+import math     ## load the math module
+math.sqrt(-1)
+```
+
+OK, that doesn't work.  What if I try reading the help file?
+```{r eval=FALSE}
+help("complex")
+```
+Shows me that there is a `pow` function for complex numbers (admittedly this is a little hard to read!), but that doesn't really help me.
+
+Just out of curiosity, what happens if I try `math.sqrt()` on a number that's already defined as complex?
+
+```{r error=TRUE}
+math.sqrt(complex(-1,0))
+```
+
+Oh well, it looks like the `math` module is really only designed for floating-point operations, not operations on complex numbers ...
+
+Coming back to what I should have done in the first place, what if I try either (1) the `pow()` function (which takes care of the order-of-operations problem; `pow()` is definitely applied *after* the unary minus sign or (2) making sure I put parentheses around the `(-1)`
+
+```{r}
+pow(-1,0.5)
+(-1)**0.5
+```
+
+These both work **in Python3** (in Python2 we get "negative error cannot be raised to a fractional power" (although they don't give me *exactly* what I wanted; the answer that Python gives me is $\epsilon+i$, where $\epsilon$ is a tiny number (not quite zero).  (This kind of problem is an inevitable consequence of trying to approximate real numbers via finite binary approximations; we will talk about it more in a few weeks. The R language has a `zapsmall()` function that is handy for this kind of problem ...)
+
+If I really wanted to, I could set `i` (or `j`) equal to `complex(0,1)`, or to `pow(-1,0.5)`, and then define complex variables via `real_part+i*imag_part` (e.g. `2.72+0.65*i`), but it would only be worth it if I were working with complex variables a lot.
+
+And **now**, just after I've finished with this whole thing, I've realized that there was a shortcut all along:
+
+```{r}
+2.72+0.65j
+```
+seems to work just fine.
+
+This example illustrates (1) the potential subtlety of order of operations; (2) there's more than one way to do it; (3) how to experiment/look for help; (4) read/interpret error messages.
