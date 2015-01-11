@@ -1,0 +1,59 @@
+---
+title: "debugging"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python')
+```
+
+# Debugging
+
+## Errors
+
+### Types of errors
+
+* syntax errors
+* program fails partway through
+* Python crashes
+* machine crashes
+* wrong answer (always)
+* wrong answer (occasionally)
+
+### Error messages
+
+* error messages are *trying* to tell you something
+* Google error messages (with quotation marks)  [XKCD]
+
+## Debugging
+
+* *brute-force logic*: stare at your code, try to figure out what's wrong    
+(test cases really help: why is it failing in one specific situation?)
+* flow charts, *pseudocode*
+* `print()`
+* interactive tracing
+* debugging tools (breakpoints/watchpoints/watches)
+* checkpointing
+
+## Searching for/asking for help
+
+### Searching for help
+
+* Google
+* be as specific as possible
+* browse
+
+### Asking for help
+
+* reproducible/minimal workable examples
+    * right amount of context
+	* "how to ask" ([StackOverflow](http://stackoverflow.com/help/how-to-ask))
+* browse/lurk in forums first!
+* tone
+* where:
+    * forums
+    * StackOverflow
+
+**EXAMPLE**
