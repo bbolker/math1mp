@@ -63,44 +63,44 @@ img {
 <div id="header">
 <h1 class="title">square roots of negative numbers</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>17:49 10 January 2015</em></h4>
+<h4 class="date"><em>15:33 12 January 2015</em></h4>
 </div>
 
 
 <p>I was wondering whether there was an easier way or a shortcut for writing <code>complex(a,b)</code> to get a complex number of the form <span class="math">\(a+bi\)</span> (or <span class="math">\(a+bj\)</span>, in keeping with Python’s use of <code>j</code> for <span class="math">\(\sqrt{-1}\)</span>. It took me a little while, but the way that I tried to get there may be interesting.</p>
 <p>First, I tried to take the square root of -1:</p>
-<pre class="python3"><code>print(-1**0.5)</code></pre>
+<pre class="python"><code>print(-1**0.5)</code></pre>
 <pre><code>## -1.0</code></pre>
 <p>This didn’t work due to a logical but surprising glitch: the <em>operator precedence</em> (i.e., the order in which operators get executed) is higher for the power operator <code>**</code> than for the <strong>unary minus</strong> operator <code>-</code>. In other words, Python interprets <code>-1**0.5</code> as <code>-(1**0.5)</code>, not <code>(-1)**0.5</code>.</p>
 <p>Then I guessed that there might be a square-root function called <code>sqrt()</code>: this is common in a lot of computer languages</p>
-<pre class="python3"><code>sqrt(-1)</code></pre>
+<pre class="python"><code>sqrt(-1)</code></pre>
 <pre><code>## Traceback (most recent call last):
 ##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
 ## NameError: name 'sqrt' is not defined</code></pre>
 <p>Using a little bit of additional information (I knew/guessed that there is an extra library, or <em>module</em>, in Python called <code>math</code>, and that the following is the way to access it):</p>
-<pre class="python3"><code>import math     ## load the math module
+<pre class="python"><code>import math     ## load the math module
 math.sqrt(-1)</code></pre>
 <pre><code>## Traceback (most recent call last):
 ##   File &quot;&lt;string&gt;&quot;, line 2, in &lt;module&gt;
 ## ValueError: math domain error</code></pre>
 <p>OK, that doesn’t work. Apparently <code>math.sqrt</code> defines a function whose domain is restricted to non-negative values (that’s what <code>math domain error</code> means). What if I try reading the help file?</p>
-<pre class="python3"><code>help(&quot;complex&quot;)</code></pre>
+<pre class="python"><code>help(&quot;complex&quot;)</code></pre>
 <p>That showed me that there is indeed a <code>pow</code> function for complex numbers (admittedly this is a little hard to read!), but that’s not really the point – I want to take <code>pow()</code> of a <em>negative</em> floating point number with a <em>fractional</em> power.</p>
 <p>Just out of curiosity, what happens if I try <code>math.sqrt()</code> on a number that’s already defined as complex?</p>
-<pre class="python3"><code>math.sqrt(complex(-1,0))</code></pre>
+<pre class="python"><code>math.sqrt(complex(-1,0))</code></pre>
 <pre><code>## Traceback (most recent call last):
 ##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
 ## NameError: name 'math' is not defined</code></pre>
 <p>Oh well, it looks like the <code>math</code> module is really only designed for floating-point operations, not operations on complex numbers …</p>
 <p>Coming back to what (in hindsight) I should have done in the first place, I tried (1) the <code>pow()</code> function (which takes care of the order-of-operations problem; <code>pow()</code> is definitely applied <em>after</em> the unary minus sign and (2) making sure I put parentheses around the <code>(-1)</code> when using the <code>**</code> operator.</p>
-<pre class="python3"><code>print(pow(-1,0.5))
+<pre class="python"><code>print(pow(-1,0.5))
 print((-1)**0.5)</code></pre>
 <pre><code>## (6.123031769111886e-17+1j)
 ## (6.123031769111886e-17+1j)</code></pre>
 <p>These both work (<strong>but only in Python 3</strong>: Python 2 gives “negative error cannot be raised to a fractional power”). They don’t give me <em>exactly</em> what I wanted, though. Python tells me the answer is <span class="math">\(\epsilon+i\)</span>, where <span class="math">\(\epsilon\)</span> is a tiny number (not quite zero). (This kind of problem is an inevitable consequence of trying to approximate real numbers via finite binary approximations; we will talk about it more in a few weeks.) The R language has a <code>zapsmall</code> function that sets small values to zero; the <code>numpy</code> module for Python has a <code>real_if_close()</code> function, but that’s not quite what we want (we want to set the <em>real</em> part to zero).</p>
 <p>If I really wanted to, I could set <code>i</code> (or <code>j</code>) equal to <code>complex(0,1)</code>, or to <code>pow(-1,0.5)</code>, and then define complex variables via <code>real_part+i*imag_part</code> (e.g. <code>2.72+0.65*i</code>), but it would only be worth it if I were working with complex variables a lot.</p>
 <p>And <strong>now</strong>, just after I’ve finished with this whole thing, I’ve realized that there was a shortcut all along:</p>
-<pre class="python3"><code>print(2.72+0.65j)</code></pre>
+<pre class="python"><code>print(2.72+0.65j)</code></pre>
 <pre><code>## (2.72+0.65j)</code></pre>
 <p>works just fine.</p>
 <p>This example illustrates (1) the potential subtlety of order of operations; (2) there’s more than one way to do it; (3) how to experiment/look for help; (4) read/interpret error messages.</p>
