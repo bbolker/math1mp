@@ -11,7 +11,7 @@ homework.
 
 * go to the [CodingBat](http://codingbat.com) web site.
 * [create an account](http://codingbat.com/pref?docreate=1) (this link, or in the upper right hand corner of the CodingBat page)
-    * **you MUST your McMaster e-mail as the account id**
+    * **you MUST use your McMaster e-mail as the account id**
 	* please enter your name (Last name, First name)
 * go back to the CodingBat web page and log in (if necessary)
 * go the the [preferences](http://codingbat.com/pref) link and enter `teaching@jcszamosi.ca` in the `Share To` box; click `Share`
