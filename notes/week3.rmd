@@ -1,0 +1,77 @@
+---
+title: "debugging"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+source("python_engine3.R")
+opts_chunk$set(tidy=FALSE,engine='python3')
+```
+
+# Debugging
+
+## Errors
+
+### Types of errors
+
+* syntax errors vs. logic errors
+
+* failure modes:
+    * obvious failure
+        * program stops with an error partway through: [bad mandelbrot #0](../code/mandelbrot/noinit.py)
+        * Python crashes
+        * machine crashes
+		* program never stops (infinite loop)
+    * wrong answer
+	    * always
+        * occasionally
+
+* infinite loops: [bad mandelbrot #1](../code/mandelbrot_infloop.py)
+* incorrect operator precedence, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
+```{r FCconv,eval=FALSE}
+fahrdiff = celsius_high - celsius_low * 1.8
+```
+* off-by-one error ("fencepost problem")
+* incorrect code inside/outside loops: 
+   * [bad mandelbrot #2](../code/mandelbrot_badloop1.py)
+   * [bad mandelbrot #3](../code/mandelbrot_badloop2.py)
+   * [bad mandelbrot #4](../code/mandelbrot_badloop3.py)
+* array index error (outside bounds?)
+
+### Error messages
+
+* error messages are *trying* to tell you something
+* Google error messages (with quotation marks)  [XKCD]
+
+## Debugging
+
+* *brute-force logic*: stare at your code, try to figure out what's wrong    
+(test cases really help: why is it failing in one specific situation?)
+* flow charts, *pseudocode*
+* `print()`
+* interactive tracing
+* debugging tools (breakpoints/watchpoints/watches)
+* checkpointing
+
+## Searching for/asking for help
+
+### Searching for help
+
+* Google
+* be as specific as possible
+* browse
+
+### Asking for help
+
+* reproducible/minimal workable examples
+    * right amount of context
+	* "how to ask" ([StackOverflow](http://stackoverflow.com/help/how-to-ask))
+* browse/lurk in forums first!
+* tone
+* where:
+    * forums
+    * StackOverflow
+
+**EXAMPLE**

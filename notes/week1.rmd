@@ -323,7 +323,7 @@ y = x
 y[2] = 17
 print(x)
 ```
-* *functions* vs. *methods* `foo(x)` vs. `x.foo()`
+* *operators* vs. *functions* vs. *methods* `x+y` vs. `foo(x,y)` vs. `x.foo(y)`
     * list [*methods*](http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch14s07.html)
     * appending and extending:
 ```{r append}
