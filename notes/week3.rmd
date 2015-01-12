@@ -75,3 +75,11 @@ fahrdiff = celsius_high - celsius_low * 1.8
     * StackOverflow
 
 **EXAMPLE**
+
+* http://stackoverflow.com/questions/1623039/python-debugging-tips
+* https://www.udacity.com/course/cs259
+* http://www.cs.yale.edu/homes/aspnes/pinewiki/C%282f%29Debugging.html
+* http://www.cs.cf.ac.uk/Dave/PERL/node149.html
+* http://space.wccnet.edu/~pmillis/cps120/presentations/program_logic_errs.ppt
+
+
