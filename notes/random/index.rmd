@@ -1,0 +1,10 @@
+---
+title: "random notes table of contents"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+* [note #1](r1_digits.html): distribution of digits of powers of 2
+* [note #2](r2_graph_chrom.html): graph coloring and chromatic numbers
+* [note #3](r3_sqrtminusone.html): shortcuts for complex numbers in Python
+
