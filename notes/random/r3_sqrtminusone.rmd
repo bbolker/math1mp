@@ -5,8 +5,8 @@ author: Ben Bolker
 ---
 
 ```{r opts,echo=FALSE,message=FALSE}
-source("python3_engine.R")
-knitr::opts_chunk$set(engine="python3")
+## source("python3_engine.R")
+knitr::opts_chunk$set(engine="python",engine.path="python3")
 ```
 
 I was wondering whether there was an easier way or a shortcut for writing `complex(a,b)` to get a complex number of the form $a+bi$ (or $a+bj$, in keeping with Python's use of `j` for $\sqrt{-1}$.  It took me a little while, but the way that I tried to get there may be interesting.
