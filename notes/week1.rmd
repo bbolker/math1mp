@@ -95,7 +95,7 @@ We can iterate by hand ...
 ```{r mandel1}
 print(complex(0,0.65)**2+complex(0,0.65))
 print((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))
-print(((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))**2)+complex(0,0.65)
+print(((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))**2+complex(0,0.65))
 ```
 
 Use **assignments** to simplify ...
