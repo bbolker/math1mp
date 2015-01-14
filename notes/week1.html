@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">introduction (week 1)</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>10:29 12 January 2015</em></h4>
+<h4 class="date"><em>17:22 14 January 2015</em></h4>
 </div>
 
 
@@ -148,7 +148,7 @@ img {
 <pre><code>## hello, python world!</code></pre>
 <p>Python as a fancy calculator:</p>
 <pre class="python"><code>print(62**2*27/5+3)</code></pre>
-<pre><code>## 20760</code></pre>
+<pre><code>## 20760.6</code></pre>
 <ul>
 <li><em>reference</em>: <a href="https://docs.python.org/3/tutorial/introduction.html">Python intro section 3.1.1</a></li>
 </ul>
@@ -173,10 +173,10 @@ img {
 <p>We can iterate by hand …</p>
 <pre class="python"><code>print(complex(0,0.65)**2+complex(0,0.65))
 print((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))
-print(((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))**2)+complex(0,0.65)</code></pre>
-<pre><code>## (-0.4225+0.65j)
-## (-0.24399375+0.10075j)
-## (0.0493823875391+0.600835259375j)</code></pre>
+print(((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))**2+complex(0,0.65))</code></pre>
+<pre><code>## (-0.42250000000000004+0.65j)
+## (-0.24399374999999998+0.1007499999999999j)
+## (0.04938238753906251+0.600835259375j)</code></pre>
 <p>Use <strong>assignments</strong> to simplify …</p>
 <pre class="python"><code>z0=0
 c=complex(0,0.65)
@@ -310,7 +310,7 @@ b in a</code></pre>
 </div>
 <div id="regular-expressions" class="section level2">
 <h2>Regular expressions</h2>
-<p>Large topic – somewhat more advanced than ‘basic programming’, but worth a digression.</p>
+<p>Large topic – somewhat more advanced than ‘basic programming’, but worth a digression. (<a href="https://docs.python.org/3/howto/regex.html">reference</a>)</p>
 <p>What if we are looking for some number, but we don’t know what number?</p>
 <pre class="python"><code>import re
 bool(re.search('[0-9]', 'Plan 9'))</code></pre>
@@ -373,7 +373,13 @@ bool(re.search('[0-9]', 'Plan 9'))</code></pre>
 <li>What if the string might contain a comma (e.g. “Plan 99,478”)?</li>
 <li>What if you’re looking for the abbreviations of rooms in Hamilton Hall (my office is HH314)?</li>
 <li>… rooms in LSB <em>or</em> HH?</li>
+<li>substitution:</li>
 </ul>
+<pre class="python"><code>import re
+x = &quot;(Smith, John), (Schmo, Joe)&quot;
+re_pat = &quot;\(([A-Z][a-z]+), ([A-Z][a-z.]*)\)&quot;
+print(re.sub(re_pat,&quot;(\\2 \\1)&quot;,x))</code></pre>
+<pre><code>## (John Smith), (Joe Schmo)</code></pre>
 </div>
 </div>
 <div id="lists-and-indexing" class="section level1">
