@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">introduction (week 1)</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>11:16 14 January 2015</em></h4>
+<h4 class="date"><em>10:29 12 January 2015</em></h4>
 </div>
 
 
@@ -373,11 +373,7 @@ bool(re.search('[0-9]', 'Plan 9'))</code></pre>
 <li>What if the string might contain a comma (e.g. “Plan 99,478”)?</li>
 <li>What if you’re looking for the abbreviations of rooms in Hamilton Hall (my office is HH314)?</li>
 <li>… rooms in LSB <em>or</em> HH?</li>
-<li>Replacement:</li>
 </ul>
-<pre class="python"><code>x = &quot;some stuff (John Smith)&quot;
-import re
-re.sub(&quot;\(([A-Z][a-z]+) ([A-Z][a-z]+)\)&quot;,&quot;(\\2, \\1)&quot;,x)</code></pre>
 </div>
 </div>
 <div id="lists-and-indexing" class="section level1">
@@ -433,7 +429,7 @@ y[2] = 17
 print(x)</code></pre>
 <pre><code>## [1, 2, 17]</code></pre>
 <ul>
-<li><em>functions</em> vs. <em>methods</em> <code>foo(x)</code> vs. <code>x.foo()</code>
+<li><em>operators</em> vs. <em>functions</em> vs. <em>methods</em> <code>x+y</code> vs. <code>foo(x,y)</code> vs. <code>x.foo(y)</code>
 <ul>
 <li>list <a href="http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch14s07.html"><em>methods</em></a></li>
 <li>appending and extending:</li>
