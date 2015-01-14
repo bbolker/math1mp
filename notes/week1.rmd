@@ -60,7 +60,7 @@ author: Ben Bolker
 
 ```{r opts,message=FALSE,echo=FALSE}
 library("knitr")
-opts_chunk$set(tidy=FALSE,engine='python')
+opts_chunk$set(tidy=FALSE,engine='python',enging.path='python3')
 ```
 
 ```{r hello_world}
@@ -266,6 +266,12 @@ bool(re.search('[0-9]', 'Plan 9'))
 * What if the string might contain a comma (e.g. "Plan 99,478")?
 * What if you're looking for the abbreviations of rooms in Hamilton Hall (my office is HH314)?
 * ... rooms in LSB *or* HH?
+* Replacement:
+```{r sub}
+x = "some stuff (John Smith)"
+import re
+re.sub("\(([A-Z][a-z]+) ([A-Z][a-z]+)\)","(\\2, \\1)",x)
+```
 
 # Lists and indexing
 
