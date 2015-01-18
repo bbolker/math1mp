@@ -273,6 +273,7 @@ x = "(Smith, John), (Schmo, Joe)"
 re_pat = "\(([A-Z][a-z]+), ([A-Z][a-z.]*)\)"
 print(re.sub(re_pat,"(\\2 \\1)",x))
 ```
+* in general if you want something to be interpreted **literally** in a regular expression (e.g. you want to look for `+` or `(` and not have them interpreted in their regular-expression sense), you need to use a *backslash* `\` as an "escape" character: for example, `"a\+b"` will look for the letter `a`, followed by a plus sign, followed by the letter `b` -- *not* one or more `a`s, followed by a `b` ([xkcd](http://xkcd.com/234/))
 
 # Lists and indexing
 

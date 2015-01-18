@@ -6,18 +6,15 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-r = numpy.zeros((251,201))  # set up a matrix of zeros
+res = numpy.zeros((251,201))  # set up a matrix of zeros
 nmax=255
 for i in range(0,250):
-    for j in range(0,200):
-        c = complex(i/100-2,j/100-1)
-        z = 0
+     for j in range(0,200):
+        z = c = complex(i/100-2,j/100-1)
         n = 0
         while abs(z) < 2 and n <= nmax:
             z = z*z + c
-            n = n+1
-        r[i,j] = n
-plt.imshow(r) # set up graph
+            n += 1
+        res[i,j] = n
+plt.imshow(res) # set up graph
 plt.show()    # display graph
-
-
