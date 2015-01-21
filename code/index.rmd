@@ -1,0 +1,16 @@
+---
+title: "code table of contents"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+* [basic mandelbrot](mandelbrot.py)
+* [mandelbrot_badloop1](mandelbrot_badloop1.py)
+* [mandelbrot_badloop2](mandelbrot_badloop2.py)
+* [mandelbrot_badloop3](mandelbrot_badloop3.py)
+* [mandelbrot_infloop](mandelbrot_infloop.py)
+* [mandelbrot_noinit](mandelbrot_noinit.py)
+* [test_mm](test_mm.py)
+
+
+
