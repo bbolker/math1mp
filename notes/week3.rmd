@@ -73,6 +73,22 @@ fahrdiff = celsius_high - celsius_low * 1.8
     * forums
     * StackOverflow
 
+## Testing
+
+* Simplify, simplify, simplify
+* Reduce the size of your problem
+* Cases with easy/known answers
+* Corner & edge cases
+* Random tests ([fuzz testing](http://en.wikipedia.org/wiki/Fuzz_testing))
+* Automatic testing framework: `nose`
+    * built-in Python package
+	* define test file
+	    * basic: `assert <condition>`
+	    * extra: `from nose.tools import assert_equal, assert_raises` (or something)
+		* each test or set of tests as a separate function
+		* see [test_mm.py](../code/test_mm.py)
+	* `nosetests` (still figuring out how to do it in PyCharm)
+
 ### Additional resources
 
 * http://stackoverflow.com/questions/1623039/python-debugging-tips

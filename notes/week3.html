@@ -63,10 +63,11 @@ img {
 <div id="header">
 <h1 class="title">debugging</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>18:44 18 January 2015</em></h4>
+<h4 class="date"><em>09:28 21 January 2015</em></h4>
 </div>
 
 
+<pre><code>## Warning: package 'knitr' was built under R version 3.2.0</code></pre>
 <div id="errors" class="section level2">
 <h2>Errors</h2>
 <div id="types-of-errors" class="section level3">
@@ -150,6 +151,28 @@ img {
 </ul></li>
 </ul>
 </div>
+</div>
+<div id="testing" class="section level2">
+<h2>Testing</h2>
+<ul>
+<li>Simplify, simplify, simplify</li>
+<li>Reduce the size of your problem</li>
+<li>Cases with easy/known answers</li>
+<li>Corner &amp; edge cases</li>
+<li>Random tests (<a href="http://en.wikipedia.org/wiki/Fuzz_testing">fuzz testing</a>)</li>
+<li>Automatic testing framework: <code>nose</code>
+<ul>
+<li>built-in Python package</li>
+<li>define test file
+<ul>
+<li>basic: <code>assert &lt;condition&gt;</code></li>
+<li>extra: <code>from nose.tools import assert_equal, assert_raises</code> (or something)</li>
+<li>each test or set of tests as a separate function</li>
+<li>see <a href="../code/test_mm.py">test_mm.py</a></li>
+</ul></li>
+<li><code>nosetests</code> (still figuring out how to do it in PyCharm)</li>
+</ul></li>
+</ul>
 <div id="additional-resources" class="section level3">
 <h3>Additional resources</h3>
 <ul>
