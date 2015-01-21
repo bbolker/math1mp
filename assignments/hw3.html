@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP assignment 3</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>09:23 21 January 2015</em></h4>
+<h4 class="date"><em>17:35 21 January 2015</em></h4>
 </div>
 
 
@@ -76,25 +76,25 @@ img {
 <h3>Matrix multiplication</h3>
 <p>The formal definition of matrix multiplication for two matrices <span class="math">\(x\)</span> and <span class="math">\(y\)</span> is</p>
 <p><span class="math">\[
-xy = \sum_{i=1}^m \sum_{j=1^n} x_{ik} y_{kj}
-\]</span></p>
+(xy)_{ij} = \sum_{k=1}^m x_{ik} y_{kj}
+\]</span> where <span class="math">\(m\)</span> is the number of columns of <span class="math">\(x\)</span> and the number of rows of <span class="math">\(y\)</span> (these dimensions must be the same, or the matrices are <em>non-conformable</em> and can’t be multiplied).</p>
 <p>As an example, if</p>
 <p><span class="math">\[
-x = \left( \begin{array}{cc} a &amp; b \\ c &amp; d \end{array} \right), 
+x = \left( \begin{array}{cc} a &amp; b \\ c &amp; d \end{array} \right), \qquad
 y = \left( \begin{array}{cc} e &amp; f \\ g &amp; h \end{array} \right)
 \]</span></p>
 <p>then their product <span class="math">\(z\)</span> is</p>
 <p><span class="math">\[
-\left( \begin{array}{cc} ac + bg &amp; ad + bh \\ ec + fg &amp; ed + fh \end{array} \right)
+\left( \begin{array}{cc} ae + bg &amp; af + bh \\ ec + dg &amp; cf + dh \end{array} \right)
 \]</span></p>
 <ul>
 <li>Create a function <code>mm</code> that takes two matrix arguments, e.g. <code>def mm(x,y):</code>.
 <ul>
-<li>The matrices will be specified as nested lists in row-major order, e.g. <code>[[1,2],[4,5]]</code> specifies the matrix <span class="math">\(\left( \begin{array}{cc} 1 &amp; 2 \\ 4 &amp; 5 \end{array} \right)\)</span>. You can access element <span class="math">\((i,j)\)</span> of a matrix (i.e. the element in the <span class="math">\(i^\textrm{th}\)</span> row and <span class="math">\(j^\textrm{th}\)</span> column) via <code>x[i][j]</code>.</li>
+<li>The matrices will be specified as nested lists in row-major order, e.g. <code>[[1,2],[4,5]]</code> specifies the matrix <span class="math">\(\left( \begin{array}{cc} 1 &amp; 2 \\ 4 &amp; 5 \end{array} \right)\)</span>. You can access element <span class="math">\((i,j)\)</span> of a matrix (i.e. the element in the <span class="math">\(i^\textrm{th}\)</span> row and <span class="math">\(j^\textrm{th}\)</span> column) via <code>x[i][j]</code> (but note that row/column indices start from 0 as usual in Python, not from 1 as in the equation above [which uses standard <em>mathematical</em> notation]).</li>
 <li>You can assume that <code>x</code> and <code>y</code> are both numeric matrices (i.e. that they are nested lists, each element of the inner lists is numeric, each of the outer lists has the same number of elements, that each matrix has at least one row and at least one column).</li>
-<li>Your function should check that the matrices are <em>conformable</em>, i.e. that the number of columns of <code>x</code> is equal to the number of rows of <code>y</code>. If they are not, then the function should <strong>raise an exception</strong> using this command: <code>raise ValueError(&quot;non-conformable matrices&quot;)</code></li>
+<li>Your function should check that the matrices are <em>conformable</em>, i.e. that the number of columns of <code>x</code> is equal to the number of rows of <code>y</code>. If they are not, then the function should <strong>raise an exception</strong> using this command: <code>raise ValueError(&quot;non-conformable matrices&quot;)</code>. (Hint: use <code>len(w)</code> or <code>len(w[0])</code> to find the number of rows or columns of a matrix.)</li>
 <li>Otherwise, the function should return a matrix in the same format with the appropriate dimensions (number of rows equal to the number of rows of <code>x</code>, number of columns equal to the number of columns of <code>y</code>).</li>
-<li>You have to be a bit careful when defining matrices; simply multiplying lists can get you in trouble. The following code works to set up an <span class="math">\(m \times n\)</span> matrix of zeros:</li>
+<li>You have to be a bit careful when defining matrices; simply multiplying lists can get you in trouble due to shallow copying, as we discussed in class. The following code works to set up an <span class="math">\(m \times n\)</span> matrix of zeros:</li>
 </ul></li>
 </ul>
 <pre class="python"><code>x = [[]]*m ## multiply _empty_ list
@@ -126,15 +126,26 @@ remove_all(x,'z')
 <h3>Binary search</h3>
 <ul>
 <li>implement binary search in Python. Make a function <code>bin_search</code> that takes six arguments: <code>f</code> (a function of one numeric variable that returns a numeric value), <code>y</code> (the target value), <code>lo</code> (the initial lower bracket), <code>hi</code> (the initial upper bracket), <code>tol</code> (the tolerance), and <code>nmax</code> (the maximum number of iterations).</li>
-<li>Your function should check to make sure that <code>y</code> is between <code>f(lo)</code> and <code>f(hi)</code>. If not, it should return <code>False</code>.</li>
-<li>Otherwise, it should do a bisection search until either (1) it finds a value of <code>x</code> such that <code>abs(f(x)-y)&lt;tol</code> or (2) the maximum number of iterations is exceeded, and return the resulting value.</li>
+<li>As we discussed in class, the basic <em>pseudocode</em> for this algorithm is:
+<ul>
+<li>initialize (compute and store) the value of <code>f()</code> at the endpoints, the value of the midpoint (<code>(lo+hi)/2</code>), and the value of <code>f()</code> at the midpoint</li>
+<li>while number of iterations &lt; <code>nmax</code> and <code>abs(y_mid-y)&gt;tol</code>
+<ul>
+<li>if (the value at the midpoint is less than the target value <em>and</em> the function is increasing over the range) <em>or</em> (the value at the midpoint is greater than the target <em>and</em> the function is decreasing), then set the low bracket to the midpoint and copy the <code>y</code> value at the midpoint into the variable storing the value of <code>y</code> at the low bracket</li>
+<li>… otherwise copy the midpoint and corresponding <code>y</code> value to the high bracket and the high <code>y</code> value</li>
+<li>recompute the midpoint and the <code>y</code> value at the midpoint</li>
+</ul></li>
+<li>return the result</li>
+</ul></li>
+<li>Your function should check to make sure that <code>y</code> is between <code>f(lo)</code> and <code>f(hi)</code>. If not, it should <code>raise ValueError(&quot;end points don't bracket the target&quot;)</code></li>
+<li>Otherwise, it should do a bisection search until either (1) it finds a value of <code>x</code> (at the midpoint) such that <code>abs(f(x)-y)&lt;tol</code> or (2) the maximum number of iterations is exceeded, and return the resulting value.</li>
 </ul>
 <div id="example-2" class="section level4">
 <h4>Example</h4>
 <pre class="python"><code>import math
 bin_search(math.cos,0.7,0,math.pi,1e-4,100)
 ## answer: returns
-0.7953934</code></pre>
+0.7953690385187049</code></pre>
 </div>
 </div>
 

@@ -20,28 +20,29 @@ You **must** submit your homework to the Dropbox on Avenue to Learn as a single 
 The formal definition of matrix multiplication for two matrices $x$ and $y$ is
 
 $$
-xy = \sum_{i=1}^m \sum_{j=1^n} x_{ik} y_{kj}
+(xy)_{ij} = \sum_{k=1}^m x_{ik} y_{kj}
 $$
+where $m$ is the number of columns of $x$ and the number of rows of $y$ (these dimensions must be the same, or the matrices are *non-conformable* and can't be multiplied).
 
 As an example, if 
 
 $$
-x = \left( \begin{array}{cc} a & b \\ c & d \end{array} \right), 
+x = \left( \begin{array}{cc} a & b \\ c & d \end{array} \right), \qquad
 y = \left( \begin{array}{cc} e & f \\ g & h \end{array} \right)
 $$
 
 then their product $z$ is
 
 $$
-\left( \begin{array}{cc} ac + bg & ad + bh \\ ec + fg & ed + fh \end{array} \right)
+\left( \begin{array}{cc} ae + bg & af + bh \\ ec + dg & cf + dh \end{array} \right)
 $$
 
 * Create a function `mm` that takes two matrix arguments, e.g. `def mm(x,y):`.
-    * The matrices will be specified as nested lists in row-major order, e.g. `[[1,2],[4,5]]` specifies the matrix $\left( \begin{array}{cc} 1 & 2 \\ 4 & 5 \end{array} \right)$.  You can access element $(i,j)$ of a matrix (i.e. the element in the $i^\textrm{th}$ row and $j^\textrm{th}$ column) via `x[i][j]`.
+    * The matrices will be specified as nested lists in row-major order, e.g. `[[1,2],[4,5]]` specifies the matrix $\left( \begin{array}{cc} 1 & 2 \\ 4 & 5 \end{array} \right)$.  You can access element $(i,j)$ of a matrix (i.e. the element in the $i^\textrm{th}$ row and $j^\textrm{th}$ column) via `x[i][j]` (but note that row/column indices start from 0 as usual in Python, not from 1 as in the equation above [which uses standard *mathematical* notation]).
 	* You can assume that `x` and `y` are both numeric matrices (i.e. that they are nested lists, each element of the inner lists is numeric, each of the outer lists has the same number of elements, that each matrix has at least one row and at least one column).
-	* Your function should check that the matrices are *conformable*, i.e. that the number of columns of `x` is equal to the number of rows of `y`.  If they are not, then the function should **raise an exception** using this command: `raise ValueError("non-conformable matrices")`
+	* Your function should check that the matrices are *conformable*, i.e. that the number of columns of `x` is equal to the number of rows of `y`.  If they are not, then the function should **raise an exception** using this command: `raise ValueError("non-conformable matrices")`.  (Hint: use `len(w)` or `len(w[0])` to find the number of rows or columns of a matrix.)
     * Otherwise, the function should return a matrix in the same format with the appropriate dimensions (number of rows equal to the number of rows of `x`, number of columns equal to the number of columns of `y`).
-	* You have to be a bit careful when defining matrices; simply multiplying lists can get you in trouble.  The following code works to set up an $m \times n$ matrix of zeros:
+	* You have to be a bit careful when defining matrices; simply multiplying lists can get you in trouble due to shallow copying, as we discussed in class.  The following code works to set up an $m \times n$ matrix of zeros:
 ```{r eval=FALSE}
 x = [[]]*m ## multiply _empty_ list
 for i in range(m):
@@ -76,8 +77,15 @@ remove_all(x,'z')
 ### Binary search
 
 * implement binary search in Python.  Make a function `bin_search` that takes six arguments: `f` (a function of one numeric variable that returns a numeric value), `y` (the target value), `lo` (the initial lower bracket), `hi` (the initial upper bracket), `tol` (the tolerance), and `nmax` (the maximum number of iterations).
-* Your function should check to make sure that `y` is between `f(lo)` and `f(hi)`.  If not, it should return `False`.
-* Otherwise, it should do a bisection search until either (1) it finds a value of `x` such that `abs(f(x)-y)<tol` or (2) the maximum number of iterations is exceeded, and return the resulting value.
+* As we discussed in class, the basic *pseudocode* for this algorithm is:
+    * initialize (compute and store) the value of `f()` at the endpoints, the value of the midpoint (`(lo+hi)/2`), and the value of `f()` at the midpoint
+    * while number of iterations < `nmax` and `abs(y_mid-y)>tol`
+		 * if (the value at the midpoint is less than the target value *and* the function is increasing over the range) *or* (the value at the midpoint is greater than the target *and* the function is decreasing), then set the low bracket to the midpoint and copy the `y` value at the midpoint into the variable storing the value of `y` at the low bracket
+		 * ... otherwise copy the midpoint and corresponding `y` value to the high bracket and the high `y` value
+         * recompute the midpoint and the `y` value at the midpoint
+    * return the result
+* Your function should check to make sure that `y` is between `f(lo)` and `f(hi)`.  If not, it should `raise ValueError("end points don't bracket the target")`
+* Otherwise, it should do a bisection search until either (1) it finds a value of `x` (at the midpoint) such that `abs(f(x)-y)<tol` or (2) the maximum number of iterations is exceeded, and return the resulting value.
 
 #### Example
 
@@ -85,5 +93,5 @@ remove_all(x,'z')
 import math
 bin_search(math.cos,0.7,0,math.pi,1e-4,100)
 ## answer: returns
-0.7953934
+0.7953690385187049
 ```
