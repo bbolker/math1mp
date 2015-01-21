@@ -1,0 +1,75 @@
+---
+title: "mutability and misc."
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+```
+
+## Mutability
+
+We hit a snag on Monday with our matrix construction due to something called **mutability**.  That is, when Python assigns an object to another object, sometimes it only copies a *reference* to the other object.  In particular, lists are mutable (all the other kinds of things we've seen --- integers, floats, characters --- are immutable, and thus less confusing).
+
+For example:
+```{r set1}
+x = [0,0,0]
+y = x
+y[0] = 2 ## change y
+print(x,y)
+```
+
+If we really want to copy an object we can make a **deep copy**:
+
+```{r set2}
+x = [0,0,0]
+import copy
+y = copy.deepcopy(x)
+y[0] = 1
+print(x,y)
+```
+
+The `id()` function can be useful to check whether two objects are really the same.
+
+```{r set3}
+x = [0,0,0]
+import copy
+y1 = copy.deepcopy(x)
+y2 = x
+print(y1 == x,
+      y2 == x,
+      id(y1) == id(x),
+      id(y2) == id(x))
+```
+
+How does this apply to our matrix construction problem?
+
+
+```{r}
+def matlist0(m,n):
+    return([[0]*n]*m)
+
+def matlist1(m,n):
+   x = []
+   for i in range(m):
+      x.append([])
+      for j in range(n):
+          x[i] += [0]
+   return(x)
+
+def matlist2(m,n):
+   x = [[]]*m ## multiply _empty_ list
+   for i in range(m):
+      x[i] = [0]*n
+   return(x)
+```
+
+The first one fails to make copies, the second and third both succeed.  (You can use `id()`, or try setting a value, to check.)
+
+Also handy, from [StackOverflow](http://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference):
+
+![mutability mnemonic](pix/mut_obj.png)
+
+* Another [StackOverflow question](http://stackoverflow.com/questions/8056130/immutable-vs-mutable-types-python)
