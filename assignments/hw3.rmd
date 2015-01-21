@@ -1,0 +1,89 @@
+---
+title: "math 1MP assignment 3"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+### Logistics
+
+Homework #3 is due at midnight (i.e. 11:59:59 PM) on Weds January 28.
+
+You **must** submit your homework to the Dropbox on Avenue to Learn as a single text file containing three function definitions (`mm`, `remove_all`, `bin_search`, as specified below).  The file must be named `[MacID]_hw3.py`, e.g. in my case it would be called `bolkerb_hw3.py`.  You will automatically lose at least one mark if you don't follow these instructions ...
+
+### Matrix multiplication
+
+The formal definition of matrix multiplication for two matrices $x$ and $y$ is
+
+$$
+xy = \sum_{i=1}^m \sum_{j=1^n} x_{ik} y_{kj}
+$$
+
+As an example, if 
+
+$$
+x = \left( \begin{array}{cc} a & b \\ c & d \end{array} \right), 
+y = \left( \begin{array}{cc} e & f \\ g & h \end{array} \right)
+$$
+
+then their product $z$ is
+
+$$
+\left( \begin{array}{cc} ac + bg & ad + bh \\ ec + fg & ed + fh \end{array} \right)
+$$
+
+* Create a function `mm` that takes two matrix arguments, e.g. `def mm(x,y):`.
+    * The matrices will be specified as nested lists in row-major order, e.g. `[[1,2],[4,5]]` specifies the matrix $\left( \begin{array}{cc} 1 & 2 \\ 4 & 5 \end{array} \right)$.  You can access element $(i,j)$ of a matrix (i.e. the element in the $i^\textrm{th}$ row and $j^\textrm{th}$ column) via `x[i][j]`.
+	* You can assume that `x` and `y` are both numeric matrices (i.e. that they are nested lists, each element of the inner lists is numeric, each of the outer lists has the same number of elements, that each matrix has at least one row and at least one column).
+	* Your function should check that the matrices are *conformable*, i.e. that the number of columns of `x` is equal to the number of rows of `y`.  If they are not, then the function should **raise an exception** using this command: `raise ValueError("non-conformable matrices")`
+    * Otherwise, the function should return a matrix in the same format with the appropriate dimensions (number of rows equal to the number of rows of `x`, number of columns equal to the number of columns of `y`).
+	* You have to be a bit careful when defining matrices; simply multiplying lists can get you in trouble.  The following code works to set up an $m \times n$ matrix of zeros:
+```{r eval=FALSE}
+x = [[]]*m ## multiply _empty_ list
+for i in range(m):
+   x[i] = [0]*n
+```
+
+#### Example
+
+```{r eval=FALSE}
+x = [[1,2],[3,4]]
+y = [[1],[1]]
+mm(x,y)
+## answer: returns
+[[3],[7]]
+```
+
+
+
+### Remove-all
+
+* Write a `remove_all(x,v)` function that removes *all* occurrences of a value `v` within a list `x` and returns the result.  It should still work (i.e. it should return `x` unchanged) if there are no occurrences in the list.
+
+#### Example
+
+```{r eval=FALSE}
+x = ['a','z','y','z']
+remove_all(x,'z')
+## answer: returns
+['a','y']
+```
+
+### Binary search
+
+* implement binary search in Python.  Make a function `bin_search` that takes six arguments: `f` (a function of one numeric variable that returns a numeric value), `y` (the target value), `lo` (the initial lower bracket), `hi` (the initial upper bracket), `tol` (the tolerance), and `nmax` (the maximum number of iterations).
+* Your function should check to make sure that `y` is between `f(lo)` and `f(hi)`.  If not, it should return `False`.
+* Otherwise, it should do a bisection search until either (1) it finds a value of `x` such that `abs(f(x)-y)<tol` or (2) the maximum number of iterations is exceeded, and return the resulting value.
+
+#### Example
+
+```{r eval=FALSE}
+import math
+bin_search(math.cos,0.7,0,math.pi,1e-4,100)
+## answer: returns
+0.7953934
+```
