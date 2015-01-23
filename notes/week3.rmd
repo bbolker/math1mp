@@ -1,5 +1,5 @@
 ---
-title: "debugging"
+title: "debugging and testing"
 date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
 author: Ben Bolker
 ---
@@ -85,9 +85,11 @@ fahrdiff = celsius_high - celsius_low * 1.8
 	* define test file
 	    * basic: `assert <condition>`
 	    * extra: `from nose.tools import assert_equal, assert_raises` (or something)
+		* (generating an error: `raise ErrorType("message")`, e.g. `raise ValueError("non-conformable matrices")`
 		* each test or set of tests as a separate function
 		* see [test_mm.py](../code/test_mm.py)
-	* `nosetests` (still figuring out how to do it in PyCharm)
+	* `nosetests`/run in PyCharm
+* Test-driven development: write tests *first*!	
 
 ### Additional resources
 
