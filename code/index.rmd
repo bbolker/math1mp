@@ -10,7 +10,6 @@ author: Ben Bolker
 * [mandelbrot_badloop3](mandelbrot_badloop3.py)
 * [mandelbrot_infloop](mandelbrot_infloop.py)
 * [mandelbrot_noinit](mandelbrot_noinit.py)
+* [silly_string](silly_string.py)
+* [test_ss](test_ss.py)
 * [test_mm](test_mm.py)
-
-
-
