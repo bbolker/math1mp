@@ -30,3 +30,7 @@ There is no required textbook for this course, but these resources may be useful
 
 * probably best to ask Python questions first on the Avenue to Learn forums for this class
 * [StackOverflow "python"-tagged questions](http://stackoverflow.com/questions/tagged/python) are a very good resource for *looking for answers* (However, I suggest that you **do not** ask questions there until you have (1) tried to get the answer locally [from me or the TA or a fellow student] and (2) read and absorbed the [advice on how to ask questions](http://stackoverflow.com/help/how-to-ask).)
+
+## Misc.
+
+* [Python programming projects archive](http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/)
