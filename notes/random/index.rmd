@@ -7,4 +7,6 @@ author: Ben Bolker
 * [note #1](r1_digits.html): distribution of digits of powers of 2
 * [note #2](r2_graph_chrom.html): graph coloring and chromatic numbers
 * [note #3](r3_sqrtminusone.html): shortcuts for complex numbers in Python
+* note #4: delete by position (to be completed)
+* [note #5](r5_genlist.html): generating deep-copied lists of lists
 
