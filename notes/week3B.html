@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">functions and modules</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>22:57 22 January 2015</em></h4>
+<h4 class="date"><em>20:35 25 January 2015</em></h4>
 </div>
 
 
@@ -185,22 +185,34 @@ foo(z)</code></pre>
 <li>use them!</li>
 </ul>
 </div>
-<div id="modules" class="section level1">
-<h1>Modules</h1>
+<div id="modules-and-packages" class="section level1">
+<h1>Modules and packages</h1>
+<p><a href="https://docs.python.org/3/tutorial/modules.html">Reference</a></p>
 <div id="importing" class="section level3">
 <h3>importing</h3>
 <ul>
 <li><code>import</code></li>
 <li>refer to functions via module prefix</li>
 <li><code>import VeryLongModuleName as vlmn</code>: use abbreviation</li>
+<li><code>from module import stuff</code>: use without abbreviation</li>
+<li><code>from module import *</code> (lazy)</li>
+<li><code>__name__</code> and <code>if __name__ == &quot;__main__&quot;:</code> in modules</li>
 </ul>
 </div>
-<div id="finding-out-about" class="section level3">
-<h3>finding out about</h3>
+<div id="packages" class="section level3">
+<h3>packages</h3>
+<ul>
+<li>more than one module in a file (package)</li>
+<li>refer to packages by <code>.</code> as well, e.g. <code>numpy.random</code>, <code>DataSounds.sounds</code></li>
+<li>as above</li>
+</ul>
+</div>
+<div id="finding-out-more" class="section level2">
+<h2>finding out more</h2>
 <ul>
 <li><a href="https://docs.python.org/3/py-modindex.html">official modules</a></li>
-<li><a href="https://wiki.python.org/moin/UsefulModules">list of useful module</a></li>
-<li><code>math</code>, <code>cmath</code>, <code>re</code>, <code>random</code>, <code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>timeit</code></li>
+<li><a href="https://wiki.python.org/moin/UsefulModules">list of useful modules</a></li>
+<li>some we will use (or have used): <code>math</code>, <code>cmath</code>, <code>re</code>, <code>random</code>, <code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>timeit</code>, <code>DataSounds</code></li>
 </ul>
 </div>
 </div>

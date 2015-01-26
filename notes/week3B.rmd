@@ -124,17 +124,27 @@ foo(z)
 
 * use them!
 
-# Modules
+# Modules and packages
+
+[Reference](https://docs.python.org/3/tutorial/modules.html)
 
 ### importing
 
 * `import`
 * refer to functions via module prefix
 * `import VeryLongModuleName as vlmn`: use abbreviation
+* `from module import stuff`: use without abbreviation
+* `from module import *` (lazy)
+* `__name__` and `if __name__ == "__main__":` in modules
 
+### packages
 
-### finding out about
+* more than one module in a file (package)
+* refer to packages by `.` as well, e.g. `numpy.random`, `DataSounds.sounds`
+* as above
+
+## finding out more
 
 * [official modules](https://docs.python.org/3/py-modindex.html)
-* [list of useful module](https://wiki.python.org/moin/UsefulModules)
-* `math`, `cmath`, `re`, `random`, `numpy`, `scipy`, `matplotlib`, `timeit`
+* [list of useful modules](https://wiki.python.org/moin/UsefulModules)
+* some we will use (or have used): `math`, `cmath`, `re`, `random`, `numpy`, `scipy`, `matplotlib`, `timeit`, `DataSounds`
