@@ -17,7 +17,7 @@ There is no required textbook for this course, but these resources may be useful
 
 * information on [operators](http://www.tutorialspoint.com/python/python_basic_operators.htm) (not [this kind](https://www.youtube.com/watch?v=o-chH7BMgVI) of operator)
 * Python [built-in functions](https://docs.python.org/3.3/library/functions.html)
-* [R/Python/MATLAB dictionary](http://mathesaurus.sourceforge.net/)
+* [R/Python/MATLAB dictionary](http://mathesaurus.sourceforge.net/); [another one](http://hyperpolyglot.org/numerical-analysis)
 
 ## Other tools
 
