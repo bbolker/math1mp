@@ -37,7 +37,7 @@ Another possible solution would be to use lists of tuples instead of lists of li
 
 ```{r}
 def list_tuple(n,k):
-    return([tuple([1])]*n+[tuple([0])]*(k-n) )
+    return([(1,)]*n+[(0,)]*(k-n) )
 ```
 
-The only downsides I see of this are (1) the syntax of `[tuple([val])]` is pretty inscrutable ("make a list containing a single element which is a single-element tuple constructed from a single-element list containing the value `val`") -- starts to approach [code golf](http://en.wikipedia.org/wiki/Code_golf); (2) single-element tuples look weird to me (e.g. `(0,)`)
+The only downside I see of this is that the syntax of `[(1,)]` is a little bit inscrutable ("make a list containing a single element which is a single-element tuple containing 1") -- starts to approach [code golf](http://en.wikipedia.org/wiki/Code_golf).  Maybe this is just because single-element tuples look weird (they have to, because `(1)` would be indistinguishable from a parenthesized number).

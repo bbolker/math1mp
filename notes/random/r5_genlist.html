@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">generating list copies</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>13:52 25 January 2015</em></h4>
+<h4 class="date"><em>19:23 25 January 2015</em></h4>
 </div>
 
 
@@ -88,8 +88,8 @@ def list_for(n,k):
 <p>Maybe this is an unfair set of constraints; in other words, the answer might be “list comprehensions are the right way to do this, get over it, <em>or</em> write a utility module that encapsulates <code>list_for</code> and import it so you don’t have to see the complexity”</p>
 <p>Another possible solution would be to use lists of tuples instead of lists of lists, since tuples are immutable.</p>
 <pre class="python"><code>def list_tuple(n,k):
-    return([tuple([1])]*n+[tuple([0])]*(k-n) )</code></pre>
-<p>The only downsides I see of this are (1) the syntax of <code>[tuple([val])]</code> is pretty inscrutable (“make a list containing a single element which is a single-element tuple constructed from a single-element list containing the value <code>val</code>”) – starts to approach <a href="http://en.wikipedia.org/wiki/Code_golf">code golf</a>; (2) single-element tuples look weird to me (e.g. <code>(0,)</code>)</p>
+    return([(1,)]*n+[(0,)]*(k-n) )</code></pre>
+<p>The only downside I see of this is that the syntax of <code>[(1,)]</code> is a little bit inscrutable (“make a list containing a single element which is a single-element tuple containing 1”) – starts to approach <a href="http://en.wikipedia.org/wiki/Code_golf">code golf</a>. Maybe this is just because single-element tuples look weird (they have to, because <code>(1)</code> would be indistinguishable from a parenthesized number).</p>
 
 
 </div>
