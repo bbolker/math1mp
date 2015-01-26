@@ -17,7 +17,7 @@ There is no required textbook for this course, but these resources may be useful
 
 * information on [operators](http://www.tutorialspoint.com/python/python_basic_operators.htm) (not [this kind](https://www.youtube.com/watch?v=o-chH7BMgVI) of operator)
 * Python [built-in functions](https://docs.python.org/3.3/library/functions.html)
-* [R/Python/MATLAB dictionary](http://mathesaurus.sourceforge.net/)
+* [R/Python/MATLAB dictionary](http://mathesaurus.sourceforge.net/); [another one](http://hyperpolyglot.org/numerical-analysis)
 
 ## Other tools
 
@@ -30,3 +30,7 @@ There is no required textbook for this course, but these resources may be useful
 
 * probably best to ask Python questions first on the Avenue to Learn forums for this class
 * [StackOverflow "python"-tagged questions](http://stackoverflow.com/questions/tagged/python) are a very good resource for *looking for answers* (However, I suggest that you **do not** ask questions there until you have (1) tried to get the answer locally [from me or the TA or a fellow student] and (2) read and absorbed the [advice on how to ask questions](http://stackoverflow.com/help/how-to-ask).)
+
+## Misc.
+
+* [Python programming projects archive](http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/)
