@@ -1,0 +1,74 @@
+---
+title: "More functions etc. examples"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+```
+
+## More examples
+
+### conversion to/from Roman numerals
+
+* Based on [CSE 231 project "Shannon's Throbac"](http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/03_Strings/Shannon/Project04.pdf)
+* The rules:
+    * (I,V,X,L,C,D,M) $\leftrightarrow$ (1,5,10,50,100,500,1000)
+	* *subtraction rule*: I, X, or C preceding the next two elements correspond to subtraction (e.g. IV=4, XC=90)
+* [string methods](https://docs.python.org/3/library/stdtypes.html#str) are useful, especially `in`, `s.count()`, `s.replace()` are useful
+* so is *integer division* and *modulo* operations, `//` and `%`
+* we should write tests first, e.g.
+```{r roman1,eval=FALSE}
+rom = ["I","II","III","IV","V","VI","VII","VIII","IX",
+     "X","XI","XIV","XV","LX","XC","XCXLI","CCC"]
+int = [1,2,3,4,5,6,7,8,9,10,11,14,15,60,90,131,300]
+for i in range(len(rom)):
+    print(rom_to_int(rom[i])==int[i])
+```
+* we can try to write this as a gigantic `if` statement, or we can try to make the rules more compact
+* which direction is easier?
+          
+### compute sine/cosine
+
+* [CSE project](http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/02_Control/Trig/project04.pdf)
+* power series approximation:
+$$
+\begin{split}
+\sin(x) & = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!} + \dots \\
+& = \sum_{k=0} (-1)^k \frac{x^{2k+1}}{(2k+1)!}
+	\end{split}
+$$
+$$
+\begin{split}
+\cos(x) & = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!} + \dots \\
+        & = \sum_{k=0} (-1)^k \frac{x^{2k}}{(2k)!}
+\end{split}
+$$
+* stop when the absolute value of the next term is $<10^{-8}$ (`1e-8` in computer notation)
+* divide $x$ by $\pi$, take the remainder (modulo: `%`)
+* write tests first (what are some easy cases, using `math.pi`?)
+* use `math.factorial`? use the factorial function we already wrote? augment terms as we go along?
+* after we write the two functions, can we combine them?
+* extra credit/puzzle: what do we get if we interpolate between these two functions?
+
+### letter-scrambling
+
+*  [CSE project](http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/04_Functions1/ScrambledWords/project06.pdf)
+* scramble words within a text
+* start with some simpler cases
+    * reverse every word in a line
+    * again, [string methods](https://docs.python.org/3/library/stdtypes.html#str) -- especially `str.split()`
+	* now read from a file 
+* test cases? easier with just a few lines	
+* harder: preserve punctuation at the end of the word
+* harder: shuffle
+   * `from numpy.random import shuffle`
+* split words and join them: `list()`, `''.join()`
+* [test case](../misc/darwin.txt) 
+```{r}
+f = open("../misc/darwin.txt")
+for line in f:
+   print(line)
+```
