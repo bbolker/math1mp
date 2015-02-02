@@ -30,27 +30,27 @@ Notes ([HTML](http://htmlpreview.github.io/?https://github.com/bbolker/math1mp/b
 ### week 4: functions and modules
 
 * M Jan 26 functions and scoping
-* W Jan 28  ... continued
-* F Jan 32 importing modules
+* W Jan 28 importing modules, Roman numeral examples
+* F Jan 30 more Roman numeral examples
 
-### week 5: tuples and dictionaries (and arrays?)
+### week 5: more function examples/reviews
 
-* M Feb 2  tuples, lists and dictionaries
+* M Feb 2 function examples
 * W Feb 4 ... continued
-* F Feb 6 
+* F Feb 6 ... continued
 
-### week 6: classes (and plotting)
+### week 6: tuples and dictionaries (and arrays?) (and plotting)
 
-* M Feb 9 plotting (data visualization)
-* W Feb 11 classes ...
+* M Feb 9 tuples and dictionaries 
+* W Feb 11 ... more ...
 * F Feb 13 **MIDTERM exam** (in class)
 
 **midterm recess: Feb 16-21**
 
 ### week 7: random numbers, numeric representations
 
-* M Feb 23 pseudo-random numbers and applications
-* W Feb 25 ... continued
+* M Feb 23 plotting (data visualization)
+* W Feb 25 pseudo-random numbers and applications
 * F Feb 27 numeric representations
 
 ### week 8: floating point and exception handling
