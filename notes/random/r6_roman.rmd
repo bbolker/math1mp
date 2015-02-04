@@ -1,0 +1,35 @@
+---
+title: "stuff about Roman numerals"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,echo=FALSE,message=FALSE}
+## source("python3_engine.R")
+knitr::opts_chunk$set(engine="python",engine.path="python3")
+```
+
+* *parsing* Roman numerals, i.e. building a program that can scan a Roman numeral and decide whether it's legal (possibly computing the integer-equivalent value at the same time), is an interesting question with a lot of different connections. Googling "'roman numeral' 'finite state machine'" returns 
+    * [this Perl program and discussion](http://www.perlmonks.org/?node_id=1085793) (the last paragraph/"Postscript" is particularly funny); 
+	* and [this great article by Brian Hayes](http://bit-player.org/wp-content/extras/bph-publications/SciAm-1983-12-Hayes-FSA.pdf) ("the subtractive notation for Roman numerals cannot be handled by a finite-state machine ... [but it can be handled by a *push-down automaton*]").  There are a lot of interesting general computer science ideas here.
+    * PS: Hayes says "No programming language known to me allows numbers to be entered in Roman form ..."  Ha! in R we can do this: (`str()` is an R function that reports on the **str**ucture of an R object)
+```{r engine="R",engine.path="R"}
+str(as.roman("VII"))
+```
+* In class, one student asked if we could set the variable `X=10` (for example) and use that assignment to translate values in the string.  I tried to explain, not very clearly, that this was mixing up logical levels (between a *symbol* and a *value of a string*).  In R I would do this as
+```{r engine="R",engine.path="R"}
+X <- 10
+r <- "XVI"
+get(substr(r,1,1))
+```
+[I asked StackOverflow how to do this in Python](http://stackoverflow.com/questions/28245607/python-equivalent-of-get-in-r).  The answer:
+```{r}
+X = 10
+r = "XVI"
+print(locals()[r[0]])
+```
+This question is an example of the *use-mention* distinction, which is played with in Lewis Carroll's [Through the Looking Glass](https://en.wikipedia.org/wiki/Haddocks%27_Eyes#Naming); are we interested in the value of the symbol `X`, or the value of the symbol named `"X"`?
+
+PPS: This feels like an example of Gelman's [God is in every leaf of every tree](http://andrewgelman.com/2005/10/06/god_is_in_every/) ...
+
+
