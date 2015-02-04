@@ -9,4 +9,5 @@ author: Ben Bolker
 * [note #3](r3_sqrtminusone.html): shortcuts for complex numbers in Python
 * note #4: delete by position (to be completed)
 * [note #5](r5_genlist.html): generating deep-copied lists of lists
+* [note #6](r6_roman.html): stuff about Roman numerals
 
