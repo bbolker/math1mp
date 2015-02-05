@@ -1,0 +1,90 @@
+---
+title: "math 1MP assignment 4"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+### Logistics
+
+Homework #4 is due at midnight (i.e. 11:59:59 PM) on Weds February 11.
+
+You **must** submit your homework to the Dropbox on Avenue to Learn as a **single** text (`.py`) file containing two function definitions (`int_to_roman` and `logist_map`, as specified below).  The file must be named `[MacID]_hw4.py`, e.g. in my case it would be called `bolkerb_hw4.py`.  You will automatically lose at least one mark if you don't follow these instructions ...
+
+The challenge questions below are completely optional and *not* good for extra credit.
+
+### Converting integers to Roman numerals
+
+We've spent a lot of time in class talking about how to convert a Roman numeral to an integer.  Now you should write a function to convert integers to Roman numerals.  The rules are:
+
+* 1000 $\to$ M
+*  900 $\to$ CM
+*  500 $\to$ D
+*  400 $\to$ CD
+*  100 $\to$ C
+*   90 $\to$ XL
+*   50 $\to$ L
+*   40 $\to$ XL
+*   10 $\to$ X
+*    9 $\to$ IX
+*    5 $\to$ V
+*    4 $\to$ IV
+*    1 $\to$ I
+
+The symbols should be arranged from largest to smallest (with the exception of 'subtraction rule' cases), e.g. 1909 $\to$ "MCMIX".
+
+The key to this problem is using the operators `//` (integer division) and `%` (modulo, i.e. the remainder of integer division).  For example,
+```{r intdiv}
+print(1909 // 1000)
+print(1909 % 1000)
+```
+If you use these operators, you can process the value/symbol pairs above one at a time and not worry about back-tracking or figuring out whether the subtraction rule is being used.
+
+The operators for adding (concatenating) strings and multiplying them by integers will be useful too, e.g.
+```{r str_add}
+print("V"+"I"*3)
+```
+
+Write a Python function `int_to_roman` that takes a single argument `n` and converts it to a character variable holding the corresponding Roman numeral.  You can assume that the input will be an integer between 1 and  3000, inclusive.
+
+You can use brute force if you like but it will probably be easier to set up a pair of lists (`symbols` and `values`) that contain the symbols and their corresponding value. 
+
+**Challenge**: do this problem with a smaller set of symbol/value tables that doesn't use the subtraction-rule pairs (i.e. the symbols are only `["I","V","X","L","C","D","M"]`).
+
+### The discrete logistic
+
+The *discrete logistic map* is the name for the iterative mathematical equation
+$$
+x_{t+1} = r x_t (1-x_t)
+$$
+This equation has very interesting properties which you can [read about on Wikipedia](http://en.wikipedia.org/wiki/Logistic_map) if you like.
+
+Write a Python function called `logist_map` that takes the parameters `x0` (the starting value), `r` (the growth rate parameter), `t_trans` (the "transient time", i.e. the number of time steps to throw away), and `t_save` (the number of time steps to save).  The function should compute the discrete logistic map starting at `x0`.  For example,  if `r`=0.5, `x0`=0.5, `t_trans`=2, and `t_save`=3, then we would compute the sequence by hand as follows:
+
+```{r log1}
+x0 = 0.5; r=0.5
+## take 2 steps
+x1 = r*x0*(1-x0)
+x2 = r*x1*(1-x1)
+## now take 3 more steps
+x3 = r*x2*(1-x2)
+x4 = r*x3*(1-x3)
+x5 = r*x4*(1-x4)
+## and return the result as a list
+print([x3,x4,x5])
+```
+
+Of course, since you won't know `t_trans` or `t_save` in advance you will need to use `for` or `while` loops as appropriate.
+
+Your program should check and raise a `ValueError` if:
+
+* `r` is <0 or >4 (these bounds make sure that the `x` value will always stay bounded between 0 and 1, if it starts there
+* `x0` is <0 or >1
+
+You can assume that `r` and `x0` are numeric and that `t_trans` and `t_save` are non-negative integers.
+
+**Challenge question**: think about how you would take a list of results from the logistic map and try to estimate whether `x` is changing with some periodicity.
