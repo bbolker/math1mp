@@ -1,0 +1,62 @@
+---
+title: "do-while loops"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,echo=FALSE,message=FALSE}
+## source("python3_engine.R")
+knitr::opts_chunk$set(engine="python",engine.path="python3")
+```
+
+ I talked a bit in class today about how to deal with the case where
+you want a `while` loop to repeat at least once but don't want to repeat
+the computation of the condition both inside and outside of the loop.
+As a trivial example, let's consider a `while` loop to reduce `x` until `y=x**5` is less than 1 (but let's pretend that the `x**5` operation is something fairly complicated/expensive that we don't want to have to repeat unnecessarily). Also assume we know we will have to go through the loop at least once.
+
+This works:
+```{r}
+x = 10
+y = x**5
+while y>1:
+    x /= 2
+    y = x**5
+```
+but we have to repeat the code for the computation twice (which is inelegant and bug-prone) as well as the computation itself (which is computationally inefficient)
+
+vs.
+
+```{r}
+x = 10
+counter = 0
+while counter==0 or y>1:
+    x /= 2
+    y = x**5
+    counter += 1
+```
+
+(this is the one I suggested in class since we needed a counter as part of the
+program anyway).  This has the interesting property that it works (I
+think -- haven't tested it!) even though we haven't defined `y` until
+we get into the loop, loop, since Python should not test the second part 
+of the `or` condition if the first part is `True`.
+
+Another possibility is
+
+```{r}
+x = 10
+while True:
+    x /= 2
+    y = x**5
+    if y<=1:
+       break
+```
+
+[A Stack Overflow answer](http://stackoverflow.com/questions/3336052/is-while-true-a-suitable-way-to-repeat-a-block-until-an-accepted-case-is-reache) suggests that the last way is actually pythonic, but I'm not wild about it (I pointed out in class that using `break` can in principle lead to multiple exits from the loop, which makes testing/debugging/reading code incrementally harder)
+
+Googling "repeat vs while" gives a variety of interesting answers (including a [Wikipedia article on "do while"](http://en.wikipedia.org/wiki/Do_while_loop) (which agrees with the Stack Overflow answer that `while True: ... if (condition): break` is the way to do this in Python). Some computer languages have specific syntax that let you choose whether the condition is checked at the beginning or end of the loop.  Beyond this, there is a question about whether it is more natural to use a "repeat until" construction (the loop repeats *until* the condition is false) or a "repeat while" construction (the loop repeats *while* the condition is true).
+
+None of this affects what you can do in a computer language, just how simple and clear the code can be.
+
+
+
