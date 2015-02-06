@@ -13,5 +13,5 @@ author: Ben Bolker
 * [silly_string](silly_string.py)
 * [test_ss](test_ss.py)
 * [test_mm](test_mm.py)
-* Roman numeral code (version [1](roman1.py), [2](roman2.py), [3](roman3.py), [test](test_roman.py)
-* [sinseries.py](sin series computation)
+* Roman numeral code (version [1](roman1.py), [2](roman2.py), [3](roman3.py), [test](test_roman.py))
+* [sin series computation](sinseries.py)

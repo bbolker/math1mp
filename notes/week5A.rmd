@@ -87,17 +87,16 @@ def euc_alg2(a,b):
 def euc_alg3(a,b):
     '''modular Euclid algorithm by looping'''
     while b>0:
-        lg = max(a,b)
-        small = min(a,b)
-        b = lg % small
-        a = small
-        print(a,b)
+       r = a % b
+       a = b
+       b = r
+       print(a,b)
     return(a)
 ```
 * recursive
 ```{r euc_div_recurse}
 def euc_alg4(a,b):
-    '''subtractive Euclid algorithm by recursion'''
+    '''modular Euclid algorithm by recursion'''
     if (b==a):
         return(a)
     m = min(a,b)
