@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP assignment 4</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>09:27 05 February 2015</em></h4>
+<h4 class="date"><em>15:09 05 February 2015</em></h4>
 </div>
 
 
@@ -119,13 +119,27 @@ x2 = r*x1*(1-x1)
 x3 = r*x2*(1-x2)
 x4 = r*x3*(1-x3)
 x5 = r*x4*(1-x4)
-## and return the result as a list
+## print the result
 print([x3,x4,x5])</code></pre>
+<pre><code>## [0.025848388671875, 0.012590124737471342, 0.006215806748283127]</code></pre>
+<p>If this were a function you would use:</p>
+<pre class="python"><code>def logist_map(x0,r):
+    ## take 2 steps
+    x1 = r*x0*(1-x0)
+    x2 = r*x1*(1-x1)
+    ## now take 3 more steps
+    x3 = r*x2*(1-x2)
+    x4 = r*x3*(1-x3)
+    x5 = r*x4*(1-x4)
+    ## return the result
+    return([x3,x4,x5])
+
+print(logist_map(x0=0.5,r=0.5))</code></pre>
 <pre><code>## [0.025848388671875, 0.012590124737471342, 0.006215806748283127]</code></pre>
 <p>Of course, since you won’t know <code>t_trans</code> or <code>t_save</code> in advance you will need to use <code>for</code> or <code>while</code> loops as appropriate.</p>
 <p>Your program should check and raise a <code>ValueError</code> if:</p>
 <ul>
-<li><code>r</code> is &lt;0 or &gt;4 (these bounds make sure that the <code>x</code> value will always stay bounded between 0 and 1, if it starts there</li>
+<li><code>r</code> is &lt;0 or &gt;4 (these bounds make sure that the <code>x</code> value will always stay bounded between 0 and 1, if it starts there)</li>
 <li><code>x0</code> is &lt;0 or &gt;1</li>
 </ul>
 <p>You can assume that <code>r</code> and <code>x0</code> are numeric and that <code>t_trans</code> and <code>t_save</code> are non-negative integers.</p>

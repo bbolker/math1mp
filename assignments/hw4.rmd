@@ -74,15 +74,32 @@ x2 = r*x1*(1-x1)
 x3 = r*x2*(1-x2)
 x4 = r*x3*(1-x3)
 x5 = r*x4*(1-x4)
-## and return the result as a list
+## print the result
 print([x3,x4,x5])
+```
+
+If this were a function you would use:
+
+```{r log2}
+def logist_map(x0,r):
+    ## take 2 steps
+    x1 = r*x0*(1-x0)
+    x2 = r*x1*(1-x1)
+    ## now take 3 more steps
+    x3 = r*x2*(1-x2)
+    x4 = r*x3*(1-x3)
+    x5 = r*x4*(1-x4)
+    ## return the result
+    return([x3,x4,x5])
+
+print(logist_map(x0=0.5,r=0.5))
 ```
 
 Of course, since you won't know `t_trans` or `t_save` in advance you will need to use `for` or `while` loops as appropriate.
 
 Your program should check and raise a `ValueError` if:
 
-* `r` is <0 or >4 (these bounds make sure that the `x` value will always stay bounded between 0 and 1, if it starts there
+* `r` is <0 or >4 (these bounds make sure that the `x` value will always stay bounded between 0 and 1, if it starts there)
 * `x0` is <0 or >1
 
 You can assume that `r` and `x0` are numeric and that `t_trans` and `t_save` are non-negative integers.
