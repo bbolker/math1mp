@@ -33,18 +33,15 @@ def find_factors(a):
 
 f1 = find_factors(36)
 f2 = find_factors(42)
+
 def common_factors(f1,f2):
+    '''find common factors'''
+    res = []
     for i in f1:
-        if not (i in f2):
-            f1.remove(i)
-    for i in f2:
-        if not (i in f1):
+        if i in f2:
             f2.remove(i)
-    if (len(f1)<len(f2)):
-        return(f1)
-    else:
-        return(f2)
-print(common_factors(f1,f2))
+            res += [i]
+    return(res)
 ```
 
 * if the gcd is 1, the numbers are **co-prime** (but not necessarily both prime!)
@@ -84,7 +81,7 @@ def euc_alg2(a,b):
     * $\{407,361\} \to \{361,46\} \to  \{46,39\} \to \{39,7\} \to \{7,4\} \to \{4,3\} \to \{3,1\}$ ... co-prime!
 * looping
 ```{r euc_div_while}
-def euc_alg3(a,b):
+def euc_alg_loop(a,b):
     '''modular Euclid algorithm by looping'''
     while b>0:
        r = a % b
@@ -95,9 +92,9 @@ def euc_alg3(a,b):
 ```
 * recursive
 ```{r euc_div_recurse}
-def euc_alg4(a,b):
+def euc_alg_rec(a,b):
     '''modular Euclid algorithm by recursion'''
-    if (b==a):
+    if (b==0):
         return(a)
     m = min(a,b)
     return(euc_alg2(m,max(a,b) % m))
@@ -105,6 +102,10 @@ def euc_alg4(a,b):
 
 ## Computational complexity and timing
 
+* `timeit` module
+    * setup 
+	* timing 
+	* default is one million (!!) iterations
 * count operations
 * want to know how complexity **scales** with problem size
 * e.g. $O(n)$, $O(\log n)$, $O(\exp(n))$ (uh-oh!)
@@ -123,4 +124,5 @@ def euc_alg4(a,b):
 * Python implementations: (watch out for Python 2 constructions!  need to replace `/` by `//` for integer division; replace `xrange()` with `range()` ...
     * http://www.atonalmicroshores.com/2014/03/bjorklund-py/
     
-    
+
+

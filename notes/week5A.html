@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">Factoring, Euclidean algorithm and rhythms</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>10:24 06 February 2015</em></h4>
+<h4 class="date"><em>20:19 10 February 2015</em></h4>
 </div>
 
 
@@ -92,19 +92,15 @@ img {
 
 f1 = find_factors(36)
 f2 = find_factors(42)
+
 def common_factors(f1,f2):
+    '''find common factors'''
+    res = []
     for i in f1:
-        if not (i in f2):
-            f1.remove(i)
-    for i in f2:
-        if not (i in f1):
+        if i in f2:
             f2.remove(i)
-    if (len(f1)&lt;len(f2)):
-        return(f1)
-    else:
-        return(f2)
-print(common_factors(f1,f2))</code></pre>
-<pre><code>## [2, 3]</code></pre>
+            res += [i]
+    return(res)</code></pre>
 <ul>
 <li>if the gcd is 1, the numbers are <strong>co-prime</strong> (but not necessarily both prime!)</li>
 </ul>
@@ -148,21 +144,20 @@ print(common_factors(f1,f2))</code></pre>
 </ul></li>
 <li>looping</li>
 </ul>
-<pre class="python"><code>def euc_alg3(a,b):
+<pre class="python"><code>def euc_alg_loop(a,b):
     '''modular Euclid algorithm by looping'''
     while b&gt;0:
-        lg = max(a,b)
-        small = min(a,b)
-        b = lg % small
-        a = small
-        print(a,b)
+       r = a % b
+       a = b
+       b = r
+       print(a,b)
     return(a)</code></pre>
 <ul>
 <li>recursive</li>
 </ul>
-<pre class="python"><code>def euc_alg4(a,b):
-    '''subtractive Euclid algorithm by recursion'''
-    if (b==a):
+<pre class="python"><code>def euc_alg_rec(a,b):
+    '''modular Euclid algorithm by recursion'''
+    if (b==0):
         return(a)
     m = min(a,b)
     return(euc_alg2(m,max(a,b) % m))</code></pre>
@@ -171,6 +166,12 @@ print(common_factors(f1,f2))</code></pre>
 <div id="computational-complexity-and-timing" class="section level2">
 <h2>Computational complexity and timing</h2>
 <ul>
+<li><code>timeit</code> module
+<ul>
+<li>setup</li>
+<li>timing</li>
+<li>default is one million (!!) iterations</li>
+</ul></li>
 <li>count operations</li>
 <li>want to know how complexity <strong>scales</strong> with problem size</li>
 <li>e.g. <span class="math">\(O(n)\)</span>, <span class="math">\(O(\log n)\)</span>, <span class="math">\(O(\exp(n))\)</span> (uh-oh!)</li>
