@@ -71,7 +71,7 @@ def track_add(track,pitch=midi.A_5,length=200):
     return(track)
 
 def sound_pattern(vals,pitches=[midi.A_4,midi.A_5],length=200,
-                  repeat=1,play=True,instrument=115):
+                  repeat=1,play=True,saveFile=None,instrument=115):
     pattern = midi.Pattern()
     track = track_start(pattern)
     for i in vals*repeat:
@@ -82,7 +82,8 @@ def sound_pattern(vals,pitches=[midi.A_4,midi.A_5],length=200,
     midi.write_midifile("example.mid", pattern)
     if play:
         os.system("timidity -A800 --default-program="+format(instrument)+" example.mid >/dev/null")
-        os.system("timidity -A800 --default-program="+format(instrument)+" example.mid -Ow bj.wav >/dev/null")
+    if saveFile!=None:
+        os.system("timidity -A800 --default-program="+format(instrument)+" example.mid -Ow -o"+saveFile+" >/dev/null")
     return(None)
 
 if __name__=='__main__':
@@ -98,5 +99,6 @@ if __name__=='__main__':
         print("args:",pulses,steps,rot,reps,length)
         music = bjorklund(pulses, steps, rot)*reps
         print("pattern:",music)
-        sound_pattern(music,length=length)
+        fn = "eucrhy"+"_".join(map(format,[pulses,steps,rot]))+".wav"
+        sound_pattern(music,length=length,saveFile=fn)
 
