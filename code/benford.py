@@ -1,3 +1,8 @@
+import urllib.request as ur
+import csv
+from io import TextIOWrapper
+import re  ## for first_num()
+
 def setup_dict():
     """set up dictionary"""
     dd = dict(zip(range(10),(0,)*10))
@@ -32,22 +37,24 @@ def first_num(cc):
 #     r = remove.all(w[n],"\"")
 #     return(r)
 
-import urllib.request as ur
-import csv
-from io import TextIOWrapper
-import re
-
 ## http://stackoverflow.com/questions/16243023/how-to-resolve-iterator-should-return-strings-not-bytes
 ## http://stackoverflow.com/questions/2647723/urllib2-to-string
 
-url = "http://www.census.gov/popest/data/cities/totals/2011/tables/SUB-EST2011-01.csv"
-f = ur.urlopen(url)
-cr = csv.reader(TextIOWrapper(f))
-dd = setup_dict()
-cc = cr.__next__()  ## initialize with first line
-while not first_num(cc):  ## skip header
-    cc = cr.__next__()
-while first_num(cc):      ## go until we don't see numbers any more
-    update_dict(dd,cc[3],digit=-2)
-    cc = cr.__next__()
-print(dd)
+def benford_dist(url="http://www.census.gov/popest/data/cities/totals/2011/tables/SUB-EST2011-01.csv",
+                 pos=3,
+                 digit=-2):
+    f = ur.urlopen(url)
+    cr = csv.reader(TextIOWrapper(f))
+    dd = setup_dict()
+    cc = next(cr)  ## initialize with first line; Python3-specific
+                   ## = cr.next() in Python2
+    while not first_num(cc):  ## skip header
+        cc = next(cr)
+    while first_num(cc):      ## go until we don't see numbers any more
+        update_dict(dd,cc[pos],digit=digit)
+        cc = next(cr)
+    return(dd)
+
+print(benford_dist())
+
+## Benford's law applies to data that are not dimensionless, so the numerical values of the data depend on the units.
