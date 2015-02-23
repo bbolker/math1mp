@@ -17,4 +17,4 @@ author: Ben Bolker
 * [sin series computation](sinseries.py)
 * [Euclidean algorithm](eucalg.py)
 * [Euclidean rhythms](eucrhythm.py)
-* [Benford's Law](benford.py)
+* Benford's Law [simple](benford2.py), [complex](benford.py)

@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">Dictionaries and tuples</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>20:01 10 February 2015</em></h4>
+<h4 class="date"><em>10:02 23 February 2015</em></h4>
 </div>
 
 
@@ -135,6 +135,33 @@ dict(x)</code></pre>
 d[&quot;D&quot;]=5
 del d[&quot;A&quot;]  ## or d.pop(&quot;A&quot;)</code></pre>
 <p>More Roman numerals!</p>
+</div>
+<div id="benfords-law" class="section level2">
+<h2>Benford’s law</h2>
+<p><em>Benford’s law</em> describes the (surprising) distribution of last digits of many different sets of numbers. Read it about it on <a href="http://en.wikipedia.org/wiki/Benford%27s_law">Wikipedia</a> or <a href="http://mathworld.wolfram.com/BenfordsLaw.html">MathWorld</a></p>
+<p>We’ll write a Python function <code>benford_count</code> that tabulates the occurrence of digits from a set of numbers</p>
+<ul>
+<li>Set up a dictionary
+<ul>
+<li>do this with a <code>for</code> loop</li>
+<li>or by passing it a list or tuple of lists/tuples</li>
+<li>using the <code>zip()</code> function</li>
+</ul></li>
+<li>Function for updating dictionary</li>
+<li><p>(Maybe) function for removing commas from a string (using <code>str.replace()</code>)</p></li>
+<li>Where do we get our numbers from?</li>
+<li>How do we iterate through a file?</li>
+<li>How do we open a file from the internet?</li>
+<li><p>How do we deal with a CSV file?</p></li>
+</ul>
+<p>For example, if the text file contained only three lines</p>
+<pre><code>1,234
+123
+12</code></pre>
+<p>then the correct result would be <code>[0,0,1,1,1,0,0,0,0,0]</code> (i.e. the last digits per line in this file comprise one 2, one 3, and one 4; there are zero of every other digit).</p>
+<ul>
+<li>working through a file: <code>.next()</code> method</li>
+</ul>
 </div>
 
 
