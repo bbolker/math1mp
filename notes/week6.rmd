@@ -82,8 +82,8 @@ We'll write a Python function `benford_count` that tabulates the occurrence of d
     * do this with a `for` loop
 	* or by passing it a list or tuple of lists/tuples
 	* using the `zip()` function
-* Function for removing commas from a string (using `str.replace()`)	
 * Function for updating dictionary
+* (Maybe) function for removing commas from a string (using `str.replace()`)	
 
 * Where do we get our numbers from?
 * How do we iterate through a file?
@@ -97,5 +97,7 @@ For example, if the text file contained only three lines
 12
 ```
 then the correct result would be `[0,0,1,1,1,0,0,0,0,0]` (i.e. the last digits per line in this file comprise one 2, one 3, and one 4; there are zero of every other digit).
+
+* working through a file: `.next()` method
 
 
