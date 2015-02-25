@@ -20,9 +20,10 @@ Otherwise:
 Don't forget to `import numpy as np` ...
 
 ### arrays
-arrays: `array()`: 
-    * homogeneous numeric (`float` or `int`)
-	* 1-D: vectors
+
+* `np.array()` 
+* homogeneous numeric (`float` or `int`)
+* 1-D: vectors
 	    * vectorized/elementwise arithmetic operators!
         * create from list or tuple (specify type explicitly; `np.array(x,dtype)` where `type` is `int`, `str`, `float`, `complex` ...)
 	    * slicing and indexing work the same way as lists/tuples/strings
