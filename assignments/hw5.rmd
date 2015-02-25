@@ -1,0 +1,89 @@
+---
+title: "math 1MP assignment 5"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+### Logistics
+
+Homework #5 is due at midnight (i.e. 11:59:59 PM) on Weds March 4.
+
+You **must** submit your homework to the Dropbox on Avenue to Learn as a **single** text (`.py`) file containing five function definitions [`setup_dict()`; `update_dict()`; `count_file()`; `odd_matrix()`; `flipadd_matrix()` as specified below]. Make sure your file also contains appropriate `import` specifications for the modules you use. The file must be named `[MacID]_hw5.py`, e.g. in my case it would be called `bolkerb_hw5.py`.  You will automatically lose at least one mark if you don't follow these instructions ...
+
+
+### Problem 1: Dictionary use
+
+Write functions to compute letter frequencies from a document.
+
+* Write a function `setup_dict()` that returns a dictionary whose keys are all of the lowercase letters, each with value zero
+    * you may use `import string; letters=list(string.ascii_lowercase)` to get a list of lowercase letters
+* Write a function `update_dict(d,line)` that takes a line, converts it to lowercase (using `str.lower()`) and, *ignoring values that are not in the dictionary*, modifies the dictionary to add the counts of the letters in the line 
+    * *hint*: you can use `in` to check whether a key is present in a dictionary
+	* your function should return the updated value of the dictionary.
+* Write a function called `count_file(fn)` that takes a file name (e.g., `"dat.txt"`) and returns a dictionary of letter counts from it.  
+    * It should work by calling `setup_dict()` and `update_dict()` appropriately.
+	* Use `f = open(fn)` to open the file; you can then run `for line in f:` to extract successive lines into the variable `line`.
+
+### `numpy` problems
+
+#### 2.
+
+* create a function `odd_matrix(n)` that returns an n-by-n array containing the squares of the first $n^2$ odd numbers *in column-major order*, i.e. `odd_matrix(2)` is
+```
+1  25
+9  49
+```
+while `odd_matrix(3)` is
+```
+1  49   169
+9  81   225
+25 121  289
+```
+* *hint*: `numpy.reshape(a,(r,c))` turns an array into an $r \times c$ matrix (i.e., a 2D array with `r` rows and `c` columns), but it does it in row-major order ...
+
+#### 3.
+* create a function `flipadd_matrix(m)` that, given a 2D array `m` with `c` columns and `2*c` rows:
+    * creates a new matrix by concatenating `m` with itself column-wise; 
+	* creates a new matrix by transposing `m` and concatenating the result with itself row-wise;
+    * adds the result to return an array with `2*c` rows and `2*c` columns.
+	* For example, if
+```{r a1,eval=FALSE}
+m = np.array([[0],
+              [1]])
+```
+We first concatenate it with itself column-wise to get:
+```{r a1b,eval=FALSE}
+array([[0, 0],
+       [1, 1]])
+```
+Starting with `m` again, we transpose (to get `array([[0,1]])`, i.e. a 1 $\times$ 2 array) and then concatenate row-wise to get:
+```{r a1c,eval=FALSE}
+array([[0, 1],
+       [0, 1]])
+```
+When we add the two arrays elementwise above, the resulting matrix
+(which your `flipadd_matrix(m)` should return) is:
+```{r a2,eval=FALSE}
+array([[0, 1],
+       [1, 2]])
+```
+Example #2: if
+```{r a3,eval=FALSE}
+m = np.array([[0, 1],
+              [2, 3],
+              [4, 5],
+              [6, 7]])
+```
+then the result would be
+```{r a4,eval=FALSE}
+array([[ 0,  3,  4,  7],
+       [ 3,  6,  7, 10],
+       [ 4,  7,  8, 11],
+       [ 7, 10, 11, 14]])
+```
+* *hint*: `numpy.concatenate()` takes a *tuple* of arrays as its first argument, and an optional `axis` argument to specify the direction of concatenation (0=row-wise, 1=column-wise).
