@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">Numpy</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>15:44 25 February 2015</em></h4>
+<h4 class="date"><em>16:11 25 February 2015</em></h4>
 </div>
 
 
@@ -84,7 +84,38 @@ img {
 </div>
 <div id="arrays" class="section level3">
 <h3>arrays</h3>
-<p>arrays: <code>array()</code>: * homogeneous numeric (<code>float</code> or <code>int</code>) * 1-D: vectors * vectorized/elementwise arithmetic operators! * create from list or tuple (specify type explicitly; <code>np.array(x,dtype)</code> where <code>type</code> is <code>int</code>, <code>str</code>, <code>float</code>, <code>complex</code> …) * slicing and indexing work the same way as lists/tuples/strings * can also create directly: * <code>np.arange()</code> * <code>np.zeros()</code> * <code>np.ones()</code> * <code>np.linspace(start, stop, num=50, dtype)</code> * <strong>mutable</strong>, but we can <code>.copy()</code> … * multi-dim * create * index via <code>a[i,j]</code> (hurrah) * arithmetic is still elementwise; in particular, multiplication is elementwise (<em>Hadamard product</em>) * multi-dimensional slicing: * e.g. <code>a[:,0:2]</code> takes the first two columns * how would you get odd rows? * flip the order of columns? * <code>a.shape</code> (<strong>note</strong> no parentheses!) * <code>a.fill()</code>: fill an array with a (scalar) value * <code>a.reshape()</code>: change dimensions; <strong>row-major order</strong> * <code>a.transpose()</code> * <code>a.flatten()</code> * <code>np.concatenate((a1,a2,a3),axis=0)</code> * arrays that do not match in the number of dimensions will be <strong>broadcasted</strong> by Python to perform mathematical operations. * matrices * 2-D arrays, but special: * <code>np.identity()</code></p>
+<ul>
+<li><code>np.array()</code></li>
+<li>homogeneous numeric (<code>float</code> or <code>int</code>)</li>
+<li>1-D: vectors * vectorized/elementwise arithmetic operators! * create from list or tuple (specify type explicitly; <code>np.array(x,dtype)</code> where <code>type</code> is <code>int</code>, <code>str</code>, <code>float</code>, <code>complex</code> …) * slicing and indexing work the same way as lists/tuples/strings * can also create directly: * <code>np.arange()</code> * <code>np.zeros()</code> * <code>np.ones()</code> * <code>np.linspace(start, stop, num=50, dtype)</code>
+<ul>
+<li><strong>mutable</strong>, but we can <code>.copy()</code> …</li>
+<li>multi-dim
+<ul>
+<li>create</li>
+<li>index via <code>a[i,j]</code> (hurrah)</li>
+<li>arithmetic is still elementwise; in particular, multiplication is elementwise (<em>Hadamard product</em>)</li>
+<li>multi-dimensional slicing:
+<ul>
+<li>e.g. <code>a[:,0:2]</code> takes the first two columns</li>
+<li>how would you get odd rows?</li>
+<li>flip the order of columns?</li>
+</ul></li>
+<li><code>a.shape</code> (<strong>note</strong> no parentheses!)</li>
+<li><code>a.fill()</code>: fill an array with a (scalar) value</li>
+<li><code>a.reshape()</code>: change dimensions; <strong>row-major order</strong></li>
+<li><code>a.transpose()</code></li>
+<li><code>a.flatten()</code></li>
+<li><code>np.concatenate((a1,a2,a3),axis=0)</code></li>
+</ul></li>
+<li>arrays that do not match in the number of dimensions will be <strong>broadcasted</strong> by Python to perform mathematical operations.</li>
+<li>matrices
+<ul>
+<li>2-D arrays, but special:</li>
+<li><code>np.identity()</code></li>
+</ul></li>
+</ul></li>
+</ul>
 <p>References:</p>
 <ul>
 <li><a href="http://docs.scipy.org/doc/">official docs</a></li>
