@@ -47,46 +47,46 @@ Notes ([HTML](http://htmlpreview.github.io/?https://github.com/bbolker/math1mp/b
 
 **midterm recess: Feb 16-21**
 
-### week 7: random numbers, numeric representations
+### week 7: dictionaries continued; numpy
 
-* M Feb 23 plotting (data visualization)
-* W Feb 25 pseudo-random numbers and applications
-* F Feb 27 numeric representations
+* M Feb 23 
+* W Feb 25 
+* F Feb 27 
 
 ### week 8: floating point and exception handling
 
-* M Mar 2 floating point algorithms (root-finding, optimization)
-* W Mar 4 floating point algorithms (differential equations)
-* F Mar 6 exception handling
+* M Mar 2 integration
+* W Mar 4 pseudo-random numbers and applications
+* F Mar 6 numeric representations
 
-### week 9: data management
+### week 9: numeric computation cont.
 
-* M Mar 9  data management; pandas
-* W Mar 11 web scraping
-* F Mar 13 databases
+* M Mar 9   floating point algorithms (root-finding, optimization) 
+* W Mar 11  floating point algorithms (differential equations) 
+* F Mar 13 
 
 ### week 10: symbolic computation
 
-* M Mar 16 symbolic computation; SymPy and Sage
-* W Mar 18 ... continued
-* F Mar 20 ... continued
+* M Mar 16 plotting (data visualization)
+* W Mar 18 
+* F Mar 20 
 
-### week 11 ... projects ...
+### week 11 misc sci comp
 
-* M Mar 23  start projects  ...
-* W Mar 25
-* F Mar 27
+* M Mar 23 data management; pandas
+* W Mar 25 web scraping
+* F Mar 27 databases
 
-### week 12 ... projects ...
+### week 12 symbolic computation
 
-* M Mar 30
-* W Apr 1
+* M Mar 30 symbolic computation; SymPy and Sage
+* W Apr 1 ... continued
 
 **3 April: Good Friday**
 
-### week 13 ... projects ...
+### week 13 last week
 * M Apr 6
-* W Apr 8
+* W Apr 8 wrap-up
 
 **8 April: classes end**
 
