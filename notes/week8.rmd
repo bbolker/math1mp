@@ -16,7 +16,8 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 * one correct way to check whether an index fits into a list/tuple/string etc. is 
 ```{r}
 def index_ok(i,x):
-    return(i <= len(x) < i)
+    n = len(x)
+    return(-n <= i < n)
 ```
 * `numpy` arrays have an `order` option: the default `C` gives row-major, `F` (for `FORTRAN`) gives column-major arrays
 ```{r}

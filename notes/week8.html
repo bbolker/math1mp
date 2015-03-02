@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">Week 8: misc. numeric computation</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>23:51 01 March 2015</em></h4>
+<h4 class="date"><em>13:39 02 March 2015</em></h4>
 </div>
 
 
@@ -74,7 +74,8 @@ img {
 <li>one correct way to check whether an index fits into a list/tuple/string etc. is</li>
 </ul>
 <pre class="python"><code>def index_ok(i,x):
-    return(i &lt;= len(x) &lt; i)</code></pre>
+    n = len(x)
+    return(-n &lt;= i &lt; n)</code></pre>
 <ul>
 <li><code>numpy</code> arrays have an <code>order</code> option: the default <code>C</code> gives row-major, <code>F</code> (for <code>FORTRAN</code>) gives column-major arrays</li>
 </ul>
