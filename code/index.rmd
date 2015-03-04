@@ -18,3 +18,4 @@ author: Ben Bolker
 * [Euclidean algorithm](eucalg.py)
 * [Euclidean rhythms](eucrhythm.py)
 * Benford's Law [simple](benford2.py), [complex](benford.py)
+* [numerical integration](integrate.py)
