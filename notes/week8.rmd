@@ -54,7 +54,7 @@ plt.savefig("pix/qtrcirc.png")
 
 ## (Pseudo)random numbers
 
-* von Neumann quotation
+* From [Wikipedia](http://en.wikipedia.org/wiki/Pseudorandom_number_generator): "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin" (von Neumann) ([original paper](https://dornsifecms.usc.edu/assets/sites/520/docs/VonNeumann-ams12p36-38.pdf)) ... "We are here dealing with mere 'cooking recipes' for making digits; probably they can not be justified, but should merely be judged by their results ..."
 * *linear congruential generators*:
     * $x_n = (a x_{n-1} + c) \textrm{mod} m$
 	* or `x = (a*x +c ) % m`
@@ -106,7 +106,8 @@ a = rand.rand(1000)
 * using random number generators for serious work:
    * know what generator is used (Mersenne twister is OK)
    * set the seed: `seed()`
-   
+* using random numbers for cryptography: be super-paranoid: see e.g. [this](http://stackoverflow.com/questions/20936993/how-can-i-create-a-random-number-that-is-cryptographically-secure-in-python)
+
 ## Monte Carlo integration
 
 * *Monte Carlo* techniques (Ulam)
@@ -118,7 +119,30 @@ a = rand.rand(1000)
 
 ## Convolutions (sums of random variables)
 
-* to be continued ...
+* What is the distribution of the *sum* of two (independent) random variables?
+* e.g. what is the distribution of the sum of two uniform variables?
+* we can do this by integration: the probability (density) that $X+Y=Z$?  It's
+$$
+\int p(Y=r) \cdot p(X=Z-r) \, dr
+$$
+This is called a *convolution*, sometimes notated as $p_Z = (p_X * p_Y)$.
+* Can sometimes do this analytically.
+* Or can do it numerically. What should the limits be?
+* Write a function to do this integral (`def convolve(px,py,a,b,n)`)?
+* Or we can get the distribution by random sampling:
+```{r convolve}
+import matplotlib.pyplot as plt
+import numpy as np
+import numpy.random as rand
+rand.seed(101)
+x = rand.rand(100000)
+y = rand.rand(100000)
+z = x+y
+plt.figure(figsize=(4,4))
+plt.hist(z,bins=30)
+plt.savefig("pix/hist.png")
+```
+![sum of uniforms](pix/hist.png)
 
 ## The delta method
 
