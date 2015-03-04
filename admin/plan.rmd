@@ -53,7 +53,7 @@ Notes ([HTML](http://htmlpreview.github.io/?https://github.com/bbolker/math1mp/b
 * W Feb 25 
 * F Feb 27 
 
-### week 8: floating point and exception handling
+### week 8: floating point
 
 * M Mar 2 integration
 * W Mar 4 pseudo-random numbers and applications
