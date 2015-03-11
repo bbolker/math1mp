@@ -126,39 +126,14 @@ y = rand.rand(100)
 plt.figure(figsize=(4,4))
 xvec = np.linspace(0,np.pi,101)
 yvec = np.sin(xvec)
-plt.plot(x,y,linestyle="None",marker="o")
-plt.plot(xvec,yvec,linestyle="-",marker="None")
+plt.scatter(x,y)
+plt.plot(xvec,yvec)
+plt.ylim(0,1)
+plt.xlim(0,np.pi)
 plt.savefig("pix/mcint.png")
 ```
 
 ![mcint](pix/mcint.png)
-## Convolutions (sums of random variables)
-
-* What is the distribution of the *sum* of two (independent) random variables?
-* e.g. what is the distribution of the sum of two uniform variables?
-* we can do this by integration: the probability (density) that $X+Y=Z$?  It's
-$$
-\int p(Y=r) \cdot p(X=Z-r) \, dr
-$$
-This is called a *convolution*, sometimes notated as $p_Z = (p_X * p_Y)$.
-* Can sometimes do this analytically.
-* Or can do it numerically. What should the limits be?
-* Write a function to do this integral (`def convolve(px,py,a,b,n)`)?
-* Or we can get the distribution by random sampling:
-```{r convolve}
-import matplotlib.pyplot as plt
-import numpy as np
-import numpy.random as rand
-rand.seed(101)
-x = rand.rand(100000)
-y = rand.rand(100000)
-z = x+y
-plt.figure(figsize=(4,4))
-plt.hist(z,bins=30)
-plt.savefig("pix/hist.png")
-```
-![sum of uniforms](pix/hist.png)
-
 ## Numeric representations
 
 * Representations of numbers on computers are often inexact
@@ -202,12 +177,77 @@ np.isclose(0.3,0.1+0.2)
 
 * 
 * `mpmath`, `gmpy2` modules for arbitrary precision; `decimal` module
-	
-## The delta method
 
-* to be continued ...
+## Convolutions (sums of random variables)
+
+* What is the distribution of the *sum* of two (independent) random variables?
+* e.g. what is the distribution of the sum of two uniform variables?
+* we can do this by integration: the probability (density) that $X+Y=Z$?  It's
+$$
+\int p(Y=r) \cdot p(X=Z-r) \, dr
+$$
+This is called a *convolution*, sometimes notated as $p_Z = (p_X * p_Y)$.
+* Can sometimes do this analytically.
+* Convolve two uniforms:
+$$
+\int_{\min(r,Z-r)=0}^{\max{r,Z-r}=1} 1 \, dr
+$$
+or
+$$
+\left. x \right|_{\min(r,Z-r)=0}^{\max{r,Z-r}=1}
+$$
+or
+$$
+\left(r|\max{r,Z-r}=1\right) - \left(r|\min(r,Z-r)=0\right)
+$$
+* Graphically: area of overlap of two (shifted) curves
+```{r engine.path="python",echo=FALSE}
+import numpy as np
+from matplotlib import pyplot as plt
+def f(t):
+    return t * t
+
+def u(t,shift=0):
+    b = np.logical_and(shift<t,t<(1+shift))
+    return(b.astype(float))
+    
+t = np.arange(0,2,1/40.)
+plt.figure(figsize=(4,4))
+plt.plot(t,u(t),color="red")
+plt.ylim(0,1.25)
+plt.xlim(-1,3)
+plt.fill_between(t,u(t),facecolor="red",alpha=0.5)
+plt.plot(t,u(t,0.75),color="blue")
+plt.fill_between(t,u(t,0.75),facecolor="blue",alpha=0.5)
+plt.savefig("pix/fill_between.png")
+```
+![fill](pix/fill_between.png)
+* Or we can do it numerically. What should the limits be?
+* Write a function to do this integral (`def convolve(px,py,a,b,n)`)?
+* Or we can get the distribution by random sampling:
+```{r convolve}
+import matplotlib.pyplot as plt
+import numpy as np
+import numpy.random as rand
+rand.seed(101)
+x = rand.rand(100000)
+y = rand.rand(100000)
+z = x+y
+plt.figure(figsize=(4,4))
+plt.hist(z,bins=30)
+plt.savefig("pix/hist.png")
+```
+![sum of uniforms](pix/hist.png)
+* multiple convolution??
 
 ## Integrating ODEs
 
 * Euler's method
+* [midpoint method](http://en.wikipedia.org/wiki/Midpoint_method): 
+$$
+y_{n+1} = y_n + hf \left(t_n+h/2,y_n+(h/2) f(t_n,y_n) \right)
+$$
+
+## The delta method
+
 * to be continued ...
