@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>17:54 15 March 2015</em></h4>
+<h4 class="date"><em>09:42 18 March 2015</em></h4>
 </div>
 
 
@@ -91,13 +91,20 @@ def sim_yahtzee(nrolls,sides=6):
 def est_yahtzee_prob(nsims,nrolls=3,dice=5,sides=6):
     &quot;&quot;&quot;estimate the probabilities of Yahtzee for a specified number
        of rolls, dice, and sides&quot;&quot;&quot;</code></pre>
-<p>Put these functions together to compute the probability of Yahtzee (use 100,000 simulations each) for * the standard case (3 rolls of 5 6-sided dice) * 2 to 6 rolls (with the standard 5 6-sided dice) * 5, 6, or 7-sided dice (in 3 rolls of 5 dice).<br />* Approximately how many rolls do you need with 5 7-sided dice to get close to the probability in the base case?</p>
+<p>Put these functions together to compute the probability of Yahtzee (use 100,000 simulations each) for</p>
+<ul>
+<li>the standard case (3 rolls of 5 6-sided dice)</li>
+<li>2 to 6 rolls (with the standard 5 6-sided dice)</li>
+<li>5, 6, or 7-sided dice (in 3 rolls of 5 dice).<br /></li>
+<li>Approximately how many rolls do you need with 5 7-sided dice to get close to the probability in the base case?</li>
+</ul>
 </div>
 <div id="n-grams" class="section level3">
 <h3>n-grams</h3>
 <p>This is a variant of <a href="http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/06_Dictionaries/MarkovTextBuilder/proj07.pdf">this project</a>.</p>
-<p>An “n-gram” is a set of <code>n</code> consecutive words from a document or string; for example, the phrase “now is the time for all good people” six 3-grams:</p>
-<pre><code>## [('now', 'is', 'the'), ('the', 'time', 'for'), ('time', 'for', 'all'), ('is', 'the', 'time'), ('for', 'all', 'good')]</code></pre>
+<p>An “n-gram” is a set of <code>n</code> consecutive words from a document or string; for example, the phrase “now is the time for all good people” contains six 3-grams:</p>
+<pre><code>## [('the', 'time', 'for'), ('now', 'is', 'the'), ('for', 'all', 'good'), ('all', 'good', 'people'), ('is', 'the', 'time'), ('time', 'for', 'all')]</code></pre>
+<p>(note that these are not in order; I stored them in a dictionary …)</p>
 <p>The first part of this project is to tabulate the n-grams in a document.</p>
 <p>The structure of the set of n-grams should be a <em>dictionary</em> whose keys are tuples of <code>n-1</code> words, and whose contents are lists of the next strings found in the document. For example, if we have the string “today is my birthday today is also his birthday” and we want to tabulate the 2-grams, we would get this:</p>
 <pre><code>## {('my',): ['birthday'], ('his',): ['birthday'], ('today',): ['is', 'is'], ('is',): ['my', 'also'], ('also',): ['his'], ('birthday',): ['today']}</code></pre>
@@ -119,10 +126,15 @@ def make_ngram_dict(strList,n=2):
     ### check whether tuples of (n-1) words are present in the dictionary
     ###    if not, add an entry with the next word
     ###    if so, add the word to the list of words following that tuple</code></pre>
-<p>The second part of the project is to make a <em>Markov generator</em>. Given a starting set of <code>n-1</code> words, pick the next word at random from the appropriate dictionary entry (<code>numpy.random.choice(x)</code> will pick a random element from the list <code>x</code>) and add it to the list of words. Continue …</p>
-<pre class="python"><code>def markov_generator(cur_list,n=2,ngram_dict):
-    &quot;&quot;&quot;use an ngram dictionary to generate a list of words&quot;&quot;&quot;
-    ##</code></pre>
+<p>The second part of the project is to make a <em>Markov generator</em>. Given a starting set of <code>n-1</code> words, pick the next word at random from the appropriate dictionary entry (<code>numpy.random.choice(x)</code> will pick a random element from the list <code>x</code>) and add it to the list of words. If the last word in the text you used to set up the dictionary is unique, then the chain will stop at that point: return <code>None</code>.</p>
+<pre class="python"><code>def next_word(cur_list,n=2,ngram_dict):
+    &quot;&quot;&quot;use an ngram dictionary to generate the next word in a list&quot;&quot;&quot;
+    ##
+
+def create_list(nwords,start_list,n=2,ngram_dict):
+    &quot;&quot;&quot;use an ngram dictionary a list of words&quot;&quot;&quot;
+    ##
+</code></pre>
 </div>
 
 

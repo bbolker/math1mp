@@ -40,6 +40,7 @@ def est_yahtzee_prob(nsims,nrolls=3,dice=5,sides=6):
 
 Put these functions together to compute the probability of Yahtzee
 (use 100,000 simulations each) for 
+
 * the standard case (3 rolls of 5 6-sided dice)
 * 2 to 6 rolls (with the standard 5 6-sided dice)
 * 5, 6, or 7-sided dice (in 3 rolls of 5 dice).  
@@ -49,12 +50,14 @@ Put these functions together to compute the probability of Yahtzee
 
 This is a variant of [this project](http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/06_Dictionaries/MarkovTextBuilder/proj07.pdf).
 
-An "n-gram" is a set of `n` consecutive words from a document or string; for example, the phrase "now is the time for all good people" six 3-grams: 
+An "n-gram" is a set of `n` consecutive words from a document or string; for example, the phrase "now is the time for all good people" contains six 3-grams: 
 ```{r echo=FALSE}
 test = "now is the time for all good people"
 from markov import *
-print(list(add_ngrams(test.split(),n=4).keys()))
+a = add_ngrams(test.split(),n=3)
+print([i + tuple(a[i]) for i in a])
 ```
+(note that these are not in order; I stored them in a dictionary ...)
 
 The first part of this project is to tabulate the n-grams in a document.
 
@@ -90,10 +93,17 @@ The second part of the project is to make a *Markov generator*. Given
 a starting set of `n-1` words, pick the next word at random from the
 appropriate dictionary entry (`numpy.random.choice(x)` will pick a
 random element from the list `x`) and add it to the list of words.
-Continue ...
+If the last word in the text you used to set up the dictionary is unique,
+then the chain will stop at that point: return `None`.
 
 ```{r eval=FALSE}
-def markov_generator(cur_list,n=2,ngram_dict):
-    """use an ngram dictionary to generate a list of words"""
+def next_word(cur_list,n=2,ngram_dict):
+    """use an ngram dictionary to generate the next word in a list"""
     ##
+
+def create_list(nwords,start_list,n=2,ngram_dict):
+    """use an ngram dictionary a list of words"""
+    ##
+
+
 ```
