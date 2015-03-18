@@ -31,7 +31,7 @@ def intmc(f,a,b,n,maxval=1):
 def f1(a):
     return(np.sin(a))
 
-print(int1(f1,0,np.pi,1001))
-print(int2(f1,0,np.pi,1001))
-print(intmc(f1,0,np.pi,1e6))
+## print(int1(f1,0,np.pi,1001))
+## print(int2(f1,0,np.pi,1001))
+## print(intmc(f1,0,np.pi,1e6))
     
