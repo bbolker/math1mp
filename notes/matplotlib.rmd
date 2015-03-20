@@ -35,15 +35,15 @@ Basic things we can put on the plot: lines, scatter plots
 ```{r echo=FALSE}
 import numpy as np
 import matplotlib.pyplot as plt
-fig = plt.figure(figsize=(7,4))
+fig = plt.figure(figsize=(8,4))
 ax1 = fig.add_subplot(1,2,1)
 ax2 = fig.add_subplot(1,2,2)
 x = np.array([1,2,3])
 y = np.array([1,3,2])
 ax1.plot(x,y)
-ax1.text(2,1.1,"fig.plot()")
+ax1.text(2,1.1,"ax.plot()")
 ax2.scatter(x,y)
-ax2.text(2,0.6,"fig.scatter()")
+ax2.text(2,0.6,"ax.scatter()")
 fig.savefig("pix/basic.png")
 ```
 ![](pix/basic.png)
@@ -122,13 +122,100 @@ tvec = np.arange(0,200,0.01)
 lfit = odesolve.solveODE3(lorenz,(0.,1.,1.05),tvec,(10,28,2.667))
 fig = plt.figure()
 ax = fig.gca(projection='3d')
-
 ax.plot(lfit[:,0], lfit[:,1], lfit[:,2])
 ax.set_xlabel("X Axis")
 ax.set_ylabel("Y Axis")
 ax.set_zlabel("Z Axis")
 ax.set_title("Lorenz Attractor")
-
 fig.savefig("pix/lorenz.png")
 ```
 ![](pix/lorenz.png)
+
+[color maps reference](http://matplotlib.org/examples/color/colormaps_reference.html)
+
+## Logistic map
+
+This was homework a while ago.  Let's write it again now:
+
+```{r lm}
+import numpy as np
+import matplotlib.pyplot as plt
+def logist_map(x0,r,t_trans,t_save):
+    res = np.zeros(t_save)
+    x = x0
+    for i in range(t_trans):
+        x = r*x*(1-x)
+    for i in range(t_save):
+        res[i] = x
+        x = r*x*(1-x)
+    return(res)
+fig = plt.figure(figsize=(12,6))
+ax1 = fig.add_subplot(1,3,1)
+ax2 = fig.add_subplot(1,3,2)
+ax3 = fig.add_subplot(1,3,3)
+y1 = logist_map(0.5,2,100,50)
+y2 = logist_map(0.5,3,100,50)
+y3 = logist_map(0.5,3.9,100,50)
+ax1.set_ylim(0,1)
+ax2.set_ylim(0,1)
+ax3.set_ylim(0,1)
+ax1.plot(y1)
+ax2.plot(y2)
+ax3.plot(y3)
+fig.savefig("pix/lm1.png")
+```
+
+![](pix/lm1.png)
+
+## Bifurcation diagram
+
+```{r }
+import numpy as np
+import matplotlib.pyplot as plt
+import logist
+rvec = np.arange(1.1,4,0.02)
+nr = len(rvec)
+nt=600
+res = np.zeros((nr,nt))
+rvals = np.zeros((nr,nt))
+for i in range(nr):
+    rvals[i,:] = rvec[i]
+    res[i,:] = logist.logist_map(0.5,rvec[i],100,nt)
+
+fig = plt.figure(figsize=(12,6))
+ax = fig.add_subplot(1,1,1)
+ax.plot(rvals,res,alpha=0.4,color="black",linestyle="None",marker=".")
+fig.savefig("pix/lmbif.png")
+```
+
+![](pix/lmbif.png)
+
+## Cobweb diagram
+
+```{r}
+import numpy as np
+import matplotlib.pyplot as plt
+import logist
+def cobweb(r,ax,x0=0.7,t_save=20):
+    cvec = np.arange(0,1,0.01)
+    ax.plot(cvec,r*cvec*(1-cvec))
+    ax.plot(cvec,cvec,linestyle="--")
+    x = logist.logist_map(x0,r,0,t_save)
+    for i in range(1,t_save):
+        ax.plot([x[i-1],x[i-1]],[x[i-1],x[i]],color="gray")
+        ax.plot([x[i-1],x[i]],[x[i],x[i]],color="gray")
+    return(None)
+fig = plt.figure(figsize=(12,6))
+ax1 = fig.add_subplot(1,3,1)
+ax2 = fig.add_subplot(1,3,2)
+ax3 = fig.add_subplot(1,3,3)
+cobweb(2.0,ax1)
+cobweb(3.0,ax2)
+cobweb(3.9,ax3)
+fig.savefig("pix/cobweb.png")
+```
+![](pix/cobweb.png)
+
+## to do
+
+rearrange default/parameter order for convenience
