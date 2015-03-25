@@ -15,29 +15,7 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 Download US measles data from [Project Tycho](https://www.tycho.pitt.edu/index.php).
 
-```{r do_stuff,echo=FALSE}
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-v = "MEASLES_Cases_1909-2001_20150322001618.csv"
-p  = pd.read_csv(v,skiprows=2,na_values=["-"])  ## read in data
-p.index = p["YEAR"]+(p["WEEK"]-1)/52
-pp = p.drop(["YEAR","WEEK"],axis=1)             ## drop year/week columns
-plt.figure(figsize=(5,5))
-pp.plot(legend=False,logy=True)                 ## plot (on log scale)
-plt.savefig("pix/measles1.png")
-plt.close()
-ptot = pp.sum(axis=1)
-plt.figure(figsize=(5,5))
-ptot.plot(logy=True)
-plt.savefig("pix/meastot.png")
-plt.close()
-plt.figure(figsize=(5,5))
-ptotweek = ptot.groupby(p.WEEK)
-ptotweekmean = ptotweek.aggregate(np.mean)
-ptotweekmean.plot()
-plt.savefig("pix/measwk.png")
-```
+<!-- should use a makefile with pandas_weather.py and pandas_measles.py -->
 
 * `read_csv` reads a CSV file as a **data frame**; it automatically interprets the first row as headings
 * `df.iloc[]` indexes the result as though it were an array
@@ -113,4 +91,74 @@ ptotweekmean.plot()
 
 ![](pix/measwk.png)
 
-* early, mid, late periods?
+## Dates and times
+
+[reference](https://docs.python.org/3.0/library/datetime.html)
+
+* (Another) complex subject. 
+* Lots of [possible date formats](https://xkcd.com/1179/)
+* Basic idea: something like `%Y-%m-%d`; separators just match whatever's in your data
+(usually "/" or "-"). Results need to be unambiguous, and ambiguity is dangerous
+(how is day of month specified?  lower case, capital? etc.)
+* `pandas` tries to guess, but you shouldn't let it.
+```{r}
+import pandas as pd
+print(pd.to_datetime("05-01-2004"))
+print(pd.to_datetime("05-01-2004",format="%m-%d-%Y"))
+```
+* Time zones and daylight savings time can be a nightmare
+* May need to have the right number of digits, especially in the absence of separators:
+```{r}
+import pandas as pd
+print(pd.to_datetime("1212004",format="%m%d%Y"))
+print(pd.to_datetime("12012004",format="%m%d%Y"))
+```
+
+For our measles data we have week of year, so things get a little complicated
+```{r eval=FALSE}
+yearstr = p.YEAR.apply(format)
+weekstr = p.WEEK.apply(format,args=["02"])
+datestr = p.YEAR+"-"+weekstr+"-0"
+dateindex = pd.to_datetime(datestr,format="%Y-%U-%w")
+```
+
+## Binning results
+
+* turn a quantitative variable into categories
+* `pd.cut(x,bins=...)`; decide on bins
+* `pd.qcut(x,n)`; decide on number of bins (equal occupancy)
+
+## Weather data
+
+```{r weather1,eval=FALSE}
+## fancy stuff: automatically look for index and convert it to a date/time
+p = pd.read_csv("eng2.csv",skiprows=14,encoding="latin1",index_col="Date/Time",parse_dates=True)
+## rename columns
+p.columns = [
+    'Year', 'Month', 'Day', 'Time', 'Data Quality', 'Temp (C)', 
+    'Temp Flag', 'Dew Point Temp (C)', 'Dew Point Temp Flag', 
+    'Rel Hum (%)', 'Rel Hum Flag', 'Wind Dir (10s deg)', 'Wind Dir Flag', 
+    'Wind Spd (km/h)', 'Wind Spd Flag', 'Visibility (km)', 'Visibility Flag',
+    'Stn Press (kPa)', 'Stn Press Flag', 'Hmdx', 'Hmdx Flag', 'Wind Chill', 
+    'Wind Chill Flag', 'Weather']
+## drop columns that are *all* NA
+p = p.dropna(axis=1,how='all')
+p["Temp (C)"].plot()
+## get rid of columns (axis=1) we don't want
+p = p.drop(['Year', 'Month', 'Day', 'Time', 'Data Quality'], axis=1)
+```
+![](pix/weather1.png)
+
+Now pull out the temperature and take the median by hour:
+```{r eval=FALSE}
+temp = p[['Temp (C)']]
+temp["Hour"] = temp.index.hour
+temphr = temp.groupby('Hour')
+medtmp = temphr.aggregate(np.median)
+maxtmp = temphr.aggregate(np.max)
+mintmp = temphr.aggregate(np.min)
+```
+Now plot these ...
+
+![](pix/medtmp.png)
+
