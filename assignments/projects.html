@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>09:42 18 March 2015</em></h4>
+<h4 class="date"><em>14:03 28 March 2015</em></h4>
 </div>
 
 
@@ -71,19 +71,23 @@ img {
 <div id="yahtzee" class="section level3">
 <h3>Yahtzee</h3>
 <p>Yahtzee is a dice game. One small subset of the rules specifies that you have three rolls of five (six-sided) dice in which to try to get as many of a kind as possible. You only have to re-roll as many dice as you want, which means that if you have at least two of a kind you can maximize your chances of getting “Yahtzee” (five of a kind) by not re-rolling those dice. Write the following simulation functions:</p>
-<pre class="{r"><code>def single_roll(n,fixed=[],sides=6):
-    &quot;&quot;&quot;perform a single roll of n dice (default 6-sided)
-       combine the results with the fixed values
+<pre class="python"><code>def single_roll(n,fixed=(),sides=6):
+    &quot;&quot;&quot;perform a single roll of a total of n dice (default 6-sided)
+       combine the results for the n-len(fixed) rolled dice
+       with the fixed values
        return a list containing the result
     &quot;&quot;&quot;
 
 def new_roll(vals,sides=6):
     &quot;&quot;&quot;given a list of die values, pick which to keep
-       fixed and which to re-roll
-       and re-roll them&quot;&quot;&quot;
+       fixed and which to re-roll (in case of a tie,
+       keep the larger values)
+       and re-roll them.  For example, if the
+       vals is (1,1,2,6,6), you should re-roll (1,1,2)
+       &quot;&quot;&quot;
 
-def sim_yahtzee(nrolls,sides=6):
-    &quot;&quot;&quot;simulate a specified number of dice rolls.
+def sim_yahtzee(nrolls,n,sides=6):
+    &quot;&quot;&quot;simulate a specified number of dice rolls of n dice
        Return a boolean True/False value depending on whether
        you achieve all dice the same
     &quot;&quot;&quot;
@@ -126,15 +130,23 @@ def make_ngram_dict(strList,n=2):
     ### check whether tuples of (n-1) words are present in the dictionary
     ###    if not, add an entry with the next word
     ###    if so, add the word to the list of words following that tuple</code></pre>
-<p>The second part of the project is to make a <em>Markov generator</em>. Given a starting set of <code>n-1</code> words, pick the next word at random from the appropriate dictionary entry (<code>numpy.random.choice(x)</code> will pick a random element from the list <code>x</code>) and add it to the list of words. If the last word in the text you used to set up the dictionary is unique, then the chain will stop at that point: return <code>None</code>.</p>
-<pre class="python"><code>def next_word(cur_list,n=2,ngram_dict):
-    &quot;&quot;&quot;use an ngram dictionary to generate the next word in a list&quot;&quot;&quot;
-    ##
+<p>Once you’ve done this, you can use a <em>Markov generator</em>; <strong>this is no longer part of the assignment</strong>. Given a starting set of <code>n-1</code> words, this will pick the next word at random from the appropriate dictionary entry (<code>numpy.random.choice(x)</code> will pick a random element from the list <code>x</code>) and add it to the list of words. If the last word in the text you used to set up the dictionary is unique, this generator will pick a random value from the dictionary.</p>
+<pre class="python"><code>import numpy.random as npr
 
-def create_list(nwords,start_list,n=2,ngram_dict):
-    &quot;&quot;&quot;use an ngram dictionary a list of words&quot;&quot;&quot;
-    ##
-</code></pre>
+def generate_markov_step(cur_list,ngram_dict,n=2):
+    &quot;&quot;&quot;pick a markov step from a dictionary of n-grams&quot;&quot;&quot;
+    last_words =  tuple(cur_list[-(n-1):])
+    if last_words in ngram_dict:
+        new_word = npr.choice(ngram_dict[last_words])
+    else:
+        ngram_list = list(ngram_dict.keys())
+        new_word = ngram_list[npr.randint(len(ngram_list))][0]
+    cur_list.append(new_word)
+    return(new_word)
+
+cur_list = [&quot;which&quot;]  ## set starting (n-1) words for the phrase
+for i in range(50):
+    generate_markov_step(cur_list,dd)</code></pre>
 </div>
 
 
