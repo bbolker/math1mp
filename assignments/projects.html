@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>14:32 28 March 2015</em></h4>
+<h4 class="date"><em>19:00 28 March 2015</em></h4>
 </div>
 
 
@@ -88,12 +88,12 @@ def new_roll(vals,sides=6):
 
 def sim_yahtzee(nrolls,n,sides=6):
     &quot;&quot;&quot;simulate a specified number of dice rolls of n dice
-       Return a boolean True/False value depending on whether
-       you achieve all dice the same
+       Return a list of die values
     &quot;&quot;&quot;
 
 def est_yahtzee_prob(nsims,nrolls=3,dice=5,sides=6):
-    &quot;&quot;&quot;estimate the probabilities of Yahtzee for a specified number
+    &quot;&quot;&quot;estimate the probabilities of Yahtzee (rolling all dice with
+       the same probabilities) for a specified number
        of rolls, dice, and sides.  Should return a *single number*
        between 0 and 1 (inclusive) giving the fraction of simulations
        that resulted in 'yahtzee'

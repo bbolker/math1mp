@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
 ## border info at
 ## http://www.math.mcmaster.ca/bolker/misc/borderinfo.dat
 p = pd.read_csv("borderinfo.dat",sep=" ",skiprows=1,header=None)
