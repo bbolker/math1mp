@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>14:03 28 March 2015</em></h4>
+<h4 class="date"><em>14:32 28 March 2015</em></h4>
 </div>
 
 
@@ -94,7 +94,10 @@ def sim_yahtzee(nrolls,n,sides=6):
 
 def est_yahtzee_prob(nsims,nrolls=3,dice=5,sides=6):
     &quot;&quot;&quot;estimate the probabilities of Yahtzee for a specified number
-       of rolls, dice, and sides&quot;&quot;&quot;</code></pre>
+       of rolls, dice, and sides.  Should return a *single number*
+       between 0 and 1 (inclusive) giving the fraction of simulations
+       that resulted in 'yahtzee'
+    &quot;&quot;&quot;</code></pre>
 <p>Put these functions together to compute the probability of Yahtzee (use 100,000 simulations each) for</p>
 <ul>
 <li>the standard case (3 rolls of 5 6-sided dice)</li>
