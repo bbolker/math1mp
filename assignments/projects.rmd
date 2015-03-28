@@ -15,20 +15,24 @@ These projects are **individual** projects; if you discuss anything about them w
 
 Yahtzee is a dice game.  One small subset of the rules specifies that you have three rolls of five (six-sided) dice in which to try to get as many of a kind as possible.  You only have to re-roll as many dice as you want, which means that if you have at least two of a kind you can maximize your chances of getting "Yahtzee" (five of a kind) by not re-rolling those dice.  Write the following simulation functions:
 
-```{r
-def single_roll(n,fixed=[],sides=6):
-    """perform a single roll of n dice (default 6-sided)
-       combine the results with the fixed values
+```{r yahtzee}
+def single_roll(n,fixed=(),sides=6):
+    """perform a single roll of a total of n dice (default 6-sided)
+       combine the results for the n-len(fixed) rolled dice
+       with the fixed values
        return a list containing the result
     """
 
 def new_roll(vals,sides=6):
     """given a list of die values, pick which to keep
-       fixed and which to re-roll
-       and re-roll them"""
+       fixed and which to re-roll (in case of a tie,
+       keep the larger values)
+       and re-roll them.  For example, if the
+       vals is (1,1,2,6,6), you should re-roll (1,1,2)
+       """
 
-def sim_yahtzee(nrolls,sides=6):
-    """simulate a specified number of dice rolls.
+def sim_yahtzee(nrolls,n,sides=6):
+    """simulate a specified number of dice rolls of n dice
        Return a boolean True/False value depending on whether
        you achieve all dice the same
     """
@@ -51,7 +55,7 @@ Put these functions together to compute the probability of Yahtzee
 This is a variant of [this project](http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/06_Dictionaries/MarkovTextBuilder/proj07.pdf).
 
 An "n-gram" is a set of `n` consecutive words from a document or string; for example, the phrase "now is the time for all good people" contains six 3-grams: 
-```{r echo=FALSE}
+```{r ngram1,echo=FALSE}
 test = "now is the time for all good people"
 from markov import *
 a = add_ngrams(test.split(),n=3)
@@ -62,13 +66,13 @@ print([i + tuple(a[i]) for i in a])
 The first part of this project is to tabulate the n-grams in a document.
 
 The structure of the set of n-grams should be a *dictionary* whose keys are tuples of `n-1` words, and whose contents are lists of the next strings found in the document.  For example, if we have the string "today is my birthday today is also his birthday" and we want to tabulate the 2-grams, we would get this:
-```{r echo=FALSE}
+```{r ngram2,echo=FALSE}
 test = "today is my birthday today is also his birthday"
 from markov import *
 print(add_ngrams(test.split(),n=2))
 ```
 
-```{r}
+```{r ngram3}
 def get_file(fn):
     """read in an entire file as a single string"""
     f = open(fn)
@@ -89,21 +93,28 @@ def make_ngram_dict(strList,n=2):
     ###    if so, add the word to the list of words following that tuple
 ```
 
-The second part of the project is to make a *Markov generator*. Given 
-a starting set of `n-1` words, pick the next word at random from the
+Once you've done this, you can use a *Markov generator*; **this is no longer part of the assignment**. Given 
+a starting set of `n-1` words, this will pick the next word at random from the
 appropriate dictionary entry (`numpy.random.choice(x)` will pick a
 random element from the list `x`) and add it to the list of words.
 If the last word in the text you used to set up the dictionary is unique,
-then the chain will stop at that point: return `None`.
+this generator will pick a random value from the dictionary.
 
-```{r eval=FALSE}
-def next_word(cur_list,n=2,ngram_dict):
-    """use an ngram dictionary to generate the next word in a list"""
-    ##
+```{r markov_gen,eval=FALSE}
+import numpy.random as npr
 
-def create_list(nwords,start_list,n=2,ngram_dict):
-    """use an ngram dictionary a list of words"""
-    ##
+def generate_markov_step(cur_list,ngram_dict,n=2):
+    """pick a markov step from a dictionary of n-grams"""
+    last_words =  tuple(cur_list[-(n-1):])
+    if last_words in ngram_dict:
+        new_word = npr.choice(ngram_dict[last_words])
+    else:
+        ngram_list = list(ngram_dict.keys())
+        new_word = ngram_list[npr.randint(len(ngram_list))][0]
+    cur_list.append(new_word)
+    return(new_word)
 
-
+cur_list = ["which"]  ## set starting (n-1) words for the phrase
+for i in range(50):
+    generate_markov_step(cur_list,dd)
 ```
