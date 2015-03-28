@@ -39,7 +39,10 @@ def sim_yahtzee(nrolls,n,sides=6):
 
 def est_yahtzee_prob(nsims,nrolls=3,dice=5,sides=6):
     """estimate the probabilities of Yahtzee for a specified number
-       of rolls, dice, and sides"""
+       of rolls, dice, and sides.  Should return a *single number*
+       between 0 and 1 (inclusive) giving the fraction of simulations
+       that resulted in 'yahtzee'
+    """
 ```
 
 Put these functions together to compute the probability of Yahtzee
