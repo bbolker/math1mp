@@ -130,6 +130,32 @@ x = Symbol('x')
 print(Si(x).series(x,0,5))
 ```
 
+### Solving equations
+
+When solving equations you either need to adjust so the right-hand
+side of the equation is zero, or use `Eq()`:
+```{r}
+from sympy import *
+x = Symbol('x')    
+s1 = solve(exp(-x)-x,x)
+s2 = solve(Eq(exp(-x),x),x)
+print(s1)
+print(s1==s2)
+print(s1[0].n(10))
+```
+This solution is expressed in terms of the [Lambert W function](http://en.wikipedia.org/wiki/Lambert_W_function), defined as the solution to the equation $z= W(z) e^{W(z)}$.
+
+### Constants
+
+```{r}
+from sympy import *
+oo ## infinity
+print(E.n(10)) ## e
+```
+
+### Convolutions
+
+
 ### Arbitrary-precision arithmetic: [mpmath](http://docs.sympy.org/dev/modules/mpmath/)
 
-### 
+
