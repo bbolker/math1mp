@@ -63,13 +63,13 @@ img {
 <div id="header">
 <h1 class="title">SymPy</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>18:34 29 March 2015</em></h4>
+<h4 class="date"><em>10:16 30 March 2015</em></h4>
 </div>
 
 
 <p><a href="http://www.sympy.org">SymPy</a> is a Python library that implements a <strong>computer algebra system</strong>, like (parts of) Maple or Mathematica or MATLAB’s <a href="http://www.mathworks.com/products/symbolic/">symbolic math toolbox</a></p>
 <ul>
-<li><a href="sympy.pdf">sympy cheat sheet</a> (from <a href="https://github.com/sympy/s%20ympy/tree/master/doc/cheatsheet">sympy github</a>)</li>
+<li><a href="sympy_cheatsheet.pdf">sympy cheat sheet</a> (from <a href="https://github.com/sympy/s%20ympy/tree/master/doc/cheatsheet">sympy github</a>)</li>
 </ul>
 <div id="basics" class="section level3">
 <h3>Basics</h3>
@@ -128,11 +128,33 @@ plot(i1)</code></pre>
 <pre class="python"><code>print(i1.series(x,0,5))</code></pre>
 <pre><code>## x - x**3/18 + O(x**5)</code></pre>
 </div>
+<div id="solving-equations" class="section level3">
+<h3>Solving equations</h3>
+<p>When solving equations you either need to adjust so the right-hand side of the equation is zero, or use <code>Eq()</code>:</p>
+<pre class="python"><code>from sympy import *
+x = Symbol('x')    
+s1 = solve(exp(-x)-x,x)
+s2 = solve(Eq(exp(-x),x),x)
+print(s1)
+print(s1==s2)
+print(s1[0].n(10))</code></pre>
+<pre><code>## [LambertW(1)]
+## True
+## 0.5671432904</code></pre>
+<p>This solution is expressed in terms of the <a href="http://en.wikipedia.org/wiki/Lambert_W_function">Lambert W function</a>, defined as the solution to the equation <span class="math">\(z= W(z) e^{W(z)}\)</span>.</p>
+</div>
+<div id="constants" class="section level3">
+<h3>Constants</h3>
+<pre class="python"><code>from sympy import *
+oo ## infinity
+print(E.n(10)) ## e</code></pre>
+<pre><code>## 2.718281828</code></pre>
+</div>
+<div id="convolutions" class="section level3">
+<h3>Convolutions</h3>
+</div>
 <div id="arbitrary-precision-arithmetic-mpmath" class="section level3">
 <h3>Arbitrary-precision arithmetic: <a href="http://docs.sympy.org/dev/modules/mpmath/">mpmath</a></h3>
-</div>
-<div id="section" class="section level3">
-<h3></h3>
 </div>
 
 
