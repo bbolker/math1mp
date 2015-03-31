@@ -7,15 +7,18 @@ L = (6,2,6,4,5)
 L2 = (1,4,4,6,6)
 L3 = (6,1,5,6,6)
 L4 = (6,6,5,6,6)
+def eq_list_or_tuple(x,y):
+    return(tuple(x)==tuple(y))
+
 npr.seed(1001)
-assert(single_roll(5)==L)
-assert(new_roll(L)==L2)
+assert(eq_list_or_tuple(single_roll(5),L))
+assert(eq_list_or_tuple(new_roll(L),L2))
 ## add some more specific tests for correct behavior with ties,
 ## differently ordered rolls, etc.
-assert(new_roll((1,1,2,6,6))==L3)
+assert(eq_list_or_tuple(new_roll((1,1,2,6,6)),L3))
 npr.seed(1001)
-assert(sim_yahtzee(1,5)==L)
-assert(sim_yahtzee(3,5)==L4)
+assert(eq_list_or_tuple(sim_yahtzee(1,5),L))
+assert(eq_list_or_tuple(sim_yahtzee(3,5),L4))
 
 assert(est_yahtzee_prob(1)==0)
 npr.seed(1007)

@@ -24,16 +24,17 @@ def single_roll(n,fixed=(),sides=6):
     """
 
 def new_roll(vals,sides=6):
-    """given a list of die values, pick which to keep
+    """given a list or tuple of die values, pick which to keep
        fixed and which to re-roll (in case of a tie,
        keep the larger values)
        and re-roll them.  For example, if the
        vals is (1,1,2,6,6), you should re-roll (1,1,2)
+       Return a tuple of the complete set of values.
        """
 
 def sim_yahtzee(nrolls,n,sides=6):
     """simulate a specified number of dice rolls of n dice
-       Return a list of die values
+       Return a tuple of die values corresponding to the final roll
     """
 
 def est_yahtzee_prob(nsims,nrolls=3,dice=5,sides=6):

@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>19:00 28 March 2015</em></h4>
+<h4 class="date"><em>11:30 31 March 2015</em></h4>
 </div>
 
 
@@ -79,16 +79,17 @@ img {
     &quot;&quot;&quot;
 
 def new_roll(vals,sides=6):
-    &quot;&quot;&quot;given a list of die values, pick which to keep
+    &quot;&quot;&quot;given a list or tuple of die values, pick which to keep
        fixed and which to re-roll (in case of a tie,
        keep the larger values)
        and re-roll them.  For example, if the
        vals is (1,1,2,6,6), you should re-roll (1,1,2)
+       Return a tuple of the complete set of values.
        &quot;&quot;&quot;
 
 def sim_yahtzee(nrolls,n,sides=6):
     &quot;&quot;&quot;simulate a specified number of dice rolls of n dice
-       Return a list of die values
+       Return a tuple of die values corresponding to the final roll
     &quot;&quot;&quot;
 
 def est_yahtzee_prob(nsims,nrolls=3,dice=5,sides=6):
