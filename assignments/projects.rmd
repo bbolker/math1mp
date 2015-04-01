@@ -89,9 +89,17 @@ def clean_string(str):
        and make it lowercase"""
      ## hint: str.remove(), str.lower()
 
-def make_ngram_dict(strList,n=2):
-    """make an n-gram dictionary from a list of strings"""
-    ### hint: clean_string(), str.split()
+def add_ngrams(strList,n=2,cur_dict=dict()):
+    """add all n-grams from a string to the current dictionary;
+       return the modified dictionary"""
+
+def make_ngram_dict(fn,n=2):
+    """make an n-gram dictionary from a file"""
+    ### fn is the name of a file in the current directory,
+    ###  which you can with open(fn)
+    ### The function should iterate through the lines of the file,
+    ### using clean_string() and str.split() to separate the
+    ### lines into words.  Then 
     ### check whether tuples of (n-1) words are present in the dictionary
     ###    if not, add an entry with the next word
     ###    if so, add the word to the list of words following that tuple

@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>11:30 31 March 2015</em></h4>
+<h4 class="date"><em>09:27 01 April 2015</em></h4>
 </div>
 
 
@@ -128,9 +128,17 @@ def clean_string(str):
        and make it lowercase&quot;&quot;&quot;
      ## hint: str.remove(), str.lower()
 
-def make_ngram_dict(strList,n=2):
-    &quot;&quot;&quot;make an n-gram dictionary from a list of strings&quot;&quot;&quot;
-    ### hint: clean_string(), str.split()
+def add_ngrams(strList,n=2,cur_dict=dict()):
+    &quot;&quot;&quot;add all n-grams from a string to the current dictionary;
+       return the modified dictionary&quot;&quot;&quot;
+
+def make_ngram_dict(fn,n=2):
+    &quot;&quot;&quot;make an n-gram dictionary from a file&quot;&quot;&quot;
+    ### fn is the name of a file in the current directory,
+    ###  which you can with open(fn)
+    ### The function should iterate through the lines of the file,
+    ### using clean_string() and str.split() to separate the
+    ### lines into words.  Then 
     ### check whether tuples of (n-1) words are present in the dictionary
     ###    if not, add an entry with the next word
     ###    if so, add the word to the list of words following that tuple</code></pre>
