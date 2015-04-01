@@ -86,7 +86,7 @@ def get_file(fn):
 
 def clean_string(str):
     """remove all punctuation and newlines ('\n') from a string,
-       and make it lowercase"""
+       and make it lowercase; return the new string"""
      ## hint: str.remove(), str.lower()
 
 def add_ngrams(strList,n=2,cur_dict=dict()):
@@ -94,7 +94,7 @@ def add_ngrams(strList,n=2,cur_dict=dict()):
        return the modified dictionary"""
 
 def make_ngram_dict(fn,n=2):
-    """make an n-gram dictionary from a file"""
+    """make an n-gram dictionary from a file; return the dictionary"""
     ### fn is the name of a file in the current directory,
     ###  which you can with open(fn)
     ### The function should iterate through the lines of the file,
