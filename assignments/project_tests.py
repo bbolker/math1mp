@@ -8,7 +8,7 @@ L2 = (1,4,4,6,6)
 L3 = (6,1,5,6,6)
 L4 = (6,6,5,6,6)
 def eq_list_or_tuple(x,y):
-    return(tuple(x)==tuple(y))
+    return(sorted(tuple(x))==sorted(tuple(y)))
 
 npr.seed(1001)
 assert(eq_list_or_tuple(single_roll(5),L))
