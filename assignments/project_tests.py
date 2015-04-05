@@ -3,12 +3,26 @@ from project_answers import *
 
 ## YAHTZEE
 
-L = (6,2,6,4,5)
+## test that choice() and randint() give same results
+npr.seed(1001)
+sides=6
+p1 = tuple(npr.choice(range(1,sides+1),size=5))
+npr.seed(1001)
+p2 = tuple(npr.randint(1,sides+1,size=5))
+assert(p1==p2)
+
+L = (6,2,6,4,5)  ## outcome when we use npr.randint()
+
 L2 = (1,4,4,6,6)
 L3 = (6,1,5,6,6)
 L4 = (6,6,5,6,6)
-def eq_list_or_tuple(x,y):
-    return(sorted(tuple(x))==sorted(tuple(y)))
+
+def eq_list_or_tuple(x,y1,y2=None):
+    firstmatch = sorted(tuple(x))==sorted(tuple(y1))
+    if y2==None:
+        return(firstmatch)
+    else:
+        return(firstmatch or sorted(tuple(x))==sorted(tuple(y2)))
 
 npr.seed(1001)
 assert(eq_list_or_tuple(single_roll(5),L))
@@ -39,8 +53,9 @@ assert(abs(est1-0.046)<0.001)
 test1 = "adf, xyz. LMNO"
 cs = clean_string(test1)
 assert(cs=="adf xyz lmno")
-ss = split_string(cs)
-assert(ss==['adf', 'xyz', 'lmno'])
+## split_string not mentioned in web page
+## ss = split_string(cs)
+## assert(ss==['adf', 'xyz', 'lmno'])
 d = add_ngrams(ss,2,dict())
 assert(d==dict([(('xyz',),['lmno']),(('adf',),['xyz'])]))
 
