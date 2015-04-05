@@ -53,8 +53,9 @@ assert(abs(est1-0.046)<0.001)
 test1 = "adf, xyz. LMNO"
 cs = clean_string(test1)
 assert(cs=="adf xyz lmno")
-ss = split_string(cs)
-assert(ss==['adf', 'xyz', 'lmno'])
+## split_string not mentioned in web page
+## ss = split_string(cs)
+## assert(ss==['adf', 'xyz', 'lmno'])
 d = add_ngrams(ss,2,dict())
 assert(d==dict([(('xyz',),['lmno']),(('adf',),['xyz'])]))
 
