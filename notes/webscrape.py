@@ -1,12 +1,16 @@
 ## http://stackoverflow.com/questions/12902783/where-is-beautifulsoup4-hiding
 from bs4 import BeautifulSoup
 import requests
+import urllib.request
 import pandas as pd
 from pytz import all_timezones
 ## http://stackoverflow.com/questions/13784192/creating-an-empty-pandas-dataframe-then-filling-it
 ## http://stackoverflow.com/questions/10715965/add-one-row-in-a-pandas-dataframe
 
 def get_web():
+    """grab the Canadian border-crossing HTML from the web page and
+    save it to a file
+    """
     r  = requests.get("http://www.cbsa-asfc.gc.ca/bwt-taf/menu-eng.html#_s1")
     data = r.text
     f = open("tempweb.html","w")
