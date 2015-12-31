@@ -153,6 +153,41 @@ oo ## infinity
 print(E.n(10)) ## e
 ```
 
+### Numeric types
+
+Can specify that values are `Integer`, `Rational`, or
+`Float` (arbitrary-precision)
+
+```{r}
+from sympy import *
+print(Rational(1,2))
+print(Rational(0.5))
+print(Rational(0.2))
+print(Rational(2,10)) ## converts to simplest form
+print(Rational(pi.n(4)))
+```    
+
+```{r}
+from sympy.crypto.crypto import encipher_shift
+pt = "HELLO"  ## uppercase only
+print(encipher_shift(pt,1))
+print(encipher_shift(pt,13))
+```
+
+Other stuff: `latex`, ...
+
+apart/together
+
+```{r}
+from sympy import *
+x, y, z = symbols(('x', 'y', 'z'))    
+q = x**2*y + sin(x)
+print(q.args[0])
+print(q.args[0].args[1])
+srepr(q)
+q.func
+```
+
 ### Convolutions
 
 

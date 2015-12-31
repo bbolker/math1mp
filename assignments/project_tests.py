@@ -31,7 +31,7 @@ assert(eq_list_or_tuple(new_roll(L),L2))
 ## differently ordered rolls, etc.
 assert(eq_list_or_tuple(new_roll((1,1,2,6,6)),L3))
 npr.seed(1001)
-assert(eq_list_or_tuple(sim_yahtzee(1,5),L))
+assert(eq_list_or_tuple(sim_yahtzee(1,5,sides=6),L))
 assert(eq_list_or_tuple(sim_yahtzee(3,5),L4))
 
 assert(est_yahtzee_prob(1)==0)
