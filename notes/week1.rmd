@@ -55,20 +55,22 @@ author: Ben Bolker
 * mathematical proof (e.g. [four-colo(u)r theorem](http://en.wikipedia.org/wiki/Four_color_theorem) and [other examples](http://math.stackexchange.com/questions/1084230/what-are-some-theorems-that-currently-only-have-computer-assisted-proofs)); computer algebra
 * applied math: cryptography, tomography, logistics, finance, fluid dynamics, ...
 * applied statistics: bioinformatics, Big Data/analytics, ...
-* discrete vs. continuous
+* discrete vs. continuous math
 
 ## Fun!
 
-**Hello, world**
+**Hello, world** (always the first program you write in a new computer language)
 
 ```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
 library("knitr")
-library("runr")
-py <- proc_python()
-py$start()
-knit_engines$set(python = function(options) {
-    knitr:::wrap(py$exec(options$code), options)
-})
+## ## leave out runr (persistent python session) until
+## ##  hash issue 
+## library("runr")
+## py <- proc_python()
+## py$start()
+## knit_engines$set(python = function(options) {
+##     knitr:::wrap(py$exec(options$code), options)
+## })
 opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 ```
 
@@ -98,25 +100,37 @@ print(62**2*27/5+3)
 **the Mandelbrot set**
 
 Suppose we iterate $z_{n+1}=z_{n}^2+c$, for some complex number $c$, starting with $z_0=0$.
-The [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set) is the set for which the iterations do *not* go off to infinity. (*What happens for $c=0$? $c=-1$? $c=i$? $c=1$?*)
 
-We can iterate by hand ...
+- what happens if $c=0$?
+- if $c=1$?
+- if $c=1/2$?
+- if $c=i$?
+- if $c=-1$?
+
+Complex arithmetic is built into Python (*What is $(2+3i)^2$=*`(2+3*j)**2`?)
+
+The [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set) is the set for which the iterations do *not* go off to infinity.
+
+We can iterate by hand ... (Python uses `j` rather than $i$ for $\sqrt{-1}$)
 ```{r mandel1}
-print(complex(0,0.65)**2+complex(0,0.65))
-print((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))
-print(((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))**2+complex(0,0.65))
+print(0.25j**2+0.25j)
+print((0.25j**2+0.25j)**2+0.25j)
+print(((0.25j**2+0.25j)**2+0.25j)**2+0.25j)
 ```
 
+A programming maxim: **DRY** (**D**o not **R**epeat **Y**ourself)!
 Use **assignments** to simplify computations ...
+
 ```{r julia2}
 z0=0
-c=complex(0,0.65)
+c=0.25j
 z1=z0**2+c
 z2=z1**2+c
 z3=z2**2+c
 print(abs(z3)<2)
 ```
 
+We're still repeating ourselves, although less than we were before.
 The basic method for generating pretty pictures is:
 
 * for lots of different values of $c$
@@ -124,9 +138,6 @@ The basic method for generating pretty pictures is:
     * keep calculating $z_{n+1}=z_n^2+c$ until $\textrm{mod}(z_{n+1})$ is greater than 2
 	* record the final value of $n$
 * translate values of $n$ into some colour scale and plot the results	
-
-Complex arithmetic is built into Python    
-(*What is $(2+3i)^2$=*`(complex(2,3))**2`?)
 
 [Mandelbrot set program](../code/mandelbrot.py)
 
@@ -153,19 +164,21 @@ Complex arithmetic is built into Python
 
 * **most important**: maintain reproducibility; well-defined **workflows**
 
-# Assignment
+## Assignment and types (PP $\S2.4$)
 
 * superficially simple
-    * `=` is the **assignment operator** 
+    * set aside *memory* space, create a symbol that *points to* that space
+    * `=` is the **assignment operator** ("gets", not "equals")
 	* `<variable>=<value>`
 	* variable names
          * what is legal? (letters, numbers, underscores, start with a letter)
 	     * what is customary? [convention](https://www.python.org/dev/peps/pep-0008/#id30) is `variables_like_this`
 	     * what works well? `v` vs. `temporary_variable_for_loop`
-		 * parallels with file names; directory/folder organization
+		 * same principles apply to file, directory/folder names
 * variables can be of different [**types**](https://docs.python.org/3/library/stdtypes.html)
      * built-in: integer (`int`), floating-point (`float`), complex, **Boolean** (`bool`: `True` or `False`),
      * *dynamic* typing
+	     * Python usually "does what you mean", converts types when sensible
 	 * (relatively) *strong* typing
          * try `print(type(x))` for different possibilities (`x=3`; `x=3.0`; `x="a"`)
 		 * *what happens if you try `x=a`?*
@@ -184,7 +197,18 @@ type(True)
 type(True+1) ## WAT
 ```
 
-## Comparisons and logical expressions
+## Arithmetic operators, precedence
+
+* exponentiation (`**`)
+* negation ("unary minus") (`-`)
+* multiplication/division (`*`,`/`,`//`=integer division,`%`=remainder ("modulo"))
+* addition/subtraction (`+`, `-` ("binary"))
+
+Use parentheses when in doubt!
+
+**Puzzle:** what is `-1**2`? Why?
+
+## Logical operators
 
 * comparison: (`==`, `!=`)
 * inequalities: `>`, `<`, `>=`, `<=`, 

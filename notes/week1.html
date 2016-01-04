@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">introduction (week 1)</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>19:55 03 January 2016</em></h4>
+<h4 class="date"><em>15:48 04 January 2016</em></h4>
 </div>
 
 
@@ -147,15 +147,11 @@ img {
 <div id="fun" class="section level2">
 <h2>Fun!</h2>
 <p><strong>Hello, world</strong></p>
-<pre class="python"><code>print('hello, python world!')
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK
-hello, python world!</code></pre>
+<pre class="python"><code>print('hello, python world!')</code></pre>
+<pre><code>## hello, python world!</code></pre>
 <p>Python as a fancy calculator:</p>
-<pre class="python"><code>print(62**2*27/5+3)
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK
-20760</code></pre>
+<pre class="python"><code>print(62**2*27/5+3)</code></pre>
+<pre><code>## 20760.6</code></pre>
 <ul>
 <li><em>reference</em>: <a href="https://docs.python.org/3/tutorial/introduction.html">Python intro section 3.1.1</a></li>
 </ul>
@@ -176,18 +172,32 @@ hello, python world!</code></pre>
 <li>ex.: <a href="http://www.sagemath.org">Sage</a>; <a href="http://www.biopython.org">BioPython</a></li>
 </ul>
 <p><strong>the Mandelbrot set</strong></p>
-<p>Suppose we iterate <span class="math inline">\(z_{n+1}=z_{n}^2+c\)</span>, for some complex number <span class="math inline">\(c\)</span>, starting with <span class="math inline">\(z_0=0\)</span>. The <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot set</a> is the set for which the iterations do <em>not</em> go off to infinity. (<em>What happens for <span class="math inline">\(c=0\)</span>? <span class="math inline">\(c=-1\)</span>? <span class="math inline">\(c=i\)</span>? <span class="math inline">\(c=1\)</span>?</em>)</p>
-<p>We can iterate by hand …</p>
-<pre class="python"><code>print(complex(0,0.65)**2+complex(0,0.65))
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK
-(-0.4225+0.65j)</code></pre>
-<p>Use <strong>assignments</strong> to simplify computations …</p>
+<p>Suppose we iterate <span class="math inline">\(z_{n+1}=z_{n}^2+c\)</span>, for some complex number <span class="math inline">\(c\)</span>, starting with <span class="math inline">\(z_0=0\)</span>.</p>
+<ul>
+<li>what happens if <span class="math inline">\(c=0\)</span>?</li>
+<li>if <span class="math inline">\(c=1\)</span>?</li>
+<li>if <span class="math inline">\(c=1/2\)</span>?</li>
+<li>if <span class="math inline">\(c=i\)</span>?</li>
+<li>if <span class="math inline">\(c=-1\)</span>?</li>
+</ul>
+<p>Complex arithmetic is built into Python (<em>What is <span class="math inline">\((2+3i)^2\)</span>=</em><code>(2+3*j)**2</code>?)</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot set</a> is the set for which the iterations do <em>not</em> go off to infinity.</p>
+<p>We can iterate by hand … (Python uses <code>j</code> rather than <span class="math inline">\(i\)</span> for <span class="math inline">\(\sqrt{-1}\)</span>)</p>
+<pre class="python"><code>print(0.25j**2+0.25j)
+print((0.25j**2+0.25j)**2+0.25j)
+print(((0.25j**2+0.25j)**2+0.25j)**2+0.25j)</code></pre>
+<pre><code>## (-0.0625+0.25j)
+## (-0.05859375+0.21875j)
+## (-0.0444183349609375+0.224365234375j)</code></pre>
+<p>A programming maxim: <strong>DRY</strong> (<strong>D</strong>o not <strong>R</strong>epeat <strong>Y</strong>ourself)! Use <strong>assignments</strong> to simplify computations …</p>
 <pre class="python"><code>z0=0
-c=complex(0,0.65)
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
-<p>The basic method for generating pretty pictures is:</p>
+c=0.25j
+z1=z0**2+c
+z2=z1**2+c
+z3=z2**2+c
+print(abs(z3)&lt;2)</code></pre>
+<pre><code>## True</code></pre>
+<p>We’re still repeating ourselves, although less than we were before. The basic method for generating pretty pictures is:</p>
 <ul>
 <li>for lots of different values of <span class="math inline">\(c\)</span>
 <ul>
@@ -197,8 +207,6 @@ c=complex(0,0.65)
 </ul></li>
 <li>translate values of <span class="math inline">\(n\)</span> into some colour scale and plot the results</li>
 </ul>
-<p>Complex arithmetic is built into Python<br />
-(<em>What is <span class="math inline">\((2+3i)^2\)</span>=</em><code>(complex(2,3))**2</code>?)</p>
 <p><a href="../code/mandelbrot.py">Mandelbrot set program</a></p>
 <p><strong>Note</strong>:</p>
 <ul>
@@ -226,19 +234,20 @@ c=complex(0,0.65)
 </ul>
 </div>
 </div>
-<div id="assignment" class="section level1">
-<h1>Assignment</h1>
+<div id="assignment-pp-s2.4" class="section level1">
+<h1>Assignment (PP <span class="math inline">\(\S2.4\)</span>)</h1>
 <ul>
 <li>superficially simple
 <ul>
-<li><code>=</code> is the <strong>assignment operator</strong></li>
+<li>set aside <em>memory</em> space, create a symbol that <em>points to</em> that space</li>
+<li><code>=</code> is the <strong>assignment operator</strong> (“gets”, not “equals”)</li>
 <li><code>&lt;variable&gt;=&lt;value&gt;</code></li>
 <li>variable names
 <ul>
 <li>what is legal? (letters, numbers, underscores, start with a letter)</li>
 <li>what is customary? <a href="https://www.python.org/dev/peps/pep-0008/#id30">convention</a> is <code>variables_like_this</code></li>
 <li>what works well? <code>v</code> vs. <code>temporary_variable_for_loop</code></li>
-<li>parallels with file names; directory/folder organization</li>
+<li>same principles apply to file, directory/folder names</li>
 </ul></li>
 </ul></li>
 <li>variables can be of different <a href="https://docs.python.org/3/library/stdtypes.html"><strong>types</strong></a>
@@ -258,8 +267,12 @@ y=3.0
 z=&quot;a&quot;
 q=complex(1,2)
 type(x+y)  ## mixed arithmetic
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
+type(int(x+y))  ## int(), float() convert explicitly
+type(x+z)
+type(q)
+type(x+q)
+type(True)
+type(True+1) ## WAT</code></pre>
 <div id="comparisons-and-logical-expressions" class="section level2">
 <h2>Comparisons and logical expressions</h2>
 <ul>
@@ -273,8 +286,8 @@ a and b
 not(a and not b)
 a and not(b&gt;c)
 a==c  ## careful!
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
+not(d)
+not(c)</code></pre>
 <ul>
 <li><strong>operator precedence</strong>: same issue as <a href="http://xkcd.com/992/">order of operations in arithmetic</a>; <code>not</code> has higher precedence than <code>and</code>, <code>or</code>. When in doubt use parentheses …</li>
 </ul>
@@ -299,8 +312,9 @@ monkey_trouble(True, False) → False</code></pre>
 b = &quot;abc&quot;
 a+1  ## error
 a+b
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
+b*3
+(a+&quot; &quot;)*5
+b in a</code></pre>
 <p>From <a href="http://codingbat.com/prob/p182144">CodingBat</a>:</p>
 <blockquote>
 <p>Given two strings, a and b, return the result of putting them together in the order abba, e.g. “Hi” and “Bye” returns “HiByeByeHi”.</p>
@@ -311,9 +325,7 @@ a+b
 <p>Large topic – somewhat more advanced than ‘basic programming’, but worth a digression. (<a href="https://docs.python.org/3/howto/regex.html">reference</a>)</p>
 <p>What if we are looking for some number, but we don’t know what number?</p>
 <pre class="python"><code>import re
-bool(re.search('[0-9]', 'Plan 9'))
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
+bool(re.search('[0-9]', 'Plan 9'))</code></pre>
 <table style="width:81%;">
 <colgroup>
 <col width="18%"></col>
@@ -378,10 +390,8 @@ bool(re.search('[0-9]', 'Plan 9'))
 <pre class="python"><code>import re
 x = &quot;(Smith, John), (Schmo, Joe)&quot;
 re_pat = &quot;\(([A-Z][a-z]+), ([A-Z][a-z.]*)\)&quot;
-print(re.sub(re_pat,&quot;(\\2 \\1)&quot;,x))
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK
-(John Smith), (Joe Schmo)</code></pre>
+print(re.sub(re_pat,&quot;(\\2 \\1)&quot;,x))</code></pre>
+<pre><code>## (John Smith), (Joe Schmo)</code></pre>
 <ul>
 <li>in general if you want something to be interpreted <strong>literally</strong> in a regular expression (e.g. you want to look for <code>+</code> or <code>(</code> and not have them interpreted in their regular-expression sense), you need to use a <em>backslash</em> <code>\</code> as an “escape” character: for example, <code>&quot;a\+b&quot;</code> will look for the letter <code>a</code>, followed by a plus sign, followed by the letter <code>b</code> – <em>not</em> one or more <code>a</code>s, followed by a <code>b</code> (<a href="http://xkcd.com/234/">xkcd</a>)</li>
 </ul>
@@ -425,9 +435,7 @@ print(re.sub(re_pat,&quot;(\\2 \\1)&quot;,x))
 x[a:b]      # element a (zero-indexed) to b-1
 x[a:]       # a to end
 x[:b]       # beginning to b
-x[a:b:n]    # from a to b-1 in steps of n
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
+x[a:b:n]    # from a to b-1 in steps of n</code></pre>
 <ul>
 <li>generate a list of odd numbers from 3 to 15</li>
 <li>reverse a string?</li>
@@ -439,8 +447,9 @@ x[a:b:n]    # from a to b-1 in steps of n
 </ul>
 <pre class="python"><code>x = [1,2,3]
 y = x
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
+y[2] = 17
+print(x)</code></pre>
+<pre><code>## [1, 2, 17]</code></pre>
 <ul>
 <li><em>operators</em> vs. <em>functions</em> vs. <em>methods</em> <code>x+y</code> vs. <code>foo(x,y)</code> vs. <code>x.foo(y)</code>
 <ul>
@@ -451,23 +460,19 @@ y = x
 <pre class="python"><code>x = [1,2,3]
 y = [4,5]
 x.append(y)
-print(x)
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK
-[1, 2, 3, [4, 5]]</code></pre>
+print(x)</code></pre>
+<pre><code>## [1, 2, 3, [4, 5]]</code></pre>
 <pre class="python"><code>x = [1,2,3] # reset x
 y = [4,5]
 x.extend(y)
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK</code></pre>
+print(x)</code></pre>
+<pre><code>## [1, 2, 3, 4, 5]</code></pre>
 <p>Can use <code>+</code> and <code>+=</code> as shortcut for extending:</p>
 <pre class="python"><code>x = [1,2,3]
 y = [4,5]
 z = x+y
-print(z)
-
-0Ahv6lPO8iEIZ2hmdrkqjxLih9H94mIK
-[1, 2, 3, 4, 5]</code></pre>
+print(z)</code></pre>
+<pre><code>## [1, 2, 3, 4, 5]</code></pre>
 <ul>
 <li><code>x.insert(position,value)</code>: inserts (or <code>x=x[0:position]+[value]+x[position+1:len(x)]</code>)</li>
 <li><code>x.remove(value)</code>: removes <em>first</em> value</li>
