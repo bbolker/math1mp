@@ -12,8 +12,7 @@ py$start()
 knit_engines$set(python = function(options) {
     knitr:::wrap(py$exec(options$code), options)
 })
-opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
-
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python')
 ```
 
 ```{r chunk1}
@@ -22,4 +21,8 @@ a = 1
 
 ```{r chunk2}
 print(a)
+```
+
+```{r chunk3,engine="R"}
+runif(1)
 ```
