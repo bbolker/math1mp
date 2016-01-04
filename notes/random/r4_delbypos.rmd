@@ -1,0 +1,28 @@
+---
+title: "deleting values by position"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,echo=FALSE,message=FALSE}
+## source("python3_engine.R")
+knitr::opts_chunk$set(engine="python",engine.path="python3")
+```
+
+Can 
+
+```{r}
+help("LISTS")
+```
+
+```{r}
+def remove2(x,v):
+    firstpos = x.index(v)
+    if firstpos==len(x)-1:
+        return("first found at last position")
+    secondpos = x.index(v,firstpos+1)
+    x.pop(secondpos)
+
+x = list("fallacious")
+remove2(x,"a")
+```
