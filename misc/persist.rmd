@@ -1,0 +1,25 @@
+---
+title: "runr test"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+library("runr")
+py <- proc_python()
+py$start()
+knit_engines$set(python = function(options) {
+    knitr:::wrap(py$exec(options$code), options)
+})
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+
+```
+
+```{r chunk1}
+a = 1
+```
+
+```{r chunk2}
+print(a)
+```

@@ -12,29 +12,32 @@ author: Ben Bolker
     * `bolker@mcmaster.ca`: please include `1mp3` in Subject:
 	* `http://www.math.mcmaster.ca/bolker`
 	* HH 314 (sometimes LSB 336); office hours TBA
-* TA: Jake Szamosi 
-    * `teaching@jcszamosi.ca`: please allow one full business day for response
+* TA: Dexter Barrows
+    * `barrowdd@mcmaster.ca`
 * Grading:
     * midterm 20%
-	* final (take-home?)    30%
-	* weekly assignments 30%
+	* final   30%
+	* in-class quizzes 10%
+	* weekly assignments 20%
 	* project  20%
 * Laptop policy
 * Course material on [Github](https://github.com/bbolker/math1mp) and Avenue
 * Expectations of professor and students
-* Textbook (none); see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
+* Textbook (optional); also see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
 * Course content: reasonable balance among
     * nitty-gritty practical programming instruction:
 	
 > ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](http://www.ankitpanda.com/pythonicity/))
 
-* <!-->
+* <!-- -->
     * conceptual foundations of computing/computer science
     * context/culture of mathematical/scientific computing
     * interesting applications
 
 ## Installing Python
 
+* CodeLab: http://www.turingscraft.com/go.html
+* PythonAnywhere
 * Everyone must have access to a computer with Python3 installed
     * There are detailed instructions for installing Python3 on the 
 [Pragmatic Programming](https://pragprog.com/book/gwpy2/practical-programming) website.
@@ -58,8 +61,14 @@ author: Ben Bolker
 
 **Hello, world**
 
-```{r opts,message=FALSE,echo=FALSE}
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
 library("knitr")
+library("runr")
+py <- proc_python()
+py$start()
+knit_engines$set(python = function(options) {
+    knitr:::wrap(py$exec(options$code), options)
+})
 opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 ```
 
@@ -98,7 +107,7 @@ print((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))
 print(((complex(0,0.65)**2+complex(0,0.65))**2+complex(0,0.65))**2+complex(0,0.65))
 ```
 
-Use **assignments** to simplify ...
+Use **assignments** to simplify computations ...
 ```{r julia2}
 z0=0
 c=complex(0,0.65)
@@ -161,7 +170,7 @@ Complex arithmetic is built into Python
          * try `print(type(x))` for different possibilities (`x=3`; `x=3.0`; `x="a"`)
 		 * *what happens if you try `x=a`?*
 		 * **don't be afraid to experiment!**
-```{r eval=FALSE}
+```{r type_examples,eval=FALSE}
 x=3
 y=3.0
 z="a"
