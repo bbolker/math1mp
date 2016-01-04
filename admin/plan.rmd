@@ -4,89 +4,90 @@ Revision: `r as.character(Sys.time())`
 
 This is an *approximate* and *preliminary* schedule for the course.  It is guaranteed to change.
 
-### week 1: basics
+See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 
-Notes ([HTML](http://htmlpreview.github.io/?https://github.com/bbolker/math1mp/blob/master/admin/week1.html), [PDF](../notes/week1.pdf))
+## week 1: basics
 
-* M Jan 5  introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
-* W Jan 7  data types; logical operations; string operations; regular expressions
-* F Jan 9  lists; indexing and slicing
+* T Jan 5  introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
+* R Jan 7  data types; logical operations; string operations; regular expressions
+* F Jan 8  lists; indexing and slicing
 
 <!-- editors (xkcd butterfly?) -->
 <!-- variable naming and conventions; http://www.gps.alaska.edu/jeff/Classes/GEOS436+636/02_fundamentals.pdf; **assignment**: set up Python and write a couple of trivial programmes -->
 
-### week 2: flow control
+## week 2: flow control
 
-* M Jan 12 conditionals, loops
-* W Jan 14 flow control; while
-* F Jan 16 flow charts
+* T Jan 12 conditionals, loops
+* R Jan 14 flow control; while
+* F Jan 15 flow charts
 
-### week 3: debugging etc.
+## week 3: debugging etc.
 
-* M Jan 19 [debugging](http://danluu.com/teach-debugging/)
-* W Jan 21 testing
-* F Jan 23 benchmarking/profiling/optimization: Euclidean algorithm
+* T Jan 19 [debugging](http://danluu.com/teach-debugging/)
+* R Jan 21 testing
+* F Jan 22 benchmarking/profiling/optimization: Euclidean algorithm
 
-### week 4: functions and modules
+## week 4: functions and modules
 
-* M Jan 26 functions and scoping
-* W Jan 28 importing modules, Roman numeral examples
-* F Jan 30 more Roman numeral examples
+* T Jan 26 functions and scoping
+* R Jan 28 importing modules, Roman numeral examples
+* F Jan 29 more Roman numeral examples
 
-### week 5: more function examples/reviews
+## week 5: more function examples/reviews
 
-* M Feb 2 function examples
-* W Feb 4 ... continued
-* F Feb 6 ... continued
+* T Feb 2 function examples
+* R Feb 4 ... continued
+* F Feb 5 ... continued
 
-### week 6: tuples and dictionaries (and arrays?) (and plotting)
+## week 6: tuples and dictionaries (and arrays?) (and plotting)
 
-* M Feb 9 tuples and dictionaries 
-* W Feb 11 ... more ...
-* F Feb 13 **MIDTERM exam** (in class)
+* T Feb 9 tuples and dictionaries 
+* R Feb 11 ... more ...
+* F Feb 12 **MIDTERM exam** (in class)
 
-**midterm recess: Feb 16-21**
+**midterm recess: Feb 15-20**
 
-### week 7: dictionaries continued; numpy
+## week 7: dictionaries continued; numpy
 
-* M Feb 23 
-* W Feb 25 
-* F Feb 27 
+* T Feb 23 
+* R Feb 25 
+* F Feb 26 
 
-### week 8: floating point
+## week 8: floating point
 
-* M Mar 2 integration
-* W Mar 4 pseudo-random numbers and applications
-* F Mar 6 numeric representations
+* T Mar 1 integration
+* R Mar 3 pseudo-random numbers and applications
+* F Mar 4 numeric representations
 
-### week 9: numeric computation cont.
+## week 9: numeric computation cont.
 
-* M Mar 9   floating point algorithms (root-finding, optimization) 
-* W Mar 11  floating point algorithms (differential equations) 
-* F Mar 13 
+* T Mar 8   floating point algorithms (root-finding, optimization) 
+* R Mar 10  floating point algorithms (differential equations) 
+* F Mar 11 
 
-### week 10: symbolic computation
+## week 10: symbolic computation
 
-* M Mar 16 plotting (data visualization)
-* W Mar 18 
-* F Mar 20 
+* T Mar 15 plotting (data visualization)
+* R Mar 17 
+* F Mar 18 **no class** (prof. away)
 
-### week 11 misc sci comp
+## week 11 misc sci comp
 
-* M Mar 23 data management; pandas
-* W Mar 25 web scraping
-* F Mar 27 databases
+* T Mar 22 data management; pandas
+* R Mar 24 web scraping
+* F Mar 25 **Good Friday**
 
-### week 12 symbolic computation
+## week 12 symbolic computation
 
-* M Mar 30 symbolic computation; SymPy and Sage
-* W Apr 1 ... continued
+* T Mar 29 symbolic computation; SymPy and Sage
+* R Mar 31 ... continued
+* F Apr 1
 
-**3 April: Good Friday**
+## week 13 last week
 
-### week 13 last week
-* M Apr 6
-* W Apr 8 wrap-up
+* T Apr 5
+* R Apr 7
+* F Apr 8
 
 **8 April: classes end**
 
