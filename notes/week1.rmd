@@ -1,5 +1,5 @@
 ---
-title: "introduction (week 1)"
+title: "introduction (week 1+)"
 date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
 author: Ben Bolker
 ---
@@ -93,13 +93,15 @@ print(62**2*27/5+3)
 	* contrast: *general-purpose* scripting languages (Perl, PHP)
 	* contrast: general-purpose *compiled* languages (Java, C, C++) ("close to the metal")
 * relatively modern (1990s; Python 3, 2008)
-* currently the [8th most popular computer language](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html) overall; [most popular for teaching](http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext)
-* well suited to mathematical and scientific programming ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org))
+* currently the [5th most popular computer language](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html) overall (up from 8th in 2015); [most popular for teaching](http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext)
+* well suited to mathematical/scientific/technical ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org); [Python in Finance](https://www.safaribooksonline.com/library/view/python-for-finance/9781491945360/ch01.html))
 * ex.: [Sage](http://www.sagemath.org); [BioPython](http://www.biopython.org)
 
 **the Mandelbrot set**
 
-Suppose we iterate $z_{n+1}=z_{n}^2+c$, for some complex number $c$, starting with $z_0=0$.
+Suppose we iterate[^1] $z_{n+1}=z_{n}^2+c$, for some complex number $c$, starting with $z_0=0$.
+
+[^1]: See Tom Stoppard's *Arcadia* for more on [iterated algorithms](https://books.google.ca/books?id=0RVLAQAAQBAJ&pg=PT57&dq=arcadia+iterated+algorithm&hl=en&sa=X&redir_esc=y#v=onepage&q=arcadia%20iterated%20algorithm&f=false).)
 
 - what happens if $c=0$?
 - if $c=1$?
@@ -208,7 +210,7 @@ Use parentheses when in doubt!
 
 **Puzzle:** what is `-1**2`? Why?
 
-## Logical operators
+## Logical operators (PP $\S5.1$)
 
 * comparison: (`==`, `!=`)
 * inequalities: `>`, `<`, `>=`, `<=`, 
@@ -237,8 +239,7 @@ monkey_trouble(False, False) → True
 monkey_trouble(True, False) → False
 ```
 
-
-## String operations
+## String operations (PP chapter 4)
 
 *reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.2
 
@@ -260,55 +261,7 @@ From [CodingBat](http://codingbat.com/prob/p182144):
 
 > Given two strings, a and b, return the result of putting them together in the order abba, e.g. "Hi" and "Bye" returns "HiByeByeHi". 
 
-## Regular expressions
-
-Large topic -- somewhat more advanced than 'basic programming', but worth a digression.  ([reference](https://docs.python.org/3/howto/regex.html))
-
-What if we are looking for some number, but we don't know what number?
-```{r re}
-import re
-bool(re.search('[0-9]', 'Plan 9'))
-```
-
-----------------------------------------------------------
-   Pattern   Description                                           
------------  ---------------------------------------------
- `^`         Beginning of line
- 
- `$`	     End of line    
- 
- `.`         Any single character except newline
- 
- `[...]`	 Any single character in brackets         
- 
- `[^...]`	 Any single character **not** in brackets 
- 
- `re*`	     0 or more occurrences of preceding expression
- 
- `re+`	     1 or more occurrence of preceding expression
- 
- `re?`	     0 or 1 occurrence of preceding expression  
- 
- `re1|re2`   match `re1` or `re2`
- 
- `()`        grouping
- 
-----------------------------------------------------------
-
-* How would you test whether a string contains a numeric value at the end (e.g. "Plan 99")?
-* What if the string might contain a comma (e.g. "Plan 99,478")?
-* What if you're looking for the abbreviations of rooms in Hamilton Hall (my office is HH314)?
-* ... rooms in LSB *or* HH?
-* substitution:
-```{r regsub}
-import re
-x = "(Smith, John), (Schmo, Joe)"
-re_pat = "\(([A-Z][a-z]+), ([A-Z][a-z.]*)\)"
-print(re.sub(re_pat,"(\\2 \\1)",x))
-```
-* in general if you want something to be interpreted **literally** in a regular expression (e.g. you want to look for `+` or `(` and not have them interpreted in their regular-expression sense), you need to use a *backslash* `\` as an "escape" character: for example, `"a\+b"` will look for the letter `a`, followed by a plus sign, followed by the letter `b` -- *not* one or more `a`s, followed by a `b` ([xkcd](http://xkcd.com/234/))
-
-# Lists and indexing
+# Lists and indexing (PP chapter 8)
 
 *reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
 
