@@ -1,0 +1,33 @@
+---
+title: "assignment"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+I was surprised by the picture on p. 20 of Gries *et al.*, which shows a variable (`difference`) that was previously set equal first to 26 and to 5 pointing at a new memory location containing 5, while the previous memory location is still there. I would have expected (based on C reflexes) that the same memory location would be overwritten by the new value, but this is not true: instead, Python allocates (semi-persistent) memory for the literal values it sees.
+
+```{r idvars}
+x = 1
+print(id(x))
+```
+
+```{r idvars2}
+print(id(1))
+```
+
+```{r idvars3}
+x = 2
+print(id(x))
+print(id(1))
+```
+
+Voilà, `x` is pointing at a new memory location, `1` is still sitting at the same old memory location.
+
+This is (perhaps better) explained [here](http://foobarnbaz.com/2012/07/08/understanding-python-variables/), with pretty pictures:
+
+> Other languages have 'variables'. Python has 'names'.
