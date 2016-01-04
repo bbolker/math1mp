@@ -25,7 +25,7 @@ You can also do this slightly more compactly with a more-advanced Python feature
 [format(2**x)[-1] for x in range(20)]
 ```
 
-The last digits also have a pattern, although it's a little bit less obvious:
+The most significant digits also have a pattern, although it's a little bit less obvious:
 ```{r engine="python"}
 print([format(2**x)[0] for x in range(20)])
 ```
@@ -34,4 +34,4 @@ Next things to do/extensions:
 
 * store the results as a list averaged by number of digits, so that we can go through and pick out the first/last/second-to-last etc. digit.
 * draw pictures
-* think about *computational complexity* of this problem, and do some timing to est the conjecture that it's $O(n \log n)$
+* think about *computational complexity* of this problem, and do some timing to test the conjecture that it's $O(n \log n)$
