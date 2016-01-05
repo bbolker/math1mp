@@ -3,18 +3,20 @@
 Revision: `r as.character(Sys.time())`
 
 ## Personnel
-* *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). When e-mailing, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**. Office hours Mon 3:30-4:30, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
-* *Teaching assistant*: Dexter Barrows (`barrowdd@mcmaster.ca`). When emailing, **please allow at least one full business day for responses.** Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
+
+* When e-mailing either the instructor or the TA about the course, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**.
+* *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). . Office hours TBA, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
+* *Teaching assistant*: Dexter Barrows (`barrowdd@mcmaster.ca`). When emailing, *please allow at least one full business day for responses.* Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
 
 ## Lectures
 
-* T,Th,F 11:30-12:20 (HH 302)
+* T, Th, F 11:30-12:20 (HH 302)
 
 ## Labs and assignments
 
 * T 12:30-13:20, Th 13:30-14:20 KTH B123
-* Labs start on Tuesday 12 Jan.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
-* Some assignments (in class and take-home) will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue.
+* Labs start on Tuesday 5 Jan.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
+* Some assignments (in class and take-home) will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue.  You need to register for (and pay for) CodeLab; see instructions below.
 
 ## Course material
 
@@ -23,7 +25,6 @@ Revision: `r as.character(Sys.time())`
 * The **optional** (but recommended) course textbook is Gries et al. *Practical Programming* 2d ed., available from the bookstore, the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy2/practical-programming)), or [amazon.ca](http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459).
 * It is recommended to print the lecture notes and bring them to class to make additional notes
 * Hopefully you will be able to get access to a laptop computer that you can bring to class; if this is going to a problem, please contact the instructor to make arrangements. You should install Python and PyCharm on your (laptop and/or desktop) computer, following instructions to be provided in class.
-
 
 ##  Evaluation
 
