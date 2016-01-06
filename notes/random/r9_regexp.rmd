@@ -1,0 +1,56 @@
+---
+title: "regular expressions"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+Large topic -- somewhat more advanced than 'basic programming', but worth a digression.  ([reference](https://docs.python.org/3/howto/regex.html))
+
+What if we are looking for some number, but we don't know what number?
+```{r re}
+import re
+bool(re.search('[0-9]', 'Plan 9'))
+```
+
+----------------------------------------------------------
+   Pattern   Description                                           
+-----------  ---------------------------------------------
+ `^`         Beginning of line
+ 
+ `$`	     End of line    
+ 
+ `.`         Any single character except newline
+ 
+ `[...]`	 Any single character in brackets         
+ 
+ `[^...]`	 Any single character **not** in brackets 
+ 
+ `re*`	     0 or more occurrences of preceding expression
+ 
+ `re+`	     1 or more occurrence of preceding expression
+ 
+ `re?`	     0 or 1 occurrence of preceding expression  
+ 
+ `re1|re2`   match `re1` or `re2`
+ 
+ `()`        grouping
+ 
+----------------------------------------------------------
+
+* How would you test whether a string contains a numeric value at the end (e.g. "Plan 99")?
+* What if the string might contain a comma (e.g. "Plan 99,478")?
+* What if you're looking for the abbreviations of rooms in Hamilton Hall (my office is HH314)?
+* ... rooms in LSB *or* HH?
+* substitution:
+```{r regsub}
+import re
+x = "(Smith, John), (Schmo, Joe)"
+re_pat = "\(([A-Z][a-z]+), ([A-Z][a-z.]*)\)"
+print(re.sub(re_pat,"(\\2 \\1)",x))
+```
+* in general if you want something to be interpreted **literally** in a regular expression (e.g. you want to look for `+` or `(` and not have them interpreted in their regular-expression sense), you need to use a *backslash* `\` as an "escape" character: for example, `"a\+b"` will look for the letter `a`, followed by a plus sign, followed by the letter `b` -- *not* one or more `a`s, followed by a `b` ([xkcd](http://xkcd.com/234/))
