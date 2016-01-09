@@ -1,0 +1,429 @@
+---
+title: "Tutorial 2: recap of Numbers, Strings, Logic, and Lists"
+date: "Tuesday January 12, 2016"
+author: Dexter barrows
+---
+
+```{r, echo = FALSE}
+library("knitr")
+opts_chunk$set(tidy = FALSE, eval = FALSE)
+```
+
+Most of the following is from the [Python 3.5.1 Documentation Tutorial](https://docs.python.org/3/tutorial/introduction.html).
+
+
+
+***
+
+## Numbers
+
+Recall that if you want to, you can use Python as a fancy calculator.
+
+```{python}
+>>> 2 + 2
+4
+>>> 50 - 5*6
+20
+>>> (50 - 5*6) / 4
+5.0
+>>> 8 / 5
+1.6
+```
+
+
+#### Typing and Mathematical Operators
+
+By default, integer numbers are stored as type `int`, decimal numbers as type `float`. Addition (`+`), subtraction (`-`), multiplication (`*`), and exponentiation (`**`) using integers will result in an `int`, but division will result in a `float` **no matter what**.
+
+```{python}
+>>> 2 + 2       # integer
+4
+>>> 2 * 3       # integer
+6
+>>> 2 ** 3      # integer
+8
+>>> 4 / 2       # float!!
+2.0
+```
+
+Similarly, operations between an `int` and a `float` will always result in a `float`.
+
+```{python}
+>>> 2 + 2.0     # float
+4.0
+>>> 2 ** 3.0    # float
+8.0
+```
+
+Integer division (discards the remainder) can be achieved using the `//` operator.
+
+```{python}
+>>> 4  / 2      # float
+2.0
+>>> 4 // 2      # integer
+2
+```
+
+We can compute _just_ the remainder using the modulo (`%`) operator.
+
+```{python}
+>>> 5 % 2
+1
+>>> 8 % 4
+0
+```
+
+
+#### Variables
+
+We can save results using variables, like so.
+
+```{python}
+>>> width = 20
+>>> height = 5 * 9
+>>> width * height
+900
+```
+
+Variable names must start with a letter, but may contain letters, numbers, and underscores
+
+
+
+
+***
+
+## Strings
+
+Strings, which can be thought of as arrays of characters, are represented in Python between either single `'` or double `"` quotes.
+
+```{python}
+>>> "Hello, world!"
+'Hello, world!'
+>>> 'Hello, world!'
+'Hello, world!'
+```
+
+Notice the internal representation is the same.
+
+The `print()` function can be used produce nicer-looking output.
+
+```{python}
+>>> print('Hello, world!')
+Hello, world!
+```
+
+#### Escaping
+
+Some special characters must be 'escaped' by preceding them with `\`, which tells python to just treat what follows as a regular character. For example, quotes of the same type as those that enclose the string must be escaped so as to not accidentally end the string...
+
+```{python}
+>>> print("\"Hello, world!\", said Professor Bolker")
+"Hello, world!", said Professor Bolker
+```
+
+... but other types of quotes do not.
+
+```{python}
+>>> print("'Hello, world!', said Professor Bolker")
+'Hello, world!', said Professor Bolker
+```
+
+#### String Operators
+
+Just like numbers, strings can be manipulated using operators.
+
+The (`+`) operator can be used to concatenate (glue together) strings.
+
+```{python}
+>>> 'Py' + 'thon'
+'Python'
+```
+
+The (`*`) operator repeats strings.
+
+```{python}
+>>> 3 * 'blah'
+'blahblahblah'
+```
+
+And just like with numbers, order of operations is preserved.
+
+```{python}
+>>> 3 * 'blah' + 'ium'
+'blahblahblahium'
+```
+
+The (`in`) operator searches a string for another string or substring, returning either `True` or `False`.
+
+```{python}
+>>> 'Py' in 'Python'
+True
+>>> 'gg' in 'Python'
+False
+```
+
+
+#### String Variables
+
+String variables work just like numerical variables.
+
+```{python}
+>>> prefix = 'Py'
+>>> word = 'thon'
+>>> prefix + word
+'Python'
+>>> prefix * 5 + word
+'PyPyPyPyPython'
+```
+
+#### Indexing
+
+We can retrieve individual characters or substrings from a string by using indices. Recall the following diagram from class.
+
+![slicing](pix/string-slicing.png)
+
+The top numbers show the indices counting forward, the bottom ones counting back. Notice that indexing from the front **starts at 0**. So if we wanted get the first character, we actually want the '0th' element.
+
+Elements are retrieved using square brackets `[]` after a string or string variable.
+
+```{python}
+>>> name = 'Monty Python'
+>>> name[0]
+'M'
+>>> name[1]
+'o'
+```
+
+Similarly, we can index from the back using negative indices, starting at -1.
+
+```{python}
+>>> name = 'Monty Python'
+>>> name[-1]
+'n'
+>>> name[-2]
+'o'
+```
+
+#### Slicing
+
+We can access ranges of elements using `[:]`.
+
+```{python}
+>>> name = 'Monty Python'
+>>> name[0:5]
+'Monty'
+>>> name[6:12]
+'Python'
+>>> name[6:10]
+'Pyth'
+>>> name[-12:-7]
+'Monty'
+>>> 
+```
+
+Notice that the start element specified *is* included but the stop element is *not* included.
+
+By default ranges are consecutive, i.e. `0:5` is `0,1,2,3,4`, but you can specify the *stride* using a second semicolon `:`, i.e. `0:5:2` is `0,2,4`.
+
+```{python}
+>>> name = 'Monty Python'
+>>> name[0:5]
+'Monty'
+>>> name[0:5:2]
+'Mny'
+>>> 
+```
+
+If you leave the start element or stop element blank, it will default to the start or end of the string, respectively.
+
+```{python}
+>>> name = 'Monty Python'
+>>> name[:5]
+'Monty'
+>>> name[6:]
+'Python'
+>>> name[:]
+'Monty Python'
+```
+
+
+
+
+***
+
+## Logic
+
+#### Equality
+
+Commonly, we need a way to compare values. We can do this using equality operators. The most used ones are equal to (`==`) and not equal to (`!=`).
+
+```{python}
+>>> 3 == 3
+True
+>>> 3 == 5
+False
+>>> 3 != 5
+True
+```
+
+This work for strings too.
+
+```{python}
+>>> 'hi' == 'hi'
+True
+>>> 'hi' == 'py'
+False
+>>> 'hi' != 'py'
+True
+```
+ 
+#### Inequality
+
+We can also use inequality operators less than (`<`) less than or equal to (`<=`) greater than (`>`) and greater than or equal to (`>=`) to compare numbers, which works as you would expect.
+
+```{python}
+>>> 3 < 5
+True
+>>> 3 <= 3
+True
+>>> 3 > 5
+False
+>>> 3 >= 2
+True
+```
+
+For strings, inequality operators do alphabetical comparison.
+
+```{python}
+>>> 'hi' < 'py'
+True
+>>> 'hi' > 'py'
+False
+>>> 'hi' <= 'py'
+True
+>>> 'hi' <= 'hi'
+True
+>>> 'hi' < 'hi'
+False
+```
+
+#### Basic Logic
+
+Basic logical operators `and`, `or`, and `not` work here too.
+
+```{python}
+>>> True and False
+False
+>>> False or False
+False
+>>> True or False
+True
+>>> not(True or False)
+False
+```
+
+Note that 1 is equivalent to `True` and 0 is equivalent `False`.
+
+```{python}
+>>> 1 and True
+True
+>>> False or 0
+0
+```
+
+
+***
+
+## Lists
+
+We can use lists to store values in an ordered arrangement.
+
+```{python}
+>>> a = [1,2,3]
+>>> a
+[1, 2, 3]
+```
+
+#### Accessing Elements
+
+The can be accessed using the same syntax as strings.
+
+```{python}
+>>> a = [1,2,3]
+>>> a[0]
+1
+>>> a[-1]
+3
+>>> a[0:2]
+[1, 2]
+```
+
+They can store values of different types.
+
+```{python}
+>>> b = [1,2,'py']
+>>> b[0]
+1
+>>> b[-1]
+'py'
+```
+
+You can also put lists in lists. Be careful with this.
+
+```{python}
+>>> b = [1,2,3]
+>>> b
+[1, 2, 3]
+>>> b[-1] = [4,5]
+>>> b
+[1, 2, [4, 5]]
+```
+
+#### Modifying Lists
+
+You can append a **single** element onto the end of a list using `append()`.
+
+```{python}
+>>> a = [1,2,3]
+>>> a
+[1, 2, 3]
+>>> a.append(4)
+>>> a
+[1, 2, 3, 4]
+```
+
+If you give `append()` a list as its argument, you get a nested list.
+
+```{python}
+>>> a = [1,2,3]
+>>> b = [4,5]
+>>> a.append(b)
+>>> a
+[1, 2, 3, [4, 5]]
+```
+
+You can extend a list with another list by using `extend()`.
+
+```{python}
+>>> a = [1,2,3]
+>>> b = [4,5]
+>>> a.extend(b)
+>>> a
+[1, 2, 3, 4, 5]
+```
+
+You can also concatenate lists using the (`+`) operator of extend them using the (`+=`) operator.
+
+```{python}
+>>> a = [1,2,3]
+>>> b = [4,5]
+>>> a + b
+[1, 2, 3, 4, 5]
+>>> b += a
+>>> b
+[4, 5, 1, 2, 3]
+```
+
+Note that in the above example `a + b` does not modify either `a` or `b`, but `b += a` **does** modify `b`.
+
+[Useful methods for working with lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists).
