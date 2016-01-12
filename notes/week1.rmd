@@ -198,6 +198,7 @@ type(x+q)
 type(True)
 type(True+1) ## WAT
 ```
+[^2](As [Dive into Python](http://www.diveintopython3.net/native-datatypes.html) says in a similar context, "Ew, ew, ew! Don’t do that. Forget I even mentioned it.")
 
 ## Arithmetic operators, precedence
 
