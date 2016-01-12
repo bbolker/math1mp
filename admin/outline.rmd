@@ -1,4 +1,4 @@
-# MATH 1MP3: Introduction to mathematical and scientific programming: Winter 2015
+# MATH 1MP3: Introduction to mathematical and scientific programming: Winter 2016
 
 Revision: `r as.character(Sys.time())`
 
@@ -28,10 +28,10 @@ Revision: `r as.character(Sys.time())`
 
 ##  Evaluation
 
-* Assignments (30%)
+* Assignments (20% home, 10% in-class)
 * Final project (20%)
 * Midterm test (20%)
-    * in class, February 13 (tentatively)
+    * in class, February 12 (tentatively)
 * Final exam (30%)
     * Will be scheduled by the Registrar
 
