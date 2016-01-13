@@ -1,0 +1,31 @@
+### Benford's Law
+
+Benford's law is ...
+
+Read it about it on [Wikipedia](http://en.wikipedia.org/wiki/Benford%27s_law) or
+[MathWorld](http://mathworld.wolfram.com/BenfordsLaw.html)
+
+Write a Python function `benford_count` that takes the name of a file (that will contain one number per line), opens the file, and tabulates the occurrences of last digits on each line.
+
+**NOTE** that if you follow the instructions below to read and process the file, the last character of each line is a *newline* character; if you want the last *digit* you need to get the second-to-last character of the string.
+
+```{r eval=FALSE}
+ff = open("benford.txt")
+for line in ff:
+    ## code
+```
+
+For example, if the text file contained only three lines
+```
+1,234
+123
+12
+```
+then the correct result would be `[0,0,1,1,1,0,0,0,0,0]` (i.e. the last digits per line in this file comprise one 2, one 3, and one 4; there are zero of every other digit).
+
+Keep in mind that (1) what you read out of the file will be a *string* and (2) you can turn a digit into an integer using `int()`, e.g.
+
+```{r}
+x = "7"
+print(int(x))
+```
