@@ -1,0 +1,22 @@
+---
+title: "math 1MP assignment 1"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+## Stuff assigned so far
+
+If you have just enrolled in the course/just signed up for CodeLab/just fixed your computer, you have until **Friday January 15** to get caught up with the initial set of in-class assignments; after that they will be marked down by 50%.
+
+* *in class January 8*: "arithmetic, variables, assignment": 51872,51029-5131, 51036-31037, 51871
+* *in class January 12*: "lists" 51600, 51601, 51203, 51201
+
+## New
+
+* "list indexing": all but first (51195, 51196, 51197, 51199, 51200, 51202, 51204, 51205, 51206, 51207, 51208, 51209)
+* "list concatenation": all (51611, 51612, 51613, 51614, 51615, 51616, 51617, 51618, 51619)
+* list-addition/retrieval/deletion: 51603, 51609, 51607
+* list-methods: 51212, 51602, 51606, 51610
+
+You should answer all of these by class time (11:30) on Thursday January 21. You don't need to hand anything in, just solve the problems on the [CodeLab web site](https://codelab3.turingscraft.com/codelab/jsp/login1.jsp).
+
