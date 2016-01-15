@@ -1,0 +1,38 @@
+---
+title: "the Collatz conjecture"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Collatz_conjecture):
+
+> Take any natural number n. If n is even, divide it by 2 to get n / 2. If n is odd, multiply it by 3 and add 1 to obtain 3n + 1. Repeat the process (which has been called "Half Or Triple Plus One", or HOTPO[6]) indefinitely. The conjecture is that no matter what number you start with, you will always eventually reach 1. 
+
+```{r colfun}
+def collatz(n,itmax=10000):
+    it = 0
+    while not n==1 and it<itmax:
+       it += 1
+       if n % 2 == 0:
+           n = n//2
+       else:
+           n = 3*n+1
+       print(n)
+    print(str(it)+" steps")
+
+collatz(4)
+collatz(10)
+```
+
+Some questions to think about:
+
+- when is the sequence of minimal length?
+- how does the length grow with the size of the initial $n$?
+
+But [be careful](https://xkcd.com/710/)!
