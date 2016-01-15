@@ -12,4 +12,6 @@ author: Ben Bolker
 * [note #6](r6_roman.html): stuff about Roman numerals
 * [note #7](r7_while.html): "do-while" loops
 * [note #8](r8_assignment.html): subtleties of assignment
+* [note #9](r9_regexp.html): regular expressions
+* [note #10](r10_collatz.html): the Collatz conjecture
 
