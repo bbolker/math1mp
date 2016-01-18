@@ -1,0 +1,170 @@
+---
+title: "Tutorial 3: recap of Conditions and Flow"
+date: "Tuesday January 19, 2016"
+author: Dexter barrows
+---
+
+```{r, echo = FALSE}
+library("knitr")
+opts_chunk$set(tidy = FALSE, eval = FALSE)
+```
+
+[Python documentation reference](https://docs.python.org/3/tutorial/controlflow.html).
+
+
+
+***
+
+## If Statements
+
+Conditionals, or selective code execution based on conditions, is critical to programming. The most common way to implement conditionality is by using `if` statements. In python these look like
+
+```{python}
+if (condition):
+    print("Condition is True")
+```
+
+The idea is the `print` statement will only by executed if `condition` evaluates to `True`. In practice this may look like
+
+```{python, eval = TRUE}
+x = 3
+y = 5
+if x < y:
+    print("x =", 3, "is less than y =", y)
+```
+
+Recall that Python is **indentation-sensitive**. If you want multiple instructions to be executed if an `if` statement evaluates to `True`, simply indent multiple instructions in a **code block**.
+
+```{python, eval = TRUE}
+x = 3
+y = 5
+if x < y:
+    print("x =", 3, "is less than y =", y)
+    print("Further, the difference is", x - y)
+```
+
+
+#### Else If / Else
+
+Sometimes we want something to happen if an alternative condition is `True`, or if none of the preceding conditions are `True`.
+
+To test alternative conditions we use `elif` (short for **el**se **if**) statements.
+
+```{python, eval = TRUE}
+x = 3
+y = 5
+if x < y:
+    print("x =", 3, "is less than y =", y)
+elif x > y:
+    print("x =", 3, "is greater than y =", y)
+```
+
+```{python, eval = TRUE}
+x = 3
+y = 2
+if x < y:
+    print("x =", 3, "is less than y =", y)
+elif x > y:
+    print("x =", 3, "is greater than y =", y)
+```
+
+To set a default condition if none of the previous conditions have been met, we can use an `else` statement.
+
+```{python, eval = TRUE}
+x = 3
+y = 3
+if x < y:
+    print("x =", 3, "is less than y =", y)
+elif x > y:
+    print("x =", 3, "is greater than y =", y)
+else:
+    print("x =", 3, "is equal to y =", y)
+```
+
+
+***
+
+## For Loops
+
+`For` loops provide an easy way to perform operations a set number of times. A common use case is to perform an operation involving multiple elements of a `list`.
+
+Example: counting word lengths.
+
+```{python, eval = TRUE}
+words = ['cat', 'window', 'defenestrate']
+for w in words:
+    print(w, "is", len(w), "letters long")
+```
+
+Note that during the loop execution, the list `words` is iterated through, and `w` is set to the current element.
+
+#### Ranges
+
+Python provides an easy way to build sequences of numbers using the `range()` function.
+
+```{python, eval = TRUE}
+for i in range(5):
+    print(i)
+```
+
+Note that `range(a)` with a single argument will produce a sequence from `0` up to but excluding `a`, so `0,1,2,...,a-1`. Also, `range()` will produce an `iterable`, not a list of numbers. 
+
+```{python, eval = TRUE}
+print( range(5) )
+```
+
+However the `list()` function can be used to convert a `range()` `iterable` into a `list`.
+
+```{python, eval = TRUE}
+print( list(range(5)) )
+```
+
+`range()` can be used to construct more complex sequences as well.
+
+We can specify a different starting point.
+
+```{python, eval = TRUE}
+print( list(range(1,5)) ) 
+```
+
+We can also specify the stride (like with list slicing).
+
+```{python, eval = TRUE}
+print( list(range(0,10,2)) )
+print( list(range(10,0,-1)) )
+```
+
+If you wanted to do something like the previous word-counting loop but needed more control or information, you can use `range()` and `len()`.
+
+```{python, eval = TRUE}
+words = ['cat', 'window', 'defenestrate']
+for i in range(len(words)):
+    print("Word", i, "is", words[i], "and is", len(words[i]), "letters long")
+```
+
+
+
+***
+
+## While Loops
+
+If we do not know how many iterations want a loop to run for, we can use a `while` loop.
+
+```{python, eval = TRUE}
+a = 0
+b = 1
+while b < 10:
+    print(b)
+    b_old = b
+    b += a
+    a = b_old
+```
+
+Note we can also use **multiple assignment**, a special Python feature.
+
+```{python, eval = TRUE}
+a, b = 0, 1
+while b < 10:
+    print(b)
+    a, b = b, a + b
+```
