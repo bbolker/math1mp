@@ -2,6 +2,10 @@
 title: "Tutorial 3: recap of Conditions and Flow"
 date: "Tuesday January 19, 2016"
 author: Dexter barrows
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
 ---
 
 ```{r, echo = FALSE}
@@ -30,7 +34,7 @@ The idea is the `print` statement will only by executed if `condition` evaluates
 x = 3
 y = 5
 if x < y:
-    print("x =", 3, "is less than y =", y)
+    print("x =", x, "is less than y =", y)
 ```
 
 Recall that Python is **indentation-sensitive**. If you want multiple instructions to be executed if an `if` statement evaluates to `True`, simply indent multiple instructions in a **code block**.
@@ -39,7 +43,7 @@ Recall that Python is **indentation-sensitive**. If you want multiple instructio
 x = 3
 y = 5
 if x < y:
-    print("x =", 3, "is less than y =", y)
+    print("x =", x, "is less than y =", y)
     print("Further, the difference is", x - y)
 ```
 
@@ -54,18 +58,18 @@ To test alternative conditions we use `elif` (short for **el**se **if**) stateme
 x = 3
 y = 5
 if x < y:
-    print("x =", 3, "is less than y =", y)
+    print("x =", x, "is less than y =", y)
 elif x > y:
-    print("x =", 3, "is greater than y =", y)
+    print("x =", x, "is greater than y =", y)
 ```
 
 ```{r, eval = TRUE}
 x = 3
 y = 2
 if x < y:
-    print("x =", 3, "is less than y =", y)
+    print("x =", x, "is less than y =", y)
 elif x > y:
-    print("x =", 3, "is greater than y =", y)
+    print("x =", x, "is greater than y =", y)
 ```
 
 To set a default condition if none of the previous conditions have been met, we can use an `else` statement.
@@ -74,11 +78,11 @@ To set a default condition if none of the previous conditions have been met, we 
 x = 3
 y = 3
 if x < y:
-    print("x =", 3, "is less than y =", y)
+    print("x =", x, "is less than y =", y)
 elif x > y:
-    print("x =", 3, "is greater than y =", y)
+    print("x =", x, "is greater than y =", y)
 else:
-    print("x =", 3, "is equal to y =", y)
+    print("x =", x, "is equal to y =", y)
 ```
 
 
