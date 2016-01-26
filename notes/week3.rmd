@@ -13,28 +13,35 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 ### Types of errors
 
-* syntax errors vs. logic errors
+* **syntax errors** vs. **logic errors**
 
-* failure modes:
+* failure modes from logic errors:
     * obvious failure
         * program stops with an error partway through: [bad mandelbrot #0](../code/mandelbrot/noinit.py)
         * Python crashes
         * machine crashes
 		* program never stops (infinite loop)
     * wrong answer
-	    * always
-        * occasionally
+	    * always vs. sometimes (obvious categories) vs. sometimes (mysterious)
+		* obvious vs. subtle
 
 Next section follows [this presentation](http://space.wccnet.edu/~pmillis/cps120/presentations/program_logic_errs.ppt)
 
-* infinite loops: [bad mandelbrot #1](../code/mandelbrot_infloop.py)
-* incorrect operator precedence, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
+-  infinite loops:
+```{r infloop,eval=FALSE}
+print("Please enter (y)es or (n)o")
+cin = input()
+while ((response != "y") or (response != "n")):
+   print("Please try again")
+```
+ [bad mandelbrot #1](../code/mandelbrot_infloop.py)
+* operator precedence mistakes, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
 ```{r FCconv,eval=FALSE}
 fahrdiff = celsius_high - celsius_low * 1.8
 ```
-* off-by-one error ("fencepost problem")
-* ... more generally, **edge** or **corner cases**
-* incorrect code inside/outside loops: 
+- off-by-one error ("fencepost problem")
+   -  ... more generally, **edge** or **corner cases**
+* code incorrectly inside/outside loops: 
    * [bad mandelbrot #2](../code/mandelbrot_badloop1.py)
    * [bad mandelbrot #3](../code/mandelbrot_badloop2.py)
    * [bad mandelbrot #4](../code/mandelbrot_badloop3.py)
@@ -47,13 +54,16 @@ fahrdiff = celsius_high - celsius_low * 1.8
 
 ## Debugging
 
-* *brute-force logic*: stare at your code, try to figure out what's wrong    
-(test cases really help: why is it failing in one specific situation?)
-* flow charts, *pseudocode*
-* `print()`
-* interactive tracing
-* debugging tools (breakpoints/watchpoints/watches)
-* checkpointing
+- *brute-force logic* ("Feynman method"): stare at your code, try to figure out what's wrong  
+(test cases: why is it failing in one specific situation?)
+- flow charts, *pseudocode*
+- tracing (`print()` statements)
+    - put print statements before and after `if` conditions
+	- before and after loops
+	- in places where you suspect something might go wrong
+- interactive tracing
+- debugging tools (breakpoints/watchpoints/watches)
+
 
 ## Searching for/asking for help
 
