@@ -1,0 +1,19 @@
+---
+title: "math 1MP assignment 2"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+Due Tuesday 2 February before class.
+
+- "Loops" section
+    - `for` and ranges -- ALL (51176 already assigned; 51177, 51259, 51250, 51286, 51268, 51269, 51929-51934)
+    - `while` loops: all but last (i.e. 51253): 51180, 51181, 51187, 51251 (already assigned), 51252, 51253
+    - nested loops: 51946, 51945
+    - loops and strings: 51272, 51273
+- "Lists" section
+    - list-traversal: 51214
+    - loops and lists: 51290, 51292
+
+You should answer all of these by class time (11:30) on Tuesday February 2. You don't need to hand anything in, just solve the problems on the [CodeLab web site](https://codelab3.turingscraft.com/codelab/jsp/login1.jsp).
+
