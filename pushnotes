@@ -1,0 +1,6 @@
+#!/bin/bash
+git checkout gh-pages
+git checkout master $*
+git commit -a -m "auto-push material"
+git push
+git checkout master
