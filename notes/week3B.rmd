@@ -32,6 +32,7 @@ Reference: [Python tutorial section 4.6](https://docs.python.org/3/tutorial/cont
 
 ```{r}
 def foo(x):
+
     x += 1
     return(x)
 x = 2
@@ -41,9 +42,12 @@ z = 2
 print(foo(z))
 print(z)
 ```
+
 Since `z` is a number (**immutable**), it doesn't change; if you want it to change, use `z=foo(z)`
 
-Changes within functions follow **the same rules we learned on Wednesday**.
+Changes within functions follow the standard mutability rules:
+
+![mutability mnemonic](pix/mut_obj.png)
 
 Compare:
 
