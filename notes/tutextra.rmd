@@ -1,0 +1,84 @@
+---
+title: "Extra Python Practice"
+date: "Tuesday February 2, 2016"
+author: Dexter barrows
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+---
+
+```{r, echo = FALSE, warning = FALSE}
+library("knitr")
+opts_chunk$set(tidy = FALSE, engine = 'python',engine.path = 'python3')
+```
+
+[Python documentation reference](https://docs.python.org/3/tutorial/controlflow.html).
+
+***
+
+## Quick Functions
+
+When you do something like this
+
+```{r}
+numlist = [1,2,3]
+print( sum(numlist) )
+```
+
+you are calling two functions, `print()` and `sum()` that are built into Python.
+
+You can define your own functions using this structure:
+
+```{r, eval = FALSE}
+def function_name(arg1, arg2, ...):
+	body_1
+	body_2
+	...
+	return value
+```
+
+For example, an alternative to the built in `sum()` function:
+
+```{r}
+def dex_sum(alist):
+	total = 0
+	for a in alist:
+		total += a
+	return total
+
+numlist = [1,2,3]
+print( sum(numlist) )
+print( dex_sum(numlist) )
+```
+
+Note that for **all** functions:
+
+- `def` is keyword to tell Python we are defining a function
+- `return` is used to return a value or object
+
+And for this example in particular:
+
+
+- `dex_sum` is the name of the function you are defining
+- `alist` is the argument passed into the function
+
+
+
+***
+
+## CodingBat
+
+[CodingBat](http://codingbat.com/python) is a site where you can practice Python, similar to [CodeLab](http://www.turingscraft.com/go.html).
+
+All CodingBat exercises ask you to fill in the body of a function (see above).
+
+Please try to do (some of these are a bit tricky):
+
+- [Logic 1](http://codingbat.com/python/Logic-1)
+- [List 2](http://codingbat.com/python/List-2)
+- [String 2](http://codingbat.com/python/String-2)
+
+If you get bored and/or want more of a challenge:
+
+- [Logic 2](http://codingbat.com/python/Logic-2)
