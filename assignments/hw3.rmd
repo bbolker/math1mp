@@ -1,0 +1,27 @@
+---
+title: "math 1MP assignment 3"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+Due Tuesday 9 February at midnight (the end of the day), in the Dropbox on Avenue to Learn.
+
+- Your assignment *must* be submitted as a module (text file) called `yourmacid_hw3.py`, e.g. mine would be `bolker_hw3.py`.
+- All of your functions *must* have docstrings.
+
+1. Write a function `prime1` that tests whether a specified natural number `n` is prime and returns a boolean value. In order to do this, you need to test whether it is divisible by any number between 2 and $\sqrt{n}$ (hint: your range should end at `round(math.sqrt(n))+1`; don't forget to `import math`).
+2. Write a function `allprimes` that takes uses a `for` or `while` and calls `prime1` to generate and return a list of all of the primes between 2 and a specified natural number `n` (inclusive)
+3. Write a function called `sieve1` that implements a version of *Eratosthenes' sieve*: generate a list of the primes between 2 and a specified natural number `n` (inclusive):
+    - set up a target list of values between 2 and $n$
+    - loop over the values $i$ between 2 and $\sqrt{n}$
+	    - if $i$ is in the target list, find its location in the list
+		- test the *next* value in the list and all subsequent elements; if they are divisible by $i$, remove them from the list (e.g. by using the `.remove()` method). **Loop over values in the list and not over indices of the list; the indices will get messed up when you remove elements from the list
+	- don't forget to return the final list
+4. Implement Newton's method. Write a function called `newton` that takes a starting value `x`, a target function `f`, another function `g` that calculates the first derivative of the target function, and a tolerance value `tol`. Starting from $x$, repeatedly set $x = x-f(x)/g(x)$ until the absolute value of $f(x)$ is less than `tol`. Return the final $x$ value. For example, if we define `f` and `g` as
+```
+def f(x):
+   return(x**2-3)
+def g(x):
+   return(2*x)
+```
+Then `newton(5,f,g,tol=1e-6)` should return 1.7320508078819778.
