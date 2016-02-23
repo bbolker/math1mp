@@ -8,13 +8,11 @@ def setup_dict():
     dd = dict(zip(range(10),(0,)*10))
     return(dd)
 
-
 ## http://stackoverflow.com/questions/3559559/how-to-delete-a-character-from-a-string-using-python
 def remove_all(x,v=","):
     """remove all instances of v from x"""
     x = x.replace(v,"")
     return(x)
-
 
 def update_dict(dd,n,digit=0):
     """add specified digit of number n to dictionary dd"""
