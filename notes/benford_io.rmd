@@ -1,0 +1,126 @@
+---
+title: "Benford's Law; file I/O in Python"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+```
+
+## Benford's law
+
+*Benford's law* describes the (surprising) distribution of first digits of many different sets of numbers.
+Read it about it on [Wikipedia](http://en.wikipedia.org/wiki/Benford%27s_law) or
+[MathWorld](http://mathworld.wolfram.com/BenfordsLaw.html)
+
+We'll write a Python function `benford_count` that tabulates the occurrence of digits from a set of numbers
+
+- we'll write the following functions:
+    - `init_dict()`: initialize a dictionary indexed by digits. (Overkill for this example.)
+	    - `for` loop
+		- or `zip()` function: in general, this "flips" a set of tuples, combining the first elements, second elements, ... The results come back as a "zip object", but can be converted via `list()` or `tuple()`, e.g.
+```{r zip1}
+zz = zip(("a","b","c"),(1,2,3),("A","B","C"))
+print(tuple(zz))
+```
+
+- <!-- -->
+    - `update_dict(dd,n)`: account first digit of number `n` in the dictionary
+	- `benford_loop(d)`: loop over a set of digits `d`
+    - test!
+- But where do we get our numbers from?
+
+## file I/O
+
+### A bunch of ways to read a file
+
+[Reference](https://docs.python.org/3/tutorial/inputoutput.html)
+
+- `f = open(filename,mode)` (mode = `r` for reading, `w` for writing, `a` for appending) - text by default; returns a **file object**
+```{r openfile}
+f = open("test.txt")
+print(f)
+```
+- `f.read(size)`; reads `size` characters (`f.read()` reads the whole file), unless we are at the end of the file; then returns `''`
+```{r readfile}
+f = open("test.txt")
+print(f.read())
+```
+- includes **new lines** (`\n`)
+- or we can read a line at a time, or read lines into a list:
+```{r readline}
+f = open("test.txt")
+L = f.readline() ## read one line
+print(L)
+print(L,end="")  ## print normally *appends* a newline
+print(repr(L))   ## repr() prints a *representation* of the line
+L2 = f.readlines()
+print(L2)
+```
+- you can use a `for` loop: `for L in f: do_something_with(L)`.
+- the file object keeps track of how much has been read
+
+### `next()`, and more flow control
+
+- what if we want to a little more control? **next()** function, works on any **iterable** (tuples, lists, ranges, files ...)
+```{r loop}
+f = open("test.txt")
+L = next(f) ## read one line
+print(L)
+```
+- when you get to the end of a file (or a list or whatever) and try to use `next()` you get a `StopIteration` error; use `try`/`except` to handle it safely
+```{r nextloop}
+f = open("test.txt")
+finished = False
+while not finished:
+   try:
+      L = next(f)
+   except StopIteration:
+      finished = True
+```
+- `try` is a *general* way to handle errors safely
+- While we're catching up: `break` is also useful. It bails out prematurely of any `while` or `for` loop, e.g.
+
+```{r break1}
+for i in range(5):
+   print(i)
+   if i==3:
+      break
+```
+- a standard idiom for doing something until it works:
+```{r break2,eval=FALSE}
+while True:
+   try:
+      x = int(input("enter a number: "))
+      break
+   except ValueError:
+      print("Try again!")
+```
+
+### More I/O details
+
+- getting rid of pesky newlines: `.strip()` method for strings (gets rid of leading and trailing *whitespace*)
+```{r strip}
+f = open("test.txt")
+L = f.readline() ## read one line
+print(repr(L))
+print(repr(L.strip()))
+```
+- breaking lines into words: `.split()` method for strings
+```{r split}
+f = open("test.txt")
+L = f.readline() ## read one line
+LL = L.strip().split(" ")
+print(LL)
+```
+
+
+**next time**: reading a file from the web (opening a URL); removing commas; reading CSV files
+
+<!-- 
+   http://testingbenfordslaw.com/
+   scrape:
+   http://www.atlasoftheuniverse.com/stars.html
+-->
