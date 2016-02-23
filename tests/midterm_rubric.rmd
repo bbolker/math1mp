@@ -1,0 +1,158 @@
+---
+title: "Math 1MP3, midterm test"
+date: "12 February 2016"
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+```
+
+* Please write your name and student number on this test and on your answer booklet
+* You have 50 minutes
+* No external aids (calculator, textbook, notes)
+* Please number your answers clearly in the test booklet
+
+<!-- \newpage -->
+
+1. *String slicing and indexing*:
+suppose `S1` is a variable holding the string `'Some stuff'`. (The quotation marks delimit the string; they are not part of the string.)
+How would you select the following letters/substrings? (1 point each)
+
+a. `'S'` **answer**: `S1[0]`
+b. `'ome'` **answer**: `S1[1:4]`
+c. `'ff'` **answer**: `S1[8:10]` *or* `S1[-2:]`
+
+**rubric**: straightforward
+
+2. *List slicing, indexing, and manipulation*:
+What are the results of the following Python commands? (1 point each; assume that these commands are *not* run sequentially, or that `L1` is reset to its original values between each command)
+
+```{r setup}
+L1 = [[1,2,3],[],[4,5]]
+```
+
+a. `print(len(L1[1]))` **answer**: 0
+b. `print(L1[2][-1])` **answer**: 5
+c. `print(L1 + [6])` **answer**: `[[1,2,3],[],[4,5],6]`
+c. `L1.extend([6]); print(L1)` **answer**: `[[1,2,3],[],[4,5],6]`
+d. `L1.append(6); print(L1)` **answer**: `[[1,2,3],[],[4,5],6]`
+e. `L1.append(L1[2]); print(L1)` **answer**: `[[1,2,3],[],[4,5],[4,5]]`
+
+**rubric**: straightforward
+
+3. (4 points) Write a function `fun2(x)` that returns `"a"` if `x` is even and non-negative (i.e. zero or positive); `"b"` if `x` is even and negative; `"c"` if `x` is odd and non-negative; and `"d"` if `x` is odd and negative.
+
+**answer**:
+```{r q4}
+def fun2(x):
+   if x>=0 and x % 2 == 0:
+      return("a")
+   if x<0 and x % 2 == 0:
+      return("b")
+   if x>=0 and x % 2 == 1:
+      return("c")
+   return("d")
+```
+
+**rubric**: -1 per logical failure/incorrect case (don't lose multiple marks for making the same mistake repeatedly, e.g. not knowing how to use `%` for odd/even values; -1 for not writing a function or failing to return values or put quotation marks around strings. Many reasonable variations on this function (setting a return value and returning it at the end; combining/nesting `if` statements in a sensible way; etc.).
+
+4. (4 points) What is the outcome of the following Python code?
+```{r results="hide"}
+L1 = [1,2,3,4,5]
+def rev(x):
+   x.reverse()
+   return(x)
+L2 = rev(L1)
+L3 = rev(L2)
+print(L1)
+print(L2)
+print(L3)
+```
+Give a *short* (single sentence/phrase) explanation of what's going on here.
+
+**answer**: the original value of the list (`[1,2,3,4,5]`) is printed three times. 2 points for printed results (only 1 point for getting `L1` and `L3` correct, because the crux is realizing that since lists are mutable, `L2` will also get reversed). 2 points for an explanation that points out that lists are mutable so that `L2` will get switched back (don't need to use the word "mutable", could say something about "lists don't really get copied"). 
+
+For further clarification, take a look at [this movie](Q4.mov) ...
+
+5. (5 points) Write a function `switchfun` that takes a string and interchanges its odd and even letters. For example, `switchfun("hello")` should return `"ehllo"`; `switchfun("goodbye")` returns `"ogdoybe"`. 
+
+**answer**:
+```{r switchfun}
+def switchfun(s):
+   res = ""
+   for i in range(0,len(s),2):
+      if i<=len(s)-2:
+         res += s[i+1]
+      res += s[i]
+   return(res)
+```
+
+**rubric**: -1 per logical failure/mistake (e.g. running off the end of the array); -1 for not writing a function or failing to return values or forgetting that strings are immutable (i.e. trying to modify the string in place). There may be simpler, less-efficient ways to do this one ... Reversing slices (i.e. `res += s[i+2:i:-1]` would be cleverer because it doesn't complaining about going past the end of the string ...
+
+6. (3 points for each separate example) Each of the following code chunks has a problem. Explain what problem/error each will produce (assume that this code is run in a clean Python session, i.e. no variables have been previously defined):
+
+a.
+```{r eval=FALSE}
+x = "hello"
+x[5]
+```
+**answer**: index error, 5 is one past the end of the string
+b.
+```{r eval=FALSE}
+i = 0
+x = 0
+while i<5:
+   x += 1
+```
+**answer**: infinite/endless loop because `i` is not incremented
+c.
+```{r eval=FALSE}
+i = 0
+while i<5:
+   i += 1
+   x += 2
+```
+**answer**: name error, `x` is not defined
+
+**rubric**: the specific error type is not required, just some indication that the student knows what's going on.
+
+7. (5 points) Write a function `mat_total(m)` that takes a square, nested tuple (i.e. a tuple of `n` tuples that are all the same length `n`, for example `((1,2,3), (7,15,2), (4,1,8))` (don't assume that `n` is already defined!)) and returns the sum of all of the elements. (The correct return value for the example here is 43.)
+
+```{r mat_total}
+def mat_total(m):
+   res = 0
+   n = len(m)
+   for i in range(n):
+      for j in range(n):
+         res += m[i][j]
+   return(res)
+```
+
+A cleverer version of this answer takes advantage of `sum()` (which only works on *unnested* tuples) and loops over the elements top-level tuple, rather than its indices:
+
+```{r mat_total2}
+def mat_total(m):
+   res = 0
+   for i in m:
+        res += sum(m)
+   return(res)
+```
+
+**rubric**: -1 point each for basic errors (not defining a function, forgetting to return a value); -1 point each for logic errors (forgetting to initialize, forgetting to check the length, putting statements in the wrong looping level. `sum()` could be substituted (probably in the inner loop); if anyone uses `sum((sum(x) for x in m))` then they don't belong in this class!
+
+8. (8 points) Write a function `num_of_div(val,div,target,maxit)` that returns the number of times (up to a maximum of `maxit`) you need to successively divide `val` by `div` before it is less than `target`.  (You can assume that `val`, `div`, and `target` are all positive numeric values, that `div` is >1 [although it shouldn't really matter] and that `maxit` is a positive integer.) If the function reaches `maxit` and the value is still greater than `target`, it should raise a `ValueError`. For example: `num_of_div(12,div=3,target=1,maxit=8)` will compute (1) `12/3=4`; (2) `4/3=1.333333`; (3) `1.333333/3=0.444444`, which is <1, so the function should return 3.
+
+**rubric**: also hard to grade. Should be relatively easy since answer was shown before the test! -1 for silly problems (bad definition, no `return`); -2 for logic problems, including forgetting the `maxit` check or mis-implementing it. There are several possibilities for how to test the `maxit` criterion. No points lost for `val>=target`.
+```{r}
+def fun(val,div,target,maxit):
+    """silly function for an exam"""
+    it = 0
+    while val>target and it<=maxit:
+        val /= div ## or val = val/div
+        it += 1    ## or it = it+1
+    if it==maxit and val>target:
+        raise ValueError
+    return(it)
+```
+
