@@ -1,0 +1,36 @@
+---
+title: "math 1MP assignment 4"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+Due Thursday 3 March at midnight (the end of the day), in the Dropbox on Avenue to Learn.
+
+- CodeLab questions:
+   - Dictionaries section: 51815-51818, 51820-51825, 51302, 51828-51831, 51826, 51300, 51299. The middle text of 51300 is a little confusing, it should read:
+
+>  for each entry `(a, b)` in `d1`, if `a` is not a key of `d2` (i.e., `not a in d2`) then add `(a,b)` to the new dictionary. For each entry `(a, b)` in `d2`, if `a` is not a key of `d1` (i.e., `not a in d1`) then add `(a,b)` to the new dictionary 
+
+- The remaining question *must* be submitted as a module (text file) called `yourmacid_hw4.py`, e.g. mine would be `bolker_hw4.py`.
+- All of your functions *must* have docstrings.
+
+1. Write a function, `add_bigram(d,key,w)` that takes a word (character string) `w` and adds it to a dictionary `d` (but returns `None`) according to the following rules:
+
+    - if `key` is not in the dictionary, initialize the entry with a list containing just the word `w`. For example, `d = {}; add_bigram(d,"first","second")` should result in `d` equal to `{"first": ["second"]}`
+	- if `key` is already in the dictionary, append the word `w` to the existing list. For example, if *after* updating the dictionary as in the previous example we ran `add_bigram(d,"first","other")`, `d` should now be equal to `{"first": ["second","third"]}`
+
+2. Write a function, `create_bigram_dict(fn)` that takes a file name `fn` and:
+
+- opens the associated file for reading;
+- creates an empty dictionary;
+- loops over lines
+     - loops over *pairs* of words within lines; for each consecutive pair `w1`, `w2` call `add_bigram(d,w1,w2)`.  For example, if the line is `now is the time`, you would do the equivalent of calling
+	     - `add_bigram(d,"now","is")`
+		 - `add_bigram(d,"is","the")`
+		 - `add_bigram(d,"the","time")`
+(Don't forget to use `strip` to get rid of newline characters ...)
+- returns the dictionary
+
+If you download the test file `darwin_nopunct.txt` and run `dd = create_bigram_dict("darwin_nopunct.txt"); print(dd["so"])` you should get `['different', 'complex', 'high', 'simple']`.
+
+You may make sensible assumptions (the file exists and is not empty, every line contains at least two words, ...)
