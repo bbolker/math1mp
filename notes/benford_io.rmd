@@ -116,7 +116,6 @@ LL = L.strip().split(" ")
 print(LL)
 ```
 
-
 **next time**: reading a file from the web (opening a URL); removing commas; reading CSV files
 
 <!-- 

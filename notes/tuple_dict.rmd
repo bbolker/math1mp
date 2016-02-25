@@ -65,7 +65,19 @@ dict(x)
 ```{r}
 d = dict(A=1,B=2,C=3)
 d["D"]=5
-del d["A"]  ## or d.pop("A")
+del d["A"]
+d.pop("C")
+```
+* alternate syntax:
+```{r dict2}
+{"A":1, "B":2, "C":3}  ## need quotes around keys
+{} ## empty dictionary
+```
+* loop over *keys* in a dictionary:
+```{r dict3,eval=FALSE}
+d = dict(A=1,B=2,C=3)
+for i in d.keys():
+    ## do something
 ```
 
 More Roman numerals!
