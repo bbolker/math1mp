@@ -31,6 +31,6 @@ Due Thursday 3 March at midnight (the end of the day), in the Dropbox on Avenue 
 (Don't forget to use `strip` to get rid of newline characters ...)
 - returns the dictionary
 
-If you run `dd = create_bigram_dict("darwin_nopunct.txt"); print(dd["so"])` you should get `['different', 'complex', 'high', 'simple']`.
+If you download the test file `darwin_nopunct.txt` and run `dd = create_bigram_dict("darwin_nopunct.txt"); print(dd["so"])` you should get `['different', 'complex', 'high', 'simple']`.
 
 You may make sensible assumptions (the file exists and is not empty, every line contains at least two words, ...)
