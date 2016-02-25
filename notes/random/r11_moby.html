@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">counting whales in Moby Dick</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>13:45 25 February 2016</em></h4>
+<h4 class="date"><em>13:52 25 February 2016</em></h4>
 </div>
 
 
@@ -83,7 +83,7 @@ words = all.lower()
 ## remove punctuation &lt;http://tinyurl.com/pythonpunct&gt;
 words = re.sub('['+string.punctuation+']', '', words)
 words = words.split()
-w1 = words.count(&quot;whale&quot;)  ## 495
+w1 = words.count(&quot;whale&quot;)
 w2 = len(words)
 print(&quot;whales: &quot;+str(w1))
 print(&quot;words: &quot;+str(w2))

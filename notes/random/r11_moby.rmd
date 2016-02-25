@@ -26,7 +26,7 @@ words = all.lower()
 ## remove punctuation <http://tinyurl.com/pythonpunct>
 words = re.sub('['+string.punctuation+']', '', words)
 words = words.split()
-w1 = words.count("whale")  ## 495
+w1 = words.count("whale")
 w2 = len(words)
 print("whales: "+str(w1))
 print("words: "+str(w2))
