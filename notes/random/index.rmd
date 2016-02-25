@@ -14,4 +14,5 @@ author: Ben Bolker
 * [note #8](r8_assignment.html): subtleties of assignment
 * [note #9](r9_regexp.html): regular expressions
 * [note #10](r10_collatz.html): the Collatz conjecture
+* [note #11](moby.py): counting "whale"s in Moby Dick
 
