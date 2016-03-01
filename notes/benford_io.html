@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 <h1 class="title">Benford’s Law; file I/O in Python</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>21:44 29 February 2016</em></h4>
+<h4 class="date"><em>21:49 29 February 2016</em></h4>
 
 </div>
 
@@ -124,15 +124,9 @@ $(document).ready(function () {
 <ul>
 <li><code>init_dict()</code>: initialize a dictionary indexed by digits. (Overkill for this example.)
 <ul>
-<li><code>for</code> loop</li>
-<li>or <code>zip()</code> function: in general, this “flips” a set of tuples, combining the first elements, second elements, … The results come back as a “zip object”, but can be converted via <code>list()</code> or <code>tuple()</code>, e.g.</li>
+<li><code>for</code> loop ```</li>
 </ul></li>
 </ul></li>
-</ul>
-<pre class="python"><code>zz = zip((&quot;a&quot;,&quot;b&quot;,&quot;c&quot;),(1,2,3),(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;))
-print(tuple(zz))</code></pre>
-<pre><code>## (('a', 1, 'A'), ('b', 2, 'B'), ('c', 3, 'C'))</code></pre>
-<ul>
 <li><!-- -->
 <ul>
 <li><code>update_dict(dd,n)</code>: account first digit of number <code>n</code> in the dictionary</li>
@@ -249,8 +243,8 @@ print(LL)</code></pre>
 <ul>
 <li><code>zip(a,b,c)</code>, where <code>a</code>, <code>b</code>, <code>c</code> are lists or tuples of the same length, puts together the first elements, second elements, third elements … for example</li>
 </ul>
-<pre class="python"><code>print(zip((&quot;A&quot;,&quot;B&quot;,&quot;C&quot;),(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;),(1,2,3)))</code></pre>
-<pre><code>## &lt;zip object at 0x2af36c764cc8&gt;</code></pre>
+<pre class="python"><code>print(tuple(zip((&quot;A&quot;,&quot;B&quot;,&quot;C&quot;),(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;),(1,2,3))))</code></pre>
+<pre><code>## (('A', 'a', 1), ('B', 'b', 2), ('C', 'c', 3))</code></pre>
 <ul>
 <li>this comes in handy sometimes. It makes a handy way to invert a dictionary: <code>dict(zip(d.values(),d.keys()))</code></li>
 </ul>
