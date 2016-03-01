@@ -20,10 +20,6 @@ We'll write a Python function `benford_count` that tabulates the occurrence of d
 - we'll write the following functions:
     - `init_dict()`: initialize a dictionary indexed by digits. (Overkill for this example.)
 	    - `for` loop
-		- or `zip()` function: in general, this "flips" a set of tuples, combining the first elements, second elements, ... The results come back as a "zip object", but can be converted via `list()` or `tuple()`, e.g.
-```{r zip1}
-zz = zip(("a","b","c"),(1,2,3),("A","B","C"))
-print(tuple(zz))
 ```
 
 - <!-- -->
@@ -122,7 +118,7 @@ print(LL)
 
 - `zip(a,b,c)`, where `a`, `b`, `c` are lists or tuples of the same length, puts together the first elements, second elements, third elements ... for example
 ```{r zip}
-print(zip(("A","B","C"),("a","b","c"),(1,2,3)))
+print(tuple(zip(("A","B","C"),("a","b","c"),(1,2,3))))
 ```
 - this comes in handy sometimes.  It makes a handy way to invert a dictionary: `dict(zip(d.values(),d.keys()))`
 
