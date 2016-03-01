@@ -15,4 +15,5 @@ author: Ben Bolker
 * [note #9](r9_regexp.html): regular expressions
 * [note #10](r10_collatz.html): the Collatz conjecture
 * [note #11](r11_moby.html): counting "whale"s in Moby Dick
+* [note #12](r12_dictinv.html): 5 ways to invert a dictionary
 
