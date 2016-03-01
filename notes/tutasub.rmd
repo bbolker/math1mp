@@ -1,0 +1,78 @@
+---
+title: "Assignment 4 Submission Notes"
+date: "Tuesday March 1, 2016"
+author: Dexter Barrows
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+---
+
+```{r, echo = FALSE, warning = FALSE}
+library("knitr")
+opts_chunk$set(tidy = FALSE, engine = 'python',engine.path = 'python3')
+```
+
+***
+
+## Filename
+
+As stated in the assignment instructions, your filename **must** be in the format `yourmacid_hw4.py`.
+
+Incorrect filename formats that I have seen:
+
+* `yourmacid.py` - missing `_hw4`
+* `yourmacid_HW4` - capitals
+* `yourmacid_hm4.py` - should be `hw4` not `hm4`
+* `yourmacid_hw4(py).txt` - wrong extension, brackets
+
+You **will lose marks** if your filename is not in the correct format.
+
+***
+
+## File Contents
+
+Your submission **must contain only functions** and **nothing else**.
+
+For example, if my file was named `barrowdd_hw4.py` and contained:
+
+```{r, eval = FALSE}
+def add_bigram(d, key, w):
+	"""Docstring for add_bigram"""
+	...
+	...
+
+def create_bigram_dict(fn):
+	"""Docstring for create_bigram_dict"""
+	...
+	...
+```
+
+then this would be correct. If you want, you can test your code by adding a check to determine if the program is the main one or if it has been imported as a module (which is how I check them).
+
+This looks like:
+
+```{r, eval = FALSE}
+def add_bigram(d, key, w):
+	"""Docstring for add_bigram"""
+	...
+	...
+
+def create_bigram_dict(fn):
+	"""Docstring for create_bigram_dict"""
+	...
+	...
+
+if __name__ == "__main__":
+	fn = "darwin_nopunct.txt"
+	dd = create_bigram_dict(fn)
+	print( dd["so"] )
+```
+
+The idea is that anything after the `if __name__ = ...` check will only be executed if you are running it, but not if I am running it.
+
+***
+
+## Improper Collaboration
+
+There were many submissions for Assignment 3 that were obvious examples of improper collaboration (I have a list). We are giving you the benefit of the doubt **once**. Further suspicious submissions will result in a mark of 0.
