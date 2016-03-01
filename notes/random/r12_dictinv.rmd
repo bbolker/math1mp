@@ -1,0 +1,49 @@
+---
+title: "Five ways to invert a dictionary"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+1. Simplest/most straightforward:
+```{r dict1}
+d = {"A":1,"B":2,"C":3}
+inv = {}
+for k in d.keys():
+   inv[d[k]] = k
+```
+
+2. Alternative: use `d.items()`, iterate over tuples
+```{r dict2}
+d = {"A":1,"B":2,"C":3}
+inv = {}
+for a,b in d.items():
+   inv[b] = a
+```
+
+3. Iterate over tuples, build up a reversed list, pass it to `dict()`
+```{r dict3}
+d = {"A":1,"B":2,"C":3}
+invlist = []
+for a,b in d.items():
+   invlist.append([b,a])
+inv = dict(invlist)
+```
+
+4. Same thing with a list comprehension:
+```{r dict7}
+d = {"A":1,"B":2,"C":3}
+dict([[b,a] for a,b in d.items()])
+```
+
+5. Or using `zip()`:
+```{r dict4}
+d = {"A":1,"B":2,"C":3}
+dict(zip(d.values(),d.keys()))
+```
+
+More suggestions?
