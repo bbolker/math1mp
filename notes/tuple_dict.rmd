@@ -51,7 +51,8 @@ print(x)
 * **unordered**
 * efficient: *hashing*
 ```{r dict1}
-d = dict(A=1,B=2,C=3)
+d = {"A":1,"B":2,"C":3}
+empty = {}  ## empty dictionary
 print(d["A"])
 ## d[1] won't work
 print("A" in d)
@@ -63,22 +64,54 @@ dict(x)
 ```
 * can add and remove entries from a dictionary
 ```{r}
-d = dict(A=1,B=2,C=3)
+d = {"A":1,"B":2,"C":3}
 d["D"]=5
 del d["A"]
 d.pop("C")
 ```
 * alternate syntax:
 ```{r dict2}
-{"A":1, "B":2, "C":3}  ## need quotes around keys
-{} ## empty dictionary
+dict(A=1,B=2,C=3)
 ```
+(**only** works if keys can be represented as a Python symbol)
 * loop over *keys* in a dictionary:
 ```{r dict3,eval=FALSE}
 d = dict(A=1,B=2,C=3)
 for i in d.keys():
     ## do something
 ```
+
+### dictionary inversions
+
+1. Simplest/most straightforward way to invert a dictionary:
+```{r dict4}
+d = {"A":1,"B":2,"C":3}
+inv = {}
+for k in d.keys():
+   inv[d[k]] = k
+```
+
+2. Alternative:
+```{r dict5}
+d = {"A":1,"B":2,"C":3}
+inv = {}
+for a,b in d.items():
+   inv[b] = a
+```
+
+3. Fancier (build up a list):
+```{r dict6}
+d = {"A":1,"B":2,"C":3}
+invtuple = ()
+for a,b in d.items():
+   invtuple += ((b,a),)
+inv = dict(invtuple)
+```
+
+4. Fancier
+
+
+
 
 More Roman numerals!
 

@@ -116,7 +116,60 @@ LL = L.strip().split(" ")
 print(LL)
 ```
 
-**next time**: reading a file from the web (opening a URL); removing commas; reading CSV files
+### zip()
+
+(optional!)
+
+- `zip(a,b,c)`, where `a`, `b`, `c` are lists or tuples of the same length, puts together the first elements, second elements, third elements ... for example
+```{r zip}
+print(zip(("A","B","C"),("a","b","c"),(1,2,3)))
+```
+- this comes in handy sometimes.  It makes a handy way to invert a dictionary: `dict(zip(d.values(),d.keys()))`
+
+## More i/o stuff
+
+- `import os` in order to find out working directory (`os.getcwd()`), or set the directory `os.chdir(newpath)`; use full path or use (e.g.) `..` to go up one level
+- opening a URL from the web `import urllib.request as ur`; `ur.urlopen(url)`
+- to read a text file: `io.TextIOWrapper()`
+- to read a CSV file: `import csv`, use `csv.reader()`
+
+## Regular expressions
+
+- `import re`
+- simple version: look for or replace a string
+    - `bool(re.search(pattern,text))` (in this case same as `pattern in text`)
+	- `re.sub(text,pattern,replacement)`: e.g. `re.sub("hello","ll","")`
+- **patterns**
+
+----------------------------------------------------------
+   Pattern   Description                                           
+-----------  ---------------------------------------------
+ `^`         Beginning of line
+ 
+ `$`	     End of line    
+ 
+ `.`         Any single character except newline
+ 
+ `[...]`	 Any single character in brackets         
+ 
+ `[^...]`	 Any single character **not** in brackets 
+ 
+ `re*`	     0 or more occurrences of preceding expression
+ 
+ `re+`	     1 or more occurrence of preceding expression
+ 
+ `re?`	     0 or 1 occurrence of preceding expression  
+ 
+ `re1|re2`   match `re1` or `re2`
+ 
+ `()`        grouping
+ 
+----------------------------------------------------------
+
+- e.g. `[0-9]+` is a number; `[0-9.]+` includes decimal point; `[0-9.]+, [0-9.]+` is two words separated by a comma and a space
+- e.g. remove commas from a string via `re.sub(text,",","")`
+- remove punctuation via `re.sub(text,"[,;.!?]","")` *or* `re.sub(text,"["+string.punctuation+"]","")`
+
 
 <!-- 
    http://testingbenfordslaw.com/
