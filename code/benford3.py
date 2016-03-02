@@ -52,6 +52,8 @@ def is_num2(cc):
         return(False)
 
 def get_words_from_url_csv(url,pos=3):
+    """retrieve a list of words from a particular
+    column of a CSV file"""
     f = ur.urlopen(url)
     cr = csv.reader(io.TextIOWrapper(f))
     res = []

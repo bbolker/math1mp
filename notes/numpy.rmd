@@ -6,53 +6,51 @@ author: Ben Bolker
 
 ### Installation
 
-If you're lucky (but probably not), you can install numpy in the "usual" way
+I am hoping that everyone has successfully followed Dexter's instructions for [installing Anaconda+Python](http://bbolker.github.io/math1mp/notes/install_python.html). If you have, then you should be able to just
 
-* open PyCharm
-* go to Preferences/Project: untitled/Project Interpreter
-* if you don't see `numpy` in the list of available modules, click on the `+` in the lower left corner of the window and select it to be installed.
+```{r import}
+import numpy as np
+```
 
-Otherwise:
-
-* Go to http://www.scipy.org/Download
-* get the binary file for your operating system (`.exe` for Windows, `.dmg` for MacOS). Follow the standard procedure for installing software (e.g. Windows, double-click to open the `.exe` file, click through to accept all defaults; MacOS, open the disk image and drag the 
-
-Don't forget to `import numpy as np` ...
+to get access to `numpy`.
 
 ### arrays
 
-* `np.array()` 
-* homogeneous numeric (`float` or `int`)
-* 1-D: vectors
-	    * vectorized/elementwise arithmetic operators!
-        * create from list or tuple (specify type explicitly; `np.array(x,dtype)` where `type` is `int`, `str`, `float`, `complex` ...)
-	    * slicing and indexing work the same way as lists/tuples/strings
-     	* can also create directly:
-		     * `np.arange()`
-			 * `np.zeros()`
-			 * `np.ones()`
-			 * `np.linspace(start, stop, num=50, dtype)`
-	* **mutable**, but we can `.copy()` ...
-	* multi-dim
-	     * create
-	     * index via `a[i,j]` (hurrah)
-	     * arithmetic is still elementwise; in particular, multiplication is elementwise (*Hadamard product*)
-		 * multi-dimensional slicing:
-		      * e.g. `a[:,0:2]` takes the first two columns
-			  * how would you get odd rows?
-			  * flip the order of columns?
-		 * `a.shape`  (**note** no parentheses!)
-		 * `a.fill()`: fill an array with a (scalar) value
-		 * `a.reshape()`:  change dimensions; **row-major order**
-	     * `a.transpose()`
-		 * `a.flatten()`
-		 * `np.concatenate((a1,a2,a3),axis=0)`
-    * arrays that do not match in the number of dimensions will be **broadcasted** by Python to perform mathematical operations.
-	* matrices
-	     * 2-D arrays, but special:
-		 * `np.identity()`
+- `np.array()` 
+- homogeneous numeric (`float` or `int`)
+- 1-D: vectors
+	    - vectorized/elementwise arithmetic operators!
+        - create from list or tuple (specify type explicitly; `np.array(x,dtype)` where `type` is `int`, `str`, `float`, `complex` ...)
+	    - slicing and indexing work the same way as lists/tuples/strings
+     	- can also create directly:
+		     - `np.arange()`
+			 - `np.zeros()`
+			 - `np.ones()`
+			 - `np.linspace(start, stop, num=50, dtype)`
+	- **mutable**, but we can `.copy()` ...
+	- multi-dim
+	     - create
+	     - index via `a[i,j]` (hurrah)
+	     - arithmetic is still elementwise; in particular, multiplication is elementwise (*Hadamard product*)
+		 - multi-dimensional slicing:
+		      - e.g. `a[:,0:2]` takes the first two columns
+			  - how would you get odd rows?
+			  - flip the order of columns?
+		 - `a.shape`  (**note** no parentheses!)
+		 - `a.fill()`: fill an array with a (scalar) value
+		 - `a.reshape()`:  change dimensions; **row-major order**
+	     - `a.transpose()`
+		 - `a.flatten()`
+		 - `np.concatenate((a1,a2,a3),axis=0)`
+    - arrays that do not match in the number of dimensions will be **broadcasted** by Python to perform mathematical operations.
+	- matrices
+	     - 2-D arrays, but special:
+		 - `np.identity()`
+
+### examples
+
 
 References:
 
-* [official docs](http://docs.scipy.org/doc/)
-* [useful unofficial intro](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
+- [official docs](http://docs.scipy.org/doc/)
+- [useful unofficial intro](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
