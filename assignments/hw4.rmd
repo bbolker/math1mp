@@ -17,7 +17,7 @@ Due Thursday 3 March at midnight (the end of the day), in the Dropbox on Avenue 
 1. Write a function, `add_bigram(d,key,w)` that takes a word (character string) `w` and adds it to a dictionary `d` (but returns `None`) according to the following rules:
 
     - if `key` is not in the dictionary, initialize the entry with a list containing just the word `w`. For example, `d = {}; add_bigram(d,"first","second")` should result in `d` equal to `{"first": ["second"]}`
-	- if `key` is already in the dictionary, append the word `w` to the existing list. For example, if *after* updating the dictionary as in the previous example we ran `add_bigram(d,"first","other")`, `d` should now be equal to `{"first": ["second","third"]}`
+	- if `key` is already in the dictionary, append the word `w` to the existing list. For example, if *after* updating the dictionary as in the previous example we ran `add_bigram(d,"first","other")`, `d` should now be equal to `{"first": ["second","other"]}`
 
 2. Write a function, `create_bigram_dict(fn)` that takes a file name `fn` and:
 
