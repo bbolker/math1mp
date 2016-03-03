@@ -1,50 +1,68 @@
 ---
-title: "Numpy"
+title: "numpy"
 date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
 author: Ben Bolker
 ---
 
-### Installation
-
-I am hoping that everyone has successfully followed Dexter's instructions for [installing Anaconda+Python](http://bbolker.github.io/math1mp/notes/install_python.html). If you have, then you should be able to just
-
-```{r import}
-import numpy as np
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+library("runr")
+py <- proc_python()
+py$start()
+knit_engines$set(python = function(options) {
+    knitr:::wrap(py$exec(options$code), options)
+})
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 ```
 
-to get access to `numpy`.
+### Installation
+
+I am hoping that everyone has successfully followed Dexter's instructions for [installing Anaconda+Python](http://bbolker.github.io/math1mp/notes/install_python.html). If you have, then you should be able to just `import numpy as np` to get access to `numpy`.
 
 ### arrays
 
-- `np.array()` 
-- homogeneous numeric (`float` or `int`)
+- `np.array()`: construct an array from an existing list/tuple/list of lists/etc.
+- creates a homogeneous numeric (floating point (`float64`) or integer (`int64`))
 - 1-D: vectors
-	    - vectorized/elementwise arithmetic operators!
-        - create from list or tuple (specify type explicitly; `np.array(x,dtype)` where `type` is `int`, `str`, `float`, `complex` ...)
-	    - slicing and indexing work the same way as lists/tuples/strings
-     	- can also create directly:
-		     - `np.arange()`
-			 - `np.zeros()`
-			 - `np.ones()`
-			 - `np.linspace(start, stop, num=50, dtype)`
-	- **mutable**, but we can `.copy()` ...
+    - vectorized/elementwise arithmetic operators!
+	     - 	arithmetic now works on *elements*, not on the list: `a+1` creates a new array with 1 added to every element; `a+=1` adds 1 to every element
+    - create from list or tuple (specify type explicitly; `np.array(x,dtype)` where `type` is `int`, `str`, `float`, `complex` ...)
+```{r dtype}
+import numpy as np
+a1 = np.array([1,2])
+print(a1.dtype)
+```
+```{r dtype2}
+a2 = np.array([1,2],type="float")
+print(a2.dtype)
+```
+
+-
+    - slicing and indexing work the same way as lists/tuples/strings
+     - **mutable** like lists/dictionaries, so we can set elements (e.g. `a[1]=0`) but we can `.copy()`	 ...
+   	- some useful ways to create arrays directly:
+		     - `np.arange()`: like `range`, give start, stop, step, (dtype)
+			 - `np.zeros()`: all zeros
+			 - `np.ones()`: all ones
+			 - `np.linspace(start, stop, num=50, endpoint, dtype)`;
+
 	- multi-dim
-	     - create
+	     - create by passing a list of lists/tuple of tuples
 	     - index via `a[i,j]` (hurrah)
 	     - arithmetic is still elementwise; in particular, multiplication is elementwise (*Hadamard product*)
 		 - multi-dimensional slicing:
 		      - e.g. `a[:,0:2]` takes the first two columns
 			  - how would you get odd rows?
 			  - flip the order of columns?
-		 - `a.shape`  (**note** no parentheses!)
+		 - dimensions: `a.shape`  (**note** no parentheses! `shape` is an **attribute**, like `a.dtype`
 		 - `a.fill()`: fill an array with a (scalar) value
-		 - `a.reshape()`:  change dimensions; **row-major order**
-	     - `a.transpose()`
+		 - `a.reshape(shape)`:  change dimensions; **row-major order**
+         - `a.transpose()`
 		 - `a.flatten()`
 		 - `np.concatenate((a1,a2,a3),axis=0)`
-    - arrays that do not match in the number of dimensions will be **broadcasted** by Python to perform mathematical operations.
+    - arrays that do not match in the number of dimensions will be **broadcasted** (i.e. by Python to perform mathematical operations.
 	- matrices
-	     - 2-D arrays, but special:
+	     - 2-D arrays
 		 - `np.identity()`
 
 ### examples
@@ -54,3 +72,4 @@ References:
 
 - [official docs](http://docs.scipy.org/doc/)
 - [useful unofficial intro](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
+- [numpy examples](http://www.labri.fr/perso/nrougier/teaching/numpy.100/index.html)
