@@ -12,7 +12,7 @@ py$start()
 knit_engines$set(python = function(options) {
     knitr:::wrap(py$exec(options$code), options)
 })
-opts_chunk$set(tidy=FALSE,engine='python',engine.path='python')
+bopts_chunk$set(tidy=FALSE,engine='python',engine.path='python')
 print(py$exec(a=1))
 ```
 

@@ -131,6 +131,8 @@ print(tuple(zip(("A","B","C"),("a","b","c"),(1,2,3))))
 
 ## Regular expressions
 
+[reference](https://docs.python.org/3/howto/regex.html)
+
 - `import re`
 - simple version: look for or replace a string
     - `bool(re.search(pattern,text))` (in this case same as `pattern in text`)
