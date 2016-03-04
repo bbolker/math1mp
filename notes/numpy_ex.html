@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>numpy examples</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">numpy examples</h1>
+</div>
+<ol start="0" style="list-style-type: decimal">
+<li>Import the numpy package under the name <code>np</code> (★☆☆☆☆)</li>
+<li>Print the numpy version and the configuration (★☆☆☆☆)</li>
+<li>Create a null vector of size 10 (★☆☆☆☆)</li>
+<li>How to get the documentation of the numpy add function from the command line ? (★☆☆☆☆)</li>
+<li>Create a null vector of size 10 but the fifth value which is 1 (★☆☆☆☆)</li>
+<li>Create a vector with values ranging from 10 to 49 (★☆☆☆☆)</li>
+<li>Reverse a vector (first element becomes last) (★☆☆☆☆)</li>
+<li>Create a 3x3 matrix with values ranging from 0 to 8 (★☆☆☆☆)</li>
+<li>Find indices of non-zero elements from [1,2,0,0,4,0] (★☆☆☆☆)</li>
+<li>Create a 3x3 identity matrix (★☆☆☆☆)</li>
+<li>Create a 3x3x3 array with random values (★☆☆☆☆)</li>
+<li>Create a 10x10 array with random values and find the minimum and maximum values (★☆☆☆☆)</li>
+<li>Create a random vector of size 30 and find the mean value (★☆☆☆☆)</li>
+<li>Create a 5x5 matrix with values 1,2,3,4 just below the diagonal (★★☆☆☆)</li>
+<li>Create a 8x8 matrix and fill it with a checkerboard pattern (★★☆☆☆)</li>
+<li>Create a checkerboard 8x8 matrix using the tile function (★★☆☆☆)</li>
+<li>Normalize a 5x5 random matrix (★★☆☆☆)</li>
+<li>Multiply a 5x3 matrix by a 3x2 matrix (real matrix product) (★★☆☆☆)</li>
+<li>Create a 5x5 matrix with row values ranging from 0 to 4 (★★☆☆☆)</li>
+<li>Create a vector of size 10 with values ranging from 0 to 1, both excluded (★★☆☆☆)</li>
+<li>Create a random vector of size 10 and sort it (★★☆☆☆)</li>
+<li>Consider two random array A anb B, check if they are equal (★★☆☆☆)</li>
+<li>Make an array immutable (read-only) (★★☆☆☆)</li>
+<li>Consider a random 10x2 matrix representing cartesian coordinates, convert them to polar coordinates (★★☆☆☆)</li>
+<li>Create random vector of size 10 and replace the maximum value by 0 (★★☆☆☆)</li>
+<li>Create a structured array with <code>x</code> and <code>y</code> coordinates covering the [0,1]x[0,1] area (★★☆☆☆)</li>
+<li>Print the minimum and maximum representable value for each numpy scalar type (★★☆☆☆)</li>
+<li>Create a structured array representing a position (x,y) and a color (r,g,b) (★★☆☆☆)</li>
+<li>Consider a random vector with shape (100,2) representing coordinates, find point by point distances (★★☆☆☆)</li>
+<li>Consider the following file::</li>
+<li>Generate a generic 2D Gaussian-like array (★★☆☆☆)</li>
+<li>How to randomly place p elements in a 2D array ? (★★★☆☆)</li>
+<li>Subtract the mean of each row of a matrix (★★★☆☆)</li>
+<li>How to I sort an array by the nth column ? (★★★☆☆)</li>
+<li>How to tell if a given 2D array has null columns ? (★★★☆☆)</li>
+<li>Find the nearest value from a given value in an array (★★★☆☆)</li>
+<li>Consider a generator function that generates 10 integers and use it to build an array (★★★☆☆)</li>
+<li>Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices) ? (★★★☆☆)</li>
+<li>How to accumulate elements of a vector (X) to an array (F) based on an index list (I) ? (★★★☆☆)</li>
+<li>Considering a (w,h,3) image of (dtype=ubyte), compute the number of unique colors (★★★☆☆)</li>
+<li>Considering a four dimensions array, how to get sum over the last two axis at once ? (★★★☆☆)</li>
+<li>Considering a one-dimensional vector D, how to compute means of subsets of D using a vector S of same size describing subset indices ? (★★★☆☆)</li>
+<li>How to get the diagonal of a dot product ? (★★★☆☆)</li>
+<li>Consider the vector [1, 2, 3, 4, 5], how to build a new vector with 3 consecutive zeros interleaved between each value ? (★★★☆☆)</li>
+<li>Consider an array of dimension (5,5,3), how to mulitply it by an array with dimensions (5,5) ? (★★★☆☆)</li>
+<li>How to swap two rows of an array ? (★★★☆☆)</li>
+<li>Consider a set of 10 triplets describing 10 triangles (with shared vertices), find the set of unique line segments composing all the triangles (★★★☆☆)</li>
+<li>Given an array C that is a bincount, how to produce an array A such that np.bincount(A) == C ? (★★★☆☆)</li>
+<li>How to compute averages using a sliding window over an array ? (★★★☆☆)</li>
+<li>Consider a one-dimensional array Z, build a two-dimensional array whose first row is (Z[0],Z[1],Z[2]) and each subsequent row is shifted by 1 (last row should be (Z[-3],Z[-2],Z[-1]) (★★★☆☆)</li>
+<li>How to negate a boolean, or to change the sign of a float inplace ? (★★★☆☆)</li>
+<li>Consider 2 sets of points P0,P1 describing lines (2d) and a point p, how to compute distance from p to each line i (P0[i],P1[i]) ? (★★★☆☆)</li>
+<li>Consider 2 sets of points P0,P1 describing lines (2d) and a set of points P, how to compute distance from each point j (P[j]) to each line i (P0[i],P1[i]) ? (★★★☆☆)</li>
+<li>Consider an arbitrary array, write a function that extract a subpart with a fixed shape and centered on a given element (pad with a <code>fill</code> value when necessary) (★★★☆☆)</li>
+<li>Consider an array Z = [1,2,3,4,5,6,7,8,9,10,11,12,13,14], how to generate an array R = [[1,2,3,4], [2,3,4,5], [3,4,5,6], ..., [11,12,13,14]] ? (★★★☆☆)</li>
+<li>Compute a matrix rank (★★★☆☆)</li>
+<li>Extract all the contiguous 3x3 blocks from a random 10x10 matrix (★★★☆☆)</li>
+<li>Create a 2D array subclass such that Z[i,j] == Z[j,i] (★★★☆☆)</li>
+<li>Consider a set of p matrices wich shape (n,n) and a set of p vectors with shape (n,1). How to compute the sum of of the p matrix products at once ? (result has shape (n,1)) (★★★☆☆)</li>
+<li>Consider a 16x16 array, how to get the block-sum (block size is 4x4) ? (★★★☆☆)</li>
+<li>How to implement the Game of Life using numpy arrays ? (★★★☆☆)</li>
+<li>Given an arbitrary number of vectors, build the cartesian product (every combinations of every item) (★★★☆☆)</li>
+<li>How to create a record array from a regular array ? (★★★☆☆)</li>
+<li>Comsider a large vector Z, compute Z to the power of 3 using 3 different methods (★★★☆☆)</li>
+<li>Consider two arrays A and B of shape (8,3) and (2,2). How to find rows of A that contain elements of each row of B regardless of the order of the elements in B ? (★★★★☆)</li>
+<li>Considering a 10x3 matrix, extract rows with unequal values (e.g. [2,2,3]) (★★★★☆)</li>
+<li>Convert a vector of ints into a matrix binary representation (★★★★☆)</li>
+<li>Given a two dimensional array, how to extract unique rows ? (★★★★☆)</li>
+<li>Considering 2 vectors A &amp; B, write the einsum equivalent of inner, outer, sum, and mul function (★★★★☆)</li>
+<li>Considering a path described by two vectors (X,Y), how to sample it using equidistant samples (★★★★★) ?</li>
+</ol>
+</body>
+</html>
