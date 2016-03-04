@@ -1,0 +1,53 @@
+---
+title: "basics of numeric representations"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+library("runr")
+py <- proc_python()
+py$start()
+knit_engines$set(python = function(options) {
+    knitr:::wrap(py$exec(options$code), options)
+})
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+## Integers
+
+- stored as binary digits
+- `n` digits gives room to store *signed* values between min of $-2^(n-1)$ and  max of $2^(n-1)-1$
+- base Python automatically switches from 64-bit to arbitrary-length integers as necessary
+- in `numpy` can specify precision of integers, or *unsigned* integers (e.g. `uint8`)
+- you should rarely do this
+- and [be careful if you do](https://xkcd.com/571/)
+
+[information about types and ranges](http://docs.scipy.org/doc/numpy-1.10.1/user/basics.types.html)
+
+## Floats
+
+- default 64-bit floats sign bit, 11 bits exponent (`x`), 52 bits mantissa (`m`)
+- can store up to *approximately* $2^(2^(x-1))$; numbers less than $10^{-324}$ *underflow* to zero; numbers greater than $10^{308}$ give `OverflowError`
+- "only" 52 bits of precision in mantissa; for $x \le -16$, `1+x` *underflows* to `1.0`.
+- similar issues occur as long as addends are that far apart, e.g. `10**9+10**-8`
+- what can you do?
+     - more *stable* algorithm (e.g. add items in increasing order)
+	 - work on the log scale (i.e. add log values rather than multiplying values)
+     - extended/arbitrary precision floats: `decimal` module (built in), `mpmath`    - always be careful comparing floating point:
+```{r}
+import math
+a = math.sqrt(2)
+print(a*a - 2)
+```
+
+Use something like [this](http://stackoverflow.com/questions/4028889/floating-point-equality-in-python):
+
+```{r}
+def approx_equal(a, b, tol=1e-8):
+     return abs(a - b) < tol
+```
+
+
+Lots more detail [here](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)

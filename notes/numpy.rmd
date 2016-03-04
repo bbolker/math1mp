@@ -41,10 +41,10 @@ print(a2.dtype)
     - slicing and indexing work the same way as lists/tuples/strings
      - **mutable** like lists/dictionaries, so we can set elements (e.g. `a[1]=0`) but we can `.copy()`	 ...
    	- some useful ways to create arrays directly:
-		     - `np.arange()`: like `range`, give start, stop, step, (dtype)
-			 - `np.zeros()`: all zeros
-			 - `np.ones()`: all ones
-			 - `np.linspace(start, stop, num=50, endpoint, dtype)`;
+	     - `np.arange()`: like `range`, give start, stop, step, (dtype)
+		 - `np.zeros()`: all zeros
+		 - `np.ones()`: all ones
+		 - `np.linspace(start, stop, num=50, endpoint, dtype)`;
 
 	- multi-dim
 	     - create by passing a list of lists/tuple of tuples
@@ -63,8 +63,16 @@ print(a2.dtype)
     - arrays that do not match in the number of dimensions will be **broadcasted** (i.e. by Python to perform mathematical operations.
 	- matrices
 	     - 2-D arrays
-		 - `np.identity()`
-
+		 - `dot` function
+		 - `np.eye()`
+		 - `np.diag(v,k=0)`
+		 - `np.linalg` submodule
+    - vectorized *logical*/comparison operations and indexing
+	     - e.g. `a>0` gives array of `bool`
+		 - `a[a>0]` selects only positive elements of `a`
+		 - `any` and `all`
+	- other useful stuff
+	     - `.sum()`, `.prod()`, `.max()`, `.min()`, `.argmax()`, `.argmin()` ...
 ### examples
 
 

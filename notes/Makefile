@@ -13,4 +13,7 @@
 clean:
 	rm -f *.log *.aux *.md *.out texput.log
 
+numpy_ex.html: README.rst trans_ex.py
+	python3 -c "import trans_ex; trans_ex.trans_examples('README.rst','numpy_ex.md')"
+	pandoc -s -o numpy_ex.html numpy_ex.md
 
