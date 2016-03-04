@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 <h1 class="title">numpy</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>20:20 03 March 2016</em></h4>
+<h4 class="date"><em>11:29 04 March 2016</em></h4>
 
 </div>
 
@@ -170,13 +170,22 @@ print(a2.dtype)</code></pre>
 <ul>
 <li>2-D arrays</li>
 <li><code>dot</code> function</li>
-<li><code>np.identity()</code></li>
+<li><code>np.eye()</code></li>
+<li><code>np.diag(v,k=0)</code></li>
+<li><code>np.linalg</code> submodule</li>
+</ul></li>
+<li>vectorized <em>logical</em>/comparison operations and indexing
+<ul>
+<li>e.g. <code>a&gt;0</code> gives array of <code>bool</code></li>
+<li><code>a[a&gt;0]</code> selects only positive elements of <code>a</code></li>
+<li><code>any</code> and <code>all</code></li>
+</ul></li>
+<li>other useful stuff
+<ul>
+<li><code>.sum()</code>, <code>.prod()</code>, <code>.max()</code>, <code>.min()</code>, <code>.argmax()</code>, <code>.argmin()</code> … ### examples</li>
 </ul></li>
 </ul></li>
 </ul>
-</div>
-<div id="examples" class="section level3">
-<h3>examples</h3>
 <p>References:</p>
 <ul>
 <li><a href="http://docs.scipy.org/doc/">official docs</a></li>
