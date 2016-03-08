@@ -9,22 +9,7 @@ library("knitr")
 opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 ```
 
-
 ## Corrections
-
-* Get the shape of an array via `a.shape`, **not** `a.shape()` (shape is an *attribute*, not a *method*, of an array)
-* one correct way to check whether an index fits into a list/tuple/string etc. is 
-```{r}
-def index_ok(i,x):
-    n = len(x)
-    return(-n <= i < n)
-```
-* `numpy` arrays have an `order` option: the default `C` gives row-major, `F` (for `FORTRAN`) gives column-major arrays
-```{r}
-import numpy as np
-np.reshape(np.arange(9),(3,3),order="C")
-np.reshape(np.arange(9),(3,3),order="F")
-```
 
 ## Integration
 
