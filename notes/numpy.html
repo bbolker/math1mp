@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 <h1 class="title">numpy</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>20:20 03 March 2016</em></h4>
+<h4 class="date"><em>11:22 08 March 2016</em></h4>
 
 </div>
 
@@ -170,13 +170,47 @@ print(a2.dtype)</code></pre>
 <ul>
 <li>2-D arrays</li>
 <li><code>dot</code> function</li>
-<li><code>np.identity()</code></li>
+<li><code>np.eye()</code></li>
+<li><code>np.diag(v,k=0)</code></li>
+<li><code>np.linalg</code> submodule</li>
+</ul></li>
+<li>vectorized <em>logical</em>/comparison operations and indexing
+<ul>
+<li>e.g. <code>a&gt;0</code> gives array of <code>bool</code></li>
+<li><code>a[a&gt;0]</code> selects only positive elements of <code>a</code></li>
+<li><code>any</code> and <code>all</code></li>
+</ul></li>
+<li>other useful stuff
+<ul>
+<li><code>.sum()</code>, <code>.prod()</code>, <code>.max()</code>, <code>.min()</code>, <code>.argmax()</code>, <code>.argmin()</code>, <code>.mean()</code> (note <code>axis</code> argument), <code>sd()</code>, <code>rank()</code> …</li>
 </ul></li>
 </ul></li>
 </ul>
 </div>
 <div id="examples" class="section level3">
 <h3>examples</h3>
+<ul>
+<li><ol start="32" style="list-style-type: decimal">
+<li>take a 2-dimensional array and scale it so the columns have mean 0 and standard deviation 1</li>
+</ol></li>
+<li><ol start="18" style="list-style-type: decimal">
+<li>Create a 3x3 matrix with row values ranging from 0 to 2 (various choices)</li>
+</ol></li>
+<li><ol start="33" style="list-style-type: decimal">
+<li>sort an array by the nth column</li>
+</ol></li>
+</ul>
+</div>
+<div id="to-do-in-class" class="section level3">
+<h3>to do in class</h3>
+<ul>
+<li>calculate the mean of the squares of the natural numbers up to 7</li>
+<li>create a 5 x 5 array with row values ranging from 0 to 1 by 0.2</li>
+<li><p>create a 3 x 7 array containing the values 0 to 20 and a 7 x 3 array containing the values 0 to 20 and matrix-multiply them: result should be</p>
+<pre><code>array([[ 273,  294,  315],
+   [ 714,  784,  854],
+   [1155, 1274, 1393]])</code></pre></li>
+</ul>
 <p>References:</p>
 <ul>
 <li><a href="http://docs.scipy.org/doc/">official docs</a></li>

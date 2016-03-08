@@ -72,9 +72,24 @@ print(a2.dtype)
 		 - `a[a>0]` selects only positive elements of `a`
 		 - `any` and `all`
 	- other useful stuff
-	     - `.sum()`, `.prod()`, `.max()`, `.min()`, `.argmax()`, `.argmin()` ...
+	     - `.sum()`, `.prod()`, `.max()`, `.min()`, `.argmax()`, `.argmin()`, `.mean()` (note `axis` argument), `sd()`, `rank()` ...
+
 ### examples
 
+- (32) take a 2-dimensional array and scale it so the columns have mean 0 and standard deviation 1
+- (18) Create a 3x3 matrix with row values ranging from 0 to 2 (various choices)
+- (33) sort an array by the nth column
+
+### to do in class
+
+- calculate the mean of the squares of the natural numbers up to 7
+- create a 5 x 5 array with row values ranging from 0 to 1 by 0.2
+- create a 3 x 7 array containing the values 0 to 20 and a 7 x 3 array containing the values 0 to 20 and matrix-multiply them: result should be
+```
+array([[ 273,  294,  315],
+       [ 714,  784,  854],
+       [1155, 1274, 1393]])
+```
 
 References:
 

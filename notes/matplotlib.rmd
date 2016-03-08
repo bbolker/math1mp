@@ -9,20 +9,22 @@ library("knitr")
 opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 ```
 
-* [matplotlib cheat sheet](https://bit.ly/python_cs)
-* [matplotlib gallery](http://matplotlib.org/gallery.html)
+- [matplotlib cheat sheet](https://bit.ly/python_cs)
+- [matplotlib gallery](http://matplotlib.org/gallery.html)
 
 ### Basic setup
 
-* create a figure: `fig=plt.figure()`
-   * can include figure size `figsize=(w,h)`, background/edge color, resolution (dpi=dots per inch)
-   * add a *subplot* (or "axes"): `ax = fig.add_subplot(1,1,1)` (rows,columns,which plot)
-* now can show or save the figure: `fig.show()` or `fig.savefig("filename")`
-* your operating system probably knows what to do if you click on the saved figure (or you can stick it in a Word document, etc.)
+- create a figure: `fig=plt.figure()`
+   - can include figure size `figsize=(w,h)`, background/edge color, resolution (dpi=dots per inch)
+   - add a *subplot* (or "axes"): `ax = fig.add_subplot(1,1,1)` (rows,columns,which plot)
+- now can show or save the figure: `fig.show()` or `fig.savefig("filename")`
+- your operating system probably knows what to do if you click on the saved figure (or you can stick it in a Word document, etc.)
+
 
 ```{r echo=FALSE}
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  ## pyplot is a _sub-module_ of matplotlib
 fig = plt.figure(figsize=(4,4))
+print(plt.rcParams["figure.figsize"])  ## default figure size
 ax = fig.add_subplot(1,1,1)
 fig.savefig("pix/empty.png")
 ```
@@ -30,12 +32,13 @@ fig.savefig("pix/empty.png")
 
 ### Basic plots
 
-Basic things we can put on the plot: lines, scatter plots
+Basic things we can put on the plot: lines, scatter plots ...
 
 ```{r echo=FALSE}
 import numpy as np
 import matplotlib.pyplot as plt
-fig = plt.figure(figsize=(8,4))
+fig = plt.figure()
+## make two subfigures
 ax1 = fig.add_subplot(1,2,1)
 ax2 = fig.add_subplot(1,2,2)
 x = np.array([1,2,3])
@@ -50,7 +53,7 @@ fig.savefig("pix/basic.png")
 
 ### Putting more than one thing on a plot
 
-* You can do more than one `plot()` or `scatter()` on the same set of axes 
+- You can do more than one `plot()` or `scatter()` on the same set of axes 
 ```{r echo=FALSE}
 import numpy as np
 import matplotlib.pyplot as plt
@@ -65,17 +68,17 @@ fig.savefig("pix/basic2.png")
 ![](pix/basic2.png)
 
 Distinguish lines: 
-* `color`
-* `marker` (`+`, `o`, `x`, ...)
-* `linewidth`
-* `linestyle` (`-`, `--`, `-.`, `None`, ...)
+- `color`
+- `marker` (`+`, `o`, `x`, ...)
+- `linewidth`
+- `linestyle` (`-`, `--`, `-.`, `None`, ...)
 
 ## Decorating plots 
 
-* titles (`ax.set_xlabel()`, `ax.set_ylabel()`)
-* change limits
-* title: `fig.suptitle()` (refers to figure, not individual axes)
-* legend: need to label plotted stuff. e.g.
+- titles (`ax.set_xlabel()`, `ax.set_ylabel()`)
+- change limits
+- title: `fig.suptitle()` (refers to figure, not individual axes)
+- legend: need to label plotted stuff. e.g.
 ```{r eval=FALSE}
 ax1.plot(x,y,label="first")
 ax1.plot(x+np.pi/2,y,color="red",label="second")
@@ -102,120 +105,3 @@ fig.savefig("pix/basic3.png")
 ```
 ![](pix/basic3.png)
 
-* [Lorenz attractor example](http://matplotlib.org/examples/mplot3d/lorenz_attractor.html)
-
-```{r}
-import odesolve
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-def lorenz(time, state, params):
-    x, y, z = tuple(state)
-    s, r, b = params
-    x_dot = s*(y - x)
-    y_dot = r*x - y - x*z
-    z_dot = x*y - b*z
-    return((x_dot, y_dot, z_dot))
-
-tvec = np.arange(0,200,0.01)
-lfit = odesolve.solveODE3(lorenz,(0.,1.,1.05),tvec,(10,28,2.667))
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-ax.plot(lfit[:,0], lfit[:,1], lfit[:,2])
-ax.set_xlabel("X Axis")
-ax.set_ylabel("Y Axis")
-ax.set_zlabel("Z Axis")
-ax.set_title("Lorenz Attractor")
-fig.savefig("pix/lorenz.png")
-```
-![](pix/lorenz.png)
-
-[color maps reference](http://matplotlib.org/examples/color/colormaps_reference.html)
-
-## Logistic map
-
-This was homework a while ago.  Let's write it again now:
-
-```{r lm}
-import numpy as np
-import matplotlib.pyplot as plt
-def logist_map(x0,r,t_trans,t_save):
-    res = np.zeros(t_save)
-    x = x0
-    for i in range(t_trans):
-        x = r*x*(1-x)
-    for i in range(t_save):
-        res[i] = x
-        x = r*x*(1-x)
-    return(res)
-fig = plt.figure(figsize=(12,6))
-ax1 = fig.add_subplot(1,3,1)
-ax2 = fig.add_subplot(1,3,2)
-ax3 = fig.add_subplot(1,3,3)
-y1 = logist_map(0.5,2,100,50)
-y2 = logist_map(0.5,3,100,50)
-y3 = logist_map(0.5,3.9,100,50)
-ax1.set_ylim(0,1)
-ax2.set_ylim(0,1)
-ax3.set_ylim(0,1)
-ax1.plot(y1)
-ax2.plot(y2)
-ax3.plot(y3)
-fig.savefig("pix/lm1.png")
-```
-
-![](pix/lm1.png)
-
-## Bifurcation diagram
-
-```{r }
-import numpy as np
-import matplotlib.pyplot as plt
-import logist
-rvec = np.arange(1.1,4,0.02)
-nr = len(rvec)
-nt=600
-res = np.zeros((nr,nt))
-rvals = np.zeros((nr,nt))
-for i in range(nr):
-    rvals[i,:] = rvec[i]
-    res[i,:] = logist.logist_map(0.5,rvec[i],100,nt)
-
-fig = plt.figure(figsize=(12,6))
-ax = fig.add_subplot(1,1,1)
-ax.plot(rvals,res,alpha=0.4,color="black",linestyle="None",marker=".")
-fig.savefig("pix/lmbif.png")
-```
-
-![](pix/lmbif.png)
-
-## Cobweb diagram
-
-```{r}
-import numpy as np
-import matplotlib.pyplot as plt
-import logist
-def cobweb(r,ax,x0=0.7,t_save=20):
-    cvec = np.arange(0,1,0.01)
-    ax.plot(cvec,r*cvec*(1-cvec))
-    ax.plot(cvec,cvec,linestyle="--")
-    x = logist.logist_map(x0,r,0,t_save)
-    for i in range(1,t_save):
-        ax.plot([x[i-1],x[i-1]],[x[i-1],x[i]],color="gray")
-        ax.plot([x[i-1],x[i]],[x[i],x[i]],color="gray")
-    return(None)
-fig = plt.figure(figsize=(12,6))
-ax1 = fig.add_subplot(1,3,1)
-ax2 = fig.add_subplot(1,3,2)
-ax3 = fig.add_subplot(1,3,3)
-cobweb(2.0,ax1)
-cobweb(3.0,ax2)
-cobweb(3.9,ax3)
-fig.savefig("pix/cobweb.png")
-```
-![](pix/cobweb.png)
-
-## to do
-
-rearrange default/parameter order for convenience
