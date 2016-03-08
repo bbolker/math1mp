@@ -1,0 +1,162 @@
+---
+title: "Tutorial 8(ish): Numpy"
+date: "Tuesday January 19, 2016"
+author: Dexter barrows
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+---
+
+```{r, echo = FALSE, warning = FALSE}
+library("knitr")
+opts_chunk$set(tidy = FALSE, engine = 'python',engine.path = 'python3')
+```
+
+[Documentation reference](http://docs.scipy.org/doc/numpy/reference/).
+
+
+
+***
+
+## Numerical Types Revisited
+
+Recall that numbers in Python are either of type `int` or `float`. To expand on that a little:
+
+#### IntN
+
+* Uses N bits (N/8 bytes) to store each number using [binary representation](https://en.wikipedia.org/wiki/Binary_number#Counting_in_binary)
+* Stores whole numbers in the range $\left[ -2^{N-1},2^{N-1}-1 \right]$ (one bit used for sign)
+* On most machines $N = 64$, older machines might use $N = 32$
+
+#### FloatN
+
+* Again uses N bits to store each number, but using an [exponent and mantissa/significand](https://en.wikipedia.org/wiki/Floating_point) (one bit still used for sign)
+* Entirely possible that a number will be either too big or small to use in arithmetic, called 'overflow' and 'underflow'
+* Smallest usable number can be determined using Numpy
+
+```{r}
+import numpy as np
+print( np.finfo("float64").eps )
+```
+
+So if we try something smaller, say $2^{-17}$
+
+```{r}
+print( 1.0 + 2e-17 )
+```
+
+Underflow!
+
+What about overflow? We can get the smallest power of 2 that yields overflow.
+
+```{r}
+import numpy as np
+mexp = np.finfo("float64").maxexp
+print( 1.0 + 2.0**(mexp-1) )
+```
+
+But if we do
+
+```{r}
+import numpy as np
+mexp = np.finfo("float64").maxexp
+try:
+	print( 1.0 + 2.0**mexp )
+except Exception as e:
+	print(e)
+```
+
+Overflow!
+
+
+***
+
+
+## Arrays and Matrices
+
+#### 1D
+
+We have been using `lists` to represent arrays of numbers, but it's slower and really less robust for actual *math*.
+
+Say we have a `list` we want to convert to an array so we can perform more advanced arithmetic:
+
+```{r}
+import numpy as np
+L = [1,2,3,4,5]
+A = np.array(L)
+print(L)
+print(A)
+```
+
+Now we can perform element-wise operations like adding or multiplying
+
+```{r}
+import numpy as np
+A = np.array([1,2,3,4,5])
+print( A+A )
+print( A*A )
+```
+
+We can also create arrays directly using `numpy.zeros()`, `numpy.ones()`, `numpy.arange()`, etc.
+
+```{r}
+import numpy as np
+A0 = np.zeros(5)
+A1 = np.ones(5)
+AR = np.arange(5)
+print(A0)
+print(A1)
+print(AR)
+```
+
+**Indexing** and **slicing** work the same as with `lists` / `strings` / `tuples`.
+
+#### 2D
+
+We can also have 2D arrays (matrices). We can create them using a nested `list` / `tuple`. 
+
+```{r}
+import numpy as np
+M = np.array( [[1,2],[3,4]] )
+print(M)
+```
+
+As before we can perform element-wise operations.
+
+```{r}
+import numpy as np
+M = np.array( [[1,2],[3,4]] )
+print( M+M )
+print( M*M )
+```
+
+Indexing / slicing now uses `[i,j]` for row/column instead of `[i][j]`.
+
+```{r}
+import numpy as np
+M = np.array( [[1,2],[3,4]] )
+print( M[0,] )
+print( M[1,0] )
+print( M[-1,-1] )
+```
+
+Note that leaving the column index blank gives the entire row. This does **not** work the other way around -- `M[,0]` with the matrix above would give a Syntax Error.
+
+We can also create matrices directly using `numpy.eye()`, or `numpy.zeros()`/`numpy.ones()` as before -- just remember to specify the size of *each* dimension.
+
+```{r}
+import numpy as np
+M0 = np.zeros([2,2])
+M1 = np.ones([2,3])
+ME = np.eye(5)
+print(M0, end = "\n\n")
+print(M1, end = "\n\n")
+print(ME, end = "\n\n")
+```
+
+***
+
+## Exercises
+
+[http://bbolker.github.io/math1mp/notes/numpy_ex.html](http://bbolker.github.io/math1mp/notes/numpy_ex.html)
