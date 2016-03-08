@@ -1,0 +1,32 @@
+---
+title: "math 1MP assignment 5"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+```
+
+Due Tuesday 15 March at midnight (the end of the day), in the Dropbox on Avenue to Learn. As usual, the answers *must* be submitted as a module (text file) called `yourmacid_hw5.py`, e.g. mine would be `bolker_hw5.py`.  If your module contains extra information (e.g. web resources you used or other students you worked with), please put them as comments (i.e. preceded by `#`).
+
+- All of your functions *must* have docstrings.
+- For this assignment, *please try to avoid using `for` loops as much as possible*; the more you avoid `for` loops, the better you will learn `numpy`, the better you'll do on the `numpy` questions on the exam ... (It is assumed that you will be using `numpy` for all answers.)
+
+1. Write a function `array_slicemean(a)` that takes a given 3-D array (such as `aa=np.arange(27).reshape((3,3,3))`) and returns a vector containing the sum of each slice of the *first* dimension. For example, the result of applying `array_slicemean` to the example given here is `np.array([ 36, 117, 198])`.
+
+2. Write a function `array_poly(a,x)` that takes a 2-dimensional array `a` and a scalar (floating-point) `x` and computes a vector of polynomials using each row as a separate set of coefficients. In other words, if `a` has three columns, then the `i`^{th} element of the returned array would be `a[i,0]+a[i,1]*x+a[i,2]*x**2`. For example, the results of
+```{r eval=FALSE}
+import numpy as np
+a = np.reshape(np.arange(9),(3,3))
+array_poly(a,2)
+```
+should be `np.array([10, 31, 52])`.
+
+3. Write a function, `check_inverse(a,b,tol=1e-8)` that takes two 2-dimensional square arrays (matrices) and returns a boolean value that reflects whether `b` is the matrix inverse of `a`, i.e. that `numpy.dot(a,b)` is equal, within tolerance `tol`, to an identity matrix of the same dimension (use `np.eye()`). Make sure to:
+- check that the arrays are both square and have the same dimensions, and raise a `ValueError` if not
+- use an appropriate test for floating-point near-equality; that is, return `True` if, for every $i$ and $j$, $\textrm{abs}((AB)_{ij}-I_{ij})<\textrm{tol}$, and `False` otherwise.
+4. Define a function `maxrows(a,m)` that returns an array comprising all the *rows* in the array whose mean is greater than `m`. If we have the usual `a = np.arange(9).reshape((3,3))` then the result of `maxval(a,2.1)` should be `np.array([[3, 4, 5], [6, 7, 8]])`.
+
+
+
