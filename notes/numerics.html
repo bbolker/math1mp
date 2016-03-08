@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 <h1 class="title">basics of numeric representations</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>20:19 03 March 2016</em></h4>
+<h4 class="date"><em>11:23 08 March 2016</em></h4>
 
 </div>
 
@@ -137,7 +137,8 @@ $(document).ready(function () {
 <li>what can you do?
 <ul>
 <li>more <em>stable</em> algorithm (e.g. add items in increasing order)</li>
-<li>work on the log scale (i.e. add log values rather than multiplying values) - extended/arbitrary precision floats: <code>decimal</code> module (built in), <code>mpmath</code> - always be careful comparing floating point:</li>
+<li>work on the log scale (i.e. add log values rather than multiplying values)</li>
+<li>extended/arbitrary precision floats: <code>decimal</code> module (built in), <code>mpmath</code> - always be careful comparing floating point:</li>
 </ul></li>
 </ul>
 <pre class="python"><code>import math
@@ -145,6 +146,7 @@ a = math.sqrt(2)</code></pre>
 <p>Use something like <a href="http://stackoverflow.com/questions/4028889/floating-point-equality-in-python">this</a>:</p>
 <pre class="python"><code>def approx_equal(a, b, tol=1e-8):
      return abs(a - b) &lt; tol</code></pre>
+<p>Lots more detail <a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">here</a></p>
 </div>
 
 
