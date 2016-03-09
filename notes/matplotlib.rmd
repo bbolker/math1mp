@@ -30,6 +30,12 @@ fig.savefig("pix/empty.png")
 ```
 ![](pix/empty.png)
 
+Shortcut:
+
+```{r eval=FALSE}
+fig, ax = plt.subplots()
+```
+
 ### Basic plots
 
 Basic things we can put on the plot: lines, scatter plots ...
@@ -67,7 +73,8 @@ fig.savefig("pix/basic2.png")
 ```
 ![](pix/basic2.png)
 
-Distinguish lines: 
+Distinguish lines:
+
 - `color`
 - `marker` (`+`, `o`, `x`, ...)
 - `linewidth`
@@ -104,4 +111,57 @@ fig.suptitle("my plot")
 fig.savefig("pix/basic3.png")
 ```
 ![](pix/basic3.png)
+
+## The logistic map
+
+The *discrete logistic map*, $x_{t+1} = r x_t (1-x_t)$, is a simple model for
+populations that has interesting dynamical properties.
+It has equilibria at $0$ and $x^*=1-1/r$. For $r>1$ it mimics exponential
+(geometric) growth for $x_t \ll 1$.
+
+```{r lm}
+from logist import *
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax1 = fig.add_subplot(1,1,1)
+y1 = logist_map(1.5)
+y2 = logist_map(2)
+y3 = logist_map(3)
+ax1.plot(y1)
+ax1.plot(y2)
+ax1.plot(y3)
+fig.savefig("pix/lm0.png")
+```
+
+```{r bifplot}
+from logist import *
+import matplotlib.pyplot as plt
+rvals = np.arange(1.1,3.9,0.05)
+b = np.zeros((500,len(rvals)))
+for i in range(len(rvals)):
+   b[:,i] = logist_map(r=rvals[i],nt=500)
+fig = plt.figure()
+ax1 = fig.add_subplot(1,1,1)
+rmat = np.tile(rvals,(500,1))
+ax1.scatter(rmat,b)
+fig.savefig("pix/lm1.png")
+## now without transient
+rmat = np.tile(rvals,(250,1))
+b2 = b[250:,]
+fig,ax1 = plt.subplots()
+ax1.scatter(rmat,b2)
+fig.savefig("pix/lm2.png")
+## now as an image plot
+fig,ax1 = plt.subplots()
+ax1.imshow(b2,aspect="auto",extent=[1.1,3.9,250,500])
+fig.savefig("pix/lm3.png")
+```
+
+![](pix/lm0.png)
+
+![](pix/lm1.png)
+
+![](pix/lm2.png)
+
+![](pix/lm3.png)
 
