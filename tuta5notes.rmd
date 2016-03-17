@@ -1,0 +1,186 @@
+---
+title: "Assignment 5 Solutions"
+date: "Thursday March 17, 2016"
+author: Dexter barrows
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+---
+
+```{r, echo = FALSE, warning = FALSE}
+library("knitr")
+opts_chunk$set(tidy = FALSE, engine = 'python',engine.path = 'python3')
+```
+
+
+
+***
+
+## Question 1
+
+Write a function `array_slicemean(a)` that takes a given 3-D array (such as `aa=np.arange(27).reshape((3,3,3))`) and returns a vector containing the sum of each slice of the *first* dimension. For example, the result of applying `array_slicemean` to the example given here is `np.array([ 36, 117, 198])`.
+
+**Loop way**
+
+```{r}
+import numpy as np
+
+def array_slicemean(a):
+	res = []
+	for i in range(a.shape[0]):
+		slicesum = 0
+		for j in range(a.shape[1]):
+			for k in range(a.shape[2]):
+				slicesum += a[i,j,k]
+		res.append(slicesum)
+	return( np.array(res) )
+
+a = np.arange(27).reshape((3,3,3))
+print( array_slicemean(a) )
+```
+
+**Numpy way**
+
+```{r}
+import numpy as np
+
+def array_slicemean(a):
+	return( np.sum(a, axis = (1,2)) )
+
+a = np.arange(27).reshape((3,3,3))
+print( array_slicemean(a) )	
+```
+
+
+***
+
+## Question 2
+
+Write a function `array_poly(a,x)` that takes a 2-dimensional array `a` and a scalar (floating-point) `x` and computes a vector of polynomials using each row as a separate set of coefficients. In other words, if `a` has three columns, then the `i`^{th} element of the returned array would be `a[i,0]+a[i,1]*x+a[i,2]*x**2`.
+
+**Loop way**
+
+```{r}
+import numpy as np
+
+def array_poly(a, x):
+	vec = []
+	for i in range(a.shape[1]):
+		vec.append(x**i)
+	res = []
+	for i in range(a.shape[1]):
+		polysum = 0
+		for j in range(a.shape[0]):
+			polysum += a[i,j]*vec[j]
+		res.append(polysum)
+	return( np.array(res) )
+
+a = np.reshape(np.arange(9),(3,3))
+print( array_poly(a,2) )
+```
+
+**Numpy way**
+
+```{r}
+import numpy as np
+
+def array_poly(a, x):
+	vec = x**np.arange(a.shape[1])
+	return( np.dot(a, vec) )
+
+a = np.reshape(np.arange(9),(3,3))
+print( array_poly(a,2) )
+```
+
+
+***
+
+
+## Question 3
+
+Write a function, `check_inverse(a,b,tol=1e-8)` that takes two 2-dimensional square arrays (matrices) and returns a boolean value that reflects whether `b` is the matrix inverse of `a`, i.e. that `numpy.dot(a,b)` is equal, within tolerance `tol`, to an identity matrix of the same dimension (use `np.eye()`). Make sure to:
+
+- check that the arrays are both square and have the same dimensions, and raise a `ValueError` if not
+- use an appropriate test for floating-point near-equality; that is, return `True` if, for every $i$ and $j$, $\textrm{abs}((AB)_{ij}-I_{ij})<\textrm{tol}$, and `False` otherwise.
+
+**Loop way (with a little Numpy)**
+
+```{r}
+import numpy as np
+
+def check_inverse(a, b, tol = 1e-8):
+	if a.shape[0] != a.shape[1] or b.shape[0] != b.shape[1] or a.shape[0] != b.shape[0]:
+		raise ValueError
+	mat = abs( np.dot(a, b) - np.eye(a.shape[0]) )
+	for i in range(mat.shape[0]):
+		for j in range(mat.shape[1]):
+			if mat[i,j] >= tol:
+				return(False)
+	return(True)
+
+np.random.seed(1)
+a = np.random.random(9).reshape((3,3))
+b = np.linalg.inv(a)
+print( check_inverse(a,b) ) 	# Should be True
+print( check_inverse(a,b,0) )	# Should be False
+print( check_inverse(a,b+2) )	# Should be False
+```
+
+**Pure Numpy**
+
+```{r}
+import numpy as np
+
+def check_inverse(a, b, tol = 1e-8):
+	if a.shape[0] != a.shape[1] or b.shape[0] != b.shape[1] or a.shape[0] != b.shape[0]:
+		raise ValueError
+	return( np.all( abs(np.dot(a,b)-np.eye(a.shape[0])) < tol ) )
+
+np.random.seed(1)
+a = np.random.random(9).reshape((3,3))
+b = np.linalg.inv(a)
+print( check_inverse(a,b) ) 	# Should be True
+print( check_inverse(a,b,0) )	# Should be False
+print( check_inverse(a,b+2) )	# Should be False
+```
+
+
+***
+
+## Question 4
+
+Define a function `maxrows(a,m)` that returns an array comprising all the *rows* in the array whose mean is greater than `m`. If we have the usual `a = np.arange(9).reshape((3,3))` then the result of `maxval(a,2.1)` should be `np.array([[3, 4, 5], [6, 7, 8]])`.
+
+**Loop way**
+
+```{r}
+import numpy as np
+
+def maxrows(a, m):
+	res = []
+	for i in range(a.shape[0]):
+		rowsum = 0
+		for j in range(a.shape[1]):
+			rowsum += a[i,j]
+		rowmean = rowsum / a.shape[1]
+		if rowmean > m:
+			res.append(a[i])
+	return( np.array(res) )
+
+a = np.arange(9).reshape((3,3))
+print( maxrows(a,2.1) )
+```
+
+**Numpy way**
+
+```{r}
+import numpy as np
+
+def maxrows(a,m):
+    v = np.mean(a, axis=1) > m
+    return(a[v])
+
+a = np.arange(9).reshape((3,3))
+print( maxrows(a,2.1) )
+```
