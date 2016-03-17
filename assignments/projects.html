@@ -110,12 +110,13 @@ $(document).ready(function () {
 
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>17:44 15 March 2016</em></h4>
+<h4 class="date"><em>11:20 17 March 2016</em></h4>
 
 </div>
 
 
 <p>These projects are <strong>individual</strong> projects; if you discuss anything about them with other students in the class, you should follow the standard rules (don’t write anything down while you are engaged with the other students). If you get anything from the web, give references.</p>
+<p>Projects are due <strong>Friday April 8</strong> at midnight (end of the day).</p>
 <div id="packing-simulation" class="section level3">
 <h3>Packing simulation</h3>
 <p>Consider the following stochastic process:</p>
@@ -134,31 +135,32 @@ $(document).ready(function () {
 <ul>
 <li><code>fillable(i,a,r=1)</code>: returns a Boolean that says whether element <code>i</code> of array <code>a</code> can be filled (i.e. whether <code>i</code> and all elements within distance <code>r</code> are empty). Make sure to account for boundaries!</li>
 <li><code>any_fillable(a,r=1)</code>: returns a Boolean that says whether any elements of array <code>a</code> can be filled</li>
-<li><code>fill_one(a,r=1)</code>: fills a single element of <code>a</code> by picking random empty elements <em>until</em> it finds one that can be filled. Returns <code>None</code> (modifies the array <code>a</code>).</li>
-<li><code>fill_sim(n,r=1)</code>: creates an array of length <code>n</code> and fills it until there are no fillable spaces left; returns the fraction of the array that is full.</li>
+<li><code>fill_one(a,r=1)</code>: fills a single element of <code>a</code> by picking random empty elements <em>until</em> it finds one that can be filled. Returns <code>None</code> (modifies the array <code>a</code>). <code>fill_one()</code> can assume that <code>any_fillable()</code> is <code>True</code>.</li>
+<li><code>fill_sim(n,r=1)</code>: creates an array of length <code>n</code> and fills it until there are no fillable spaces left; returns the filled array</li>
+<li><code>count_sim(n,r=1)</code>: calls <code>fill_sim</code> and computes the proportion of filled spaces in the resulting array Create a 2-dimensional array with 10 rows and 20 columns. Fill it with the results of <code>fill_sim()</code> for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using <code>matplotlib.pyplot.plot()</code>).</li>
 </ul>
-<p>Create a 2-dimensional array with 10 rows and 20 columns. Fill it with the results of <code>fill_sim()</code> for radii from 1 to 10 and array sizes (100,200,…,2000). Create a plot that displays the contents of the array (probably using <code>matplotlib.pyplot.plot()</code>).</p>
-<p>Submit your code in the drobox as <code>macid_proj_package.py</code> and your plot as <code>macid_proj_package.png</code></p>
-<p><strong>is this too easy? Should I make them try the 2-D/multidimensional version?</strong></p>
+<p>Submit your code in the drobox as <code>macid_proj_fill.py</code> and your plot as <code>macid_proj_fill.png</code></p>
 </div>
 <div id="chain-binomial-epidemic-models" class="section level3">
 <h3>Chain binomial epidemic models</h3>
 <p>The <em>chain binomial</em> model is a simple epidemic model that says, if there are <span class="math inline">\(S\)</span> susceptible and <span class="math inline">\(I_0\)</span> infected individuals in a well-mixed population (such as a household), that the number of infections in the next infection generation will be <span class="math inline">\(I \sim \textrm{Binomial}\left(S,1-(1-p)^{I_0}\right)\)</span> - a binomial deviate with a probability corresponding each susceptible being infected by at least one of the infected individuals with probability <span class="math inline">\(p\)</span>. In the next generation there will be <span class="math inline">\(S-I\)</span> susceptible individuals and <span class="math inline">\(I\)</span> infected individuals.</p>
 <ul>
-<li><code>binom(N,prob)</code>: pick a binomial deviate with <code>N</code> trials, each trial having probability <code>p</code>. (Pick <code>N</code> Uniform(0,1) deviates and count the number that are <code>&lt;p</code>; you can use a <code>for</code> loop or <code>numpy</code> array functions.)</li>
+<li><code>rbinom(N,prob)</code>: pick a binomial deviate with <code>N</code> trials, each trial having probability <code>p</code>. (Pick <code>N</code> Uniform(0,1) deviates and count the number that are <code>&lt;p</code>; you can use a <code>for</code> loop or <code>numpy</code> array functions.)</li>
 <li><code>cb_gen(S,I0,prob)</code>: run one generation of the chain binomial model, starting with <code>S</code> susceptible and <code>I0</code> infected individuals, with a per-infected-per-susceptible infection probability of <code>prob</code>. Return a tuple <code>(new_S,new_I)</code></li>
 <li><code>cb_sim(S0,I0,prob,nmax)</code>: run a chain binomial simulation for a maximum of <code>nmax</code> steps, starting with <code>S0</code> susceptibles and <code>I0</code> infected, with a per-individual infection probability <code>prob</code>. Make sure your code doesn’t break when the epidemic ends (i.e. there are no new infections). Return a <strong>tuple</strong> that gives the number of infected individuals in each disease generation before the epidemic ends: for example, if you start with <code>I0</code>=1 infected in the first step, have 2 infected in the step, then 1 infected, then none, you should return <code>(1,2,1)</code>.</li>
-<li><p>write a function <code>cb_tot(N,inf_result)</code> that runs <code>cb_sim()</code> and sums the values in the tuple, e.g. the previous example should return just the integer 4.</p></li>
-<li>Run 10,000 simulations of a chain binomial epidemic with <code>S0=5</code>, <code>I0=1</code>, <code>prob=0.25</code>, <code>nmax=10</code></li>
-<li>Print a table giving the probabilities of all of the possible epidemic types based on the simulation</li>
+<li><p><code>update_cb_dict(d,k)</code>: if the epidemic outcome (<code>k</code>) is a key in the dictionary, add one to the value associated with the outcome; if not, initialize the dictionary entry to zero</p></li>
+<li>Run 10,000 simulations of a chain binomial epidemic with <code>S0=5</code>, <code>I0=1</code>, <code>prob=0.4</code>, <code>nmax=10</code>;
+<ul>
+<li>Print the <em>most likely</em> epidemic outcome and its probability. The best way to do this is probably to set up an empty dictionary; fill it by running <code>update_cb_dict()</code> for each simulated epidemic; and iterate through the dictionary looking for the maximum key value. Don’t forget to divide counts by the number of simulations …</li>
+</ul></li>
 <li><p>Run 10,000 simulations each of the chain binomial epidemic with <code>S0=5</code>, <code>I0=1</code>, <code>nmax=10</code>, and probabilities ranging from 0 to 1 in steps of 0.05. For each infection probability, compute the <em>mean</em> number infected (i.e. the mean of the results of <code>cb_tot()</code>). Plot the mean as a function of infection probability.</p></li>
 </ul>
+<p>Submit your code in the drobox as <code>macid_proj_cb.py</code> and your plot as <code>macid_proj_cb.png</code></p>
 </div>
 <div id="percolation" class="section level3">
 <h3>Percolation</h3>
-<p>(This problem is harder than the others.)</p>
-<p>Many problems in materials science and applied physics depend on the phenomenon of <em>percolation</em>, the question of when there will be a connected path of some kind through a material. A simple set of rules for left-right percolation will be that if one can traverse a numeric array containing 0 and 1 values …</p>
-<p>(this one requires recursion, I think. Too hard?)</p>
+<p>(<strong>to be completed</strong>: This problem is harder than the others.)</p>
+<p>Many problems in materials science and applied physics depend on the phenomenon of <em>percolation</em>, the question of when there will be a connected path of some kind through a material. A simple set of rules for top-bottom percolation will be that if one can traverse a numeric array containing 0 and 1 values …</p>
 <p>Write the following simulation functions:</p>
 <pre class="python"><code>def check_topbottom_path(a,i0,j0):
     &quot;&quot;&quot;given a 2-dimensional array a (dimensions not explicitly specified)
