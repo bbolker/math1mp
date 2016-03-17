@@ -11,6 +11,8 @@ opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 
 These projects are **individual** projects; if you discuss anything about them with other students in the class, you should follow the standard rules (don't write anything down while you are engaged with the other students).  If you get anything from the web, give references.
 
+Projects are due **Friday April 8** at midnight (end of the day).
+
 ### Packing simulation
 
 Consider the following stochastic process:
