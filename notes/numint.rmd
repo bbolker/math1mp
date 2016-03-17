@@ -29,7 +29,7 @@ plt.savefig("pix/qtrcirc.png")
 ![quarter circle](pix/qtrcirc.png)
 
 - What about something horrible like $\int_0^1 \exp(-x^2) \log(1+x) \, dx$ ?
-- Let's write a [couple of programs](code/integrate.py):
+- Let's write a [couple of programs](../code/integrate.py):
     - brute force (without array functions, only `for` loops)
 	- with array functions (we shouldn't need any `for` loops)
 - How could we make this better?
