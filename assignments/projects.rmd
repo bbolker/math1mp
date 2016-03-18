@@ -11,8 +11,6 @@ opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 
 These projects are **individual** projects; if you discuss anything about them with other students in the class, you should follow the standard rules (don't write anything down while you are engaged with the other students).  If you get anything from the web, give references.
 
-Projects are due **Friday April 8** at midnight (end of the day).
-
 ### Packing simulation
 
 Consider the following stochastic process:
@@ -34,7 +32,7 @@ Write the following functions:
 - `count_sim(n,r=1)`: calls `fill_sim` and computes the proportion of filled spaces in the resulting array
 Create a 2-dimensional array with 10 rows and 20 columns. Fill it with the results of `fill_sim()` for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using `matplotlib.pyplot.plot()`).
 
-Submit your code in the drobox as `macid_proj_fill.py` and your plot as `macid_proj_fill.png`
+Submit your code in the drobox as `macid_proj_package.py` and your plot as `macid_proj_package.png`
 
 
 ### Chain binomial epidemic models
@@ -47,23 +45,22 @@ The *chain binomial* model is a simple epidemic model that says, if there are $S
 - `update_cb_dict(d,k)`: if the epidemic outcome (`k`) is a key in the dictionary, add one to the value associated with the outcome; if not, initialize the dictionary entry to zero
 
 - Run 10,000 simulations of a chain binomial epidemic with `S0=5`, `I0=1`, `prob=0.4`, `nmax=10`;
-    - Print the *most likely* epidemic outcome and its probability. The best way to do this is probably to set up an empty dictionary; fill it by running `update_cb_dict()` for each simulated epidemic; and iterate through the dictionary looking for the maximum key value.  Don't forget to divide counts by the number of simulations ...
+    - Print the *most likely* epidemic outcome. The best way to do this is probably to set up an empty dictionary; fill it by running `update_cb_dict()` for each simulated epidemic; 
 - Run 10,000 simulations each of the chain binomial epidemic with `S0=5`, `I0=1`, `nmax=10`, and probabilities ranging from 0 to 1 in steps of 0.05. For each infection probability, compute the *mean* number infected (i.e. the mean of the results of `cb_tot()`). Plot the mean as a function of infection probability.
-
-Submit your code in the drobox as `macid_proj_cb.py` and your plot as `macid_proj_cb.png`
 
 ### Percolation
 
-(**to be completed**: This problem is harder than the others.)
+(This problem is harder than the others.)
 
-Many problems in materials science and applied physics depend on the phenomenon of *percolation*, the question of when there will be a connected path of some kind through a material. A simple set of rules for top-bottom percolation will be that if one can traverse a numeric array containing 0 and 1 values ...
+Many problems in materials science and applied physics depend on the phenomenon of *percolation*, the question of when there will be a connected path of some kind through a material. A simple way to figure out the connected path is to write a recursive function `check_path(i,j,a)`, where `i` is a row index, `j` is a column index, and `a` is a 2D array, with the following properties:
 
-Write the following simulation functions:
+- if `i` is in the bottom row of the matrix
+     - return `True` if `a[i,j]==1`, otherwise `False`
+- otherwise if there is no path going downward from `i,j` (i.e. the cells immediately below and below to the left and right are all zero), return `False`
+- otherwise return `True` if `a[i,j]==1` and any of the paths going downward from `i,j` are connected to the bottom (i.e. call `check_path()` recursively)
 
-```{r percolation}
-def check_topbottom_path(a,i0,j0):
-    """given a 2-dimensional array a (dimensions not explicitly specified)
-and a starting position i0,j0, see whether there is a path from there to the bottom"""
-    do_some_stuff()  ## incomplete!
-```
+- Then write `perc_path` which returns `True` if `check_path()` is true for any of the cells equal to 1 in the first row of the array.
 
+- Write a function `rand_bin_array(n,prob)` to fill a n-by-n square array randomly with 1s with probability `prob`.
+
+- Find the 2D percolation threshold by calculating the probability (proportion of random matrices where `perc_path()` returns `True`) for 500 random arrays each for probabilities in `numpy.arange(0.25,0.6,0.025)`; draw a plot using `matplotlib.pyplot` of the results.
