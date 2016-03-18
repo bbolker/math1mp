@@ -110,13 +110,12 @@ $(document).ready(function () {
 
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>11:20 17 March 2016</em></h4>
+<h4 class="date"><em>22:29 17 March 2016</em></h4>
 
 </div>
 
 
 <p>These projects are <strong>individual</strong> projects; if you discuss anything about them with other students in the class, you should follow the standard rules (don’t write anything down while you are engaged with the other students). If you get anything from the web, give references.</p>
-<p>Projects are due <strong>Friday April 8</strong> at midnight (end of the day).</p>
 <div id="packing-simulation" class="section level3">
 <h3>Packing simulation</h3>
 <p>Consider the following stochastic process:</p>
@@ -139,7 +138,7 @@ $(document).ready(function () {
 <li><code>fill_sim(n,r=1)</code>: creates an array of length <code>n</code> and fills it until there are no fillable spaces left; returns the filled array</li>
 <li><code>count_sim(n,r=1)</code>: calls <code>fill_sim</code> and computes the proportion of filled spaces in the resulting array Create a 2-dimensional array with 10 rows and 20 columns. Fill it with the results of <code>fill_sim()</code> for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using <code>matplotlib.pyplot.plot()</code>).</li>
 </ul>
-<p>Submit your code in the drobox as <code>macid_proj_fill.py</code> and your plot as <code>macid_proj_fill.png</code></p>
+<p>Submit your code in the drobox as <code>macid_proj_package.py</code> and your plot as <code>macid_proj_package.png</code></p>
 </div>
 <div id="chain-binomial-epidemic-models" class="section level3">
 <h3>Chain binomial epidemic models</h3>
@@ -151,21 +150,26 @@ $(document).ready(function () {
 <li><p><code>update_cb_dict(d,k)</code>: if the epidemic outcome (<code>k</code>) is a key in the dictionary, add one to the value associated with the outcome; if not, initialize the dictionary entry to zero</p></li>
 <li>Run 10,000 simulations of a chain binomial epidemic with <code>S0=5</code>, <code>I0=1</code>, <code>prob=0.4</code>, <code>nmax=10</code>;
 <ul>
-<li>Print the <em>most likely</em> epidemic outcome and its probability. The best way to do this is probably to set up an empty dictionary; fill it by running <code>update_cb_dict()</code> for each simulated epidemic; and iterate through the dictionary looking for the maximum key value. Don’t forget to divide counts by the number of simulations …</li>
+<li>Print the <em>most likely</em> epidemic outcome. The best way to do this is probably to set up an empty dictionary; fill it by running <code>update_cb_dict()</code> for each simulated epidemic;</li>
 </ul></li>
 <li><p>Run 10,000 simulations each of the chain binomial epidemic with <code>S0=5</code>, <code>I0=1</code>, <code>nmax=10</code>, and probabilities ranging from 0 to 1 in steps of 0.05. For each infection probability, compute the <em>mean</em> number infected (i.e. the mean of the results of <code>cb_tot()</code>). Plot the mean as a function of infection probability.</p></li>
 </ul>
-<p>Submit your code in the drobox as <code>macid_proj_cb.py</code> and your plot as <code>macid_proj_cb.png</code></p>
 </div>
 <div id="percolation" class="section level3">
 <h3>Percolation</h3>
-<p>(<strong>to be completed</strong>: This problem is harder than the others.)</p>
-<p>Many problems in materials science and applied physics depend on the phenomenon of <em>percolation</em>, the question of when there will be a connected path of some kind through a material. A simple set of rules for top-bottom percolation will be that if one can traverse a numeric array containing 0 and 1 values …</p>
-<p>Write the following simulation functions:</p>
-<pre class="python"><code>def check_topbottom_path(a,i0,j0):
-    &quot;&quot;&quot;given a 2-dimensional array a (dimensions not explicitly specified)
-and a starting position i0,j0, see whether there is a path from there to the bottom&quot;&quot;&quot;
-    do_some_stuff()  ## incomplete!</code></pre>
+<p>(This problem is harder than the others.)</p>
+<p>Many problems in materials science and applied physics depend on the phenomenon of <em>percolation</em>, the question of when there will be a connected path of some kind through a material. A simple way to figure out the connected path is to write a recursive function <code>check_path(i,j,a)</code>, where <code>i</code> is a row index, <code>j</code> is a column index, and <code>a</code> is a 2D array, with the following properties:</p>
+<ul>
+<li>if <code>i</code> is in the bottom row of the matrix
+<ul>
+<li>return <code>True</code> if <code>a[i,j]==1</code>, otherwise <code>False</code></li>
+</ul></li>
+<li>otherwise if there is no path going downward from <code>i,j</code> (i.e. the cells immediately below and below to the left and right are all zero), return <code>False</code></li>
+<li><p>otherwise return <code>True</code> if <code>a[i,j]==1</code> and any of the paths going downward from <code>i,j</code> are connected to the bottom (i.e. call <code>check_path()</code> recursively)</p></li>
+<li><p>Then write <code>perc_path</code> which returns <code>True</code> if <code>check_path()</code> is true for any of the cells equal to 1 in the first row of the array.</p></li>
+<li><p>Write a function <code>rand_bin_array(n,prob)</code> to fill a n-by-n square array randomly with 1s with probability <code>prob</code>.</p></li>
+<li><p>Find the 2D percolation threshold by calculating the probability (proportion of random matrices where <code>perc_path()</code> returns <code>True</code>) for 500 random arrays each for probabilities in <code>numpy.arange(0.25,0.6,0.025)</code>; draw a plot using <code>matplotlib.pyplot</code> of the results.</p></li>
+</ul>
 </div>
 
 
