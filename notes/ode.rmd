@@ -162,3 +162,7 @@ SIR_sol2 = scipy.integrate.odeint(SIR_grad,
                        t=t_vec,
                        args=((2,1),))
 ```
+
+Results of a more complicated ODE from Grasselli and Costa Lima, "An analysis of the Keen model for credit expansion, asset price bubbles and financial fragility" (Math Finan Econ (2012) 6:191–210 [DOI:10.1007/s11579-012-0071-8](http://dx.doi.org/10.1007/s11579-012-0071-8); [code](../code/grasselli.py)
+
+![](pix/keen1.png)
