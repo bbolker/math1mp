@@ -17,17 +17,18 @@ Download US measles data from [Project Tycho](https://www.tycho.pitt.edu/index.p
 
 <!-- should use a makefile with pandas_weather.py and pandas_measles.py -->
 
-* `read_csv` reads a CSV file as a **data frame**; it automatically interprets the first row as headings
-* `df.iloc[]` indexes the result as though it were an array
-* `df.head()` shows just at the beginning; `df.tail()` shows just the end
+- `read_csv` reads a CSV file as a **data frame**; it automatically interprets the first row as headings
+- `df.iloc[]` indexes the result as though it were an array
+- `df.head()` shows just at the beginning; `df.tail()` shows just the end
 
 **Data frames**:
-* rectangular data structure, a lot like an array.
-* can have columns (**Series**) of different types
-* can index by labels as well as positions
-* handles **missing data**
-* convenient plotting
-* fast operations with keys
+
+- rectangular data structure, a lot like an array.
+- can have columns (**Series**) of different types
+- can index by labels as well as positions
+- handles **missing data**
+- convenient plotting
+- fast operations with keys
 
 ```{r}
 import pandas as pd
@@ -38,12 +39,12 @@ print(p.iloc[:,0:3].head())                     ## look at the first little bit
 
 ## Selecting
 
-* Pandas doc, [indexing and selecting](http://pandas.pydata.org/pandas-docs/dev/indexing.html)
-* Choosing specific columns of a data frame
+- Pandas doc, [indexing and selecting](http://pandas.pydata.org/pandas-docs/dev/indexing.html)
+- Choosing specific columns of a data frame; lots of ways to do it!
    * `df["NAME"]`: extract one series (column)
    * `df.NAME`  (*attribute* operator)
-   * `df.loc[:,"MASSACHUSETTS":"NEVADA"]` (index by *label*; includes endpoint)
-   * `df.iloc[:,range]` (index by *integer*)
+   * `df.loc[:,"MASSACHUSETTS":"NEVADA"]` (index by *label*; **includes endpoint**)
+   * `iloc` (integer location) method: `df.iloc[:,range]` (index by *integer*)
 
 ## Filtering
 
@@ -73,11 +74,11 @@ ax.scatter(pp.index,np.log10(pp.ARIZONA))
 
 ## Column and row manipulations
 
-* totals by week
+- totals by week
 ```{r eval=FALSE}
 ptot = pp.sum(axis=1)
 ```
-* `df.min`, `df.max`, `df.mean` all work too ...
+- `df.min`, `df.max`, `df.mean` all work too ...
 
 ![](pix/meastot.png)
 
@@ -95,19 +96,19 @@ ptotweekmean.plot()
 
 [reference](https://docs.python.org/3.0/library/datetime.html)
 
-* (Another) complex subject. 
-* Lots of [possible date formats](https://xkcd.com/1179/)
-* Basic idea: something like `%Y-%m-%d`; separators just match whatever's in your data
+- (Another) complex subject. 
+- Lots of [possible date formats](https://xkcd.com/1179/)
+- Basic idea: something like `%Y-%m-%d`; separators just match whatever's in your data
 (usually "/" or "-"). Results need to be unambiguous, and ambiguity is dangerous
 (how is day of month specified?  lower case, capital? etc.)
-* `pandas` tries to guess, but you shouldn't let it.
+- `pandas` tries to guess, but you shouldn't let it.
 ```{r}
 import pandas as pd
 print(pd.to_datetime("05-01-2004"))
 print(pd.to_datetime("05-01-2004",format="%m-%d-%Y"))
 ```
-* Time zones and daylight savings time can be a nightmare
-* May need to have the right number of digits, especially in the absence of separators:
+- Time zones and daylight savings time can be a nightmare
+- May need to have the right number of digits, especially in the absence of separators:
 ```{r}
 import pandas as pd
 print(pd.to_datetime("1212004",format="%m%d%Y"))
@@ -124,9 +125,9 @@ dateindex = pd.to_datetime(datestr,format="%Y-%U-%w")
 
 ## Binning results
 
-* turn a quantitative variable into categories
-* `pd.cut(x,bins=...)`; decide on bins
-* `pd.qcut(x,n)`; decide on number of bins (equal occupancy)
+- turn a quantitative variable into categories
+- `pd.cut(x,bins=...)`; decide on bins
+- `pd.qcut(x,n)`; decide on number of bins (equal occupancy)
 
 ## Weather data
 
