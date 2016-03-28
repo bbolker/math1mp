@@ -30,7 +30,7 @@ Write the following functions:
 - `fill_one(a,r=1)`: fills a single element of `a` by picking random empty elements *until* it finds one that can be filled.  Returns `None` (modifies the array `a`).  `fill_one()` can assume that `any_fillable()` is `True`.
 - `fill_sim(n,r=1)`: creates an array of length `n` and fills it until there are no fillable spaces left; returns the filled array
 - `count_sim(n,r=1)`: calls `fill_sim` and computes the proportion of filled spaces in the resulting array
-Create a 2-dimensional array with 10 rows and 20 columns. Fill it with the results of `fill_sim()` for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using `matplotlib.pyplot.plot()`).
+Create a 2-dimensional array with 10 rows and 20 columns. Fill it with the results of `count_sim()` for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using `matplotlib.pyplot.plot()`).
 
 Submit your code in the drobox as `macid_proj_package.py` and your plot as `macid_proj_package.png`
 
