@@ -34,6 +34,15 @@ fill_one(b)
 c = a.copy()
 c[6] = 1
 print(all(b==c))
+print("strict test fill_one: only one legal choice")
+## there is only one legally fillable space (e[99]),
+## so no matter what random number seed we use, that
+## must be the one that gets filled ...
+e = np.ones(100)
+e[98:100] = 0
+f = e.copy()
+f[99] = 1
+print(np.all(e==f))
 print("loose test fill_one, seed=101")
 print(np.sum(b)==np.sum(a)+1)
 np.random.seed(101)
