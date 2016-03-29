@@ -40,6 +40,7 @@ print("strict test fill_one: only one legal choice")
 ## must be the one that gets filled ...
 e = np.ones(100)
 e[98:100] = 0
+fill_one(e)
 f = e.copy()
 f[99] = 1
 print(np.all(e==f))
