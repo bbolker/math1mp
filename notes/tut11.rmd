@@ -1,0 +1,225 @@
+---
+title: "Tutorial 11: Pseudorandom Numbers and Monte Carlo Integration"
+date: "Tuesday March 29, 2016"
+author: Dexter Barrows
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+---
+
+```{r, echo = FALSE, warning = FALSE}
+library("knitr")
+opts_chunk$set(tidy = FALSE, engine = 'python',engine.path = 'python3')
+```
+
+[Documentation reference](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
+
+***
+
+## DIY Pseudorandom Number Generation
+
+True random numbers are impossible for computers to generate; they are deterministic machines by design. Instead we must rely on pseudorandom number generation algorithms to produce sequences of numbers that are approximately random.
+
+One of the oldest algorithms for producing pseudorandom number sequences $x_1, x_2, ...,x_n$ is a [Linear Congruential Generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) (LCG). They are defined as
+
+$$
+x_{n+1} = (a \cdot x_{n} + c) \mod m
+$$
+
+LCGs are defined by their $(a,c,m)$ triplet. For example, the C99 generator uses the triplet $(a,c,m) = (1103515245, 12345, 2^{31})$. We can implement an LCG in Python fairly easily:
+
+```{r}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def lcg_C99(n, x = 1024):
+	'''
+	Generates `n` pseudorandom numbers with `x` as a seed
+	Uses C99 LCG triplet (1103515245, 12345, 2147483648)
+	'''
+	nums = np.zeros(n)
+	curnum = x
+	for i in range(0,n):
+		curnum = (1103515245*curnum + 12345) % 2**31  	# core LCG calculation
+		nums[i] = curnum								# save current number
+	return(nums)
+
+N = 1000
+prng_nums = lcg_C99(N) 									# numbers in [0,2^31-1]
+
+plt.subplot(2,1,1)
+plt.scatter(np.arange(N), prng_nums) 					# number against index
+plt.axis([0, N, 0, 2**31])
+
+plt.subplot(2,1,2)
+plt.hist(prng_nums, bins = 50) 							# histogram of numbers
+plt.axis([0, 2**31, 0, 35])
+
+plt.savefig("tutpix/prngC99.png")
+```
+
+![prngC99](tutpix/prngC99.png)
+
+
+***
+
+## Numpy PRNG
+
+But using an LCG isn't that great of an idea. Better: get Numpy to do the work for you, and get potentially better random numbers to boot.
+
+```{r}
+import numpy as np
+import numpy.random as npr
+import matplotlib.pyplot as plt
+
+N = 1000
+prng_nums = npr.rand(N) 				# uniform random numbers in [0,1]
+
+plt.subplot(2,1,1)
+plt.scatter(np.arange(N), prng_nums) 	# number against index
+plt.axis([0, N, 0, 1])
+
+plt.subplot(2,1,2)
+plt.hist(prng_nums, bins = 50) 			# histogram of numbers
+plt.axis([0, 1, 0, 35])
+
+plt.savefig("tutpix/prng_npr.png")
+```
+
+![prngC99](tutpix/prng_npr.png)
+
+
+***
+
+## Other Distributions
+
+### Normal
+
+```{r}
+import numpy as np
+import numpy.random as npr
+import matplotlib.pyplot as plt
+
+N = 1000
+prng_nums = npr.normal(size = N) 		# Gaussian random numbers
+
+plt.subplot(2,1,1)
+plt.scatter(np.arange(N), prng_nums) 	# number against index
+plt.axis([0, N, -3, 3])
+
+plt.subplot(2,1,2)
+plt.hist(prng_nums, bins = 50) 			# histogram of numbers
+plt.axis([-3, 3, 0, 65])
+
+plt.savefig("tutpix/npr_normal.png")
+```
+
+![normal](tutpix/npr_normal.png)
+
+
+### Poisson
+
+```{r}
+import numpy as np
+import numpy.random as npr
+import matplotlib.pyplot as plt
+
+N = 1000
+prng_nums = npr.poisson(lam = 5, size = N) # Poisson random numbers
+
+plt.subplot(2,1,1)
+plt.scatter(np.arange(N), prng_nums) 		# number against index
+plt.axis([0, N, 0, 15])
+
+plt.subplot(2,1,2)
+plt.hist(prng_nums, bins = 14) 				# histogram of numbers
+plt.axis([0, 15, 0, 200])
+
+plt.savefig("tutpix/npr_poisson.png")
+```
+
+![normal](tutpix/npr_poisson.png)
+
+***
+
+## Seeds
+
+As PRNG schemes are deterministic, they have 'states' that can be set so we can force the output to be consistent (say if we are doing testing). This is known as **seeding**.
+
+```{r}
+import numpy as np
+import numpy.random as npr
+
+N = 1000
+npr.seed(1024)
+
+a = npr.rand(N)
+b = npr.rand(N)
+print( np.all( a == b ) )   # Should be False
+
+npr.seed(101)
+a = npr.rand(N)
+npr.seed(101)
+b = npr.rand(N)
+print( np.all( a == b ) )	# Should be True
+```
+
+***
+
+## Monte Carlo Integration
+
+Say we wanted to approximate the area under the unit circle in the 1st quadrant, i.e. $\int_{0}^{1} 1 - x^2 dx$
+
+```{r}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(0, 1, 0.001)
+
+plt.subplots(figsize=(4,4))
+plt.plot(x, np.sqrt(1 - x**2))
+plt.axis([0, 1, 0, 1])
+
+plt.savefig("tutpix/circ.png")
+```
+
+![circ](tutpix/circ.png)
+
+We can get the answer analytically, but what if the function can't be integrated? We can use Monte Carlo Integration. The basic procedure is we generate a bunch on random numbers in the unit square in the first quadrant, and see what proportion land inside the arc.
+
+```{r}
+import numpy as np
+import numpy.random as npr
+import matplotlib.pyplot as plt
+
+x = np.arange(0, 1, 0.001)
+
+plt.subplots(figsize=(4,4))
+plt.plot(x, np.sqrt(1 - x**2))
+plt.axis([0, 1, 0, 1])
+
+N = 1000
+goodlist = []
+badlist = []
+for i in range(N):
+	x, y = npr.rand(2)
+	if x**2 + y**2 <= 1:
+		goodlist.append((x,y))
+	else:
+		badlist.append((x,y))
+
+area = len(goodlist) / N
+print("Approximate area: ", area)
+print("Actual area:      ", np.pi/4)
+
+x1, y1 = zip(*goodlist)
+x2, y2 = zip(*badlist)
+
+plt.scatter(x1, y1, color = 'b')
+plt.scatter(x2, y2, color = 'r')
+
+plt.savefig("tutpix/circfilled.png")
+```
+
+![circ](tutpix/circfilled.png)
