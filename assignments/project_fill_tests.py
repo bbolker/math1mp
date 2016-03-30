@@ -2,14 +2,21 @@ import numpy as np
 import random
 ## change this line to use your macid
 from bolker_proj_fill import *
-## different random number choice methods give different results
-## rand_method = "default"  ## numpy.random.randint, numpy.random.choice
-## rand_method = "choice_repl_False"
-rand_method = "rand_sample"
-if rand_method!="rand_sample":
+## NOTE: since different random-number functions may give different results on the
+## 'strict' tests, you should set the rand_method variable below to match the method you use
+## if you are using one of the numpy.random.* methods you shouldn't need to change it
+## (numpy.random.choice(...,replace=False) gives different answers; I haven't implemented
+## a test for this case yet)
+## If the strict tests are failing for you and you're using random numbers other than the
+## methods listed below, please e-mail me.
+rand_method = "default"          ## uncomment this if you use numpy.random.randint(), numpy.random.choice()
+## rand_comment="rand_sample"    ## uncomment this if you use random.sample()
+if rand_method!="rand_sample":  
     seed = np.random.seed
 else:
     seed = random.seed
+
+    
 print("all tests should result in True ...")
 a = np.array([0,0,1,1,1,0,0,0,1,0,0,1,0])
 print("test fillable (interior, r=default(1)):")
@@ -66,7 +73,7 @@ print("strict test fill_sim(10), seed=101")
 if rand_method=="default":
     print(all(d==np.array([0,1,0,0,1,0,1,0,0,1])))
 elif rand_method=="rand_sample":
-    print(all(d==np.array([ 1, 0, 0, 1, 0, 1, 0, 1, 0, 1])))
+    print(all(d==np.array([1,0,0,1,0,1,0,1,0,1])))
 seed(101)
 print("loose test fill_sim(10), seed=101")
 print(not any_fillable(d))
