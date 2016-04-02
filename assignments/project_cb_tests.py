@@ -22,18 +22,17 @@ r3c = r3.count((15,5))
 print(r3c>1600 & r3c<1800)
 seed(101)
 print("test cb_sim (strict test, seed=101)")
-r4 = cb_sim(20,1,0.2,25)
+r4 = cb_sim(20,1,0.2)
 print(r4==(1,5,9,5,1))
 seed(101)
 print("test cb_sim (loose test, seed=101)")
-r5 = [cb_sim(20,1,0.2,25) for i in range(10000)]
+r5 = [cb_sim(20,1,0.2) for i in range(10000)]
 r5c = r5.count((1,5,9,5,1))
 print(r5c>75 & r5c<85)
 print("update_cb_dict (basic)")
 d={}
 update_cb_dict(d,(1,2,1))
 print(d=={(1, 2, 1): 1})
-print("cb_tot")
-print(cb_tot((1, 2, 1))==4)
+
 
 
