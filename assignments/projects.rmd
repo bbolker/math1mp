@@ -32,8 +32,17 @@ Write the following functions:
 - `count_sim(n,r=1)`: calls `fill_sim` and computes the proportion of filled spaces in the resulting array
 - create a 2-dimensional array with 10 rows and 35 columns. Fill it with the results of `count_sim()` for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using `matplotlib.pyplot.plot()`).
 
-Submit your code in the drobox as `macid_proj_package.py` and your plot as `macid_proj_package.png`
+Submit your code in the drobox as `macid_proj_packing.py` and your plot as `macid_proj_packing.png`
 
+Please include your simulation and plotting code in your Python file **either**
+
+- (simple version) commented out
+- (more complex) within an `if False:` block
+- (more complex) within an `if __name__ == "__main__":` block
+
+Three possible ways your plot might look:
+
+![](bolker_proj_packing.png)
 
 ### Chain binomial epidemic models
 
@@ -42,11 +51,19 @@ The *chain binomial* model is a simple epidemic model that says, if there are $S
 - `rbinom(N,prob)`: pick a binomial deviate with `N` trials, each trial having probability `p`. (Pick `N` Uniform(0,1) deviates and count the number that are `<p`; you can use a `for` loop or `numpy` array functions.)
 - `cb_gen(S,I0,prob)`: run one generation of the chain binomial model, starting with `S` susceptible and `I0` infected individuals, with a per-infected-per-susceptible infection probability of `prob`. Return a tuple `(new_S,new_I)`
 - `cb_sim(S0,I0,prob,nmax)`: run a chain binomial simulation for a maximum of `nmax` steps, starting with `S0` susceptibles and `I0` infected, with a per-individual infection probability `prob`.  Make sure your code doesn't break when the epidemic ends (i.e. there are no new infections). Return a **tuple** that gives the number of infected individuals in each disease generation before the epidemic ends: for example, if you start with `I0`=1 infected in the first step, have 2 infected in the step, then 1 infected, then none, you should return `(1,2,1)`.
-- `update_cb_dict(d,k)`: if the epidemic outcome (`k`) is a key in the dictionary, add one to the value associated with the outcome; if not, initialize the dictionary entry to zero
+- `update_cb_dict(d,k)`: if the epidemic outcome (`k`) is a key in the dictionary, add one to the value associated with the outcome; if not, initialize the dictionary entry to one
 
 - Run 10,000 simulations of a chain binomial epidemic with `S0=5`, `I0=1`, `prob=0.4`, `nmax=10`;
     - Print the *most likely* epidemic outcome. The best way to do this is probably to set up an empty dictionary; fill it by running `update_cb_dict()` for each simulated epidemic; 
 - Run 10,000 simulations each of the chain binomial epidemic with `S0=5`, `I0=1`, `nmax=10`, and probabilities ranging from 0 to 1 in steps of 0.05. For each infection probability, compute the *mean* number infected (i.e. the mean of the results of `cb_tot()`). Plot the mean as a function of infection probability.
+
+![](cbprob.png)
+
+Please include your simulation and plotting code in your Python file **either**
+
+- (simple version) commented out
+- (more complex) within an `if False:` block
+- (more complex) within an `if __name__ == "__main__":` block
 
 ### Percolation
 
