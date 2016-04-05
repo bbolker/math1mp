@@ -19,7 +19,7 @@ Consider the following stochastic process:
 - as long as possible (see below),
     - check to see if any of the empty elements can be filled (see below)
     - pick a random empty (0) element of the array
-	- *if* there is no filled (1) element within radius `r` of the chosen element, fill it. For example, if `r`=1 then the elements immediately to the left and right need to be empty; if `r`=2 then two elements on each side should be empty (boundaries count as empty, e.g. if you pick element 0 of the array then you only need to consider elements from 1 to `r`)
+	- *if* there is no filled (1) element within radius `r` of the chosen element, fill it with 1. For example, if `r`=1 then the elements immediately to the left and right need to be empty; if `r`=2 then two elements on each side should be empty (boundaries count as empty, e.g. if you pick element 0 of the array then you only need to consider elements from 1 to `r`)
 	- otherwise try again
 - return the fraction of the array that is full
 
@@ -28,8 +28,8 @@ Write the following functions:
 - `fillable(i,a,r=1)`: returns a Boolean that says whether element `i` of array `a` can be filled (i.e. whether `i` and all elements within distance `r` are empty). Make sure to account for boundaries!
 - `any_fillable(a,r=1)`: returns a Boolean that says whether any elements of array `a` can be filled
 - `fill_one(a,r=1)`: fills a single element of `a` by picking random empty elements *until* it finds one that can be filled.  Returns `None` (modifies the array `a`).  `fill_one()` can assume that `any_fillable()` is `True`.
-- `fill_sim(n,r=1)`: creates an array of length `n` and fills it until there are no fillable spaces left; returns the filled array
-- `count_sim(n,r=1)`: calls `fill_sim` and computes the proportion of filled spaces in the resulting array
+- `fill_sim(n,r=1)`: creates an array of length `n` (filled with zeros) and fills it until there are no fillable spaces left; returns the filled array
+- `count_sim(n,r=1)`: calls `fill_sim` and computes the proportion of filled spaces in the resulting array. For example, if the results of `fill_sim(4)` was the array `a` equal to `[0 1 0 1]`, `count_sim(4)` should return 0.5 (half full).
 - create a 2-dimensional array with 10 rows and 35 columns. Fill it with the results of `count_sim()` for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using `matplotlib.pyplot.plot()`).
 
 Submit your code in the drobox as `macid_proj_packing.py` and your plot as `macid_proj_packing.png`
