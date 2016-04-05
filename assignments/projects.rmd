@@ -27,8 +27,8 @@ Write the following functions:
 
 - `fillable(i,a,r=1)`: returns a Boolean that says whether element `i` of array `a` can be filled (i.e. whether `i` and all elements within distance `r` are empty). Make sure to account for boundaries!
 - `any_fillable(a,r=1)`: returns a Boolean that says whether any elements of array `a` can be filled
-- `fill_one(a,r=1)`: fills a single element of `a` by picking random empty elements *until* it finds one that can be filled.  Returns `None` (modifies the array `a`).  `fill_one()` can assume that `any_fillable()` is `True`.
-- `fill_sim(n,r=1)`: creates an array of length `n` (filled with zeros) and fills it until there are no fillable spaces left; returns the filled array
+- `fill_one(a,r=1)`: fills a single element of `a` by picking random empty elements *until* it finds one that can be filled, and fills it with 1.  Returns `None` (modifies the array `a`).  `fill_one()` can assume that `any_fillable()` is `True`.
+- `fill_sim(n,r=1)`: creates an array of length `n` (filled with zeros) and fills it (by calling `fill_one`) until there are no fillable spaces left; returns the filled array
 - `count_sim(n,r=1)`: calls `fill_sim` and computes the proportion of filled spaces in the resulting array. For example, if the results of `fill_sim(4)` was the array `a` equal to `[0 1 0 1]`, `count_sim(4)` should return 0.5 (half full).
 - create a 2-dimensional array with 10 rows and 35 columns. Fill it with the results of `count_sim()` for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using `matplotlib.pyplot.plot()`).
 
