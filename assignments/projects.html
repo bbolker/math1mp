@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 <h1 class="title">math 1MP term projects</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>15:31 05 April 2016</em></h4>
+<h4 class="date"><em>15:45 05 April 2016</em></h4>
 
 </div>
 
@@ -125,7 +125,7 @@ $(document).ready(function () {
 <ul>
 <li>check to see if any of the empty elements can be filled (see below)</li>
 <li>pick a random empty (0) element of the array</li>
-<li><em>if</em> there is no filled (1) element within radius <code>r</code> of the chosen element, fill it. For example, if <code>r</code>=1 then the elements immediately to the left and right need to be empty; if <code>r</code>=2 then two elements on each side should be empty (boundaries count as empty, e.g. if you pick element 0 of the array then you only need to consider elements from 1 to <code>r</code>)</li>
+<li><em>if</em> there is no filled (1) element within radius <code>r</code> of the chosen element, fill it with 1. For example, if <code>r</code>=1 then the elements immediately to the left and right need to be empty; if <code>r</code>=2 then two elements on each side should be empty (boundaries count as empty, e.g. if you pick element 0 of the array then you only need to consider elements from 1 to <code>r</code>)</li>
 <li>otherwise try again</li>
 </ul></li>
 <li>return the fraction of the array that is full</li>
@@ -135,8 +135,8 @@ $(document).ready(function () {
 <li><code>fillable(i,a,r=1)</code>: returns a Boolean that says whether element <code>i</code> of array <code>a</code> can be filled (i.e. whether <code>i</code> and all elements within distance <code>r</code> are empty). Make sure to account for boundaries!</li>
 <li><code>any_fillable(a,r=1)</code>: returns a Boolean that says whether any elements of array <code>a</code> can be filled</li>
 <li><code>fill_one(a,r=1)</code>: fills a single element of <code>a</code> by picking random empty elements <em>until</em> it finds one that can be filled. Returns <code>None</code> (modifies the array <code>a</code>). <code>fill_one()</code> can assume that <code>any_fillable()</code> is <code>True</code>.</li>
-<li><code>fill_sim(n,r=1)</code>: creates an array of length <code>n</code> and fills it until there are no fillable spaces left; returns the filled array</li>
-<li><code>count_sim(n,r=1)</code>: calls <code>fill_sim</code> and computes the proportion of filled spaces in the resulting array</li>
+<li><code>fill_sim(n,r=1)</code>: creates an array of length <code>n</code> (filled with zeros) and fills it until there are no fillable spaces left; returns the filled array</li>
+<li><code>count_sim(n,r=1)</code>: calls <code>fill_sim</code> and computes the proportion of filled spaces in the resulting array. For example, if the results of <code>fill_sim(4)</code> was the array <code>a</code> equal to <code>[0 1 0 1]</code>, <code>count_sim(4)</code> should return 0.5 (half full).</li>
 <li>create a 2-dimensional array with 10 rows and 35 columns. Fill it with the results of <code>count_sim()</code> for radii from 1 to 10 and array sizes from 15 to 49. Create a plot that displays the contents of the array (probably using <code>matplotlib.pyplot.plot()</code>).</li>
 </ul>
 <p>Submit your code in the drobox as <code>macid_proj_packing.py</code> and your plot as <code>macid_proj_packing.png</code></p>
