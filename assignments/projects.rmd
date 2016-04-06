@@ -57,7 +57,11 @@ The *chain binomial* model is a simple epidemic model that says, if there are $S
     - Print the *most likely* epidemic outcome. The best way to do this is probably to set up an empty dictionary; fill it by running `update_cb_dict()` for each simulated epidemic; 
 - Run 10,000 simulations each of the chain binomial epidemic with `S0=5`, `I0=1`, `nmax=10`, and probabilities ranging from 0 to 1 in steps of 0.05. For each infection probability, compute the *mean* number infected (i.e. the mean of the results of `cb_tot()`). Plot the mean as a function of infection probability.
 
+Example:
+
 ![](cbprob.png)
+
+Submit your code in the drobox as `macid_proj_cbinom.py` and your plot as `macid_proj_cbinom.png`
 
 Please include your simulation and plotting code in your Python file **either**
 
