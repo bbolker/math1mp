@@ -445,4 +445,75 @@ print(a)
 ***
 
 
-*Keep an eye on this page, more may follow...*
+## Pandas
+
+Pandas provides a simple interface for dealing with data frames (organized relational data).
+
+```{r}
+import pandas as pd
+
+pokefile = "pokemon.csv"										## CSV file to read from
+pokedata = pd.read_csv(pokefile)								## read data from file
+pokedata.drop(['order', 'is_default'], axis=1, inplace=True)	## discard columns we are uninterested in
+
+print( pokedata.head() )										## print first 5 rows
+```
+
+Note the first column is missing a name -- this is the index column. We can change the indices to something easier to read, like the pokémon identifier (name).
+
+```{r}
+import pandas as pd
+
+pokefile = 'pokemon.csv'
+pokedata = pd.read_csv(pokefile)
+pokedata.drop(['order', 'is_default'], axis=1, inplace=True)
+
+pokedata_orig = pokedata[0:150] 						## get original 150 pokemon
+pokedata_named = pokedata_orig.set_index('identifier')	## make identifier column the index
+
+print( pokedata_named.head() )
+
+print( pokedata_named.loc['bulbasaur', 'height'] )		## access by row/column names
+print( pokedata_named.iloc[0,2]	)						## access by row/column index
+```
+
+We can also access columns directly using the `.` operator, as use it to filter data.
+
+```{r}
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+pokefile = 'pokemon.csv'
+pokedata = pd.read_csv(pokefile)
+pokedata.drop(['order', 'is_default'], axis=1, inplace=True)
+
+pokedata_orig = pokedata[0:150] 						## get original 150 pokemon
+pokedata_named = pokedata_orig.set_index('identifier')	## make identifier column the index
+
+print( "min weight", min(pokedata_named.weight) )	 	## get lightest pokemon
+print( "max weight", max(pokedata_named.weight) )		## get heaviest pokemon
+
+lightlim = pokedata_named.quantile(0.1)								## get lightest 5% limit
+pokelight = pokedata_named[pokedata_named.weight < lightlim['weight']]	## get data within limit
+print(pokelight)
+
+heavylim = pokedata_named.quantile(0.9)								## get heaviest 5% limit
+pokeheavy = pokedata_named[ pokedata_named.weight > heavylim['weight']]	## get data within limit
+print(pokeheavy)
+
+plt.figure()
+plt.hist(pokedata_named.weight, bins = 20)
+plt.savefig("exrevpix/pokeweight.png")
+
+pokeweight_middle = pokedata_named[(pokedata_named.weight > lightlim['weight']) & (pokedata_named.weight < heavylim['weight'])]
+plt.figure()
+plt.hist(pokeweight_middle.weight, bins = 20)
+plt.savefig("exrevpix/pokeweight2.png")
+```
+
+![pokeweight](exrevpix/pokeweight.png)
+
+![pokeweight2](exrevpix/pokeweight2.png)
+
+
