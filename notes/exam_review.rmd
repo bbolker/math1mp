@@ -494,11 +494,11 @@ pokedata_named = pokedata_orig.set_index('identifier')	## make identifier column
 print( "min weight", min(pokedata_named.weight) )	 	## get lightest pokemon
 print( "max weight", max(pokedata_named.weight) )		## get heaviest pokemon
 
-lightlim = pokedata_named.quantile(0.1)								## get lightest 5% limit
+lightlim = pokedata_named.quantile(0.05)								## get lightest 5% limit
 pokelight = pokedata_named[pokedata_named.weight < lightlim['weight']]	## get data within limit
 print(pokelight)
 
-heavylim = pokedata_named.quantile(0.9)								## get heaviest 5% limit
+heavylim = pokedata_named.quantile(0.95)								## get heaviest 5% limit
 pokeheavy = pokedata_named[ pokedata_named.weight > heavylim['weight']]	## get data within limit
 print(pokeheavy)
 
@@ -512,7 +512,11 @@ plt.hist(pokeweight_middle.weight, bins = 20)
 plt.savefig("exrevpix/pokeweight2.png")
 ```
 
+Full weight data
+
 ![pokeweight](exrevpix/pokeweight.png)
+
+Middle 90% weight data
 
 ![pokeweight2](exrevpix/pokeweight2.png)
 
