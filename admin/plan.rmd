@@ -45,8 +45,6 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 - F Feb 10 
 - M Feb 13 
 
--*midterm recess: Feb 15-20**
-
 ## week 7: 
 
 - W Feb 15
@@ -64,30 +62,41 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 
 ## week 9: numeric computation cont.
 
+<!-- 
 - M Mar 6   floating point algorithms (root-finding, optimization) 
 - W Mar 8  floating point algorithms (differential equations) 
 - F Mar 10 
+-->
 
 ## week 10: symbolic computation
 
+<!--
 - M Mar 13 plotting (data visualization)
 - W Mar 15 
 - F Mar 17 
+-->
 
 ## week 11 misc sci comp
 
+<!--
 - M Mar 20 data management; pandas
 - W Mar 22 web scraping
 - F Mar 24
+-->
 
 ## week 12 symbolic computation
 
+<!-- 
 - M Mar 27 symbolic computation; SymPy and Sage
 - W Mar 29 ... continued
-- F Mar 31 
+- F Mar 31
+-->
 
 ## week 13 last week
 
+<!--
 - M Apr 3
 - W Apr 5
+-->
+
 

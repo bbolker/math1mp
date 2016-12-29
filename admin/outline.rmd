@@ -18,6 +18,7 @@ Las revision: `r as.character(Sys.time())`
 - Tu 1:30-2:20 BSB 249 (section 10110); Th 10:30-11:20 BSB 244 (section 10109); Th 10:30-11:20 BSB 241 (section 17033); Fr 2:30-3:20 BSB 244 (section 16369)
 - Labs start **Thursday January 5**.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
 - Some assignments (in class and take-home) will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue.  You need to register for (and pay for) CodeLab; see instructions below.
+    - There will be approximately 20 in-class assignments, on Wednesdays and Fridays. The lowest 4 marks will be dropped.
 
 ## Course material
 
