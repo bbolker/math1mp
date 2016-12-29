@@ -1,17 +1,10 @@
-%.html: %.rmd
-	Rscript -e "library(\"rmarkdown\"); render(\"$<\")"
+SRCDIR=../../admin
 
-%.html: %.md
-	Rscript -e "library(\"rmarkdown\"); render(\"$<\")"
+%.html: ${SRCDIR}/%.rmd
+	Rscript -e "rmarkdown::render(\"$<\",output_dir='.')"
 
-%.md: %.rmd
-	Rscript -e "library(\"knitr\"); knit(\"$<\")"
-
-%.tex: %.md
-	pandoc -s -S -t latex -V documentclass=tufte-handout $*.md -o $*.tex
-
-%.pdf: %.tex
-	pdflatex --interaction=nonstopmode $*
+%.pdf: ${SRCDIR}/%.rmd
+	Rscript -e "rmarkdown::render(\"$<\",output_dir='.',output_format=\"pdf_document\")"
 
 clean:
 	rm -f *.log *.aux *.md *.out texput.log
