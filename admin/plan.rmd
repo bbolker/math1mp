@@ -8,86 +8,86 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 
 ## week 1: basics
 
-* T Jan 5  introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
-* R Jan 7  data types; logical operations; string operations; regular expressions
-* F Jan 8  lists; indexing and slicing
+- W Jan 4 introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
+- F Jan 6 data types; logical operations; string operations; regular expressions
+- M Jan 9 lists; indexing and slicing
 
 <!-- editors (xkcd butterfly?) -->
 <!-- variable naming and conventions; http://www.gps.alaska.edu/jeff/Classes/GEOS436+636/02_fundamentals.pdf; **assignment**: set up Python and write a couple of trivial programmes -->
 
 ## week 2: flow control
 
-* T Jan 12 conditionals, loops
-* R Jan 14 flow control; while
-* F Jan 15 flow charts
+- W Jan 11 conditionals, loops
+- F Jan 13 flow control; while
+- M Jan 16 flow charts
 
 ## week 3: debugging etc.
 
-* T Jan 19 [debugging](http://danluu.com/teach-debugging/)
-* R Jan 21 testing
-* F Jan 22 benchmarking/profiling/optimization: Euclidean algorithm
+- W Jan 18 [debugging](http://danluu.com/teach-debugging/)
+- F Jan 20 testing
+- M Jan 23 benchmarking/profiling/optimization: Euclidean algorithm
 
 ## week 4: functions and modules
 
-* T Jan 26 functions and scoping
-* R Jan 28 importing modules, Roman numeral examples
-* F Jan 29 more Roman numeral examples
+- W Jan 25 functions and scoping
+- F Jan 27 importing modules, Roman numeral examples
+- M Jan 30 more Roman numeral examples
 
 ## week 5: more function examples/reviews
 
-* T Feb 2 function examples
-* R Feb 4 ... continued
-* F Feb 5 ... continued
+- W Feb 1 function examples
+- F Feb 3 ... continued
+- M Feb 6 ... continued
 
-## week 6: tuples and dictionaries (and arrays?) (and plotting)
+## week 6: plotting; tuples and dictionaries
 
-* T Feb 9 tuples and dictionaries 
-* R Feb 11 ... more ...
-* F Feb 12 **MIDTERM exam** (in class)
+- W Feb 8 
+- F Feb 10 
+- M Feb 13 
 
-**midterm recess: Feb 15-20**
+-*midterm recess: Feb 15-20**
 
-## week 7: dictionaries continued; numpy
+## week 7: 
 
-* T Feb 23 
-* R Feb 25 
-* F Feb 26 
+- W Feb 15
+- F Feb 17 **midterm test** (in class) 
+
+**midterm recess**
 
 ## week 8: floating point
 
-* T Mar 1 integration
-* R Mar 3 pseudo-random numbers and applications
-* F Mar 4 numeric representations
+<!-- 
+- M Feb 27
+- W Mar 1
+- F Mar 3
+-->
 
 ## week 9: numeric computation cont.
 
-* T Mar 8   floating point algorithms (root-finding, optimization) 
-* R Mar 10  floating point algorithms (differential equations) 
-* F Mar 11 
+- M Mar 6   floating point algorithms (root-finding, optimization) 
+- W Mar 8  floating point algorithms (differential equations) 
+- F Mar 10 
 
 ## week 10: symbolic computation
 
-* T Mar 15 plotting (data visualization)
-* R Mar 17 
-* F Mar 18 **no class** (prof. away)
+- M Mar 13 plotting (data visualization)
+- W Mar 15 
+- F Mar 17 
 
 ## week 11 misc sci comp
 
-* T Mar 22 data management; pandas
-* R Mar 24 web scraping
-* F Mar 25 **Good Friday**
+- M Mar 20 data management; pandas
+- W Mar 22 web scraping
+- F Mar 24
 
 ## week 12 symbolic computation
 
-* T Mar 29 symbolic computation; SymPy and Sage
-* R Mar 31 ... continued
-* F Apr 1
+- M Mar 27 symbolic computation; SymPy and Sage
+- W Mar 29 ... continued
+- F Mar 31 
 
 ## week 13 last week
 
-* T Apr 5
-* R Apr 7
-* F Apr 8
-
-**8 April: classes end**
+- M Apr 3
+- W Apr 5
 

@@ -1,0 +1,93 @@
+## MATH 1MP, Introduction to mathematical/scientific programming
+
+Revision: `r as.character(Sys.time())`
+
+This is an *approximate* and *preliminary* schedule for the course.  It is guaranteed to change.
+
+See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
+
+## week 1: basics
+
+* T Jan 5  introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
+* R Jan 7  data types; logical operations; string operations; regular expressions
+* F Jan 8  lists; indexing and slicing
+
+<!-- editors (xkcd butterfly?) -->
+<!-- variable naming and conventions; http://www.gps.alaska.edu/jeff/Classes/GEOS436+636/02_fundamentals.pdf; **assignment**: set up Python and write a couple of trivial programmes -->
+
+## week 2: flow control
+
+* T Jan 12 conditionals, loops
+* R Jan 14 flow control; while
+* F Jan 15 flow charts
+
+## week 3: debugging etc.
+
+* T Jan 19 [debugging](http://danluu.com/teach-debugging/)
+* R Jan 21 testing
+* F Jan 22 benchmarking/profiling/optimization: Euclidean algorithm
+
+## week 4: functions and modules
+
+* T Jan 26 functions and scoping
+* R Jan 28 importing modules, Roman numeral examples
+* F Jan 29 more Roman numeral examples
+
+## week 5: more function examples/reviews
+
+* T Feb 2 function examples
+* R Feb 4 ... continued
+* F Feb 5 ... continued
+
+## week 6: tuples and dictionaries (and arrays?) (and plotting)
+
+* T Feb 9 tuples and dictionaries 
+* R Feb 11 ... more ...
+* F Feb 12 **MIDTERM exam** (in class)
+
+**midterm recess: Feb 15-20**
+
+## week 7: dictionaries continued; numpy
+
+* T Feb 23 
+* R Feb 25 
+* F Feb 26 
+
+## week 8: floating point
+
+* T Mar 1 integration
+* R Mar 3 pseudo-random numbers and applications
+* F Mar 4 numeric representations
+
+## week 9: numeric computation cont.
+
+* T Mar 8   floating point algorithms (root-finding, optimization) 
+* R Mar 10  floating point algorithms (differential equations) 
+* F Mar 11 
+
+## week 10: symbolic computation
+
+* T Mar 15 plotting (data visualization)
+* R Mar 17 
+* F Mar 18 **no class** (prof. away)
+
+## week 11 misc sci comp
+
+* T Mar 22 data management; pandas
+* R Mar 24 web scraping
+* F Mar 25 **Good Friday**
+
+## week 12 symbolic computation
+
+* T Mar 29 symbolic computation; SymPy and Sage
+* R Mar 31 ... continued
+* F Apr 1
+
+## week 13 last week
+
+* T Apr 5
+* R Apr 7
+* F Apr 8
+
+**8 April: classes end**
+
