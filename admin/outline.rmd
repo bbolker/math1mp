@@ -1,66 +1,67 @@
-# MATH 1MP3: Introduction to mathematical and scientific programming: Winter 2016
+# MATH 1MP3: Introduction to mathematical and scientific programming: Winter 2017
 
-Revision: `r as.character(Sys.time())`
+Las revision: `r as.character(Sys.time())`
 
 ## Personnel
 
-* When e-mailing either the instructor or the TA about the course, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**.
-* *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). . Office hours TBA, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
-* *Teaching assistant*: Dexter Barrows (`barrowdd@mcmaster.ca`). When emailing, *please allow at least one full business day for responses.* Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
+- When e-mailing either the instructor or the TA about the course, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**.
+- *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). Office hours TBA, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
+- *Teaching assistants*: **TBA** When emailing, *please allow at least one full business day for responses.* Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
 
 ## Lectures
 
-* T, Th, F 11:30-12:20 (HH 302)
+- M, W 8:30-9:20, F 10:30-11:20 (all in ABB 102)
+- Attendance *is required* on Wednesdays and Fridays due to in-class assignments; because some of the in-class marks can be dropped (see below), a very good reason will be needed for excuses.
 
 ## Labs and assignments
 
-* T 12:30-13:20, Th 13:30-14:20 KTH B123
-* Labs start on Tuesday 5 Jan.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
-* Some assignments (in class and take-home) will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue.  You need to register for (and pay for) CodeLab; see instructions below.
+- Tu 1:30-2:20 BSB 249 (section 10110); Th 10:30-11:20 BSB 244 (section 10109); Th 10:30-11:20 BSB 241 (section 17033); Fr 2:30-3:20 BSB 244 (section 16369)
+- Labs start **Thursday January 5**.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
+- Some assignments (in class and take-home) will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue.  You need to register for (and pay for) CodeLab; see instructions below.
 
 ## Course material
 
-* The course will cover a basic introduction to programming and mathematical/scientific computing in Python.
-* The primary course material is the lectures, and associated lecture notes, available at http://bbolker.github.io/math1mp/
-* The **optional** (but recommended) course textbook is Gries et al. *Practical Programming* 2d ed., available from the bookstore, the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy2/practical-programming)), or [amazon.ca](http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459).
-* It is recommended to print the lecture notes and bring them to class to make additional notes
-* Hopefully you will be able to get access to a laptop computer that you can bring to class; if this is going to a problem, please contact the instructor to make arrangements. You should install Python and PyCharm on your (laptop and/or desktop) computer, following instructions to be provided in class.
+- The course will cover a basic introduction to programming and mathematical/scientific computing in Python.
+- The primary course material is the lectures, and associated lecture notes, available at http://bbolker.github.io/math1mp/
+- The **optional** (but recommended) course textbook is Gries et al. *Practical Programming* 2d ed., available from the bookstore, the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy2/practical-programming)), or [amazon.ca](http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459).
+- It is recommended to print the lecture notes and bring them to class to make additional notes
+- You need to bring a laptop or tablet to class; if this is going to be a problem, please contact the instructor as soon as possible to make arrangements. You should install Python and PyCharm on your (laptop and/or desktop) computer, following instructions to be provided in lab.
 
 ##  Evaluation
 
-* Assignments (20% home, 10% in-class)
-* Final project (20%)
-* Midterm test (20%)
+- Assignments (15% home, 15% in-class)
+    - 
+- Final project (20%)
+- Midterm test (20%)
     * in class, February 12 (tentatively)
-* Final exam (30%)
+- Final exam (30%)
     * Will be scheduled by the Registrar
 
 ## CodeLab information
 
-**Registration**
+### Registration
 
-1. Go to http://www.tcgo1.com OR http://www.tcgo2.com
+1. Go to http://www.turingscraft.com/go.html .
 2. Click `"Register for CodeLab"`
 3. choose `"I am a student in a course ..."` and click `CONTINUE`
-4. enter the Section Access Code: **MCM-22458-GHKN-27** and click `CONTINUE`
-5. continue filling out the forms being careful to enter a  *valid* email address (**please use your @mcmaster.ca e-mail address, not gmail/yahoo/etc.**) and first and last names (these will appear in the course roster)
+4. enter the Section Access Code: **MCMA-25286-YWFH-31** and click `CONTINUE`
+5. continue filling out the forms being careful to enter a  *valid* email address (**please use your @mcmaster.ca e-mail address, not Gmail/Yahoo/etc.**) and first and last names (these will appear in the course roster)
 
-**Login**
+After registering you will be able to log in, but you don't have access to the exercises (see below).
 
-1. Go to http://www.tcgo1.com OR http://www.tcgo2.com
+### Log in
+
+1. Go to http://www.turingscraft.com/go.html .
 2. Click `"Login to CodeLab"`
 3. the **username** is the email address given during registration
 4. the **password** is the password selected during registration
 
-Once registered, students can submit solutions to 0 exercises.
-To be able to work with all exercises, the student needs to obtain full access:
+### Getting full access
 
-**Getting full access**
-
-1. log in to CodeLab
-2. click `LOBBY`
-3. click the button `"Get Full Access"`
-4. follow the directions (options include paypal, ecommerce, check for a $2 handling fee, and payment keys)
+1. Log in to CodeLab (if you haven't already)
+2. Click `LOBBY`
+3. Click `"Get Full Access"`
+4. Follow the directions (options include paypal, ecommerce, check for a $2 handling fee, and payment keys)
 
 # Policies
 
@@ -105,10 +106,10 @@ You are expected to exhibit honesty and use ethical behavior in all aspects of t
 
 Some common academic dishonesty issues:
 
-* *Plagiarism*: For example, the submission of work that is not one's own or for which other credit has been obtained.
-* *Improper collaboration*: In this course, you are encouraged to discuss the assigned problems with other students in your class. You may *discuss* the solutions to problem sets, but **you must write up your solutions yourself without copying phrasing from other students’ work. If you work with others, you must clearly indicate on your write-up who you worked with.**  When work is not explicitly assigned as a group project you must write the solutions in your own words without referring to any other students' work. The copying or even paraphrasing of anyone's solutions will be considered academic dishonesty. For group projects, you will be asked to report your own assessment of how you contributed to the group's work.
-* *Copying or using unauthorized aids in examinations*: In this course you are not allowed to talk to or communicate in any way (e.g. pass notes) with anyone but the instructor or the invigilators during an examination. The final will be a take-home exam. I will clearly indicate at the time what resources you may or may not use. You are on your honor to observe any specified time limits and to refrain from communicating with anyone other than the instructor/TA about the contents of the exam.
-* It's not really dishonesty, but *continuing to write once the announcement that the allotted time for a test or examination is over* without the express consent of the instructor or one of the invigilators will be penalized.
+- *Plagiarism*: For example, the submission of work that is not one's own or for which other credit has been obtained.
+- *Improper collaboration*: In this course, you are encouraged to discuss the assigned problems with other students in your class. You may *discuss* the solutions to problem sets, but **you must write up your solutions yourself without copying phrasing from other students’ work. If you work with others, you must clearly indicate on your write-up who you worked with.**  When work is not explicitly assigned as a group project you must write the solutions in your own words without referring to any other students' work. The copying or even paraphrasing of anyone's solutions will be considered academic dishonesty. For group projects, you will be asked to report your own assessment of how you contributed to the group's work.
+- *Copying or using unauthorized aids in examinations*: In this course you are not allowed to talk to or communicate in any way (e.g. pass notes) with anyone but the instructor or the invigilators during an examination. The final will be a take-home exam. I will clearly indicate at the time what resources you may or may not use. You are on your honor to observe any specified time limits and to refrain from communicating with anyone other than the instructor/TA about the contents of the exam.
+- It's not really dishonesty, but *continuing to write once the announcement that the allotted time for a test or examination is over* without the express consent of the instructor or one of the invigilators will be penalized.
  
 ----------------------------------------
 
