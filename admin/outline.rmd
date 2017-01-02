@@ -84,7 +84,7 @@ The instructor and university reserve the right to modify elements of the course
 ## Missing tests or work
 
 In the event of an absence for medical or other reasons, students should review and follow the Academic Regulation in the Undergraduate Calendar “Requests for Relief for Missed Academic Term Work” (see [here](http://academiccalendars.romcmaster.ca/con
-tent.php?catoid=13&navoid=2208#Requests_for_Relief_for_Missed_Academic_Term_Work). Please note these regulations have changed beginning Fall 2015, in particular:
+tent.php?catoid=13&navoid=2208#Requests_for_Relief_for_Missed_Academic_Term_Work)). Please note these regulations have changed beginning Fall 2015, in particular:
 
 - The time frame within which the MSAF is valid has been reduced from 5 days to 3 days.
 - The upper limit for which an MSAF can be submitted has been reduced from 'less than 30%' to 'less than 25%' of the course weight.
