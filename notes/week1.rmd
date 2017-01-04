@@ -17,7 +17,7 @@ author: Ben Bolker
 - Grading:
     - midterm 20%
 	- final   30%
-	- in-class quizzes 15% (drop lowest 4)
+	- in-class CodeLab assignments 15% (drop lowest 4)
 	- weekly assignments 15%
 	- project  20%
 - Laptop policy
@@ -25,26 +25,24 @@ author: Ben Bolker
 - Expectations of professor and students
 - Textbook (optional); also see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
 - Course content: reasonable balance among
-    - nitty-gritty practical programming instruction:
-	
-> ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](http://www.ankitpanda.com/pythonicity/))
-
-- <!-- -->
-    - conceptual foundations of computing/computer science
-    - context/culture of mathematical/scientific computing
-    - interesting applications
+     - nitty-gritty practical programming instruction:
+	 
+    > ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](https://web.archive.org/web/20160421222949/http://www.ankitpanda.com/pythonicity/)
+     - conceptual foundations of computing/computer science
+     - context/culture of mathematical/scientific computing
+     - interesting applications
 
 ## Installing Python
 
 - CodeLab: http://www.turingscraft.com/go.html
-- PythonAnywhere
+- [PythonAnywhere](https://www.pythonanywhere.com/)
 - Everyone must have access to a computer with Python3 installed
     - There are detailed instructions for installing Python3 on the 
 [Pragmatic Programming](https://pragprog.com/book/gwpy2/practical-programming) website.
         - Click on the 'Details' tab and scroll to the appropriate instructions for your operating system.
         - On Mac and Linux, once Python3 is installed you can run it directly from the Terminal by typing `python3`. On Windows, go to the Start menu and find Python.
 - We recommend that you use PyCharm to write your programs and test things out.
-    - You can find the PyCharm installer [here](https://www.jetbrains.com/pycharm/download/). **The first time you run PyCharm, make sure you choose python 3.4.2 from the drop-down menu**
+    - You can find the PyCharm installer [here](https://www.jetbrains.com/pycharm/download/). **The first time you run PyCharm, make sure you choose some version of python 3 from the drop-down menu**
 
 # More interesting stuff
 
@@ -97,7 +95,7 @@ print(62**2*27/5+3)
 - well suited to mathematical/scientific/technical ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org); [Python in Finance](https://www.safaribooksonline.com/library/view/python-for-finance/9781491945360/ch01.html))
 - ex.: [Sage](http://www.sagemath.org); [BioPython](http://www.biopython.org)
 
-### the "prime walk"
+### the "prime walk" (from [math.stackexchange.ca](http://tinyurl.com/primewalk))
 
 1. start at the origin, heading right, counting up from 1
 2. move forward one space, counting up, until you find a prime
