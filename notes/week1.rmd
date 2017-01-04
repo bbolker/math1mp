@@ -170,7 +170,7 @@ type(True+1) ## WAT
 
 Use parentheses when in doubt!
 
--*Puzzle:** what is `-1**2`? Why?
+**Puzzle:** what is `-1**2`? Why?
 
 ## Logical operators (PP $\S5.1$)
 
@@ -240,7 +240,7 @@ From [CodingBat](http://codingbat.com/prob/p182144):
 
 ## Indexing and slicing
 
--*Indexing**
+### Indexing
 
 - Extracting elements is called **indexing** a list
 - Indexing [starts from zero](http://xkcd.com/163/)
@@ -250,7 +250,7 @@ From [CodingBat](http://codingbat.com/prob/p182144):
 
 ![slicing](pix/string-slicing.png)
 
--*Slicing**
+### Slicing
 
 - Extracting (consecutive) sets of elements is called [**slicing**](http://stackoverflow.com/questions/509211/explain-pythons-slice-notation)
 - Slicing non-existent element(s) gives a truncated result
