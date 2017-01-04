@@ -2,8 +2,9 @@ from sympy import sieve
 import matplotlib.pyplot as plt
 
 def primewalk(n=100,draw_plot=True):
-    '''Compute and draw 'prime walk' plot for primes <n
-    '''
+    """ Compute and draw 'prime walk' plot for primes <n
+        http://tinyurl.com/primewalk
+    """
     ## get magic list of primes
     primes = list(sieve.primerange(1,n))
     ## initialize; set starting point and direction
