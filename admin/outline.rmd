@@ -1,6 +1,7 @@
-# MATH 1MP3: Introduction to mathematical and scientific programming: Winter 2017
-
-Las revision: `r as.character(Sys.time())`
+---
+title: "MATH 1MP3<br>Introduction to mathematical and scientific programming<br>Winter 2017"
+date: "`r as.character(Sys.time())`"
+---
 
 ## Personnel
 
@@ -26,12 +27,12 @@ Las revision: `r as.character(Sys.time())`
 - The primary course material is the lectures, and associated lecture notes, available at http://bbolker.github.io/math1mp/
 - The **optional** (but recommended) course textbook is Gries et al. *Practical Programming* 2d ed., available from the bookstore, the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy2/practical-programming)), or [amazon.ca](http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459).
 - It is recommended to print the lecture notes and bring them to class to make additional notes
-- You need to bring a laptop or tablet to class; if this is going to be a problem, please contact the instructor as soon as possible to make arrangements. You should install Python and PyCharm on your (laptop and/or desktop) computer, following instructions to be provided in lab.
+- You need to bring a laptop or tablet to class; if this is going to be a problem, please contact the instructor as soon as possible to make arrangements. You should install Python and PyCharm on your laptop (and/or desktop) computer, following instructions to be provided in lab.
 
 ##  Evaluation
 
 - Assignments (15% home, 15% in-class)
-    - 
+    - lowest 4 in-class marks will be dropped
 - Final project (20%)
 - Midterm test (20%)
     * in class, February 12 (tentatively)
@@ -110,9 +111,9 @@ Some common academic dishonesty issues:
 - *Plagiarism*: For example, the submission of work that is not one's own or for which other credit has been obtained.
 - *Improper collaboration*: In this course, you are encouraged to discuss the assigned problems with other students in your class. You may *discuss* the solutions to problem sets, but **you must write up your solutions yourself without copying phrasing from other students’ work. If you work with others, you must clearly indicate on your write-up who you worked with.**  When work is not explicitly assigned as a group project you must write the solutions in your own words without referring to any other students' work. The copying or even paraphrasing of anyone's solutions will be considered academic dishonesty. For group projects, you will be asked to report your own assessment of how you contributed to the group's work.
 - *Copying or using unauthorized aids in examinations*: In this course you are not allowed to talk to or communicate in any way (e.g. pass notes) with anyone but the instructor or the invigilators during an examination. The final will be a take-home exam. I will clearly indicate at the time what resources you may or may not use. You are on your honor to observe any specified time limits and to refrain from communicating with anyone other than the instructor/TA about the contents of the exam.
-- It's not really dishonesty, but *continuing to write once the announcement that the allotted time for a test or examination is over* without the express consent of the instructor or one of the invigilators will be penalized.
+- While it is not technically an example of academic dishonesty, *continuing to write once the announcement that the allotted time for a test or examination is over* without the express consent of the instructor or one of the invigilators will be penalized.
  
 ----------------------------------------
 
-This outline will be linked from the course home page. However, it is your responsibility to check the course home page and syllabus regularly for further announcements, course handouts, assigned work and their due dates, information about test dates and locations when this information becomes available, downloadable course related material, etc. Recorded marks for tests and assignments will be posted on Avenue. You should check these once they become available and bring any discrepancies to the attention of the instructor or the TA as soon as possible.
+This outline will be linked from the course home page. However, it is your responsibility to check the course home page and syllabus regularly for further announcements, course handouts, assigned work and its due dates, information about test dates and locations when this information becomes available, downloadable course related material, etc.. Recorded marks for tests and assignments will be posted on Avenue. You should check these once they become available and bring any discrepancies to the attention of the instructor or the TA as soon as possible.
 
