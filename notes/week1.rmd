@@ -81,7 +81,7 @@ Python as a fancy calculator:
 print(62**2*27/5+3)
 ```
 
-- *reference*: [Python intro section 3.1.1](https://docs.python.org/3/tutorial/introduction.html)
+*reference*: [Python intro section 3.1.1](https://docs.python.org/3/tutorial/introduction.html)
 
 ## Interlude: about Python
 
@@ -203,7 +203,7 @@ monkey_trouble(True, False) → False
 
 ## String operations (PP chapter 4)
 
--reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.2
+*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.2
 
 - Less generally important, but fun
 - `+` concatenates
@@ -225,7 +225,7 @@ From [CodingBat](http://codingbat.com/prob/p182144):
 
 # Lists and indexing (PP chapter 8)
 
--reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
+*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
 
 ## Lists
 
