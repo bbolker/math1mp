@@ -1,0 +1,8 @@
+---
+title: "math 1MP in-class assignments
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+- January 8: *Arithmetic, Variables, Assignment* section. 51001, 51013, 51872, 51031, 51033, 51046, 51249, 51037, 51871
+

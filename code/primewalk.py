@@ -1,6 +1,7 @@
 from sympy import sieve
 import matplotlib.pyplot as plt
 
+
 def primewalk(n=100,draw_plot=True):
     """ Compute and draw 'prime walk' plot for primes <n
         http://tinyurl.com/primewalk
@@ -11,7 +12,7 @@ def primewalk(n=100,draw_plot=True):
     ## (horizontal, to the right)
     x = [0]
     y = [0]
-    direction="right"
+    direction = "right"
     for i in range(1,len(primes)):
         pdiff = primes[i]-primes[i-1]
         if direction=="right":

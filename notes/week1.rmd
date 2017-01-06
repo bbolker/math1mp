@@ -27,7 +27,7 @@ author: Ben Bolker
 - Course content: reasonable balance among
      - nitty-gritty practical programming instruction:
 	 
-    > ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](https://web.archive.org/web/20160421222949/http://www.ankitpanda.com/pythonicity/)
+    > ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](https://web.archive.org/web/20160421222949/http://www.ankitpanda.com/pythonicity/))
      - conceptual foundations of computing/computer science
      - context/culture of mathematical/scientific computing
      - interesting applications
@@ -36,13 +36,8 @@ author: Ben Bolker
 
 - CodeLab: http://www.turingscraft.com/go.html
 - [PythonAnywhere](https://www.pythonanywhere.com/)
-- Everyone must have access to a computer with Python3 installed
-    - There are detailed instructions for installing Python3 on the 
-[Pragmatic Programming](https://pragprog.com/book/gwpy2/practical-programming) website.
-        - Click on the 'Details' tab and scroll to the appropriate instructions for your operating system.
-        - On Mac and Linux, once Python3 is installed you can run it directly from the Terminal by typing `python3`. On Windows, go to the Start menu and find Python.
-- We recommend that you use PyCharm to write your programs and test things out.
-    - You can find the PyCharm installer [here](https://www.jetbrains.com/pycharm/download/). **The first time you run PyCharm, make sure you choose some version of python 3 from the drop-down menu**
+- Everyone must have access to a computer with Python3 installed.
+    - See [installation instructions](./install_python.html)
 
 # More interesting stuff
 
@@ -99,7 +94,7 @@ print(62**2*27/5+3)
 
 1. start at the origin, heading right, counting up from 1
 2. move forward one space, counting up, until you find a prime
-3. turn 90$\circ$ clockwise
+3. turn 90${}^\circ$ clockwise
 4. repeat steps 2 and 3 until you get bored
 
 (example)
@@ -111,7 +106,7 @@ print(62**2*27/5+3)
 
 ## Interfaces
 
-- command line/console (PyCharm: `View/Tool Windows/Python Console`)
+- command line/console (PyCharm: `Tools/Python Console`)
 - programming editor
 - integrated development environment (IDE)
 - **not** MS Word! ![skull](pix/skullcross_tiny.png)
@@ -130,22 +125,22 @@ print(62**2*27/5+3)
 ## Assignment and types (PP $\S2.4$)
 
 - superficially simple
-    * set aside *memory* space, create a symbol that *points to* that space
-    * `=` is the **assignment operator** ("gets", not "equals")
-	* `<variable>=<value>`
-	* variable names
-         * what is legal? (letters, numbers, underscores, start with a letter)
-	     * what is customary? [convention](https://www.python.org/dev/peps/pep-0008/#id30) is `variables_like_this`
-	     * what works well? `v` vs. `temporary_variable_for_loop`
-		 * same principles apply to file, directory/folder names
-- variables can be of different [**types**](https://docs.python.org/3/library/stdtypes.html)
-     * built-in: integer (`int`), floating-point (`float`), complex, **Boolean** (`bool`: `True` or `False`),
-     * *dynamic* typing
+    - set aside *memory* space, create a symbol that *points to* that space
+    - `=` is the **assignment operator** ("gets", not "equals")
+	- `<variable> = <value>`
+	- variable names
+         - what is legal? (names include letters, numbers, underscores, must start with a letter)
+	     - what is customary? [convention](https://www.python.org/dev/peps/pep-0008/#id30) is `variables_like_this` ("snake case")
+	     - what works well? `v` vs. `temporary_variable_for_loop`
+		 - same principles apply to file, directory/folder names
+- variables are of different [**types**](https://docs.python.org/3/library/stdtypes.html)
+     - built-in: integer (`int`), floating-point (`float`), complex, **Boolean** (`bool`: `True` or `False`),
+     - *dynamic* typing
 	     * Python usually "does what you mean", converts types when sensible
-	 * (relatively) *strong* typing
-         * try `print(type(x))` for different possibilities (`x=3`; `x=3.0`; `x="a"`)
-		 * *what happens if you try `x=a`?*
-		 * **don't be afraid to experiment!**
+	 - (relatively) *strong* typing
+         - try `print(type(x))` for different possibilities (`x=3`; `x=3.0`; `x="a"`)
+		 - *what happens if you try `x=a`?*
+		 - **don't be afraid to experiment!**
 ```{r type_examples,eval=FALSE}
 x=3
 y=3.0
@@ -160,6 +155,8 @@ type(True)
 type(True+1) ## WAT
 ```
 [^2](As [Dive into Python](http://www.diveintopython3.net/native-datatypes.html) says in a similar context, "Ew, ew, ew! Don’t do that. Forget I even mentioned it.")
+
+Check out the [Python tutor](http://pythontutor.com/visualize.html#mode=edit) for these examples
 
 ## Arithmetic operators, precedence
 

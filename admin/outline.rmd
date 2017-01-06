@@ -7,7 +7,7 @@ date: "`r as.character(Sys.time())`"
 
 - When e-mailing either the instructor or the TA about the course, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**.
 - *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). Office hours TBA, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
-- *Teaching assistants*: **TBA** When emailing, *please allow at least one full business day for responses.* Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
+- *Teaching assistants*: Brydon Eastman (`eastmab@mcmaster.ca`) and Peter Tait (`taitpa@mcmaster.ca`). When emailing, *please allow at least one full business day for responses.* Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
 
 ## Lectures
 
