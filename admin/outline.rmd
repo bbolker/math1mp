@@ -11,7 +11,7 @@ date: "`r as.character(Sys.time())`"
 
 ## Lectures
 
-- M, W 8:30-9:20, F 10:30-11:20 (all in ABB 102)
+- M, W 8:30-9:20, F 10:30-11:20 (all in **ITB 137** [note room change!])
 - Attendance *is required* on Wednesdays and Fridays due to in-class assignments; because some of the in-class marks can be dropped (see below), a very good reason will be needed for excuses.
 
 ## Labs and assignments
