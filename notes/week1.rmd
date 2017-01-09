@@ -269,7 +269,7 @@ One more useful string operation: `len(s)` returns the length (number of charact
 x[:]        # everything
 x[a:b]      # element a (zero-indexed) to b-1
 x[a:]       # a to end
-x[:b]       # beginning to b
+x[:b]       # beginning to b-1
 x[a:b:n]    # from a to b-1 in steps of n
 ```
 
