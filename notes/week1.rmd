@@ -12,8 +12,7 @@ author: Ben Bolker
     - `bolker@mcmaster.ca`: please include `1mp3` in Subject:
 	- `http://www.math.mcmaster.ca/bolker`
 	- HH 314 (sometimes LSB 336); office hours TBA
-- TA: ??
-    - `email`
+- TA:  Brydon Eastman (`eastmab@mcmaster.ca`) and Peter Tait (`taitpa@mcmaster.ca`).
 - Grading:
     - midterm 20%
 	- final   30%
@@ -186,6 +185,7 @@ not(d)
 not(c)
 ```
 
+
 - **operator precedence**: same issue as [order of operations in arithmetic](http://xkcd.com/992/); `not` has higher precedence than `and`, `or`.  When in doubt use parentheses ...
 
 From [CodingBat](http://codingbat.com/prob/p120546):
@@ -197,6 +197,12 @@ monkey_trouble(True, True) → True
 monkey_trouble(False, False) → True
 monkey_trouble(True, False) → False
 ```
+
+More [CodingBat](http://codingbat.com) problems:
+
+- [squirrel_play](http://codingbat.com/prob/p135815)
+- [cigar_party](http://codingbat.com/prob/p195669)
+
 
 ## String operations (PP chapter 4)
 
@@ -216,9 +222,13 @@ b*3
 b in a
 ```
 
-From [CodingBat](http://codingbat.com/prob/p182144):
 
-> Given two strings, a and b, return the result of putting them together in the order abba, e.g. "Hi" and "Bye" returns "HiByeByeHi". 
+CodingBat problems:
+
+- [make_abba](http://codingbat.com/prob/p182144)
+- [make_tags](http://codingbat.com/prob/p132290)
+
+One more useful string operation: `len(s)` returns the length (number of characters)
 
 # Lists and indexing (PP chapter 8)
 
@@ -265,6 +275,13 @@ x[a:b:n]    # from a to b-1 in steps of n
 
 - generate a list of odd numbers from 3 to 15
 - reverse a string?
+
+### String slicing practice
+
+From CodingBat:
+
+- [first_two](http://codingbat.com/prob/p184816)
+- [first_half](http://codingbat.com/prob/p107010)
 
 ### Other list operations
 
