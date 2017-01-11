@@ -6,3 +6,10 @@ author: Ben Bolker
 
 - January 8: *Arithmetic, Variables, Assignment* section. 51001, 51013, 51872, 51031, 51033, 51046, 51249, 51037, 51871
 
+- January 11:
+    - *Conditions and Branches* 51061, 51110
+    - *Strings 1* 51886, 51756
+    - *Lists* 51601, 51201
+
+
+

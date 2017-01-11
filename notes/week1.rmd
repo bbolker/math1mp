@@ -230,21 +230,6 @@ CodingBat problems:
 
 One more useful string operation: `len(s)` returns the length (number of characters)
 
-# Lists and indexing (PP chapter 8)
-
-*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
-
-## Lists
-
-- Use square brackets `[]` to set up a **list**
-- Lists can contain anything but usually homogeneous
-- Put other variables into lists
-- Put lists into lists! ("yo dawg ...")
-- `range()` makes a **range** but you can turn it into a list with `list()`
-
-- *Set up a list that runs from 101 to 200*
-- *Make a list that  ... *
-
 ## Indexing and slicing
 
 ### Indexing
@@ -283,6 +268,23 @@ From CodingBat:
 - [first_two](http://codingbat.com/prob/p184816)
 - [first_half](http://codingbat.com/prob/p107010)
 
+# Lists and indexing (PP chapter 8)
+
+*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
+
+## Lists
+
+- Use square brackets `[]` to set up a **list**
+- Lists can contain anything but usually homogeneous
+- Put other variables into lists
+- `range()` makes a **range** but you can turn it into a list with `list()`
+     - *Set up a list that runs from 101 to 200*
+- Indexing and slicing lists works almost the same way as indexing and slicing ...
+- Put lists into lists! ("yo dawg ...")
+     - difference between an *item from a list* (indexing, `x[0]`) and a *one-element list* (slicing, `x[0:1]`)
+
+![](pix/saltpepper_python.png)
+
 ### Other list operations
 
 - Lots of things you can do with lists!
@@ -293,6 +295,9 @@ y = x
 y[2] = 17
 print(x)
 ```
+
+Check it out at [Python Tutor](http://pythontutor.com/visualize.html#mode=edit)
+
 - *operators* vs. *functions* vs. *methods* `x+y` vs. `foo(x,y)` vs. `x.foo(y)`
     * list [*methods*](http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch14s07.html)
     * appending and extending:
