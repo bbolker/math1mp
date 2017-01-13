@@ -11,5 +11,6 @@ author: Ben Bolker
     - *Strings 1* 51886, 51756
     - *Lists* 51601, 51201
 
-
+- January 13:
+    - *Lists* 51203, 51603, 51608, 51611
 
