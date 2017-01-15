@@ -11,20 +11,20 @@ opts_chunk$set(tidy=FALSE,engine='python')
 
 # Conditionals and flow control
 
-* **Conditionals**: Do something *if* something else is true
-* **Flow control**: Go to different places in the code: especially, repeat calculations
-* Everything we need for interesting programs (["the rest is commentary"](http://en.wikipedia.org/wiki/Hillel_the_Elder))
-* Technically we can compute *anything*: [Turing machines](http://en.wikipedia.org/wiki/Turing_machine) ([xkcd](http://xkcd.com/205/))
+- **Conditionals**: Do something *if* something else is true
+- **Flow control**: Go to different places in the code: especially, repeat calculations
+- Everything we need for interesting programs (["the rest is commentary"](http://en.wikipedia.org/wiki/Hillel_the_Elder))
+- Technically we can compute *anything*: [Turing machines](http://en.wikipedia.org/wiki/Turing_machine) ([xkcd](http://xkcd.com/205/))
 
 # Conditionals
 
-* Do something *if* something is true
-* `if` statement ([reference](https://docs.python.org/3/tutorial/controlflow.html)
+- Do something *if* something is true
+- `if` statement ([reference](https://docs.python.org/3/tutorial/controlflow.html)
 ```{r if1}
 if False:
     print("no")
 ```
-* else-if (`elif`) and `else` [clauses](http://xkcd.com/764/)
+- else-if (`elif`) and `else` [clauses](http://xkcd.com/764/)
 ```{r if2,eval=FALSE}
 if (x<=0):
     print("what??")
@@ -35,14 +35,18 @@ elif(x==2):
 else:
     print("many")
 ```
-* not too much else to say
-* we can do more than one thing; use a *code block*
+- not too much else to say
+- we can do more than one thing; use a *code block*
+- indentation is crucial
 
-**example**
+**examples**:
+
+- [CodingBat date_fashion problem](http://codingbat.com/prob/p129125)
+- [CodingBat alarm clock problem](http://codingbat.com/prob/p119867)
 
 ## while 
 
-* repeat code many times, *while* some logical statement is true
+- repeat code many times, *while* some logical statement is true
 ([reference](http://python_while_loop.jpg))
 
 For example:
@@ -62,10 +66,10 @@ while x>1:
     n = n+1
 ```
 
-* **What is the answer?**
-* Can you get the same answer using `import math` and `math.log(x,2)` (and maybe `round()` or `math.floor`)?
+- **What is the answer?**
+- Can you get the same answer using `import math` and `math.log(x,2)` (and maybe `round()` or `math.floor`)?
 
-* We can use logical operators to combine
+- We can use logical operators to combine
 
 ```{r while1C}
 x = 17
@@ -75,10 +79,9 @@ while x>1 and n<3:
     n = n+1
 ```
 
-
 ## for loops
 
-* what if we want to repeat a fixed number of times?  We could use something like
+- what if we want to repeat a fixed number of times?  We could use something like
 
 ```{r while2,eval=FALSE}
 n = 0
@@ -94,9 +97,9 @@ for n in range(0,n_max):
     # do stuff
 ```
 
-* does this repeat `n_max` or `n_max+1` times? (hint: try it out, and/or use `list(range(...))` ...)
+- does this repeat `n_max` or `n_max+1` times? (hint: try it out, and/or use `list(range(...))` ...)
 
-* more generally, we can use `for` to iterate over *any list*.
+- more generally, we can use `for` to iterate over *any list*.
 
 ![for loop](http://courses.cs.ut.ee/2011/programmeerimine/uploads/Raamat/_images/flowchart_for.png)
 
@@ -116,7 +119,7 @@ for d in denoms:
     # do stuff
 ```
 
-* start with `total`, use `denoms` above
+- start with `total`, use `denoms` above
 
 1. program to see how many pennies are left (how could we do this much more easily?)
 2. **or** print out change as we go along
@@ -151,9 +154,9 @@ for element in mylist_length:
 
 **Criteria**:
 
-* speed 
-* memory use
-* simplicity (code length)
-* simplicity (avoid modules)
-* simplicity (avoid abstractions)
-* pythonicity
+- speed 
+- memory use
+- simplicity (code length)
+- simplicity (avoid modules)
+- simplicity (avoid abstractions)
+- pythonicity
