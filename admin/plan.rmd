@@ -15,35 +15,45 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 <!-- editors (xkcd butterfly?) -->
 <!-- variable naming and conventions; http://www.gps.alaska.edu/jeff/Classes/GEOS436+636/02_fundamentals.pdf; **assignment**: set up Python and write a couple of trivial programmes -->
 
+... this continued through Jan 13 ...
+
 ## week 2: flow control
 
-- W Jan 11 conditionals, loops
-- F Jan 13 flow control; while
-- M Jan 16 flow charts
+- M Jan 16 conditionals, loops
+- W Jan 18 flow control; while
+- F Jan 20 ... continued
 
 ## week 3: debugging etc.
 
+<!--
 - W Jan 18 [debugging](http://danluu.com/teach-debugging/)
 - F Jan 20 testing
 - M Jan 23 benchmarking/profiling/optimization: Euclidean algorithm
+-->
 
 ## week 4: functions and modules
 
+<!-- 
 - W Jan 25 functions and scoping
 - F Jan 27 importing modules, Roman numeral examples
 - M Jan 30 more Roman numeral examples
+-->
 
 ## week 5: more function examples/reviews
 
+<!--
 - W Feb 1 function examples
 - F Feb 3 ... continued
 - M Feb 6 ... continued
+-->
 
 ## week 6: plotting; tuples and dictionaries
 
+<!-- 
 - W Feb 8 
 - F Feb 10 
 - M Feb 13 
+-->
 
 ## week 7: 
 

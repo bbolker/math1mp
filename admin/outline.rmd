@@ -35,7 +35,7 @@ date: "`r as.character(Sys.time())`"
     - lowest 4 in-class marks will be dropped
 - Final project (20%)
 - Midterm test (20%)
-    * in class, February 12 (tentatively)
+    * in class, February 17 (tentatively)
 - Final exam (30%)
     * Will be scheduled by the Registrar
 
