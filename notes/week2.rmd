@@ -19,7 +19,7 @@ opts_chunk$set(tidy=FALSE,engine='python')
 # Conditionals
 
 - Do something *if* something is true
-- `if` statement ([reference](https://docs.python.org/3/tutorial/controlflow.html)
+- `if` statement ([reference](https://docs.python.org/3/tutorial/controlflow.html))
 ```{r if1}
 if False:
     print("no")
