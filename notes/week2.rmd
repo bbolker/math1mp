@@ -103,14 +103,21 @@ for n in range(0,n_max):
 
 ![for loop](http://courses.cs.ut.ee/2011/programmeerimine/uploads/Raamat/_images/flowchart_for.png)
 
-For example, we can write a change-writing program.
+### `for` loop examples
+
+- [CodingBat > string-2 > countHi](http://codingbat.com/prob/p147448)
+- [CodingBat > string-2 > catDog](http://codingbat.com/prob/p111624)
+- [CodingBat > Array-2 > bigDiff](http://codingbat.com/prob/p196640)
+
+Another example: a change-writing program.
+
+*Given an amount of money, return a list of length 5 that gives the (smallest) number of coins of each unit (toonies, loonies, quarters, dimes, and nickels) required to make up that amount.*
 
 ```{r intdiv}
 total=5.73
 toonies = 5.73 // 2 ## integer division
 total = total - 2*toonies
 ```
-
 ```{r change,eval=FALSE}
 total = 5.73
 res = []   # empty list
@@ -125,11 +132,12 @@ for d in denoms:
 2. **or** print out change as we go along
 3. **or** save results as an array
 
-Now let's look at the [Mandelbrot program](../code/mandelbrot.py) again ...
 
-### Pythonicity
+Now let's look at the [prime walk program](../code/primewalk.py) again ...
 
-From [Secret Weblog](http://blog.startifact.com/posts/older/what-is-pythonic.html):
+### Loops and indices
+
+From [Secret Weblog](http://blog.startifact.com/posts/older/what-is-pythonic.html): all of the following are equivalent ...
 
 ```{r pyloop1,eval=FALSE}
 i = 0
@@ -144,6 +152,8 @@ vs.
 for i in range(mylist_length):
    do_something(mylist[i])
 ```
+
+(this form is useful if we need to combine two lists, or otherwise index element `i` of several different things ...)
 
 vs.
 
