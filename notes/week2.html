@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">conditionals and flow control (week 2)</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>20:58 17 January 2017</em></h4>
+<h4 class="date"><em>10:23 20 January 2017</em></h4>
 
 </div>
 
@@ -233,6 +233,29 @@ for d in denoms:
 <li><strong>or</strong> save results as an array</li>
 </ol>
 <p>Now let’s look at the <a href="../code/primewalk.py">prime walk program</a> again …</p>
+</div>
+<div id="more-codingbat-examples" class="section level3">
+<h3>More CodingBat examples:</h3>
+<ul>
+<li>List-2 &gt; count_evens</li>
+<li>List-2 &gt;sum13</li>
+<li>List-2 &gt; bigdiff</li>
+<li>reverse a list (not using slicing)?</li>
+</ul>
+</div>
+<div id="break" class="section level3">
+<h3><code>break</code></h3>
+<p><code>break</code> is a way to get out of a <code>while</code> or <code>for</code> loop early:</p>
+<pre class="python"><code>for i in range(0,10):
+   if i&gt;5:
+      break</code></pre>
+</div>
+<div id="nested-for-loops" class="section level3">
+<h3>nested <code>for</code> loops</h3>
+<p>We can look at (e.g.) all the combinations of <code>i</code> and <code>j</code> via:</p>
+<pre class="python"><code>for i in range(0,3):
+   for j in range(0,3):
+      print([i,j])</code></pre>
 </div>
 <div id="loops-and-indices" class="section level3">
 <h3>Loops and indices</h3>
