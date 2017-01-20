@@ -135,6 +135,33 @@ for d in denoms:
 
 Now let's look at the [prime walk program](../code/primewalk.py) again ...
 
+### More CodingBat examples:
+
+- List-2 > count_evens
+- List-2 >sum13
+- List-2 > bigdiff
+- reverse a list (not using slicing)?
+
+### `break`
+
+`break` is a way to get out of a `while` or `for` loop early:
+
+```{r pyloop2, eval=FALSE}
+for i in range(0,10):
+   if i>5:
+      break
+```
+
+### nested `for` loops
+
+We can look at (e.g.) all the combinations of `i` and `j` via:
+
+```{r py_nested_loop, eval=FALSE}
+for i in range(0,3):
+   for j in range(0,3):
+      print([i,j])
+```
+
 ### Loops and indices
 
 From [Secret Weblog](http://blog.startifact.com/posts/older/what-is-pythonic.html): all of the following are equivalent ...
