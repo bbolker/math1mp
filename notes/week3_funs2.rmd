@@ -1,0 +1,73 @@
+---
+title: "functions (part 2) and modules"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+```
+
+## Functions calling functions
+
+Functions can call functions (even themselves, **recursively**):
+
+```{r}
+def factorial(x):
+    if (x==1):
+        return(1)
+    return(x*factorial(x-1))
+
+factorial(5)
+```
+
+What happens if we forget to put in the `if` clause?
+
+- More often, functions call functions
+- You can pass anything to a function as an argument (even a function!)
+
+```{r}
+def repeat_fun(f,x,n):
+    for i in range(n):
+        x=f(x)
+    return(x)
+
+def sqr(x):
+    return(x*x)
+
+repeat_fun(sqr,3,3)
+```
+
+### Scope
+
+* Where does Python look for things?
+* What happens here?
+```{r}
+z = 1
+def add_z(x):
+    return(x+z)
+
+add_z(z)
+```
+* **LEGB** (Local, Enclosing, Global, Built-in)
+    * *Local*: symbols defined in the function, and arguments
+	* *Enclosing*: symbols defined *in the function within which this function was defined*
+	* *Global*: elsewhere in the file/module
+	* *Built-in*: Python keywords
+	
+
+# Modules
+
+### importing
+
+* `import`
+* refer to functions via module prefix
+* `import VeryLongModuleName as vlmn`: use abbreviation
+
+
+### finding out about
+
+* [official modules](https://docs.python.org/3/py-modindex.html)
+* [list of useful module](https://wiki.python.org/moin/UsefulModules)
+* `math`, `cmath`, `re`, `random`, `numpy`, `scipy`, `matplotlib`, `timeit`
