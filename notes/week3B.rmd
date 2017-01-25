@@ -13,37 +13,38 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 Reference: [Python tutorial section 4.6](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values)
 
-* *the* most important tool for structuring programs
-* allows *modularity*
-* basic definition: `def function_name(args):` plus indented code block
-* when function is called, go to the function, with the arguments, run code until you hit `return()` (return `None` if you get to the end without a `return`)
+- *the* most important tool for structuring programs
+- allows *modularity*
+- basic definition: `def function_name(args):` plus indented code block
+- inputs are called **arguments**. outputs are called **return values**
+- when function is called, go to the function, with the arguments, run code until you hit `return()` (return `None` if you get to the end without a `return`)
 
 ### Return values
 
-* most functions return values
-* might not ... *side effects* 
-    * changing a (mutable!) variable
+- most functions return values
+- might not ... *side effects*
 	* input/output (create a plot, write output to a file, turn on a machine, ...)
+    * changing a (mutable!) variable
+
 
 ### Function arguments
 
-* basic arguments: *unnamed*, *mandatory*
-* think of them as dummy variables; could be the same or different from the name in the calling environment
+- basic arguments: *unnamed*, *mandatory*
+- think of them as dummy variables; could be the same or different from the name in the calling environment
 
-```{r}
-def foo(x):
-
+```{r add_one}
+def add_one(x):
     x += 1
     return(x)
 x = 2
-print(foo(x))
+print(add_one(x))
 print(x)
 z = 2
-print(foo(z))
+print(add_one(z))
 print(z)
 ```
 
-Since `z` is a number (**immutable**), it doesn't change; if you want it to change, use `z=foo(z)`
+Since `z` is a number (**immutable**), it doesn't change; if you want it to change, use `z=add_one(z)`
 
 Changes within functions follow the standard mutability rules:
 
@@ -51,26 +52,44 @@ Changes within functions follow the standard mutability rules:
 
 Compare:
 
-```{r}
-def bar(x):
+```{r no_return}
+def no_return(x):
     x = [2,3,4]
     return(None)
 
 z = [1,2,3]
-bar(z)
+no_return(z)
 z
 ```
 
 With:
-```{r}
-def bar(x):
+
+```{r no_return2}
+def no_return(x):
     x[0] = 7
     return(None)
 
 z = [1,2,3]
-bar(z)
+no_return(z)
 z
 ```
+
+- **optional** arguments: give *default* values
+    - e.g. logarithm: `def log(value,math.e)`
+
+## Docstrings
+
+- always say something about what your function does. (Feel free to give me a hard time in class if I don't.)
+
+```{r docstrings}
+def documented_function():
+    """this is a function that does
+       nothing very useful
+    """
+    return(None)
+```
+
+## Functions calling functions
 
 Functions can call functions (even themselves, **recursively**):
 
@@ -85,8 +104,8 @@ factorial(5)
 
 What happens if we forget to put in the `if` clause?
 
-* More often, functions call functions
-* You can pass anything to a function as an argument (even a function!)
+- More often, functions call functions
+- You can pass anything to a function as an argument (even a function!)
 
 ```{r}
 def repeat_fun(f,x,n):
@@ -106,10 +125,10 @@ repeat_fun(sqr,3,3)
 * What happens here?
 ```{r}
 z = 1
-def foo(x):
+def add_z(x):
     return(x+z)
 
-foo(z)
+add_z(z)
 ```
 * **LEGB** (Local, Enclosing, Global, Built-in)
     * *Local*: symbols defined in the function, and arguments
@@ -117,16 +136,6 @@ foo(z)
 	* *Global*: elsewhere in the file/module
 	* *Built-in*: Python keywords
 	
-### Function arguments, continued
-
-* **optional** arguments: give *default* values
-    * e.g. logarithm: `def log(value,math.e)`
-* **named** arguments: 	
-* matching by position vs. name
-
-## Docstrings
-
-* use them!
 
 # Modules
 

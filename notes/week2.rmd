@@ -146,7 +146,7 @@ Now let's look at the [prime walk program](../code/primewalk.py) again ...
 
 `break` is a way to get out of a `while` or `for` loop early:
 
-```{r pyloop2, eval=FALSE}
+```{r pyloop_break, eval=FALSE}
 for i in range(0,10):
    if i>5:
       break

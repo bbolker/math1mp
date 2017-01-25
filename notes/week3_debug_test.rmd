@@ -17,7 +17,7 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 - failure modes from logic errors:
     - obvious failure
-        -  program stops with an error partway through: [bad mandelbrot #0](../code/mandelbrot/noinit.py)
+        -  program stops with an error partway through: [bad matrix sum #0](../code/sum_matrix_noinit.py)
         - Python crashes
         - machine crashes
 		- program never stops (infinite loop)
@@ -34,7 +34,7 @@ cin = input()
 while ((response != "y") or (response != "n")):
    print("Please try again")
 ```
- [bad mandelbrot #1](../code/mandelbrot_infloop.py)
+ [bad mandelbrot #1](../code/sum_matrix_infloop.py)
 - operator precedence mistakes, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
 ```{r FCconv,eval=FALSE}
 fahrdiff = celsius_high - celsius_low * 1.8
@@ -42,9 +42,8 @@ fahrdiff = celsius_high - celsius_low * 1.8
 - off-by-one error ("fencepost problem")
    -  ... more generally, **edge** or **corner cases**
 - code incorrectly inside/outside loops: 
-   - [bad mandelbrot #2](../code/mandelbrot_badloop1.py)
-   - [bad mandelbrot #3](../code/mandelbrot_badloop2.py)
-   - [bad mandelbrot #4](../code/mandelbrot_badloop3.py)
+   - [bad matrix sum #2](../code/sum_matrix_bad1.py)
+   - [bad matrix sum #3](../code/sum_matrix_bad2.py)
 - array index error (outside bounds)
 
 ### Error messages
@@ -64,6 +63,10 @@ fahrdiff = celsius_high - celsius_low * 1.8
 - interactive tracing
 - debugging tools (breakpoints/watchpoints/watches)
 
+### More broken code
+
+- [weird ascending](code/ascending_weird.py)
+
 ## Searching for/asking for help
 
 ### Searching for help
@@ -74,8 +77,13 @@ fahrdiff = celsius_high - celsius_low * 1.8
 ### Asking for help
 
 - reproducible/minimal workable examples
-    - right amount of context
-	- "how to ask" ([StackOverflow](http://stackoverflow.com/help/how-to-ask))
+- paste *code* rather than screenshots whenever possible
+- right amount of context (sometimes hard to guess)
+- "how to ask" ([StackOverflow](http://stackoverflow.com/help/how-to-ask), [Eric Raymond's advice](http://www.catb.org/~esr/faqs/smart-questions.html)
+     - what are you trying to do?
+     - where have you looked?
+	 - what have you tried?
+	 - [lmgtfy](http://lmgtfy.com/?q=how+do+i+find+the+last+letter+of+a+string+in+python)
 - browse/lurk in forums first!
 - tone
 - where:
@@ -87,17 +95,11 @@ fahrdiff = celsius_high - celsius_low * 1.8
 - Simplify, simplify, simplify
 - Reduce the size of your problem
 - Cases with easy/known answers
-- Corner & edge cases
+- **Corner** and **edge** cases
 - Random tests ([fuzz testing](http://en.wikipedia.org/wiki/Fuzz_testing))
 - Automatic testing framework: `nose`
     - built-in Python package
-	- define test file
-	    - basic: `assert <condition>`
-	    - extra: `from nose.tools import assert_equal, assert_raises` (or something)
-		- (generating an error: `raise ErrorType("message")`, e.g. `raise ValueError("non-conformable matrices")`
-		- each test or set of tests as a separate function
-		- see [test_mm.py](../code/test_mm.py)
-	- `nosetests`/run in PyCharm
+	- more on this later ...
 - Test-driven development: write tests *first*!	
 
 ### Additional resources
