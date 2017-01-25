@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">debugging and testing</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>17:51 22 January 2017</em></h4>
+<h4 class="date"><em>20:38 24 January 2017</em></h4>
 
 </div>
 
@@ -133,7 +133,7 @@ $(document).ready(function () {
 <ul>
 <li>obvious failure
 <ul>
-<li>program stops with an error partway through: <a href="../code/mandelbrot/noinit.py">bad mandelbrot #0</a></li>
+<li>program stops with an error partway through: <a href="../code/sum_matrix_noinit.py">bad matrix sum #0</a></li>
 <li>Python crashes</li>
 <li>machine crashes</li>
 <li>program never stops (infinite loop)</li>
@@ -153,15 +153,14 @@ $(document).ready(function () {
 cin = input()
 while ((response != &quot;y&quot;) or (response != &quot;n&quot;)):
    print(&quot;Please try again&quot;)</code></pre>
-<p><a href="../code/mandelbrot_infloop.py">bad mandelbrot #1</a> - operator precedence mistakes, e.g. <span class="math inline">\(\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8\)</span></p>
+<p><a href="../code/sum_matrix_infloop.py">bad mandelbrot #1</a> - operator precedence mistakes, e.g. <span class="math inline">\(\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8\)</span></p>
 <pre class="python"><code>fahrdiff = celsius_high - celsius_low * 1.8</code></pre>
 <ul>
 <li>off-by-one error (“fencepost problem”)</li>
 <li>… more generally, <strong>edge</strong> or <strong>corner cases</strong></li>
 <li>code incorrectly inside/outside loops:</li>
-<li><a href="../code/mandelbrot_badloop1.py">bad mandelbrot #2</a></li>
-<li><a href="../code/mandelbrot_badloop2.py">bad mandelbrot #3</a></li>
-<li><a href="../code/mandelbrot_badloop3.py">bad mandelbrot #4</a></li>
+<li><a href="../code/sum_matrix_bad1.py">bad matrix sum #2</a></li>
+<li><a href="../code/sum_matrix_bad2.py">bad matrix sum #3</a></li>
 <li>array index error (outside bounds)</li>
 </ul>
 </div>
@@ -188,6 +187,12 @@ while ((response != &quot;y&quot;) or (response != &quot;n&quot;)):
 <li>interactive tracing</li>
 <li>debugging tools (breakpoints/watchpoints/watches)</li>
 </ul>
+<div id="more-broken-code" class="section level3">
+<h3>More broken code</h3>
+<ul>
+<li><a href="code/ascending_weird.py">weird ascending</a></li>
+</ul>
+</div>
 </div>
 <div id="searching-forasking-for-help" class="section level2">
 <h2>Searching for/asking for help</h2>
@@ -201,10 +206,15 @@ while ((response != &quot;y&quot;) or (response != &quot;n&quot;)):
 <div id="asking-for-help" class="section level3">
 <h3>Asking for help</h3>
 <ul>
-<li>reproducible/minimal workable examples
+<li>reproducible/minimal workable examples</li>
+<li>paste <em>code</em> rather than screenshots whenever possible</li>
+<li>right amount of context (sometimes hard to guess)</li>
+<li>“how to ask” (<a href="http://stackoverflow.com/help/how-to-ask">StackOverflow</a>, <a href="http://www.catb.org/~esr/faqs/smart-questions.html">Eric Raymond’s advice</a>
 <ul>
-<li>right amount of context</li>
-<li>“how to ask” (<a href="http://stackoverflow.com/help/how-to-ask">StackOverflow</a>)</li>
+<li>what are you trying to do?</li>
+<li>where have you looked?</li>
+<li>what have you tried?</li>
+<li><a href="http://lmgtfy.com/?q=how+do+i+find+the+last+letter+of+a+string+in+python">lmgtfy</a></li>
 </ul></li>
 <li>browse/lurk in forums first!</li>
 <li>tone</li>
@@ -222,20 +232,12 @@ while ((response != &quot;y&quot;) or (response != &quot;n&quot;)):
 <li>Simplify, simplify, simplify</li>
 <li>Reduce the size of your problem</li>
 <li>Cases with easy/known answers</li>
-<li>Corner &amp; edge cases</li>
+<li><strong>Corner</strong> and <strong>edge</strong> cases</li>
 <li>Random tests (<a href="http://en.wikipedia.org/wiki/Fuzz_testing">fuzz testing</a>)</li>
 <li>Automatic testing framework: <code>nose</code>
 <ul>
 <li>built-in Python package</li>
-<li>define test file
-<ul>
-<li>basic: <code>assert &lt;condition&gt;</code></li>
-<li>extra: <code>from nose.tools import assert_equal, assert_raises</code> (or something)</li>
-<li>(generating an error: <code>raise ErrorType(&quot;message&quot;)</code>, e.g. <code>raise ValueError(&quot;non-conformable matrices&quot;)</code></li>
-<li>each test or set of tests as a separate function</li>
-<li>see <a href="../code/test_mm.py">test_mm.py</a></li>
-</ul></li>
-<li><code>nosetests</code>/run in PyCharm</li>
+<li>more on this later …</li>
 </ul></li>
 <li>Test-driven development: write tests <em>first</em>!</li>
 </ul>
