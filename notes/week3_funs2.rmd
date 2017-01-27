@@ -11,27 +11,18 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 ## Functions calling functions
 
-Functions can call functions (even themselves, **recursively**):
-
-```{r}
-def factorial(x):
-    if (x==1):
-        return(1)
-    return(x*factorial(x-1))
-
-factorial(5)
-```
-
-What happens if we forget to put in the `if` clause?
-
-- More often, functions call functions
 - You can pass anything to a function as an argument (even a function!)
 
 ```{r}
-def repeat_fun(f,x,n):
+def repeat_fun(f,startval,n):
+    """Given a function f and a starting value startval,
+    apply the function n times (each time using the previous
+    result as input
+    """
+    y = startval
     for i in range(n):
-        x=f(x)
-    return(x)
+        y=f(y)
+    return(y)
 
 def sqr(x):
     return(x*x)
@@ -41,8 +32,8 @@ repeat_fun(sqr,3,3)
 
 ### Scope
 
-* Where does Python look for things?
-* What happens here?
+- Where does Python look for things?
+- What happens here?
 ```{r}
 z = 1
 def add_z(x):
@@ -50,24 +41,42 @@ def add_z(x):
 
 add_z(z)
 ```
-* **LEGB** (Local, Enclosing, Global, Built-in)
-    * *Local*: symbols defined in the function, and arguments
-	* *Enclosing*: symbols defined *in the function within which this function was defined*
-	* *Global*: elsewhere in the file/module
-	* *Built-in*: Python keywords
+- **LEGB** (Local, Enclosing, Global, Built-in)
+    - *Local*: symbols defined in the function, and arguments
+	- *Enclosing*: symbols defined *in the function within which this function was defined*
+	- *Global*: elsewhere in the file/module
+	- *Built-in*: Python keywords
 	
-
 # Modules
+
+Collections of functions you might want to use.
 
 ### importing
 
-* `import`
-* refer to functions via module prefix
-* `import VeryLongModuleName as vlmn`: use abbreviation
+- `import`
+- refer to functions via module prefix
+- `import VeryLongModuleName as vlmn`: use abbreviation
+- can import just one or two functions: `from math import sqrt, log`
+- can import everything (but usually don't): `from <module> import *`
+- can import *your own modules* (i.e., functions in a `.py` file)
 
 
-### finding out about
+### finding out about modules
 
-* [official modules](https://docs.python.org/3/py-modindex.html)
-* [list of useful module](https://wiki.python.org/moin/UsefulModules)
-* `math`, `cmath`, `re`, `random`, `numpy`, `scipy`, `matplotlib`, `timeit`
+- `help("modulename")`
+- [official modules](https://docs.python.org/3/py-modindex.html)
+- [list of useful modules](https://wiki.python.org/moin/UsefulModules)
+- some modules we will definitely be using:
+    - `math`: basic math functions
+    - `matplotlib`: drawing pictures
+    - `random`: picking random numbers
+    - `numpy`: numerical computation in general (e.g. linear alg and calculus)
+    - `pandas`: data analysis
+- slightly less useful but maybe using:
+    - `nose`: code testing framework
+    - `scipy`: even more scientific computing tools
+    - `cmath`: math functions handling complex numbers
+    - `re`: regular expressions
+    - `sympy`: symbolic computation
+    - `timeit`: how long does my code take?
+

@@ -15,6 +15,8 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 - **syntax errors** vs. **logic errors**
 
+- [matrix sum program](code/sum_matrix_good.py)
+
 - failure modes from logic errors:
     - obvious failure
         -  program stops with an error partway through: [bad matrix sum #0](../code/sum_matrix_noinit.py)
