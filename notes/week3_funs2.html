@@ -118,29 +118,25 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">functions (part 2) and modules</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>17:51 22 January 2017</em></h4>
+<h4 class="date"><em>22:29 26 January 2017</em></h4>
 
 </div>
 
 
 <div id="functions-calling-functions" class="section level2">
 <h2>Functions calling functions</h2>
-<p>Functions can call functions (even themselves, <strong>recursively</strong>):</p>
-<pre class="python"><code>def factorial(x):
-    if (x==1):
-        return(1)
-    return(x*factorial(x-1))
-
-factorial(5)</code></pre>
-<p>What happens if we forget to put in the <code>if</code> clause?</p>
 <ul>
-<li>More often, functions call functions</li>
 <li>You can pass anything to a function as an argument (even a function!)</li>
 </ul>
-<pre class="python"><code>def repeat_fun(f,x,n):
+<pre class="python"><code>def repeat_fun(f,startval,n):
+    &quot;&quot;&quot;Given a function f and a starting value startval,
+    apply the function n times (each time using the previous
+    result as input
+    &quot;&quot;&quot;
+    y = startval
     for i in range(n):
-        x=f(x)
-    return(x)
+        y=f(y)
+    return(y)
 
 def sqr(x):
     return(x*x)
@@ -170,20 +166,41 @@ add_z(z)</code></pre>
 </div>
 <div id="modules" class="section level1">
 <h1>Modules</h1>
+<p>Collections of functions you might want to use.</p>
 <div id="importing" class="section level3">
 <h3>importing</h3>
 <ul>
 <li><code>import</code></li>
 <li>refer to functions via module prefix</li>
 <li><code>import VeryLongModuleName as vlmn</code>: use abbreviation</li>
+<li>can import just one or two functions: <code>from math import sqrt, log</code></li>
+<li>can import everything (but usually don’t): <code>from &lt;module&gt; import *</code></li>
+<li>can import <em>your own modules</em> (i.e., functions in a <code>.py</code> file)</li>
 </ul>
 </div>
-<div id="finding-out-about" class="section level3">
-<h3>finding out about</h3>
+<div id="finding-out-about-modules" class="section level3">
+<h3>finding out about modules</h3>
 <ul>
+<li><code>help(&quot;modulename&quot;)</code></li>
 <li><a href="https://docs.python.org/3/py-modindex.html">official modules</a></li>
-<li><a href="https://wiki.python.org/moin/UsefulModules">list of useful module</a></li>
-<li><code>math</code>, <code>cmath</code>, <code>re</code>, <code>random</code>, <code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>timeit</code></li>
+<li><a href="https://wiki.python.org/moin/UsefulModules">list of useful modules</a></li>
+<li>some modules we will definitely be using:
+<ul>
+<li><code>math</code>: basic math functions</li>
+<li><code>matplotlib</code>: drawing pictures</li>
+<li><code>random</code>: picking random numbers</li>
+<li><code>numpy</code>: numerical computation in general (e.g. linear alg and calculus)</li>
+<li><code>pandas</code>: data analysis</li>
+</ul></li>
+<li>slightly less useful but maybe using:
+<ul>
+<li><code>nose</code>: code testing framework</li>
+<li><code>scipy</code>: even more scientific computing tools</li>
+<li><code>cmath</code>: math functions handling complex numbers</li>
+<li><code>re</code>: regular expressions</li>
+<li><code>sympy</code>: symbolic computation</li>
+<li><code>timeit</code>: how long does my code take?</li>
+</ul></li>
 </ul>
 </div>
 </div>
