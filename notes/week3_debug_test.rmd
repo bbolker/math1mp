@@ -15,7 +15,7 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 - **syntax errors** vs. **logic errors**
 
-- [matrix sum program](code/sum_matrix_good.py)
+- [matrix sum program](../code/sum_matrix_good.py)
 
 - failure modes from logic errors:
     - obvious failure
@@ -36,7 +36,7 @@ cin = input()
 while ((response != "y") or (response != "n")):
    print("Please try again")
 ```
- [bad mandelbrot #1](../code/sum_matrix_infloop.py)
+- [infinite loop matrix sum](../code/sum_matrix_infloop.py)
 - operator precedence mistakes, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
 ```{r FCconv,eval=FALSE}
 fahrdiff = celsius_high - celsius_low * 1.8
