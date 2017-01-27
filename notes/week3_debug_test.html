@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">debugging and testing</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>08:25 25 January 2017</em></h4>
+<h4 class="date"><em>22:31 26 January 2017</em></h4>
 
 </div>
 
@@ -129,7 +129,7 @@ $(document).ready(function () {
 <h3>Types of errors</h3>
 <ul>
 <li><p><strong>syntax errors</strong> vs. <strong>logic errors</strong></p></li>
-<li><p><a href="code/sum_matrix_good.py">matrix sum program</a></p></li>
+<li><p><a href="../code/sum_matrix_good.py">matrix sum program</a></p></li>
 <li>failure modes from logic errors:
 <ul>
 <li>obvious failure
@@ -154,7 +154,10 @@ $(document).ready(function () {
 cin = input()
 while ((response != &quot;y&quot;) or (response != &quot;n&quot;)):
    print(&quot;Please try again&quot;)</code></pre>
-<p><a href="../code/sum_matrix_infloop.py">bad mandelbrot #1</a> - operator precedence mistakes, e.g. <span class="math inline">\(\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8\)</span></p>
+<ul>
+<li><a href="../code/sum_matrix_infloop.py">infinite loop matrix sum</a></li>
+<li>operator precedence mistakes, e.g. <span class="math inline">\(\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8\)</span></li>
+</ul>
 <pre class="python"><code>fahrdiff = celsius_high - celsius_low * 1.8</code></pre>
 <ul>
 <li>off-by-one error (“fencepost problem”)</li>
