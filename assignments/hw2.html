@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">math 1MP assignment 2</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>22:31 01 February 2017</em></h4>
+<h4 class="date"><em>13:09 02 February 2017</em></h4>
 
 </div>
 
@@ -190,7 +190,7 @@ print(len(eratos(100000)) == 9592)</code></pre>
 def disc_logist(x):
     &quot;&quot;&quot;discrete logistic function&quot;&quot;&quot;
     return(1.5*x*(1-x))
-print(approx_equal(disc_logist,0.5),[15, 0.33333433255312184])
+print(approx_equal(iterate(disc_logist,0.5),[15, 0.33333433255312184]))
 print(approx_equal(iterate(disc_logist,0.5,tol=1e-8),[22, 0.33333334113969143]))
 def half(x):
     &quot;&quot;&quot;just what it says&quot;&quot;&quot;
