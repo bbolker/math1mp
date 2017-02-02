@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">math 1MP assignment 2</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>22:25 01 February 2017</em></h4>
+<h4 class="date"><em>22:31 01 February 2017</em></h4>
 
 </div>
 
@@ -137,7 +137,16 @@ $(document).ready(function () {
 <li>initialize a counter to 2</li>
 <li>initialize an empty list for the results</li>
 </ul></li>
-<li>start a <code>while</code> loop that runs as long as the the counter defined above is less than or equal to <code>n</code> - add the current value of the counter to the results list - set the values of the boolean list to <code>False</code> for all multiples of the current counter value &lt;= <code>n</code>; you can do this with a <code>while</code> or a <code>for</code> loop. For example if <code>i</code>=3 and <code>n</code>=10 you should set elements 6 and 9 of the list to <code>False</code> - search forward for the next possibly-prime value: - first increment the counter by 1 - while the counter is less than or equal to <code>n</code> and the corresponding element of the boolean list is <code>False</code>, increment the counter by 1.</li>
+<li>start a <code>while</code> loop that runs as long as the the counter defined above is less than or equal to <code>n</code>
+<ul>
+<li>add the current value of the counter to the results list</li>
+<li>set the values of the boolean list to <code>False</code> for all multiples of the current counter value &lt;= <code>n</code>; you can do this with a <code>while</code> or a <code>for</code> loop. For example if <code>i</code>=3 and <code>n</code>=10 you should set elements 6 and 9 of the list to <code>False</code></li>
+<li>search forward for the next possibly-prime value:
+<ul>
+<li>first increment the counter by 1</li>
+<li>while the counter is less than or equal to <code>n</code> and the corresponding element of the boolean list is <code>False</code>, increment the counter by 1.</li>
+</ul></li>
+</ul></li>
 <li>return the results list</li>
 </ul></li>
 </ol>
@@ -192,7 +201,9 @@ print(approx_equal(iterate(math.sqrt,1.01,tol=1e-4),[6, 1.0000777399813863]))
 print(approx_equal(iterate(math.cos,0),[34, 0.7390855263619245]))
 print(approx_equal(iterate(math.cos,0,tol=1e-8),[46, 0.7390851366465718]))
 print(approx_equal(iterate(math.cos,0,itmax=5),[5, 0.7013687736227565]))</code></pre>
-<p>3a. Write a function <code>read_evens</code> that takes a single argument, the name of a file in the current directory. The file will contain a single integer on each line. Your function should return the number of <em>even</em> integers (remember that when you read a line it is a string (<code>str</code>) that you can convert to an integer with <code>int()</code>).</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Write a function <code>read_evens</code> that takes a single argument, the name of a file in the current directory. The file will contain a single integer on each line. Your function should return the number of <em>even</em> integers (remember that when you read a line it is a string (<code>str</code>) that you can convert to an integer with <code>int()</code>).</li>
+</ol>
 <p><strong>Tests</strong>: put the file <code>even_nums.txt</code> in the same directory as your Python file (in your project directory, if you’re using PyCharm). Then <code>read_evens(&quot;even_nums.txt&quot;)</code> should return 3.</p>
 
 
