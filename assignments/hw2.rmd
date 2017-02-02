@@ -68,7 +68,7 @@ def approx_equal(x,y,tol=1e-8):
 def disc_logist(x):
     """discrete logistic function"""
     return(1.5*x*(1-x))
-print(approx_equal(disc_logist,0.5),[15, 0.33333433255312184])
+print(approx_equal(iterate(disc_logist,0.5),[15, 0.33333433255312184]))
 print(approx_equal(iterate(disc_logist,0.5,tol=1e-8),[22, 0.33333334113969143]))
 def half(x):
     """just what it says"""
