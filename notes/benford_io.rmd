@@ -17,15 +17,6 @@ Read it about it on [Wikipedia](http://en.wikipedia.org/wiki/Benford%27s_law) or
 
 We'll write a Python function `benford_count` that tabulates the occurrence of digits from a set of numbers
 
-- we'll write the following functions:
-    - `init_dict()`: initialize a dictionary indexed by digits. (Overkill for this example.)
-	    - `for` loop
-```
-
-- <!-- -->
-    - `update_dict(dd,n)`: account first digit of number `n` in the dictionary
-	- `benford_loop(d)`: loop over a set of digits `d`
-    - test!
 - But where do we get our numbers from?
 
 ## file I/O
@@ -39,6 +30,16 @@ We'll write a Python function `benford_count` that tabulates the occurrence of d
 f = open("test.txt")
 print(f)
 ```
+- you can use a `for` loop: `for L in f: do_something_with(L)`. This is probably the most common way to process a file.
+
+```{r printfile}
+f = open("test.txt")
+for L in f:
+    print(L)
+    x = float(L)
+    print(x**2)
+```
+
 - `f.read(size)`; reads `size` characters (`f.read()` reads the whole file), unless we are at the end of the file; then returns `''`
 ```{r readfile}
 f = open("test.txt")
@@ -55,7 +56,6 @@ print(repr(L))   ## repr() prints a *representation* of the line
 L2 = f.readlines()
 print(L2)
 ```
-- you can use a `for` loop: `for L in f: do_something_with(L)`.
 - the file object keeps track of how much has been read
 
 ### `next()`, and more flow control
@@ -77,15 +77,7 @@ while not finished:
       finished = True
 ```
 - `try` is a *general* way to handle errors safely
-- While we're catching up: `break` is also useful. It bails out prematurely of any `while` or `for` loop, e.g.
-
-```{r break1}
-for i in range(5):
-   print(i)
-   if i==3:
-      break
-```
-- a standard idiom for doing something until it works:
+- a standard idiom for doing something until it works uses `break`:
 ```{r break2,eval=FALSE}
 while True:
    try:
@@ -112,63 +104,15 @@ LL = L.strip().split(" ")
 print(LL)
 ```
 
-### zip()
-
-(optional!)
-
-- `zip(a,b,c)`, where `a`, `b`, `c` are lists or tuples of the same length, puts together the first elements, second elements, third elements ... for example
-```{r zip}
-print(tuple(zip(("A","B","C"),("a","b","c"),(1,2,3))))
-```
-- this comes in handy sometimes.  It makes a handy way to invert a dictionary: `dict(zip(d.values(),d.keys()))`
-
-## More i/o stuff
+## And even more
 
 - `import os` in order to find out working directory (`os.getcwd()`), or set the directory `os.chdir(newpath)`; use full path or use (e.g.) `..` to go up one level
 - opening a URL from the web `import urllib.request as ur`; `ur.urlopen(url)`
 - to read a text file: `io.TextIOWrapper()`
 - to read a CSV file: `import csv`, use `csv.reader()`
 
-## Regular expressions
 
-[reference](https://docs.python.org/3/howto/regex.html)
-
-- `import re`
-- simple version: look for or replace a string
-    - `bool(re.search(pattern,text))` (in this case same as `pattern in text`)
-	- `re.sub(text,pattern,replacement)`: e.g. `re.sub("hello","ll","")`
-- **patterns**
-
-----------------------------------------------------------
-   Pattern   Description                                           
------------  ---------------------------------------------
- `^`         Beginning of line
- 
- `$`	     End of line    
- 
- `.`         Any single character except newline
- 
- `[...]`	 Any single character in brackets         
- 
- `[^...]`	 Any single character **not** in brackets 
- 
- `re*`	     0 or more occurrences of preceding expression
- 
- `re+`	     1 or more occurrence of preceding expression
- 
- `re?`	     0 or 1 occurrence of preceding expression  
- 
- `re1|re2`   match `re1` or `re2`
- 
- `()`        grouping
- 
-----------------------------------------------------------
-
-- e.g. `[0-9]+` is a number; `[0-9.]+` includes decimal point; `[0-9.]+, [0-9.]+` is two words separated by a comma and a space
-- e.g. remove commas from a string via `re.sub(text,",","")`
-- remove punctuation via `re.sub(text,"[,;.!?]","")` *or* `re.sub(text,"["+string.punctuation+"]","")`
-
-
+CodeLab Qs: (files) 51182, 51356 , (loops and strings) 51005
 <!-- 
    http://testingbenfordslaw.com/
    scrape:
