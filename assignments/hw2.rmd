@@ -15,7 +15,7 @@ Due Wednesday 8 February at midnight (the end of the day), in the Dropbox on Ave
 		- initialize a counter to 2
 		- initialize an empty list for the results
 	- start a `while` loop that runs as long as the the counter defined above is less than or equal to `n`
-	    - add the current value of the counter to the results list
+	    - add (i.e., append) the current value of the counter to the results list
 		- set the values of the boolean list to `False` for all multiples of the current counter value <= `n`; you can do this with a `while` or a `for` loop. For example if `i`=3 and `n`=10 you should set elements 6 and 9 of the list to `False`
 		- search forward for the next possibly-prime value:
 		    - first increment the counter by 1

@@ -6,7 +6,7 @@ author: Ben Bolker
 
 ```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
 library("knitr")
-opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3',eval=FALSE)
 ```
 
 ## Benford's law

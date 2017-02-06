@@ -1,5 +1,5 @@
 ---
-title: "Dictionaries and tuples"
+title: "Tuples and dictionaries"
 date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
 author: Ben Bolker
 ---
@@ -14,12 +14,12 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 
 ## Tuples
 
-* simple; **non-mutable** version of lists
-* faster, safer
-* can be expressed as  `x, y, z` (or `(x,y,z)`, probably clearer)
-* empty tuple: `()`
-* tuple with one element: `(x,)`
-* can do many of the same things as with lists
+- simple; **non-mutable** version of lists
+- faster, safer
+- can be expressed as  `x, y, z` (or `(x,y,z)`, probably clearer)
+- empty tuple: `()`
+- tuple with one element: `(x,)`
+- can do many of the same things as with lists
 ```{r tuple_stuff}
 x = (1,4,"a",3)
 print(x[1])   ## indexing
@@ -48,8 +48,8 @@ print(x)
 
 ## Dictionaries
 
-* **unordered**
-* efficient: *hashing*
+- **unordered**
+- efficient: *hashing*
 ```{r dict1}
 d = {"A":1,"B":2,"C":3}
 empty = {}  ## empty dictionary
@@ -62,19 +62,19 @@ print(d.keys())
 x = (("A",1),("B",2))
 dict(x)
 ```
-* can add and remove entries from a dictionary
+- can add and remove entries from a dictionary
 ```{r}
 d = {"A":1,"B":2,"C":3}
 d["D"]=5
 del d["A"]
 d.pop("C")
 ```
-* alternate syntax:
+- alternate syntax:
 ```{r dict2}
 dict(A=1,B=2,C=3)
 ```
 (**only** works if keys can be represented as a Python symbol)
-* loop over *keys* in a dictionary:
+- loop over *keys* in a dictionary:
 ```{r dict3,eval=FALSE}
 d = dict(A=1,B=2,C=3)
 for i in d.keys():
@@ -108,41 +108,5 @@ for a,b in d.items():
 inv = dict(invtuple)
 ```
 
-4. Fancier
-
-
-
-
-More Roman numerals!
-
-## Benford's law
-
-*Benford's law* describes the (surprising) distribution of last digits of many different sets of numbers.
-Read it about it on [Wikipedia](http://en.wikipedia.org/wiki/Benford%27s_law) or
-[MathWorld](http://mathworld.wolfram.com/BenfordsLaw.html)
-
-We'll write a Python function `benford_count` that tabulates the occurrence of digits from a set of numbers
-
-* Set up a dictionary
-    * do this with a `for` loop
-	* or by passing it a list or tuple of lists/tuples
-	* using the `zip()` function
-* Function for updating dictionary
-* (Maybe) function for removing commas from a string (using `str.replace()`)	
-
-* Where do we get our numbers from?
-* How do we iterate through a file?
-* How do we open a file from the internet?
-* How do we deal with a CSV file?
-
-For example, if the text file contained only three lines
-```
-1,234
-123
-12
-```
-then the correct result would be `[0,0,1,1,1,0,0,0,0,0]` (i.e. the last digits per line in this file comprise one 2, one 3, and one 4; there are zero of every other digit).
-
-* working through a file: `.next()` method
-
+Benford's Law, Roman numerals examples?
 
