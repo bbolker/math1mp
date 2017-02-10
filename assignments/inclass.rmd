@@ -16,3 +16,6 @@ author: Ben Bolker
 
 - January 28:
     - 51004, 51156
+
+- February 10 (actually due 13 Feb): dictionaries
+    - (value retrieval) 51817, (adding/removal) 51818, 51824, (traversal) 51281
