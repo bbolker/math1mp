@@ -1,0 +1,54 @@
+---
+title: "Markov models (dictionary example)"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+```
+
+A **Markov model** is one where the future state of the system depends
+only on the current state (not on any previous states). They're widely used
+(I use them for analyzing movement of Florida panthers). They can be
+used for text analysis.
+
+A Markov model of text would say that the next word in
+a piece of text (or letter, depending on
+what scale we're working at) depends only on the current word.
+
+## Constructing a Markov dictionary
+
+Components:
+
+- `file.read()`
+- `str.replace()`
+- `str.split()`
+- `random.choice()`
+
+## Cleaning strings
+
+Strings have a `tolower` method.
+
+Easier to understand:
+
+```{r clean1}
+def clean_string(s,delete_chars):
+    for i in delete_chars:
+        s = s.replace(i,"")
+    return(s)
+x = "abcdeq@#$I"
+import string
+print(clean_string(x,string.punctuation))
+```
+
+More efficient:
+
+```{r clean2}
+import string
+x = "abcdeq@#$I"
+m = x.maketrans('','',string.punctuation)
+print(x.translate(m))
+```
+
