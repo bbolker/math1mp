@@ -17,16 +17,19 @@ opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 
 ### Installation
 
-I am hoping that everyone has successfully followed Dexter's instructions for [installing Anaconda+Python](http://bbolker.github.io/math1mp/notes/install_python.html). If you have, then you should be able to just `import numpy as np` to get access to `numpy`.
+I am hoping that everyone has successfully followed the instructions for [installing Anaconda+Python](http://bbolker.github.io/math1mp/notes/install_python.html). If you have, then you should be able to just `import numpy as np` to get access to `numpy`. If you have not, you should try to resolve the issue as soon as possible; if absolutely necessary you can run code in PythonAnywhere.
 
-### arrays
+### Arrays
 
-- `np.array()`: construct an array from an existing list/tuple/list of lists/etc.
-- creates a homogeneous numeric (floating point (`float64`) or integer (`int64`))
+The `array()` is numpy's main data structure.
+
+- `np.array()` constructs an array from an existing Python object
+- creates a *homogeneous* order set of numeric values (e.g. floating point (`float64`) or integer (`int64`)
 - 1-D: vectors
     - vectorized/elementwise arithmetic operators!
 	     - 	arithmetic now works on *elements*, not on the list: `a+1` creates a new array with 1 added to every element; `a+=1` adds 1 to every element
     - create from list or tuple (specify type explicitly; `np.array(x,dtype)` where `type` is `int`, `str`, `float`, `complex` ...)
+	- the `.dtype` **attribute** tells you the type of an array
 ```{r dtype}
 import numpy as np
 a1 = np.array([1,2])
@@ -37,42 +40,54 @@ a2 = np.array([1,2],type="float")
 print(a2.dtype)
 ```
 
--
-    - slicing and indexing work the same way as lists/tuples/strings
-     - **mutable** like lists/dictionaries, so we can set elements (e.g. `a[1]=0`) but we can `.copy()`	 ...
-   	- some useful ways to create arrays directly:
-	     - `np.arange()`: like `range`, give start, stop, step, (dtype)
-		 - `np.zeros()`: all zeros
-		 - `np.ones()`: all ones
-		 - `np.linspace(start, stop, num=50, endpoint, dtype)`;
+- array slicing and indexing of 1-D arrays works the same way as lists/tuples/strings
+- arrays are **mutable** like lists/dictionaries, so we can set elements (e.g. `a[1]=0`)
+- or use the `.copy()` method (works for lists etc. too!)
+- create arrays directly:
+    - `np.arange(start,stop,step,dtype)`: like `range`
+    - `np.zeros()`: all zeros
+    - `np.ones()`: all ones
+    - `np.linspace(start, stop, num=50, endpoint, dtype)` (similar to `np.arange`, but specify number of elements rather than step size):
+- from `help("np.arange")`:
 
-	- multi-dim
-	     - create by passing a list of lists/tuple of tuples
-	     - index via `a[i,j]` (hurrah)
-	     - arithmetic is still elementwise; in particular, multiplication is elementwise (*Hadamard product*)
-		 - multi-dimensional slicing:
-		      - e.g. `a[:,0:2]` takes the first two columns
-			  - how would you get odd rows?
-			  - flip the order of columns?
-		 - dimensions: `a.shape`  (**note** no parentheses! `shape` is an **attribute**, like `a.dtype`
-		 - `a.fill()`: fill an array with a (scalar) value
-		 - `a.reshape(shape)`:  change dimensions; **row-major order**
-         - `a.transpose()`
-		 - `a.flatten()`
-		 - `np.concatenate((a1,a2,a3),axis=0)`
-    - arrays that do not match in the number of dimensions will be **broadcasted** (i.e. by Python to perform mathematical operations.
-	- matrices
-	     - 2-D arrays
-		 - `dot` function
-		 - `np.eye()`
-		 - `np.diag(v,k=0)`
-		 - `np.linalg` submodule
-    - vectorized *logical*/comparison operations and indexing
-	     - e.g. `a>0` gives array of `bool`
-		 - `a[a>0]` selects only positive elements of `a`
-		 - `any` and `all`
-	- other useful stuff
-	     - `.sum()`, `.prod()`, `.max()`, `.min()`, `.argmax()`, `.argmin()`, `.mean()` (note `axis` argument), `sd()`, `rank()` ...
+> When using a non-integer step, such as 0.1, the results will often not be consistent.  It is better to use `linspace` for these cases.
+
+## Multi-dimensional arrays
+
+- create by passing a list of lists/tuple of tuples
+- index via `a[i,j]` rather than `a[i][j]`
+- arithmetic is still elementwise; in particular, multiplication is elementwise (*Hadamard product*)
+- multi-dimensional slicing:
+      - e.g. `a[:,0:2]` takes the first two columns
+      - how would you get odd rows?
+   	  - flip the order of columns?
+- dimensions: `a.shape`  (**note** no parentheses! `shape` is an **attribute**, like `a.dtype`
+- `a.fill()`: fill an array with a single (*scalar*) value
+- `a.reshape(shape)`:  change dimensions; **row-major order**
+- `a.transpose()`
+- `a.flatten()`: convert to a 1-D array
+- `np.concatenate((a1,a2,a3),axis=0)`: combine arrays
+- arrays that do not match in the number of dimensions will be **broadcasted** (i.e. by Python to perform mathematical operations.
+
+## Matrices
+
+2-D arrays with special features
+
+- `dot` function: regular matrix multiplication
+- `np.eye()`: identity matrix
+- `np.diag(v,k=0)` diagonal matrix
+- `np.linalg` submodule
+
+## Logical arrays
+
+- vectorized *logical*/comparison operations and indexing
+   - e.g. `a>0` gives array of `bool`
+   - `a[a>0]` selects only positive elements of `a`
+   - `any` and `all` functions
+
+## Many more useful array methods
+
+`.sum()`, `.prod()`, `.max()`, `.min()`, `.argmax()`, `.argmin()`, `.mean()` (note `axis` argument), `sd()`, `rank()` ...
 
 ### examples
 
