@@ -28,10 +28,10 @@ opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 
 ## Floats
 
-- default 64-bit floats sign bit, 11 bits exponent (`x`), 52 bits mantissa (`m`)
+- default 64-bit floats: 1 sign bit, 11 bits for exponent (`x`), 52 bits for mantissa (`m`)
 - can store up to *approximately* $2^(2^(x-1))$; numbers less than $10^{-324}$ *underflow* to zero; numbers greater than $10^{308}$ give `OverflowError`
-- "only" 52 bits of precision in mantissa; for $x \le -16$, `1+x` *underflows* to `1.0`.
-- similar issues occur as long as addends are that far apart, e.g. `10**9+10**-8`
+- only 52 bits of precision in mantissa; for $x \le -16$, `1+x` *underflows* to `1.0`.
+- similar issues occur as long as addends are far apart, e.g. `10**9+10**-8`
 - what can you do?
      - more *stable* algorithm (e.g. add items in increasing order)
 	 - work on the log scale (i.e. add log values rather than multiplying values)

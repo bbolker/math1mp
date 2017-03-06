@@ -71,12 +71,14 @@ print(a2.dtype)
 
 ## Matrices
 
-2-D arrays with special features
+2-D arrays with special features.
 
 - `dot` function: regular matrix multiplication
+- `.T` (transpose) and `.I` (invert) methods: `m.I.dot(m)`
 - `np.eye()`: identity matrix
 - `np.diag(v,k=0)` diagonal matrix
-- `np.linalg` submodule
+- more linear algebra: Best to use `scipy.linalg` (`from scipy import linalg`), but can also use `numpy.linalg`
+    - `linalg.eig(m)`
 
 ## Logical arrays
 
@@ -87,7 +89,17 @@ print(a2.dtype)
 
 ## Many more useful array methods
 
-`.sum()`, `.prod()`, `.max()`, `.min()`, `.argmax()`, `.argmin()`, `.mean()` (note `axis` argument), `sd()`, `rank()` ...
+`.sum()`, `.prod()`, `.max()`, `.min()`, `.argmax()`, `.argmin()`, `.mean()` (note `axis` argument), `.std()`, `.argsort()` ...
+
+## Multi-dimensional arrays
+
+Occasional powerful, but can also melt your brain.
+
+```{r eval=FALSE}
+np.array(np.arange(27)).reshape((3,3,3))
+```
+
+In this case `axis` can be any value up to the number of dimensions.
 
 ### examples
 
