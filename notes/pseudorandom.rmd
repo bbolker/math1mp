@@ -9,11 +9,9 @@ library("knitr")
 opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 ```
 
-## Corrections
-
 ## Integration
 
-* How should we integrate $\int_0^1 \sqrt{1-x^2} \, dx$?
+- How should we integrate $\int_0^1 \sqrt{1-x^2} \, dx$?
 ```{r echo=FALSE}
 import matplotlib.pyplot as plt
 import numpy as np
@@ -25,26 +23,26 @@ plt.savefig("pix/qtrcirc.png")
 ```
 ![quarter circle](pix/qtrcirc.png)
 
-* What about something horrible like $\int_0^1 \exp(-x^2) \log(1+x) \, dx$ ?
-* Let's write a couple of programs:
-    * brute force (without array functions, only `for` loops)
-	* with array functions (we shouldn't need any `for` loops)
-* How could we make this better?
-    * better integration rules (trapezoid, Simpson's?)
-    * choice of `n`
-	* adaptive integration (i.e., choice of tolerance): loops within loops ...
-* Hard things
-    * high dimensions
-	* weird shapes/limits of integration
+- What about something horrible like $\int_0^1 \exp(-x^2) \log(1+x) \, dx$ ?
+- Let's write a couple of programs:
+    - brute force (without array functions, only `for` loops)
+	- with array functions (we shouldn't need any `for` loops)
+- How could we make this better?
+    - better integration rules (trapezoid, Simpson's?)
+    - choice of `n`
+	- adaptive integration (i.e., choice of tolerance): loops within loops ...
+- Hard things
+    - high dimensions
+	- weird shapes/limits of integration
 
 ## (Pseudo)random numbers
 
-* From [Wikipedia](http://en.wikipedia.org/wiki/Pseudorandom_number_generator): "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin" (von Neumann) ([original paper](https://dornsifecms.usc.edu/assets/sites/520/docs/VonNeumann-ams12p36-38.pdf)) ... "We are here dealing with mere 'cooking recipes' for making digits; probably they can not be justified, but should merely be judged by their results ..."
-* *linear congruential generators*:
-    * $x_n = (a x_{n-1} + c) \textrm{mod} m$
-	* or `x = (a*x +c ) % m`
-	* from [here](http://www.eternallyconfuzzled.com/tuts/algorithms/jsw_tut_rand.aspx):
-```{r}
+- From [Wikipedia](http://en.wikipedia.org/wiki/Pseudorandom_number_generator): "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin" (von Neumann) ([original paper](https://dornsifecms.usc.edu/assets/sites/520/docs/VonNeumann-ams12p36-38.pdf)) ... "We are here dealing with mere 'cooking recipes' for making digits; probably they can not be justified, but should merely be judged by their results ..."
+- *linear congruential generators*:
+    - $x_n = (a x_{n-1} + c) \textrm{mod} m$
+	- or `x = (a*x +c ) % m`
+	- from [here](http://www.eternallyconfuzzled.com/tuts/algorithms/jsw_tut_rand.aspx):
+```{r prng1}
 x = [5]
 (a,c,m) = (2,3,10)
 for i in range(9):
@@ -52,8 +50,8 @@ for i in range(9):
     x.append(newx)
 print(x)
 ```
-* Park-Miller *minimal standard generator*:
-```{r}
+- Park-Miller *minimal standard generator*:
+```{r prng2}
 import numpy as np
 (a,c,m) = (16807,0,2147483647)
 x = [5]
@@ -78,20 +76,20 @@ plt.savefig("pix/ran1.png")
 ```
 ![random values](pix/ran1.png)
 
-* using `numpy`: [reference](http://docs.scipy.org/doc/numpy/reference/routines.random.html)
+- using `numpy`: [reference](http://docs.scipy.org/doc/numpy/reference/routines.random.html)
 ```{r}
 import numpy.random as rand
 a = rand.rand(1000)
 ```
-* can also do useful things like
-   * pick from a list: `choice()` (with or without replacement)
-   * shuffle values: `shuffle()` (in-place)
-   * pick values from different distributions
-   * sample from a large range of non-uniform distributions (Poisson, Normal, binomial ...)
-* using random number generators for serious work:
-   * know what generator is used (Mersenne twister is OK)
-   * set the seed: `seed()`
-* using random numbers for cryptography: be super-paranoid: see e.g. [this](http://stackoverflow.com/questions/20936993/how-can-i-create-a-random-number-that-is-cryptographically-secure-in-python)
+- can also do useful things like
+   - pick from a list: `choice()` (with or without replacement)
+   - shuffle values: `shuffle()` (in-place)
+   - pick values from different distributions
+   - sample from a large range of non-uniform distributions (Poisson, Normal, binomial ...)
+- using random number generators for serious work:
+   - know what generator is used (Mersenne twister is OK)
+   - set the seed: `seed()`
+- using random numbers for cryptography: be super-paranoid: see e.g. [this](http://stackoverflow.com/questions/20936993/how-can-i-create-a-random-number-that-is-cryptographically-secure-in-python)
 
 ## Monte Carlo integration
 
@@ -102,6 +100,7 @@ a = rand.rand(1000)
     * also called *rejection sampling* in this context
 * let's write the program
 
+<!--
 ## Convolutions (sums of random variables)
 
 * What is the distribution of the *sum* of two (independent) random variables?
@@ -137,3 +136,4 @@ plt.savefig("pix/hist.png")
 
 * Euler's method
 * to be continued ...
+-->

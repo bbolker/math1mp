@@ -18,7 +18,7 @@ opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 ## Integers
 
 - stored as binary digits
-- `n` digits gives room to store *signed* values between min of $-2^(n-1)$ and  max of $2^(n-1)-1$
+- `n` digits gives room to store *signed* values between min of $-2^{n-1}$ and  max of $2^{n-1}-1$
 - base Python automatically switches from 64-bit to arbitrary-length integers as necessary
 - in `numpy` can specify precision of integers, or *unsigned* integers (e.g. `uint8`)
 - you should rarely do this
@@ -29,7 +29,7 @@ opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
 ## Floats
 
 - default 64-bit floats: 1 sign bit, 11 bits for exponent (`x`), 52 bits for mantissa (`m`)
-- can store up to *approximately* $2^(2^(x-1))$; numbers less than $10^{-324}$ *underflow* to zero; numbers greater than $10^{308}$ give `OverflowError`
+- can store up to *approximately* $2^{2^{x-1}}$; numbers less than $10^{-324}$ *underflow* to zero; numbers greater than $10^{308}$ give `OverflowError`
 - only 52 bits of precision in mantissa; for $x \le -16$, `1+x` *underflows* to `1.0`.
 - similar issues occur as long as addends are far apart, e.g. `10**9+10**-8`
 - what can you do?
