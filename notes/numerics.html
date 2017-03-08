@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">basics of numeric representations</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>21:00 05 March 2017</em></h4>
+<h4 class="date"><em>20:03 07 March 2017</em></h4>
 
 </div>
 
@@ -127,7 +127,7 @@ $(document).ready(function () {
 <h2>Integers</h2>
 <ul>
 <li>stored as binary digits</li>
-<li><code>n</code> digits gives room to store <em>signed</em> values between min of <span class="math inline">\(-2^(n-1)\)</span> and max of <span class="math inline">\(2^(n-1)-1\)</span></li>
+<li><code>n</code> digits gives room to store <em>signed</em> values between min of <span class="math inline">\(-2^{n-1}\)</span> and max of <span class="math inline">\(2^{n-1}-1\)</span></li>
 <li>base Python automatically switches from 64-bit to arbitrary-length integers as necessary</li>
 <li>in <code>numpy</code> can specify precision of integers, or <em>unsigned</em> integers (e.g. <code>uint8</code>)</li>
 <li>you should rarely do this</li>
@@ -139,7 +139,7 @@ $(document).ready(function () {
 <h2>Floats</h2>
 <ul>
 <li>default 64-bit floats: 1 sign bit, 11 bits for exponent (<code>x</code>), 52 bits for mantissa (<code>m</code>)</li>
-<li>can store up to <em>approximately</em> <span class="math inline">\(2^(2^(x-1))\)</span>; numbers less than <span class="math inline">\(10^{-324}\)</span> <em>underflow</em> to zero; numbers greater than <span class="math inline">\(10^{308}\)</span> give <code>OverflowError</code></li>
+<li>can store up to <em>approximately</em> <span class="math inline">\(2^{2^{x-1}}\)</span>; numbers less than <span class="math inline">\(10^{-324}\)</span> <em>underflow</em> to zero; numbers greater than <span class="math inline">\(10^{308}\)</span> give <code>OverflowError</code></li>
 <li>only 52 bits of precision in mantissa; for <span class="math inline">\(x \le -16\)</span>, <code>1+x</code> <em>underflows</em> to <code>1.0</code>.</li>
 <li>similar issues occur as long as addends are far apart, e.g. <code>10**9+10**-8</code></li>
 <li>what can you do?
