@@ -13,9 +13,21 @@ Due Friday 17 March at midnight (the end of the day), in the Dropbox on Avenue t
 - All of your functions *must* have docstrings.
 - For this assignment, *please try to avoid using `for` loops as much as possible*; the more you avoid `for` loops, the better you will learn `numpy`, the better you'll do on the `numpy` questions on the exam ... (It is assumed that you will be using `numpy` for all answers.)
 
-1. Write a function `calc_frac(a,axis=0)` that takes a 2-dimensional numpy array containing only zeros and ones and returns an array giving the fraction of ones in each column (if `axis=0`) or in each row (if `axis=1`).
-
+1. Write a function `calc_frac(a,axis=0)` that takes a 2-dimensional numpy array containing only zeros and ones and returns an array giving the fraction of ones in each column (if `axis=0`) or in each row (if `axis=1`). For example: 
+```{r}
+from hw3_soln import *
+import numpy as np
+a = np.array([[1,0,1],[1,1,0],[0,1,0]])
+print(calc_frac(a))
+```                  
 2. Write a function `calc_rel_frac(a,axis=0)` that takes a 2-dimensional numpy array and returns the proportion of ones in each column or row *divided by the column or row that has the smallest proportion of ones*. (As in the previous question, the `axis` argument controls whether the function should be evaluating columns [`axis=0`] or rows [`axis=1`].) If there are any columns/rows that are made up entirely of zeros, the program should raise a `ValueError`.
+```{r}
+from hw3_soln import *
+import numpy as np
+a = np.array([[1,0,1],[1,1,0],[0,1,0]])
+print(calc_rel_frac(a))
+```
+(In this case column 3 has the minimum proportion of ones, 1/3, so we divide all proportions by 1/3; since the other column proportions are 2/3, their ratio is (2/3)/(1/3)=2.)
 
 3. Write a function, `check_symmetric(a,tol=1e-8)` that takes a 2-dimensional square array (i.e., a matrix) and returns a boolean value that reflects whether `b` is symmetric, i.e. that `a.transpose()` is equal, within tolerance `tol`, to `a`. Make sure to:
 - raise a `ValueError` if the array is not square (number of rows != number of colums)
