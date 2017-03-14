@@ -8,7 +8,7 @@ library("knitr")
 opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 ```
 
-Due Friday 17 March at midnight (the end of the day), in the Dropbox on Avenue to Learn. As usual, the answers *must* be submitted as a module (text file) called `yourmacid_hw3.py`, e.g. mine would be `bolker_hw3.py`.  If your module contains extra information (e.g. web resources you used or other students you worked with), please put them as comments (i.e. preceded by `#`).
+Due Monday 20 March at midnight (the end of the day), in the Dropbox on Avenue to Learn. As usual, the answers *must* be submitted as a module (text file) called `yourmacid_hw3.py`, e.g. mine would be `bolker_hw3.py`.  If your module contains extra information (e.g. web resources you used or other students you worked with), please put them as comments (i.e. preceded by `#`).
 
 - All of your functions *must* have docstrings.
 - For this assignment, *please try to avoid using `for` loops as much as possible*; the more you avoid `for` loops, the better you will learn `numpy`, the better you'll do on the `numpy` questions on the exam ... (It is assumed that you will be using `numpy` for all answers.)
