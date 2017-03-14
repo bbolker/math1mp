@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">math 1MP assignment 3</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>20:19 09 March 2017</em></h4>
+<h4 class="date"><em>20:38 13 March 2017</em></h4>
 
 </div>
 
@@ -129,8 +129,23 @@ $(document).ready(function () {
 <li>For this assignment, <em>please try to avoid using <code>for</code> loops as much as possible</em>; the more you avoid <code>for</code> loops, the better you will learn <code>numpy</code>, the better you’ll do on the <code>numpy</code> questions on the exam … (It is assumed that you will be using <code>numpy</code> for all answers.)</li>
 </ul>
 <ol style="list-style-type: decimal">
-<li><p>Write a function <code>calc_frac(a,axis=0)</code> that takes a 2-dimensional numpy array containing only zeros and ones and returns an array giving the fraction of ones in each column (if <code>axis=0</code>) or in each row (if <code>axis=1</code>).</p></li>
-<li><p>Write a function <code>calc_rel_frac(a,axis=0)</code> that takes a 2-dimensional numpy array and returns the proportion of ones in each column or row <em>divided by the column or row that has the smallest proportion of ones</em>. (As in the previous question, the <code>axis</code> argument controls whether the function should be evaluating columns [<code>axis=0</code>] or rows [<code>axis=1</code>].) If there are any columns/rows that are made up entirely of zeros, the program should raise a <code>ValueError</code>.</p></li>
+<li>Write a function <code>calc_frac(a,axis=0)</code> that takes a 2-dimensional numpy array containing only zeros and ones and returns an array giving the fraction of ones in each column (if <code>axis=0</code>) or in each row (if <code>axis=1</code>). For example:</li>
+</ol>
+<pre class="python"><code>from hw3_soln import *
+import numpy as np
+a = np.array([[1,0,1],[1,1,0],[0,1,0]])
+print(calc_frac(a))</code></pre>
+<pre><code>## [ 0.66666667  0.66666667  0.33333333]</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Write a function <code>calc_rel_frac(a,axis=0)</code> that takes a 2-dimensional numpy array and returns the proportion of ones in each column or row <em>divided by the column or row that has the smallest proportion of ones</em>. (As in the previous question, the <code>axis</code> argument controls whether the function should be evaluating columns [<code>axis=0</code>] or rows [<code>axis=1</code>].) If there are any columns/rows that are made up entirely of zeros, the program should raise a <code>ValueError</code>.</li>
+</ol>
+<pre class="python"><code>from hw3_soln import *
+import numpy as np
+a = np.array([[1,0,1],[1,1,0],[0,1,0]])
+print(calc_rel_frac(a))</code></pre>
+<pre><code>## [ 2.  2.  1.]</code></pre>
+<p>(In this case column 3 has the minimum proportion of ones, 1/3, so we divide all proportions by 1/3; since the other column proportions are 2/3, their ratio is (2/3)/(1/3)=2.)</p>
+<ol start="3" style="list-style-type: decimal">
 <li>Write a function, <code>check_symmetric(a,tol=1e-8)</code> that takes a 2-dimensional square array (i.e., a matrix) and returns a boolean value that reflects whether <code>b</code> is symmetric, i.e. that <code>a.transpose()</code> is equal, within tolerance <code>tol</code>, to <code>a</code>. Make sure to:</li>
 </ol>
 <ul>

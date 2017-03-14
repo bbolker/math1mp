@@ -118,12 +118,13 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">math 1MP term projects (2017)</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>23:19 12 March 2017</em></h4>
+<h4 class="date"><em>20:44 13 March 2017</em></h4>
 
 </div>
 
 
 <p>These projects are <strong>individual</strong> projects; if you discuss anything about them with other students in the class, you should follow the standard rules (don’t write anything down while you are engaged with the other students). If you get anything from the web, give references.</p>
+<p>Choose <strong>one</strong> of the two projects below. If you have your own idea for a different project, please send me an e-mail with a 1-paragraph description <em>before Fri 17 March</em>; I will review it and let you know if it’s suitable.</p>
 <p>Depending on which project you pick, submit your code in the Dropbox as <code>macid_proj_wipeaway.py</code> and your plot as <code>macid_proj_wipeaway.png</code>, or your code as <code>macid_proj_cipher.py</code> and your project as <code>macid_proj_cipher.png</code>.</p>
 <p>We do <strong>not</strong> want to have to run your simulation and plotting code when we import your Python file. Include it in your Python file in <strong>one</strong> of the following ways:</p>
 <ul>
@@ -174,15 +175,6 @@ orig == trans</code></pre>
 <li><p>Write a function <code>rand_dict(keys=ascii_lowercase)</code> (<code>ascii_lowercase</code> is a constant from the <code>string</code> module; your code should include <code>from string import ascii_lowercase</code> that returns a dictionary with the letters of <code>keys</code> as keys and a permutation of the letters of <code>keys</code> as values. You can use <code>np.array(list(keys))</code> to create an array that contains the letters of <code>keys</code>, and the <code>shuffle</code> function from <code>numpy.random</code> to shuffle an array in place.</p></li>
 <li><p>Write code that reads the contents of the test file <code>test1T.txt</code> as a variable <code>t1T</code> and records the minimum Hamming distance between the crib <code>&quot;squeamish ossifrage&quot;</code> and the translation of <code>t1T</code> with a random dictionary (i.e. <code>min_crib_dist(&quot;squeamish ossifrage&quot;,sub_cipher(t1T,rand_dict()))</code>) for 10,000 random dictionaries. Use <code>matplot.pyplot.hist</code> to draw a histogram of the results.</p></li>
 </ol>
-<ul>
-<li></li>
-</ul>
-<p>Please include your simulation and plotting code in your Python file <strong>either</strong></p>
-<ul>
-<li>(simple version) commented out</li>
-<li>(more complex) within an <code>if False:</code> block</li>
-<li>(more complex) within an <code>if __name__ == &quot;__main__&quot;:</code> block</li>
-</ul>
 </div>
 
 
