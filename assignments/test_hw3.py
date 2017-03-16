@@ -7,14 +7,15 @@ print("Q1:")
 
 a = np.array([[1,0],[1,0]])
 npr.seed(101)
-b = npr.uniform(size=(3,3))
+b = npr.randint(2,size=(8,8))
+c = npr.rand(8,8)
 
 print(all(calc_frac(a)==np.array([1.,0])))
 print(all(calc_frac(a,1)==np.array([0.5,0.5])))
 print(np.allclose(calc_frac(b),
-                  np.array([ 0.33162883,  0.71651922,  0.52797165])))
+  np.array([ 0.75 ,  0.5  ,  0.5  ,  0.125,  0.625,  0.75 ,  0.5  ,  0.75 ])))
 print(np.allclose(calc_frac(b,axis=1),
-                  np.array([ 0.37184681,  0.56356517,  0.64070772])))
+  np.array([ 0.875,  0.625,  0.25 ,  0.75 ,  0.375,  0.75 ,  0.5  ,  0.375])))
 
 print("Q2:")
 try:
@@ -25,9 +26,9 @@ except ValueError:
 
 print(all(calc_rel_frac(a,1)==np.array([ 1.,  1.])))
 print(np.allclose(calc_rel_frac(b),
-                  np.array([ 1.        ,  2.1606059 ,  1.59205592])))
-print(np.allclose(calc_rel_frac(b),
-                  np.array([ 1.        ,  2.1606059 ,  1.59205592])))
+                  np.array([ 6.,  4.,  4.,  1.,  5.,  6.,  4.,  6.])))
+print(np.allclose(calc_rel_frac(b,axis=1),
+   np.array([ 3.5,  2.5,  1. ,  3. ,  1.5,  3. ,  2. ,  1.5])))
 
 print("Q3:")
 e = np.eye(4)
@@ -45,7 +46,9 @@ except ValueError:
     print(True)
 
 print("Q4:")
-print(np.asscalar(arg_cvmax(b)) is 2)
-print(np.asscalar(arg_cvmax(b,1)) is 0)
-print(np.asscalar(arg_cvmax(b,axis=1)) is 0)
+print(np.asscalar(arg_cvmax(b)) is 3)
+print(np.asscalar(arg_cvmax(b,1)) is 2)
+print(np.asscalar(arg_cvmax(c)) is 7)
+print(np.asscalar(arg_cvmax(c,1)) is 1)
+print(np.asscalar(arg_cvmax(c,axis=1)) is 1)
 
