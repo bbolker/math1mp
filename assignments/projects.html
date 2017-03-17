@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">math 1MP term projects (2017)</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>20:44 13 March 2017</em></h4>
+<h4 class="date"><em>17:29 17 March 2017</em></h4>
 
 </div>
 
@@ -148,7 +148,7 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li><p>Write a function <code>run_sim(N=20,D=6,p=0.5,itmax=5000)</code> that runs a single simulation with the specified parameters and returns an integer giving the number of steps it took to reach zero. You can assume that <code>N</code> and <code>D</code> are non-zero integers, and <code>p</code> is a float between 0 and 1. If the count goes above <code>itmax</code> your function should raise a <code>RuntimeError</code>.</p></li>
 <li><p>Write a function <code>collect_sims(nsim,N,D,p=0.5,nmax=10000)</code> that runs your <code>run_sim</code> function <code>nsim</code> times (with parameters <code>N</code>, <code>D</code>, <code>p</code>) and returns a numpy array of length <code>nmax</code> giving the number of times that the simulation took a specified number of steps to stop. For example, if <code>nsim</code> was 3 and the simulation stopped once after 3 steps and twice after 5 steps, the returned array would be <code>[0 0 0 1 0 2 0 ....]</code>.</p></li>
-<li><p>Write a function <code>exp_val(a)</code> that takes an array and computes the expected value from it: the expected value is defined as <span class="math inline">\(\sum_{i=0}^{N-1} (i a_i/N)\)</span>, where <span class="math inline">\(N\)</span> is the length of the array.</p></li>
+<li><p>Write a function <code>exp_val(a)</code> that takes an array and computes the expected value from it: the expected value is defined as <span class="math inline">\(\sum_{i=0}^{n-1} (i a_i)/N\)</span>, where <span class="math inline">\(n\)</span> is the length of the array and <span class="math inline">\(N\)</span> is the number of simulations (also equal to <span class="math inline">\(\sum_i a_i\)</span>).</p></li>
 <li><p>Write a function <code>many_sims(N_vals,D_vals,p,nsim=100)</code>: <code>N_vals</code> and <code>D_vals</code> are 2-element tuples. The function should run your simulation <code>nsim</code> times for each combination of <code>N</code> values between <code>N_vals[0]</code> and <code>N_vals[1]</code> <strong>inclusive</strong> and <code>D</code> values between <code>D_vals[0]</code> and <code>D_vals[1]</code> <strong>inclusive</strong>; for each parameter set it should For example, if <code>N_vals</code> is <code>(19,20)</code> and <code>D_vals</code> is <code>(5,)</code>, your results might be</p></li>
 <li><p>Write a function <code>plot_results(N_vals,D_vals,a)</code> (where <code>N_vals</code> and <code>D_vals</code> are as described above, and <code>a</code> is the result of running <code>many_sims</code> that makes a single plot with values of <code>N</code> on the x-axis, the expected values on the y-axis, and a separate line (or point colour or something) for each value of <code>D</code></p></li>
 </ol>
