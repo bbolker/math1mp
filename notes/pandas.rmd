@@ -29,33 +29,41 @@ opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
 - handles **missing data**
 - convenient plotting
 - fast operations with keys
-- lots of facilities for I/O
+- lots of facilities for input/output
 
 ```{r}
 import pandas as pd
-# The initial set of baby names and bith rates
+# The initial set of baby names and birth rates
 names = ['Bob','Jessica','Mary','John','Mel']
 births = [968, 155, 77, 578, 973]
-z = list(zip(names,births))
-p = pd.DataFrame(z)
+## initialize DataFrame with a *dictionary*
+p = pd.DataFrame({'Name': names, 'Count': births})
 print(p)
 ```
 
 What can we do with it?
 
-```{r}
-p[1]        ## extract a column = Series (by *name*)
-p[2:3]      ## slice one row
-p[2:5]      ## slice multiple rows
-p[[0,1]]    ## extract multiple columns (data frame)
-p.iloc[1,1] ## index with row/column integers like an array
-```
+- Simple? indexing
+    - *Indexing* (a single value) selects a column by its *key*
+	- key could be a number, if column names weren't given when setting up the data frame
+	- *Slicing* selects *rows* by number
+	- indexing with a *list* gives multiple columns
+	- `.iloc` gives row/column indi
 
 ```{r}
-p.rename(columns={0:"names", 1:"count"}, inplace=True)
-p["names"][4]
-p.names  ## attribute!
-p.loc[1:2,"names"]  ## index by *label*, _inclusive_
+p["Count"]  ## extract a column = Series (by *name*)
+p[2:3]      ## slice one row (3-2 = 1)
+p[2:5]      ## slice multiple rows
+p[["Name","Count"]]    ## extract multiple columns (data frame)
+p.iloc[1,1]     ## index with row/column integers like an array
+p.iloc[0:5,:]   ## can also slice
+```
+
+Indexing by name
+```{r}
+p["Name"][4]
+p.Name  ## attribute!
+p.loc[1:2,"Name"]  ## index by *label*, _inclusive_
 ```
 
 ## Measles data

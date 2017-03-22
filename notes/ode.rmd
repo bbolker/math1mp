@@ -62,13 +62,12 @@ Now let's rewrite it a little more generally:
 def logist_grad(x,t,params):
     r,K = params  ## unpack parameters
     return(r*x*(1-x/K))
-
 ## now run the loop
 for i in range(1,len(t_vec)):
     x[i] = x[i-1]+logist_grad(t_vec[i-1],x[i-1],params=(1,4))*dt
 ```
 
-Now let's rewrite it a general Euler-stepping function:
+Now let's rewrite it as a general Euler-stepping function:
 
 ```{r logist3}
 def euler_solve(t_vec,x0,gradfun,params):
