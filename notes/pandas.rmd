@@ -6,27 +6,25 @@ author: Ben Bolker
 
 ```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
 library("knitr")
-py <- proc_python()
-py$start()
-knit_engines$set(python = function(options) {
-    knitr:::wrap(py$exec(options$code), options)
-})
-opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3')
+## library("runr")
+## py <- proc_python()
+## py$start()
+## knit_engines$set(python = function(options) {
+##     knitr:::wrap(py$exec(options$code), options)
+## })
+opts_chunk$set(tidy=FALSE,engine="python",engine.path='python3',eval=FALSE)
 ```
 
-![](pandas.png)
-
-* [pandas cheat sheet](https://bit.ly/python_cs)
-
-`pandas` stands for **pan**el **da**ta **s**ystem.  It's a convenient and powerful system for handling large, complicated data sets.
+- [pandas cheat sheet](https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf)
+- `pandas` stands for **pan**el **da**ta **s**ystem.  It's a convenient and powerful system for handling large, complicated data sets.
 
 ## Data frames 
 
 - rectangular data structure, a lot like an array.
-- can have columns (**Series**) of different types
-- rows and columns are *not exchangeable*
+- columns (**Series**) of different types
+- rows and columns act differently
 - can index by (column) labels as well as positions
-- handles **missing data**
+- handles **missing data** (`NaN`)
 - convenient plotting
 - fast operations with keys
 - lots of facilities for input/output

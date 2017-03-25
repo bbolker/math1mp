@@ -35,26 +35,30 @@ Consider the following stochastic process:
 
 1. Write a function `run_sim(N=20,D=6,p=0.5,itmax=5000)` that runs a single simulation with the specified parameters and returns an integer giving the number of steps it took to reach zero. You can assume that `N` and `D` are non-zero integers, and `p` is a float between 0 and 1. If the count goes above `itmax` your function should raise a `RuntimeError`.
 
-2. Write a function `collect_sims(nsim,N,D,p=0.5,nmax=10000)` that runs your `run_sim` function `nsim` times (with parameters `N`, `D`, `p`) and returns a numpy array of length `nmax` giving the number of times that the simulation took a specified number of steps to stop. For example, if `nsim` was 3 and the simulation stopped once after 3 steps and twice after 5 steps, the returned array would be `[0 0 0 1 0 2 0 ....]`.
+2. Write a function `collect_sims(nsim,N,D,p=0.5,nmax=10000)` that runs your `run_sim` function `nsim` times (with parameters `N`, `D`, `p`) and returns a numpy array of length `nmax` giving the number of times that the simulation took a specified number of steps to stop. For example, suppose `nsim` was 8 and successive runs of `run_sim` gave you 3,4,4,3,6,5,4,4. You would tabulate this as "two 3s, four 4s, one 5, one 6, zero 7s, zero 8s ... "
+```{r echo=FALSE}
+import pandas as pd
+print(pd.DataFrame(data=[0,0,0,2,4,1,1,0,0],
+                   index=list(range(9))))
+```
 
 3. Write a function `exp_val(a)` that takes an array and computes the expected value from it: the expected value is defined as $\sum_{i=0}^{n-1} (i a_i)/N$, where $n$ is the length of the array and $N$ is the number of simulations (also equal to $\sum_i a_i$).
 
-4. Write a function `many_sims(N_vals,D_vals,p,nsim=100)`: `N_vals` and `D_vals` are 2-element tuples. The function should run your simulation `nsim` times for each combination of `N` values between `N_vals[0]` and `N_vals[1]` **inclusive** and `D` values between `D_vals[0]` and `D_vals[1]` **inclusive**; for each parameter set it should  For example, if `N_vals` is `(19,20)` and `D_vals` is `(5,)`, your results might be
+4. Write a function `many_sims(N_vals,D_vals,p=0.5,nsim=100)`: `N_vals` and `D_vals` are 2-element tuples. The function should run your simulation `nsim` times for each combination of `N` values between `N_vals[0]` and `N_vals[1]` **inclusive** and `D` values between `D_vals[0]` and `D_vals[1]` **inclusive**; for each parameter set it should  For example, if `N_vals` is `(19,20)` and `D_vals` is `(5,5)`, the results from `many_sims((19,20),(5,5))` might be:
 ```{r echo=FALSE}
-import numpy as np
-np.array([[210.1],[237.2]])
+from my_project import *
+npr.seed(101)
+print(many_sims((19,20),(5,5)))
 ```
 5. Write a function `plot_results(N_vals,D_vals,a)` (where `N_vals` and `D_vals` are as described above, and `a` is the result of running `many_sims` that makes a single plot with values of `N` on the x-axis, the expected values on the y-axis, and a separate line (or point colour or something) for each value of `D`
 
-
-(Add plot example)
-
+![](manysims.png)
 ### Substitution ciphers
 
 A *substitution cipher* is the simplest way of encrypting a message. It is constructed by defining a permutation on the letters of the alphabet, and substituting accordingly. For example, suppose we had the following permutation:
 ```
 abcdefghijklmnopqrstuvwxyz
-gikaclmnqrpoxzybdefijstuvw
+gikaclmnqrpoxzybdefhjstuvw
 ```
 Then the message `"hello"` would translate to `"ncooy"`, and `"goodbye"` would translate to `"myyaivc"`.
 
@@ -67,7 +71,7 @@ For the purposes of this project, assume that all messages are entirely composed
 ```{r sub_cipher,eval=FALSE}
 trans = sub_cipher(msg,d)
 orig = sub_cipher(trans,reverse_dict(d))
-orig == trans
+orig == msg
 ```
 always returns `True` (computer programmers sometimes call this kind of test [round-tripping](http://www.yourdictionary.com/round-tripping)).
 
@@ -77,6 +81,6 @@ always returns `True` (computer programmers sometimes call this kind of test [ro
 
 5. Write a function `rand_dict(keys=ascii_lowercase)` (`ascii_lowercase` is a constant from the `string` module; your code should include `from string import ascii_lowercase` that returns a dictionary with the letters of `keys` as keys and a permutation of the letters of `keys` as values. You can use `np.array(list(keys))` to create an array that contains the letters of `keys`, and the `shuffle` function from `numpy.random` to shuffle an array in place.
 
-6. Write code that reads the contents of the test file `test1T.txt` as a variable `t1T` and records the minimum Hamming distance between the crib `"squeamish ossifrage"` and the translation of `t1T` with a random dictionary (i.e. `min_crib_dist("squeamish ossifrage",sub_cipher(t1T,rand_dict()))`) for 10,000 random dictionaries. Use `matplot.pyplot.hist` to draw a histogram of the results.
+6. Write code that reads the contents of the test file `test1T.txt` as a variable `t1T` and records the minimum Hamming distance between the crib `"squeamish ossifrage"` and the translation of `t1T` with a random dictionary (i.e. `min_crib_dist("squeamish ossifrage",sub_cipher(t1T,rand_dict()))`) for 10,000 random dictionaries. Use `matplot.pyplot.hist` to draw a histogram of the results, like this:
 
-
+![](cipher_hist.png)
