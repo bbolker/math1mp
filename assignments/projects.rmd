@@ -44,15 +44,17 @@ print(pd.DataFrame(data=[0,0,0,2,4,1,1,0,0],
 
 3. Write a function `exp_val(a)` that takes an array and computes the expected value from it: the expected value is defined as $\sum_{i=0}^{n-1} (i a_i)/N$, where $n$ is the length of the array and $N$ is the number of simulations (also equal to $\sum_i a_i$).
 
-4. Write a function `many_sims(N_vals,D_vals,p=0.5,nsim=100)`: `N_vals` and `D_vals` are 2-element tuples. The function should run your simulation `nsim` times for each combination of `N` values between `N_vals[0]` and `N_vals[1]` **inclusive** and `D` values between `D_vals[0]` and `D_vals[1]` **inclusive**; for each parameter set it should  For example, if `N_vals` is `(19,20)` and `D_vals` is `(5,5)`, the results from `many_sims((19,20),(5,5))` might be:
+4. Write a function `many_sims(N_vals,D_vals,p=0.5,nsim=100)`: `N_vals` and `D_vals` are 2-element tuples. The function should run your simulation `nsim` times for each combination of `N` values between `N_vals[0]` and `N_vals[1]` **inclusive** and `D` values between `D_vals[0]` and `D_vals[1]` **inclusive**; for each parameter set it should put the expected value of the number of rolls (i.e., by using `collect_sims` and `exp_val` in the corresponding cell of the array, with rows corresponding to `N` values and columns corresponding to `D` values. For example, if `N_vals` is `(19,20)` and `D_vals` is `(5,5)`, the results from `many_sims((19,20),(5,5))` might be:
 ```{r echo=FALSE}
 from my_project import *
 npr.seed(101)
 print(many_sims((19,20),(5,5)))
 ```
+
 5. Write a function `plot_results(N_vals,D_vals,a)` (where `N_vals` and `D_vals` are as described above, and `a` is the result of running `many_sims` that makes a single plot with values of `N` on the x-axis, the expected values on the y-axis, and a separate line (or point colour or something) for each value of `D`
 
 ![](manysims.png)
+
 ### Substitution ciphers
 
 A *substitution cipher* is the simplest way of encrypting a message. It is constructed by defining a permutation on the letters of the alphabet, and substituting accordingly. For example, suppose we had the following permutation:
@@ -81,6 +83,6 @@ always returns `True` (computer programmers sometimes call this kind of test [ro
 
 5. Write a function `rand_dict(keys=ascii_lowercase)` (`ascii_lowercase` is a constant from the `string` module; your code should include `from string import ascii_lowercase` that returns a dictionary with the letters of `keys` as keys and a permutation of the letters of `keys` as values. You can use `np.array(list(keys))` to create an array that contains the letters of `keys`, and the `shuffle` function from `numpy.random` to shuffle an array in place.
 
-6. Write code that reads the contents of the test file `test1T.txt` as a variable `t1T` and records the minimum Hamming distance between the crib `"squeamish ossifrage"` and the translation of `t1T` with a random dictionary (i.e. `min_crib_dist("squeamish ossifrage",sub_cipher(t1T,rand_dict()))`) for 10,000 random dictionaries. Use `matplot.pyplot.hist` to draw a histogram of the results, like this:
+6. Write code that reads the contents of the test file `test1T.txt` as a variable `t1T` and records the minimum Hamming distance between the crib `"squeamish ossifrage"` and the translation of `t1T` with a random dictionary (i.e. `min_crib_dist("squeamish ossifrage",sub_cipher(t1T,rand_dict()))`) for 10,000 random dictionaries. Use `matplotlib.pyplot.hist` to draw a histogram of the results, like this:
 
 ![](cipher_hist.png)
