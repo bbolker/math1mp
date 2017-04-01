@@ -66,6 +66,7 @@ if "read_cipherdef" in locals().keys():
             print("min_crib 3",min_crib_dist(t1,"hellx")==1)
             print("min_crib 4",min_crib_dist(t1,"defgh"+t1)==0)
             t1T = open("test1T.txt").read().strip()
+            
             print("min_crib 5",min_crib_dist(t3,sub_cipher(t1T,reverse_dict(d1)))==0)
             print("min crib 6",min_crib_dist(t3,sub_cipher(t1T,d1))==16)
             print("min crib 7",min_crib_dist(t3,sub_cipher(t1T,d0))==16)

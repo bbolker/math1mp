@@ -30,8 +30,8 @@ Consider the following stochastic process:
 - at each turn:
     - roll a die with `D` sides: suppose the result is `c`
 	- flip a coin: if it's heads (with probability $p$), try to add `c` to the counter, otherwise (with probability $1-p$) try to subtract `c` from the counter
-	- if the result of adding or subtracting `c` would be $>N$ or $<0$, ignore the roll and try again
-	- if the result of subtracting `c` would be exactly zero, stop (you've won the game)
+	- if the result of adding or subtracting `c` would be $>N$ or $<0$, ignore the roll and try again (but do increment the counter)
+	- if the result of subtracting `c` would be exactly zero, stop: you've won the game
 
 1. Write a function `run_sim(N=20,D=6,p=0.5,itmax=5000)` that runs a single simulation with the specified parameters and returns an integer giving the number of steps it took to reach zero. You can assume that `N` and `D` are non-zero integers, and `p` is a float between 0 and 1. If the count goes above `itmax` your function should raise a `RuntimeError`.
 
