@@ -44,7 +44,7 @@ print(pd.DataFrame(data=[0,0,0,2,4,1,1,0,0],
 
 3. Write a function `exp_val(a)` that takes an array and computes the expected value from it: the expected value is defined as $\sum_{i=0}^{n-1} (i a_i)/N$, where $n$ is the length of the array and $N$ is the number of simulations (also equal to $\sum_i a_i$).
 
-4. Write a function `many_sims(N_vals,D_vals,p=0.5,nsim=100)`: `N_vals` and `D_vals` are 2-element tuples. The function should run your simulation `nsim` times for each combination of `N` values between `N_vals[0]` and `N_vals[1]` **inclusive** and `D` values between `D_vals[0]` and `D_vals[1]` **inclusive**; for each parameter set it should put the expected value of the number of rolls (i.e., by using `collect_sims` and `exp_val` in the corresponding cell of the array, with rows corresponding to `N` values and columns corresponding to `D` values. For example, if `N_vals` is `(19,20)` and `D_vals` is `(5,5)`, the results from `many_sims((19,20),(5,5))` might be:
+4. Write a function `many_sims(N_vals,D_vals,p=0.5,nsim=100)`: `N_vals` and `D_vals` are 2-element tuples. The function should run your simulation `nsim` times for each combination of `N` values between `N_vals[0]` and `N_vals[1]` **inclusive** and `D` values between `D_vals[0]` and `D_vals[1]` **inclusive**  and return a 2-dimensional `numpy` array with `N_vals[1]-N_vals[0]+1` rows and `D_vals[1]-D_vals[0]+1` columns. For each parameter set it should put the expected value of the number of rolls (i.e., by using `collect_sims` and `exp_val` in the corresponding cell of the array, with rows corresponding to `N` values and columns corresponding to `D` values. For example, if `N_vals` is `(19,20)` and `D_vals` is `(5,5)`, the results from `many_sims((19,20),(5,5))` might be:
 ```{r echo=FALSE}
 from my_project import *
 npr.seed(101)
@@ -52,6 +52,17 @@ print(many_sims((19,20),(5,5)))
 ```
 
 5. Write a function `plot_results(N_vals,D_vals,a)` (where `N_vals` and `D_vals` are as described above, and `a` is the result of running `many_sims` that makes a single plot with values of `N` on the x-axis, the expected values on the y-axis, and a separate line (or point colour or something) for each value of `D`
+
+The plot below is the result of running these commands:
+
+```{r eval=FALSE}
+a = many_sims((10,25),(3,8),nsim=1000)
+N_vals = np.arange(10,26)
+D_vals = np.arange(3,9)
+plot_results(N_vals,D_vals,a)
+```
+
+but if this takes too long you can use a smaller set of `N_vals` (use at least 5 distinct values) and/or `D_vals` (use at least 2 distinct values), or a smaller `nsim` (at least 100).
 
 ![](manysims.png)
 
