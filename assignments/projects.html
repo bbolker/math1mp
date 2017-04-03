@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">math 1MP term projects (2017)</h1>
 <h4 class="author"><em>Ben Bolker</em></h4>
-<h4 class="date"><em>14:54 03 April 2017</em></h4>
+<h4 class="date"><em>15:01 03 April 2017</em></h4>
 
 </div>
 
@@ -132,6 +132,27 @@ $(document).ready(function () {
 <li>within an <code>if False:</code> block</li>
 <li>within an <code>if __name__ == &quot;__main__&quot;:</code> block</li>
 </ul>
+<p>For example,</p>
+<pre class="python"><code>import numpy as np
+import numpy.random as npr
+import matplotlib.pyplot as plt
+
+def run_sim(N=20,D=6,p=0.5,itmax=5000):
+    &quot;&quot;&quot;run wipeaway simulation&quot;&quot;&quot;
+##    ...
+    return(it)
+
+## ... more function definitions ...
+
+def plot_results(N_vals,D_vals,a)
+##    ...
+
+if __name__ == &quot;__main__&quot;:
+    a = many_sims((10,25),(3,8),nsim=1000)
+    D_vals = np.arange(3,9)
+    plot_results(N_vals,D_vals,a)
+    plt.savefig(&quot;manysims.png&quot;)</code></pre>
+<p>To test this, if you open a Python console and run <code>from my_proj import *</code> (with the name of your code substituted for <code>my_proj</code>, nothing should happen; it shouldn’t take long to run (because you are only defining the functions, not running them), nothing should be printed, and no plots should be produced.</p>
 <div id="wipeaway-dice-game" class="section level3">
 <h3>Wipeaway (dice game)</h3>
 <p>Consider the following stochastic process:</p>
