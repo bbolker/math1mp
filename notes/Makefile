@@ -7,7 +7,7 @@ SRCDIR=../../notes
 	Rscript -e "rmarkdown::render(\"$<\",output_dir='.',output_format=\"pdf_document\")"
 
 
-final_hints.html:
+final_hints.html: ../../misc/final_hints.md
 	pandoc -o final_hints.html ../../misc/final_hints.md
 
 clean:
