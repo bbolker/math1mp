@@ -1,0 +1,338 @@
+---
+title: "introduction (week 1+)"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+output: beamer_presentation
+---
+
+# Introduction
+
+## Administrative trivia
+
+- Instructor: Ben Bolker
+    - `bolker@mcmaster.ca`: please include `1mp3` in Subject:
+	- `http://www.math.mcmaster.ca/bolker`
+	- HH 314 (sometimes LSB 336); office hours TBA
+- TA:  Brydon Eastman (`eastmab@mcmaster.ca`) and Peter Tait (`taitpa@mcmaster.ca`).
+- Grading:
+    - midterm 20%
+	- final   30%
+	- in-class CodeLab assignments 15% (drop lowest 4)
+	- weekly assignments 15%
+	- project  20%
+- Laptop policy
+
+-----
+
+- Course material on [Github](https://github.com/bbolker/math1mp) and Avenue
+- Expectations of professor and students
+- Textbook (optional); also see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
+- Course content: reasonable balance among
+     - nitty-gritty practical programming instruction:
+	 
+    > ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](https://web.archive.org/web/20160421222949/http://www.ankitpanda.com/pythonicity/))
+     - conceptual foundations of computing/computer science
+     - context/culture of mathematical/scientific computing
+     - interesting applications
+
+## Installing Python
+
+- CodeLab: http://www.turingscraft.com/go.html
+- [PythonAnywhere](https://www.pythonanywhere.com/)
+- Everyone must have access to a computer with Python3 installed.
+    - See [installation instructions](./install_python.html)
+
+# More interesting stuff
+
+## Using computers in math and science
+
+- math users vs. understanders vs. developers
+- develop conjectures; draw pictures; write manuscripts
+- mathematical proof (e.g. [four-colo(u)r theorem](http://en.wikipedia.org/wiki/Four_color_theorem) and [other examples](http://math.stackexchange.com/questions/1084230/what-are-some-theorems-that-currently-only-have-computer-assisted-proofs)); computer algebra
+- applied math: cryptography, tomography, logistics, finance, fluid dynamics, ...
+- applied statistics: bioinformatics, Big Data/analytics, ...
+- discrete vs. continuous math
+
+## Fun!
+
+**Hello, world** (always the first program you write in a new computer language)
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+## ## leave out runr (persistent python session) until
+## ##  hash issue 
+## library("runr")
+## py <- proc_python()
+## py$start()
+## knit_engines$set(python = function(options) {
+##     knitr:::wrap(py$exec(options$code), options)
+## })
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+```
+
+```{r hello_world}
+print('hello, python world!')
+```
+
+Python as a fancy calculator:
+```{r calc}
+print(62**2*27/5+3)
+```
+
+*reference*: [Python intro section 3.1.1](https://docs.python.org/3/tutorial/introduction.html)
+
+## Interlude: about Python
+
+- [programming languages](http://crashworks.org/if_programming_languages_were_vehicles/)
+    - Python: [scripting](http://en.wikipedia.org/wiki/Scripting_language); high-level; glue; general-purpose; flexible
+    - contrast: *domain-specific* scripting languages (MATLAB, R, Mathematica, Maple)
+	- contrast: *general-purpose* scripting languages (Perl, PHP)
+	- contrast: general-purpose *compiled* languages (Java, C, C++) ("close to the metal")
+- relatively modern (1990s; Python 3, 2008)
+- currently the [5th most popular computer language](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html) overall (up from 8th in 2015); [most popular for teaching](http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext)
+- well suited to mathematical/scientific/technical ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org); [Python in Finance](https://www.safaribooksonline.com/library/view/python-for-finance/9781491945360/ch01.html))
+- ex.: [Sage](http://www.sagemath.org); [BioPython](http://www.biopython.org)
+
+### the "prime walk" (from [math.stackexchange.ca](http://tinyurl.com/primewalk))
+
+1. start at the origin, heading right, counting up from 1
+2. move forward one space, counting up, until you find a prime
+3. turn 90${}^\circ$ clockwise
+4. repeat steps 2 and 3 until you get bored
+
+(example)
+
+**Note**:
+
+- easier to understand/modify than write from scratch
+- build on existing components (*modules*)
+
+## Interfaces
+
+- command line/console (PyCharm: `Tools/Python Console`)
+- programming editor
+- integrated development environment (IDE)
+- **not** MS Word! ![skull](pix/skullcross_tiny.png)
+
+### Features
+
+- syntax highlighting
+- bracket-matching
+- hot-pasting
+- integrated help
+- integrated debugging tools
+- integrated project management tools
+
+- **most important**: maintain reproducibility; well-defined **workflows**
+
+## Assignment and types (PP $\S2.4$)
+
+- superficially simple
+    - set aside *memory* space, create a symbol that *points to* that space
+    - `=` is the **assignment operator** ("gets", not "equals")
+	- `<variable> = <value>`
+	- variable names
+         - what is legal? (names include letters, numbers, underscores, must start with a letter)
+	     - what is customary? [convention](https://www.python.org/dev/peps/pep-0008/#id30) is `variables_like_this` ("snake case")
+	     - what works well? `v` vs. `temporary_variable_for_loop`
+		 - same principles apply to file, directory/folder names
+- variables are of different [**types**](https://docs.python.org/3/library/stdtypes.html)
+     - built-in: integer (`int`), floating-point (`float`), complex, **Boolean** (`bool`: `True` or `False`),
+     - *dynamic* typing
+	     * Python usually "does what you mean", converts types when sensible
+	 - (relatively) *strong* typing
+         - try `print(type(x))` for different possibilities (`x=3`; `x=3.0`; `x="a"`)
+		 - *what happens if you try `x=a`?*
+		 - **don't be afraid to experiment!**
+```{r type_examples,eval=FALSE}
+x=3
+y=3.0
+z="a"
+q=complex(1,2)
+type(x+y)  ## mixed arithmetic
+type(int(x+y))  ## int(), float() convert explicitly
+type(x+z)
+type(q)
+type(x+q)
+type(True)
+type(True+1) ## WAT
+```
+[^2](As [Dive into Python](http://www.diveintopython3.net/native-datatypes.html) says in a similar context, "Ew, ew, ew! Don’t do that. Forget I even mentioned it.")
+
+Check out the [Python tutor](http://pythontutor.com/visualize.html#mode=edit) for these examples
+
+## Arithmetic operators, precedence
+
+- exponentiation (`**`)
+- negation ("unary minus") (`-`)
+- multiplication/division (`*`,`/`,`//`=integer division,`%`=remainder ("modulo"))
+- addition/subtraction (`+`, `-` ("binary"))
+
+Use parentheses when in doubt!
+
+**Puzzle:** what is `-1**2`? Why?
+
+## Logical operators (PP $\S5.1$)
+
+- comparison: (`==`, `!=`)
+- inequalities: `>`, `<`, `>=`, `<=`, 
+- basic logic: (`and`, `or`, `not`)
+- remember your truth tables, e.g. `not(a and b)` equals `(not a) or (not b)`
+
+```{r logical,eval=FALSE}
+a = True; b = False; c=1; d=0
+a and b
+not(a and not b)
+a and not(b>c)
+a==c  ## careful!
+not(d)
+not(c)
+```
+
+
+- **operator precedence**: same issue as [order of operations in arithmetic](http://xkcd.com/992/); `not` has higher precedence than `and`, `or`.  When in doubt use parentheses ...
+
+From [CodingBat](http://codingbat.com/prob/p120546):
+
+> We have two monkeys, a and b, and the parameters `a_smile` and `b_smile` indicate if each is smiling. We are in trouble if they are both smiling or if neither of them is smiling. Return `True` if we are in trouble. 
+
+```
+monkey_trouble(True, True) → True
+monkey_trouble(False, False) → True
+monkey_trouble(True, False) → False
+```
+
+More [CodingBat](http://codingbat.com) problems:
+
+- [squirrel_play](http://codingbat.com/prob/p135815)
+- [cigar_party](http://codingbat.com/prob/p195669)
+
+
+## String operations (PP chapter 4)
+
+*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.2
+
+- Less generally important, but fun
+- `+` concatenates
+- `*` replicates and concatenates
+- `in` searches for a substring
+```{r strops,eval=FALSE}
+a = "xyz"
+b = "abc"
+a+1  ## error
+a+b
+b*3
+(a+" ")*5
+b in a
+```
+
+
+CodingBat problems:
+
+- [make_abba](http://codingbat.com/prob/p182144)
+- [make_tags](http://codingbat.com/prob/p132290)
+
+One more useful string operation: `len(s)` returns the length (number of characters)
+
+## Indexing and slicing
+
+### Indexing
+
+- Extracting elements is called **indexing** a list
+- Indexing [starts from zero](http://xkcd.com/163/)
+- Negative indices count backward from the end of the string   
+(-1 is the last element)
+- Indexing a non-existent element gives an error
+
+![slicing](pix/string-slicing.png)
+
+### Slicing
+
+- Extracting (consecutive) sets of elements is called [**slicing**](http://stackoverflow.com/questions/509211/explain-pythons-slice-notation)
+- Slicing non-existent element(s) gives a truncated result
+- Slicing specifies *start*, *end*, *step* (or "stride")
+- Leaving out a bit goes from the beginning/to the end
+- Slicing works on strings too!
+
+```{r slice_ex,eval=FALSE}
+x[:]        # everything
+x[a:b]      # element a (zero-indexed) to b-1
+x[a:]       # a to end
+x[:b]       # beginning to b-1
+x[a:b:n]    # from a to b-1 in steps of n
+```
+
+- generate a list of odd numbers from 3 to 15
+- reverse a string?
+
+### String slicing practice
+
+From CodingBat:
+
+- [first_two](http://codingbat.com/prob/p184816)
+- [first_half](http://codingbat.com/prob/p107010)
+
+# Lists and indexing (PP chapter 8)
+
+*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
+
+## Lists
+
+- Use square brackets `[]` to set up a **list**
+- Lists can contain anything but usually homogeneous
+- Put other variables into lists
+- `range()` makes a **range** but you can turn it into a list with `list()`
+     - *Set up a list that runs from 101 to 200*
+- Indexing and slicing lists works almost the same way as indexing and slicing ...
+- Put lists into lists! ("yo dawg ...")
+     - difference between an *item from a list* (indexing, `x[0]`) and a *one-element list* (slicing, `x[0:1]`)
+
+![](pix/saltpepper_python.png)
+
+### Other list operations
+
+- Lots of things you can do with lists!
+- Lists are **mutable**
+```{r list_mut}
+x = [1,2,3]
+y = x
+y[2] = 17
+print(x)
+```
+
+Check it out at [Python Tutor](http://pythontutor.com/visualize.html#mode=edit)
+
+- *operators* vs. *functions* vs. *methods* `x+y` vs. `foo(x,y)` vs. `x.foo(y)`
+    * list [*methods*](http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch14s07.html)
+    * appending and extending:
+```{r append}
+x = [1,2,3]
+y = [4,5]
+x.append(y)
+print(x)
+```
+```{r extend}
+x = [1,2,3] # reset x
+y = [4,5]
+x.extend(y)
+print(x)
+```
+Can use `+` and `+=` as shortcut for extending:
+```{r operate}
+x = [1,2,3]
+y = [4,5]
+z = x+y
+print(z)
+```
+
+- `x.insert(position,value)`: inserts (or `x=x[0:position]+[value]+x[position+1:len(x)]`)
+- `x.remove(value)`: removes *first* value
+- `x.pop(position)` (or `del x[position]` or `x=x[0:position]+x[position+1:len(x)]`)
+- `x.reverse()` (or `x[::-1]`)
+- `x.sort()`: what it says
+- `x.count(value)`: number of occurrences of `value`
+- `x.index(value)`: first occurrence of `value` 
+- `value in x`: does `value` occur in `x`? (or `logical(x.count(value)==0)`)
+- `len(x)`: length
+
+**Note**: [pythonicity](http://blog.startifact.com/posts/older/what-is-pythonic.html) vs. [TMTOWTDI](http://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it)
