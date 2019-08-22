@@ -1,0 +1,38 @@
+`for` and `while` loops
+
+`if`, `else`, `elif`
+
+lists, tuples: indexing, slicing, appending, extending
+strings: indexing, slicing, setting
+dictionaries: `.keys()` and `.values()` methods, `in`, creation and indexing
+
+
+## numpy functions:
+
+  arange
+  zeros
+  ones
+  reshape
+
+numpy array methods:
+
+  axis= argument to methods
+  .sum()
+  .mean()
+  .prod()
+  .min()
+  .max()
+  .argmin()
+  .argmax()
+
+numpy array attributes:
+
+  .shape
+  
+
+.shape returns the shape of a numpy array, or a pandas DataFrame, as a tuple
+`numpy` functions:
+   - `numpy.zeros((m,n))`
+raising errors
+
+print vs return vs break

@@ -10,3 +10,8 @@ gh-pages
 *~
 .Rhistory
 */.#*
+*/.ipynb_checkpoints
+
+private/
+gh-pages/
+old/

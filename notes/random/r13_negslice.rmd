@@ -1,0 +1,40 @@
+---
+title: "Slicing with a negative stride"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+author: Ben Bolker
+---
+
+```{r opts,message=FALSE,echo=FALSE,warning=FALSE}
+library("knitr")
+opts_chunk$set(tidy=FALSE,engine='python',engine.path='python3')
+## sigh, still doesn't work
+## library("runr")
+## py <- proc_python()
+## py$start()
+## knit_engines$set(python = function(options) {
+##      knitr:::wrap(py$exec(options$code), options)
+## })
+```
+
+As mentioned in class, using a slice expression with three colons on a string (e.g. `s[a:b:n]` uses `a` as the starting point; `b` as the stopping point; and `n` as the *stride*, or the step. If you leave out one of `a`, `b`, or `n`, Python fills in a sensible default: for forward stepping (positive `n`), this is `a=0` and `b=len(s)`.
+
+```{r s}
+s = "Monty Python"
+print(s[::])   ## leave out a, b, n: means 'take the whole string'
+               ## (start=0, stop=len(s) (take up to position len(s)-1), stride=1)
+print(s[0:len(s):1]) ## the same, but explicit
+print(s[2::2])       ## start at position 2, every other character thereafter
+print(s[:10:2])      ## start at the beginning (0), every other character up to #9
+```
+
+If we use a *negative* stride (i.e., go backwards), then starting at position 0 and stopping at position `len(s)-1` will get us no characters at all: 
+
+```{r s2}
+s = "Monty Python"
+print(s[0:len(s):-1])
+```
+
+```{r s3}
+s = "Monty Python"
+print(s[len(s):0:-1])
+```

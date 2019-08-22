@@ -1,5 +1,8 @@
-from my_project import *
+
+from johaln4_proj_wipeaway import *
+#from my_project import *
 import numpy as np
+import numpy.random as npr
 
 ## tests for wipeaway project
 if "run_sim" in locals().keys():
@@ -31,7 +34,10 @@ if "run_sim" in locals().keys():
             print("many_sims not implemented yet")
         else:
             m = many_sims((2,10),(1,1),p=0,nsim=10)
-            print("many_sims 1:",np.allclose(m,np.arange(2,11).reshape((9,1))))
+            print(m)
+            correct = np.arange(2,11).reshape((9,1))
+            print(correct)
+            print("many_sims 1:",np.allclose(m,correct))
 
 ## tests for cipher project
 if "read_cipherdef" in locals().keys():
