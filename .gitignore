@@ -1,17 +1,22 @@
+## TeX trash
 *.log
 *.aux
 *.md
 *.out
+
+## python/jupyter trash
 *.pyc
-^*/.#*
 __pycache__
+*/.ipynb_checkpoints
+
+## backups/misc trash
+^*/.#*
 .DS_Store
-gh-pages
 *~
 .Rhistory
 */.#*
-*/.ipynb_checkpoints
 
+## machinery
 private/
 gh-pages/
 old/
