@@ -6,12 +6,13 @@ date: "`r as.character(Sys.time())`"
 ## Personnel
 
 - When e-mailing either the instructor or the TA about the course, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**.
-- *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). Office hours TBA, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
+- *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). Office hours TBA, 314 Hamilton Hall; Weijie Pang (`pangw6@mcmaster.ca`). Office hours TBA, 414 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
 - *Teaching assistants*: Brydon Eastman (`eastmab@mcmaster.ca`) and Peter Tait (`taitpa@mcmaster.ca`). When emailing, *please allow at least one full business day for responses.* Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
 
 ## Lectures
 
-- M, W 8:30-9:20, F 10:30-11:20 (all in **ITB 137** [note room change!])
+- C01: M, W 8:30-9:20, F 10:30-11:20 (all in **ITB 137** [note room change!])
+- C02: M, W 2:30-3:20, F 4:30-5:20 (all in **TSH B105** [note room change!])
 - Attendance *is required* on Wednesdays and Fridays due to in-class assignments; because some of the in-class marks can be dropped (see below), a very good reason will be needed for excuses.
 
 ## Labs and assignments
