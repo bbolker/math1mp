@@ -1,0 +1,14 @@
+---
+title: "math 1mp3 announcements (fall 2019)"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+---
+
+## Week #0
+
+- You should install Python 3 on your computer and register for CodeLab as soon as possible.  Installation instructions can be found here.  CodeLab instructions can be found in the [course outline](./outline.html#codelab).
+- The course outline is [here](./outline.html).
+- The labs will start on Mon 9 September.
+- Classes will be held in TSH B105
+    - the first class for section C01 is Tues 3 Sep 4:30
+	- the first class for section C01 is Weds 4 Sep 2:30
+	

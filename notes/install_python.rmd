@@ -1,0 +1,78 @@
+---
+title: "Getting set up with Python"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+---
+
+```{r version,echo=FALSE}
+major_version <- "3.7"
+minor_version <- "3.7.4"
+```
+
+Here are some common combinations of Python stack and/or Integrated Development Environment (IDE) and/or text editor that you can use to get started writing/running/debugging your own Python code, with installation instructions for Linux/OSX/Windows.
+
+In this course, we will primarily use the IDE Spyder.  It comes installed with Anaconda.  We will also use Jupyter Notebooks in the course.  You can log in to the McMaster Jupyter server using your macid here: https://mcmaster.syzygy.ca/.
+
+## Recommended: `Spyder` + `Anaconda`
+
+The most straightforward option. Spyder is a simple Python IDE (integrated development environment) that runs on all platforms. Anaconda is a Python distribution containing the core Python stack and a few (300+) of the most common/useful Python packages to save you from having to install them on an as-needed basis.  Anaconda also includes Spyder.
+
+### Installation
+
+- Determine your platform
+     - Mac OSX/Linux
+	      - run `uname -m` in the Terminal (to open a terminal on the Mac, type `Command-Shift-u` to open Utilities; type `t` to select `Terminal`; double-click to open the terminal [or type `Command-Option-o`])
+          - `x86_64` means "64-bit", `i686` means "32-bit" (if you have to guess, it's likely that you have a 64-bit version)
+     - Windows: go [here](http://windows.microsoft.com/en-ca/windows/which-operating-system), follow instructions for your version of Windows
+- Install Anaconda with Python `r minor_version` for your platform / architecture from here: http://docs.continuum.io/anaconda/install/
+     - `Spyder` will automatically be installed on your system.
+     - **note**: During the installation process you can skip the "Install Microsoft VS Code" step.
+
+If you're new to computing and not interested in other nuts and bolts, you can stop here!
+
+---
+
+## Alternative: Python `r major_version` + text editor
+
+If you’re running Linux or Mac OSX and are comfortable in the terminal, you can get the basic Python `r major_version` stack and use your favourite text editor to work with `.py` files.
+
+### Installation
+
+- [Download the Python `r minor_version` installer](https://www.python.org/downloads/)
+- Run the installer
+-  ... that’s it
+
+- [Sublime Text 3](http://www.sublimetext.com/3) is a great editor, and has some built-in Python support (syntax highlighting + running scripts).
+- [other text editors with Python support](https://wiki.python.org/moin/PythonEditors)
+
+**Note:** the installer will also install the latest version of Python 2, which will be the default if you run it from the terminal using `python`. To avoid this either run python using `python3` or make an alias in your `.bash_profile` from python to the Python `r major_version` executable.
+
+## More alternatives: other IDEs
+
+Some [recommended Python IDEs](https://wiki.python.org/moin/IntegratedDevelopmentEnvironments). These all require you to install Python separately, so you will also have to install Anaconda or vanilla Python 3.
+
+### Yet more alternatives
+
+Really you just need some combination of Python stack (Python/Anaconda) and something to edit **plain** text with. Heck, you can even use [`vi`](https://en.wikipedia.org/wiki/Vi) if you're into that sort of thing. Do **not** use a regular [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) text editor like MS Word: you will be opening yourself up to a world of pain.
+
+## Miscellaneous
+
+### Python version checking
+
+You can check what version of Python you are using by running [this](code/py_version.py) script or by running
+
+```
+python -c "import sys; print(sys.version)"
+```
+
+directly from Terminal.
+
+
+### Package installation
+
+Anaconda should come with all the packages you will need for this course. To install a Python package on Linux/OSX you can use `pip3` (for Python `r major_version`) as follows:
+
+```
+pip3 install "numpy"
+```
+
+for example, to install the [`numpy`](http://www.numpy.org/) package. Replace `numpy` with whatever package you need.
