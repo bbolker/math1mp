@@ -8,7 +8,7 @@ nnhtml := $(notes:%=notes/%.html)
 nnrmd  := $(notes:%=notes/%.rmd)
 aahtml := $(admin:%.rmd=%.html)
 
-all: ${aahtml}
+all: ${aahtml} ${nnhtml}
 
 %.html: ${SRCDIR}/%.[Rr]md
 	echo "rmarkdown::render(\"$<\",output_dir='.')" | R --slave
