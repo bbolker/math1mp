@@ -3,10 +3,11 @@ SRCDIR=..
 ## https://stackoverflow.com/questions/12069457/how-to-change-the-extension-of-each-file-in-a-list-with-multiple-extensions-in-g
 
 
-admin = $(notdir $(wildcard ${SRCDIR}/admin/*.rmd))
-nnhtml := $(notes:%=notes/%.html)
-nnrmd  := $(notes:%=notes/%.rmd)
-aahtml := $(admin:%.rmd=%.html)
+admin   := $(notdir $(wildcard ${SRCDIR}/admin/*.rmd))
+notes   := $(notdir $(wildcard ${SRCDIR}/notes/*.rmd))
+nnrmd   := $(notes:%=notes/%.rmd)
+nnhtml  := $(notes:%=notes/%.hmtl)
+aahtml  := $(admin:%.rmd=%.html)
 
 all: ${aahtml} ${nnhtml}
 
