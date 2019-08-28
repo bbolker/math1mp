@@ -1,25 +1,32 @@
 ---
-title: "MATH 1MP3<br>Introduction to mathematical and scientific programming<br>Winter 2017"
+title: "MATH 1MP3<br>Introduction to mathematical and scientific programming<br>Fall 2019"
 date: "`r as.character(Sys.time())`"
 ---
 
 ## Personnel
 
-- When e-mailing either the instructor or the TA about the course, **please include "1MP3" in the subject and your Mac ID in the body of the e-mail**.
-- *Instructor*: Ben Bolker (`bolker@mcmaster.ca`). Office hours TBA, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
-- *Teaching assistants*: Brydon Eastman (`eastmab@mcmaster.ca`) and Peter Tait (`taitpa@mcmaster.ca`). When emailing, *please allow at least one full business day for responses.* Please note also that **the TA may not respond to emails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
+- When e-mailing either one of the instructors or the TA about the course, **please include "1MP3" in the subject. Include your Mac ID and student ID, and your (lecture and/or tutorial) section in the body of the e-mail**.
+- *Instructors*: 
+     - Ben Bolker (`bolker@mcmaster.ca`) Office hours TBA, 314 Hamilton Hall; meetings during office hours are preferred but other times may be available by appointment. For more information, see [my web page](http://www.math.mcmaster.ca/bolker). 
+	 - Weijie Pang (). 
+- *Teaching assistants*: Nik Počuča (*email*), Steve Cygu (*email*), and .... When emailing, *please allow at least one full business day for responses.* **TAs and instructors may not respond to e-mails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorial but, time permitting, the TA may be available for extra help outside of that hour.
 
 ## Lectures
 
-- M, W 8:30-9:20, F 10:30-11:20 (all in **ITB 137** [note room change!])
-- Attendance *is required* on Wednesdays and Fridays due to in-class assignments; because some of the in-class marks can be dropped (see below), a very good reason will be needed for excuses.
+- Lecture Mon 3:30-4:20, Tues 4:30-5:20, Thurs 3:30-4:20, all in TSH B105
 
-## Labs and assignments
+## Tutorials and assignments
 
-- Tu 1:30-2:20 BSB 249 (section 10110); Th 10:30-11:20 BSB 244 (section 10109); Th 10:30-11:20 BSB 241 (section 17033); Fr 2:30-3:20 BSB 244 (section 16369)
-- Labs start **Thursday January 5**.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
+- Tutorial times and locations
+     - Steve Cygu L01 Mo 10.30 11.20 JHE_233A/234
+     - Steve Cygu L02 We 12.30 13.20 JHE_233A/234
+     - Steve Cygu L05 Mo 12.30 13.20 JHE_233A/234
+     - Nik Počuča L03 Mo 09.30 10.20 JHE_233A/234
+     - Nik Počuča L04 Tu 11.30 12.20 JHE_233A/234
+
+**tba**
+- Labs start **tba**.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
 - Some assignments (in class and take-home) will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue.  You need to register for (and pay for) CodeLab; see instructions below.
-    - There will be approximately 20 in-class assignments, on Wednesdays and Fridays. The lowest 4 marks will be dropped.
 
 ## Course material
 
@@ -31,7 +38,7 @@ date: "`r as.character(Sys.time())`"
 
 ##  Evaluation
 
-- Assignments (15% home, 15% in-class)
+- Homework assignments (15% home, 15% in-class)
     - lowest 4 in-class marks will be dropped
 - Final project (20%)
 - Midterm test (20%)
