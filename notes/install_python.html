@@ -187,7 +187,7 @@ summary {
 <p>In this course, we will primarily use the IDE Spyder. It comes installed with Anaconda. We will also use Jupyter Notebooks in the course. You can log in to the McMaster Jupyter server using your macid here: <a href="https://mcmaster.syzygy.ca/" class="uri">https://mcmaster.syzygy.ca/</a>.</p>
 <div id="recommended-spyder-anaconda" class="section level2">
 <h2>Recommended: <code>Spyder</code> + <code>Anaconda</code></h2>
-<p>The most straightforward option. Spyder is a simple Python IDE (integrated development environment) that runs on all platforms. Anaconda is a Python distribution containing the core Python stack and a few (300+) of the most common/useful Python packages to save you from having to install them on an as-needed basis. Anaconda also includes Spyder. If you’re</p>
+<p>The most straightforward option. Spyder is a simple Python IDE (integrated development environment) that runs on all platforms. Anaconda is a Python distribution containing the core Python stack and a few (300+) of the most common/useful Python packages to save you from having to install them on an as-needed basis. Anaconda also includes Spyder.</p>
 <div id="installation" class="section level3">
 <h3>Installation</h3>
 <ul>
@@ -196,7 +196,7 @@ summary {
 <li>Mac OSX/Linux
 <ul>
 <li>run <code>uname -m</code> in the Terminal (to open a terminal on the Mac, type <code>Command-Shift-u</code> to open Utilities; type <code>t</code> to select <code>Terminal</code>; double-click to open the terminal [or type <code>Command-Option-o</code>])</li>
-<li><code>x86_64</code> means “64-bit”, <code>i686</code> means “32-bit”</li>
+<li><code>x86_64</code> means “64-bit”, <code>i686</code> means “32-bit” (if you have to guess, it’s likely that you have a 64-bit version)</li>
 </ul></li>
 <li>Windows: go <a href="http://windows.microsoft.com/en-ca/windows/which-operating-system">here</a>, follow instructions for your version of Windows</li>
 </ul></li>
@@ -210,9 +210,11 @@ summary {
 <hr />
 </div>
 </div>
-<div id="python-3.7-text-editor" class="section level2">
-<h2>Python 3.7 + Text Editor</h2>
+<div id="alternative-python-3.7-text-editor" class="section level2">
+<h2>Alternative: Python 3.7 + text editor</h2>
 <p>If you’re running Linux or Mac OSX and are comfortable in the terminal, you can get the basic Python 3.7 stack and use your favourite text editor to work with <code>.py</code> files.</p>
+<div id="installation-1" class="section level3">
+<h3>Installation</h3>
 <ul>
 <li><a href="https://www.python.org/downloads/">Download the Python 3.7.4 installer</a></li>
 <li>Run the installer</li>
@@ -222,40 +224,26 @@ summary {
 </ul>
 <p><strong>Note:</strong> the installer will also install the latest version of Python 2, which will be the default if you run it from the terminal using <code>python</code>. To avoid this either run python using <code>python3</code> or make an alias in your <code>.bash_profile</code> from python to the Python 3.7 executable.</p>
 </div>
-<div id="python-3.7-text-editor-1" class="section level2">
-<h2>Python 3.7 + Text Editor</h2>
-<p>If you’re running Linux/OSX and are comfortable in Terminal, you can just get the basic Python 3.7 stack and use your favourite text editor to work with <code>.py</code> files.</p>
-<div id="installation-1" class="section level3">
-<h3>Installation</h3>
-<ul>
-<li><a href="https://www.python.org/downloads/">Download</a> the Python 3.7.4 installer</li>
-<li>Run the installer</li>
-<li>…that’s it</li>
-</ul>
-<p><a href="http://www.sublimetext.com/3">Sublime Text 3</a> is a great editor to try out, and has some built-in Python support (syntax highlighting + running scripts).</p>
-<p><a href="https://wiki.python.org/moin/PythonEditors">List</a> of other text editors with Python support.</p>
-<p>Note: the installer will also install the latest version of Python 2 <strong>which will be the default</strong> if you run it from terminal using <code>python</code>. To avoid this either run python using <code>python3</code> or make an alias in your <code>.bash_profile</code> from <code>python</code> to the Python 3.5 executable.</p>
 </div>
-<div id="other-ides" class="section level3">
-<h3>Other IDEs</h3>
+<div id="more-alternatives-other-ides" class="section level2">
+<h2>More alternatives: other IDEs</h2>
 <p>Some <a href="https://wiki.python.org/moin/IntegratedDevelopmentEnvironments">recommended Python IDEs</a>. These all require you to install Python separately, so you will also have to install Anaconda or vanilla Python 3.</p>
-</div>
-<div id="more-alternatives" class="section level3">
-<h3>More alternatives</h3>
-<p>Really you just need some combination of Python stack (Python/Anaconda) and something to edit <strong>plain</strong> text with. Heck, you can even use <a href="https://en.wikipedia.org/wiki/Vi"><code>vi</code></a> if you’re into that sort of thing. Do <strong>not</strong> use a regular <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> text editor like MS Word - you will be opening yourself up to a world of pain.</p>
+<div id="yet-more-alternatives" class="section level3">
+<h3>Yet more alternatives</h3>
+<p>Really you just need some combination of Python stack (Python/Anaconda) and something to edit <strong>plain</strong> text with. Heck, you can even use <a href="https://en.wikipedia.org/wiki/Vi"><code>vi</code></a> if you’re into that sort of thing. Do <strong>not</strong> use a regular <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> text editor like MS Word: you will be opening yourself up to a world of pain.</p>
 </div>
 </div>
 <div id="miscellaneous" class="section level2">
 <h2>Miscellaneous</h2>
 <div id="python-version-checking" class="section level3">
-<h3>Python Version Checking</h3>
+<h3>Python version checking</h3>
 <p>You can check what version of Python you are using by running <a href="code/py_version.py">this</a> script or by running</p>
 <pre><code>python -c &quot;import sys; print(sys.version)&quot;</code></pre>
 <p>directly from Terminal.</p>
 </div>
 <div id="package-installation" class="section level3">
-<h3>Package Installation</h3>
-<p>To install a Python package on Linux/OSX you can use <code>pip3</code> (for Python 3.7) as follows:</p>
+<h3>Package installation</h3>
+<p>Anaconda should come with all the packages you will need for this course. To install a Python package on Linux/OSX you can use <code>pip3</code> (for Python 3.7) as follows:</p>
 <pre><code>pip3 install &quot;numpy&quot;</code></pre>
 <p>for example, to install the <a href="http://www.numpy.org/"><code>numpy</code></a> package. Replace <code>numpy</code> with whatever package you need.</p>
 </div>

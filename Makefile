@@ -5,8 +5,7 @@ SRCDIR=..
 
 admin   := $(notdir $(wildcard ${SRCDIR}/admin/*.rmd))
 notes   := $(notdir $(wildcard ${SRCDIR}/notes/*.rmd))
-nnrmd   := $(notes:%=notes/%.rmd)
-nnhtml  := $(notes:%=notes/%.hmtl)
+nnhtml  := $(notes:%.rmd=%.html)
 aahtml  := $(admin:%.rmd=%.html)
 
 all: ${aahtml} ${nnhtml}
@@ -20,7 +19,7 @@ all: ${aahtml} ${nnhtml}
 %.html: ${SRCDIR}/admin/%.rmd
 	echo "rmarkdown::render(\"$<\",output_format='html_document',output_dir='admin')" | R --slave
 
-notes/%.html: ${SRCDIR}/notes/%.rmd
+%.html: ${SRCDIR}/notes/%.rmd
 	echo "rmarkdown::render(\"$<\",output_format='html_document',output_dir='notes')" | R --slave
 
 notes/%.slides.html: ${SRCDIR}/notes/%.rmd
