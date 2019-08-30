@@ -11,7 +11,7 @@ date: "`r format(Sys.time(), '%d %b %Y')`"
 - *Instructors*:
      - Ben Bolker (`bolker@mcmaster.ca`) Office hours TBA, 314 Hamilton Hall; [web page](http://www.math.mcmaster.ca/bolker).
 	 - Weijie Pang (`pangw6@mcmaster.ca`).  Office hours TBA, 414 Hamilton Hall.
-- *Teaching assistants*: Nik Počuča (`pocucan@mcmaster.ca`) and Steve Cygu (`cygus@mcmaster.ca`).
+- *Teaching assistants*: Nik Počuča (`pocucan@mcmaster.ca`) and Steve Cygu (`cygus@mcmaster.ca`), Aghigh Farhadi (marking only).
 
 ## Lectures
 

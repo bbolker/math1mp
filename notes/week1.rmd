@@ -59,7 +59,7 @@ library("reticulate")
 use_python("/usr/bin/python3")
 ```
 
-```{python}
+```{python hw}
 print('hello, python world!')
 ```
 

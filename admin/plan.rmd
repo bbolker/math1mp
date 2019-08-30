@@ -7,32 +7,21 @@ This is an *approximate* and *preliminary* schedule for the course.  It is guara
 
 See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 
-## week 1: basics
+## week 1: introduction
 
-- W Jan 4 introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
-- F Jan 6 data types; logical operations; string operations; regular expressions
-- M Jan 9 lists; indexing and slicing
+- introduction to the course; introduction to [Python](http://xkcd.com/353/); editors and workflows
+- data types; logical operations; string operations; regular expressions
+- indexing and slicing
 
 <!-- editors (xkcd butterfly?) -->
 <!-- variable naming and conventions; http://www.gps.alaska.edu/jeff/Classes/GEOS436+636/02_fundamentals.pdf; **assignment**: set up Python and write a couple of trivial programmes -->
 
-... this continued through Jan 13 ...
 
-## week 2: flow control
+## week 2: lists, conditionals, flow control
 
-- M Jan 16 conditionals, loops
-- W Jan 18 flow control; while
-- F Jan 20 ... continued
+## week 3: functions, modules, debugging
 
-## week 3: debugging etc.
-
-<!--
-- W Jan 18 [debugging](http://danluu.com/teach-debugging/)
-- F Jan 20 testing
-- M Jan 23 benchmarking/profiling/optimization: Euclidean algorithm
--->
-
-## week 4: functions and modules
+## week 4: debugging, hexadecimals, tuples
 
 <!-- 
 - W Jan 25 functions and scoping
@@ -40,7 +29,7 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 - M Jan 30 more Roman numeral examples
 -->
 
-## week 5: more function examples/reviews
+## week 5: examples from first-year calculus
 
 <!--
 - W Feb 1 function examples
@@ -48,7 +37,7 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 - M Feb 6 ... continued
 -->
 
-## week 6: plotting; tuples and dictionaries
+## week 6: file I/O, Benford's Law, sets
 
 <!-- 
 - W Feb 8 
@@ -56,22 +45,11 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 - M Feb 13 
 -->
 
-## week 7: 
+## week 7: dictionaries
 
-- W Feb 15
-- F Feb 17 **midterm test** (in class) 
+## week 8: Markov models; numerical computation with `numpy`
 
-**midterm recess**
-
-## week 8: floating point
-
-<!-- 
-- M Feb 27
-- W Mar 1
-- F Mar 3
--->
-
-## week 9: numeric computation cont.
+## week 9: `numpy` continued
 
 <!-- 
 - M Mar 6   floating point algorithms (root-finding, optimization) 
@@ -79,7 +57,7 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 - F Mar 10 
 -->
 
-## week 10: symbolic computation
+## week 10: numerics; numeric integration; random numbers
 
 <!--
 - M Mar 13 plotting (data visualization)
@@ -87,7 +65,7 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 - F Mar 17 
 -->
 
-## week 11 misc sci comp
+## week 11 plotting with `matplotlib`
 
 <!--
 - M Mar 20 data management; pandas
@@ -95,19 +73,6 @@ See http://bbolker.github.io/math1mp/ for lecture notes, assignments, etc..
 - F Mar 24
 -->
 
-## week 12 symbolic computation
-
-<!-- 
-- M Mar 27 symbolic computation; SymPy and Sage
-- W Mar 29 ... continued
-- F Mar 31
--->
-
-## week 13 last week
-
-<!--
-- M Apr 3
-- W Apr 5
--->
+## week 12 introduction to data analysis with `pandas`
 
 
