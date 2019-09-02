@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ben Bolker" />
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-02" />
 
 <title>introduction (week 1+)</title>
 
@@ -180,7 +180,7 @@ summary {
 
 <h1 class="title toc-ignore">introduction (week 1+)</h1>
 <h4 class="author">Ben Bolker</h4>
-<h4 class="date">28 August 2019</h4>
+<h4 class="date">02 September 2019</h4>
 
 </div>
 
@@ -190,37 +190,39 @@ summary {
 <div id="administrative-trivia" class="section level2">
 <h2>Administrative trivia</h2>
 <ul>
-<li>Instructor: Ben Bolker
+<li>Instructors: Ben Bolker and Weijie Pang</li>
+<li>TAs: Nik Počuča, Steve Cygu, TBA (marking)</li>
+<li>Grading
 <ul>
-<li><code>bolker@mcmaster.ca</code>: please include <code>1mp3</code> in Subject:</li>
-<li><code>http://www.math.mcmaster.ca/bolker</code></li>
-<li>HH 314 (sometimes LSB 336); office hours TBA</li>
+<li>Assignments (10%)</li>
+<li>Quizzes (5%)</li>
+<li>Final project (5%)</li>
+<li>Midterm tests (2 <span class="math inline">\(\times\)</span> 20%)</li>
+<li>Final exam (40%)</li>
 </ul></li>
-<li>TA: Brydon Eastman (<code>eastmab@mcmaster.ca</code>) and Peter Tait (<code>taitpa@mcmaster.ca</code>).</li>
-<li>Grading:
-<ul>
-<li>midterm 20%</li>
-<li>final 30%</li>
-<li>in-class CodeLab assignments 15% (drop lowest 4)</li>
-<li>weekly assignments 15%</li>
-<li>project 20%</li>
-</ul></li>
-<li>Laptop policy</li>
-<li>Course material on <a href="https://github.com/bbolker/math1mp">Github</a> and Avenue</li>
-<li>Expectations of professor and students</li>
-<li>Textbook (optional); also see <a href="https://github.com/bbolker/math1mp/misc/resources.md">resources</a></li>
-<li>Course content: reasonable balance among
-<ul>
-<li>nitty-gritty practical programming instruction:</li>
+<li>homework assignment announcements policy<br />
+(web page, Avenue: <strong>not</strong> in class)</li>
 </ul>
+<hr />
+<ul>
+<li>Laptop policy</li>
+<li>Course material on Github: <a href="https://bbolker.github.io/math1mp" class="uri">https://bbolker.github.io/math1mp</a> and Avenue to Learn</li>
+<li>Expectations of professor and students</li>
+<li>Textbook (optional); Gries et al. <em>Practical Programming</em> 2d ed., available from the bookstore, the publisher (<a href="https://pragprog.com/book/gwpy2/practical-programming">The Pragmatic Bookshelf</a>), or <a href="http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459">amazon.ca</a>.</li>
+<li>also see <a href="https://github.com/bbolker/math1mp/misc/resources.md">resources</a></li>
+</ul>
+</div>
+<div id="course-content" class="section level2">
+<h2>Course content</h2>
+<p>reasonable balance among</p>
+<ul>
+<li><p>nitty-gritty practical programming instruction:</p>
 <blockquote>
 <p>… I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later … (<a href="https://web.archive.org/web/20160421222949/http://www.ankitpanda.com/pythonicity/">ankit panda</a>)</p>
-</blockquote>
-<ul>
+</blockquote></li>
 <li>conceptual foundations of computing/computer science</li>
 <li>context/culture of mathematical/scientific computing</li>
-<li>interesting applications</li>
-</ul></li>
+<li><p>interesting applications</p></li>
 </ul>
 </div>
 <div id="installing-python" class="section level2">
@@ -235,8 +237,8 @@ summary {
 </ul>
 </div>
 </div>
-<div id="more-interesting-stuff" class="section level1">
-<h1>More interesting stuff</h1>
+<div id="overview-of-mathsci-computing" class="section level1">
+<h1>Overview of math/sci computing</h1>
 <div id="using-computers-in-math-and-science" class="section level2">
 <h2>Using computers in math and science</h2>
 <ul>
@@ -248,9 +250,12 @@ summary {
 <li>discrete vs. continuous math</li>
 </ul>
 </div>
+<div id="running-python" class="section level2">
+<h2>Running Python</h2>
+</div>
 <div id="fun" class="section level2">
 <h2>Fun!</h2>
-<p><strong>Hello, world</strong> (always the first program you write in a new computer language)</p>
+<p><a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program"><strong>Hello, world</strong></a> (always the first program you write in a new computer language)</p>
 <pre class="python"><code>print('hello, python world!')</code></pre>
 <pre><code>## hello, python world!</code></pre>
 <p>Python as a fancy calculator:</p>
@@ -281,7 +286,7 @@ summary {
 <li>turn 90<span class="math inline">\({}^\circ\)</span> clockwise</li>
 <li>repeat steps 2 and 3 until you get bored</li>
 </ol>
-<p>(example)</p>
+<p>code <a href="code/primewalk.py">here</a></p>
 <p><strong>Note</strong>:</p>
 <ul>
 <li>easier to understand/modify than write from scratch</li>
@@ -292,9 +297,9 @@ summary {
 <div id="interfaces" class="section level2">
 <h2>Interfaces</h2>
 <ul>
-<li>command line/console (PyCharm: <code>Tools/Python Console</code>)</li>
+<li>integrated development environment (IDE), command line/console (Spyder)</li>
 <li>programming editor</li>
-<li>integrated development environment (IDE)</li>
+<li>notebooks</li>
 <li><strong>not</strong> MS Word! <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAeCAQAAAB++w0XAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAGEAAABhACIsoCsAAANvSURBVDjLhdRraNdlFAfwz/+yq27zkpu6iZe0zLbUKTJtLSrzhZeU1AoKhLAQLRK74IqgqCTDykhUXBKZEhWaKb7oYpZzxEaW0yniHcupayudczr/23690Pmfuq3vu3O+z5fnPOec5xtyKzJMUGSIVK0CIWEXHbFThXM3Hw3dFEdMNEuDCgec1ahFWKr+co2RZqPvtOgUEfOsNU60Ay4q31rPinQun2mNzM5pfZWY0RnZz+dG6Bp51slqX24cMzTb9D/yGrkyVLWF4XbUPcqNktKFOMlYu42MJ8LtqO5i5kvtQh41VyBdcke3ExHqajBa0SwcV8XlTRokajKgC3l/YZfFxDpq3UB9nJdmH8JSrleSKEmLAIVSBAKl8dfEscuLDkqX5wmD5dhnsQu6eccYfznhK2kiipR0XFpIsXIL/CAQCNTIxZ2qr8Wl5qhU3L5fYUQM0B2BT9U7JeEad1A1zjhwvdJqJ32iFT0Nbzv3oM2Wy0Sy1YZaqFWg1hSkYqKzAoFi/ZTIQI5Vtpp0tXVzfC8kX5kkk/2sQrKoZb4023R9bVOrv80+1Oph213ygmNKjfELQ21wt9uUWGywZR5CVAYG2WO9SkOQLgEFVhjmFWv0NMIGwyJW2mqHRr8a6kk5JqlXqw4F5tpvvF0OadLbZMV6G+mEj9X5W4LnorIMtkiScmttMtPTVqmy2tcCtSoVgakWGO2UEpucM0GhyxL1ChlhpECrQom2+Em690UkW+KgO+yX67BsSzWKeUm9B0zTrFRYyO9xs0o0zqPSbJFnoNMafOuSEFJMMlCqGpWmOm+zCk1tq9IeCUab7n7ljuihUUhMsmYpLspW5Edb7NHc/gu2R0yFo7JV6yVVshYxKQJRUdUO+kjdjYt6o/H18Ih5spxUZoBmzZoEWgR2ypFnvD7OaGi/54QVGesf3eSr9oWwYs+LGC5TkhY1qjRb4T31ZrtLlXppypVpjSDbmyqluGKDjbI8ZbgsOxx2wF5VjgtbJFcfh230m0wR9ebarS6Kc/7UYqXAEK8bZKsPPGO5Msddlux29zrqMQXmq7HOZ0Ied1ptW+ezLbXEJW/b7hv/IlG+Av0kuqJamUoxpJtimrc0etdrjsUH94ZDRtlr/S0eENyUmaXQDvd5WRD3uj8sFOrA5YNbMttc8KqKq8x/nMkZ7EPBUkAAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTQtMTItMzFUMTI6MTY6NTEtMDU6MDD0KtYoAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTEyLTMxVDEyOjE2OjUxLTA1OjAwhXdulAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=" alt="skull" /></li>
 </ul>
 <div id="features" class="section level3">
