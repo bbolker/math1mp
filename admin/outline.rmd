@@ -57,7 +57,7 @@ date: "`r format(Sys.time(), '%d %b %Y')`"
 3. Follow the directions, including verifying that you're not a robot and that your email address is valid. **enter your @mcmaster.ca email address, not your personal  email address! Your CodeLab grades will not be recorded unless you use your @mcmaster.ca email address** ![skull](../notes/pix/skullcross_tiny.png)
 4. After registering, close all windows, exit the browser, re-open the browser and log in to CodeLab at https://codelab4.turingscraft.com/login
 5. Click on the  "Add a Course" button in the courses area
-6. enter the Section Access Code: **MCMA-27272-MRAT-42** and click `Next>` and confirm.
+6. enter the Section Access Code: **MCMA-27300-LJBG-42** and click `Next>` and confirm.
 7. Fill in the Alternate ID field with your MacID (letters+numbers, e.g. `smithj1`) and click `Next>`. **You must correctly enter your macid at this stage.**
 8. After clicking on the terms of service agreement you will be able to navigate to the 1MP3 course content.
 
@@ -72,7 +72,21 @@ date: "`r format(Sys.time(), '%d %b %Y')`"
 1. Log in to CodeLab (if you haven't already)
 2. Click the green  `Go` button next to this course
 3. Click on the upgrade link shown in a beige band at the top of the window; follow the subsequent directions.
-4. Follow the payment directions (options include PayPal/credit card, money order, and payment keys). The cost is $25USD.
+4. Follow the payment directions (options include PayPal/credit card, money order, and payment keys). The cost is US$25.
+
+## Late work and remarking
+
+All assignments are due on Avenue to Learn, unless otherwise stated. We will penalize late work by 25% per day.
+
+Marks can be adjusted in this class. If you follow the correct steps we will be happy to adjust your mark on tests or assignments. If you deviate from the steps they may still adjust them but they will be less **likely** to. :-)
+
+- When you receive your marked test or assignment, go home and look at it carefully. Spend some time going over each mistake and comparing it with the solutions.
+- If you are sure that you deserve some extra marks, send the TA an email saying you would like the mark adjusted in one of the tutorials, and **specify** which one. Come early to the tutorial class and they will look over your work.
+
+Here are some **exceptions**.
+
+- If you used pen or marker on your test, you can take it home and have it adjusted at a later date.
+- If you use pencil we will not adjust your marks after you have taken your test away. In this case we suggeest that you take photos of your work to review and leave the test with a TA; then you can have your mark adjusted later.
 
 # Policies
 
@@ -95,10 +109,6 @@ Should an accommodation for missed work be granted, the percentage for a missed 
 If you must miss a lecture, it is your responsibility to find out what was covered. The best way to do this is to borrow a classmate's notes, read them over, and then ask your instructor if there is something that you do not understand.
 
 Once a final examination is written, the final grade cannot be adjusted to take into account any special situation. For more detail, and to download the "Petition For Missed Term Work Form," visit the "Procedures & Forms" web page  located at the address http://www.science.mcmaster.ca/associatedean/current-students/procedures-forms.html. 
-
-## Late work
-
-All assignments are due on Avenue to Learn prior to class, unless otherwise stated. We will penalize late work by 25% per day.
 
 ## Online component
 

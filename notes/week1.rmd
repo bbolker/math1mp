@@ -8,28 +8,35 @@ author: Ben Bolker
 
 ## Administrative trivia
 
-- Instructor: Ben Bolker
-    - `bolker@mcmaster.ca`: please include `1mp3` in Subject:
-	- `http://www.math.mcmaster.ca/bolker`
-	- HH 314 (sometimes LSB 336); office hours TBA
-- TA:  Brydon Eastman (`eastmab@mcmaster.ca`) and Peter Tait (`taitpa@mcmaster.ca`).
-- Grading:
-    - midterm 20%
-	- final   30%
-	- in-class CodeLab assignments 15% (drop lowest 4)
-	- weekly assignments 15%
-	- project  20%
+- Instructors: Ben Bolker and Weijie Pang
+- TAs:  Nik Počuča, Steve Cygu, TBA (marking)
+- Grading
+    - Assignments (10%)
+    - Quizzes (5%)
+    - Final project (5%)
+    - Midterm tests (2 $\times$ 20%)
+    - Final exam (40%)
+- homework assignment announcements policy  
+(web page, Avenue: **not** in class)
+
+---
+
 - Laptop policy
-- Course material on [Github](https://github.com/bbolker/math1mp) and Avenue
+- Course material on Github: https://bbolker.github.io/math1mp and Avenue to Learn
 - Expectations of professor and students
-- Textbook (optional); also see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
-- Course content: reasonable balance among
-     - nitty-gritty practical programming instruction:
+- Textbook (optional); Gries et al. *Practical Programming* 2d ed., available from the bookstore, the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy2/practical-programming)), or [amazon.ca](http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459).
+- also see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
+
+## Course content
+
+reasonable balance among
+
+- nitty-gritty practical programming instruction:
 	 
     > ... I just sat down in front of a text editor, with nothing but thoughts, and ended up with a program that did exactly what I wanted it to a few hours later ... ([ankit panda](https://web.archive.org/web/20160421222949/http://www.ankitpanda.com/pythonicity/))
-     - conceptual foundations of computing/computer science
-     - context/culture of mathematical/scientific computing
-     - interesting applications
+- conceptual foundations of computing/computer science
+- context/culture of mathematical/scientific computing
+- interesting applications
 
 ## Installing Python
 
@@ -38,7 +45,7 @@ author: Ben Bolker
 - Everyone must have access to a computer with Python3 installed.
     - See [installation instructions](./install_python.html)
 
-# More interesting stuff
+# Overview of math/sci computing
 
 ## Using computers in math and science
 
@@ -49,9 +56,12 @@ author: Ben Bolker
 - applied statistics: bioinformatics, Big Data/analytics, ...
 - discrete vs. continuous math
 
+## Running Python
+
+
 ## Fun!
 
-**Hello, world** (always the first program you write in a new computer language)
+[**Hello, world**](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) (always the first program you write in a new computer language)
 
 ```{R opts,message=FALSE,echo=FALSE,warning=FALSE}
 library("knitr")
@@ -89,7 +99,7 @@ print(62**2*27/5+3)
 3. turn 90${}^\circ$ clockwise
 4. repeat steps 2 and 3 until you get bored
 
-(example)
+code [here](code/primewalk.py)
 
 **Note**:
 
@@ -98,9 +108,9 @@ print(62**2*27/5+3)
 
 ## Interfaces
 
-- command line/console (PyCharm: `Tools/Python Console`)
+- integrated development environment (IDE), command line/console (Spyder)
 - programming editor
-- integrated development environment (IDE)
+- notebooks 
 - **not** MS Word! ![skull](pix/skullcross_tiny.png)
 
 ### Features

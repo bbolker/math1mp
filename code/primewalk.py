@@ -2,7 +2,7 @@ from sympy import sieve
 import matplotlib.pyplot as plt
 
 
-def primewalk(n=100,draw_plot=True):
+def primewalk(n=100,draw_plot=True,show_points=True):
     """ Compute and draw 'prime walk' plot for primes <n
         http://tinyurl.com/primewalk
     """
@@ -33,7 +33,10 @@ def primewalk(n=100,draw_plot=True):
             direction="right"
     if (draw_plot):
         fig, ax = plt.subplots()
+        ax.margins(0.1) ## expand margins
         ax.plot(x,y)
+        if (show_points):
+            ax.scatter(x,y)
         plt.show()
     return(None)
 
