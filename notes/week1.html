@@ -264,13 +264,17 @@ img {
 </div>
 <div id="running-python" class="section level2">
 <h2>Running Python</h2>
+<ul>
+<li>via <strong>notebooks</strong> (<a href="http://mcmaster.syzygy.ca" class="uri">http://mcmaster.syzygy.ca</a> or on your own computer)</li>
+<li>via <strong>scripts</strong> + <strong>console</strong> (<a href="http://mcmaster.syzygy.ca/jupyter/user-redirect/lab" class="uri">http://mcmaster.syzygy.ca/jupyter/user-redirect/lab</a>)</li>
+</ul>
 </div>
 <div id="fun" class="section level2">
 <h2>Fun!</h2>
 <p><a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program"><strong>Hello, world</strong></a> (always the first program you write in a new computer language)</p>
 <pre class="python"><code>print('hello, python world!')</code></pre>
 <pre><code>## hello, python world!</code></pre>
-<p>Python as a fancy calculator:</p>
+<p>Python as a fancy calculator (<strong>REPL</strong>, Read-Evaluate-Print-Loop)</p>
 <pre class="python"><code>print(62**2*27/5+3)</code></pre>
 <pre><code>## 20760.6</code></pre>
 <p><em>reference</em>: <a href="https://docs.python.org/3/tutorial/introduction.html">Python intro section 3.1.1</a></p>
@@ -559,12 +563,17 @@ x[a:b:n]    # from a to b-1 in steps of n</code></pre>
 <div id="string-methods-examples" class="section level2">
 <h2>String methods: examples</h2>
 <p>Strings have lots of <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">methods</a>, for example:</p>
-<pre class="python3"><code>x = &quot;abcdef&quot;
-x.upper()
-x.capitalize()
-x.endswith(&quot;f&quot;)
-x.startswith(&quot;qrs&quot;)
-x.islower()</code></pre>
+<pre class="python"><code>x = &quot;abcdef&quot;
+x.upper()</code></pre>
+<pre><code>## 'ABCDEF'</code></pre>
+<pre class="python"><code>x.capitalize()</code></pre>
+<pre><code>## 'Abcdef'</code></pre>
+<pre class="python"><code>x.endswith(&quot;f&quot;)</code></pre>
+<pre><code>## True</code></pre>
+<pre class="python"><code>x.startswith(&quot;qrs&quot;)</code></pre>
+<pre><code>## False</code></pre>
+<pre class="python"><code>x.islower()</code></pre>
+<pre><code>## True</code></pre>
 </div>
 </div>
 
