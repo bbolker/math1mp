@@ -27,17 +27,17 @@ date: "`r format(Sys.time(), '%d %b %Y')`"
      - L03 Mo 09.30 10.20 JHE_233A/234 (Nik Počuča)
      - L04 Tu 11.30 12.20 JHE_233A/234 (Nik Počuča)
 
-- Tutorials will start **Monday 9 September**.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted).
-- Some assignments will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue to Learn (AtL).  You need to register for (and pay for) CodeLab; see [instructions below](#codelab).
-     - There will be approximately 4 quizzes during the semester.
+- Tutorials will start **Monday 9 September**.  They will be used primarily for help and review, not for presenting new material (any exceptions will be noted). There will be approximately four quizzes over the course of the semester, held during tutorials.
+- Some assignments will use [CodeLab](http://www.turingscraft.com/index.php).  Other assignments, approximately weekly, will be submitted in a dropbox on Avenue to Learn (AtL).  You need to register for (and pay for) CodeLab; see instructions [here](https://bbolker.github.io/math1mp/notes/use_python.html#codelab)
+- To ensure consistency between sections, assignments will **only** be announced on AtL and on the course web page, not in class.
 
 ## Course material
 
 - The course will cover a basic introduction to programming and mathematical/scientific computing in Python.
 - The primary course material is the lectures, and associated lecture notes, available at http://bbolker.github.io/math1mp/
-- The **optional** (but recommended) course textbook is Gries et al. *Practical Programming* 2d ed., available from the bookstore, the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy2/practical-programming)), or [amazon.ca](http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459).
+  - The **optional** (but recommended) course textbook is Gries et al. *Practical Programming* 3d ed., available from the bookstore or the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy3)).
 - It is recommended to print the lecture notes and bring them to class to make additional notes
-- You need to bring a laptop or tablet to class; if this is going to be a problem, please contact the instructor as soon as possible to make arrangements. You should install Python and PyCharm on your laptop (and/or desktop) computer, following instructions to be provided in lab.
+- It will be helpful, but not required, to bring a laptop or tablet to class. It will be helpful to install Python on your computer, following instructions to be provided in lab, but you can also use online Python servers provided.
 
 ##  Evaluation
 
@@ -49,30 +49,6 @@ date: "`r format(Sys.time(), '%d %b %Y')`"
      - evening, Tues 19 November (tentative) (20%)
 - Final exam (40%) [to be scheduled by the Registrar]
 
-## <a name="codelab"></a>CodeLab information
-
-### Registration
-
-1. Go to https://codelab4.turingscraft.com/register
-3. Follow the directions, including verifying that you're not a robot and that your email address is valid. **enter your @mcmaster.ca email address, not your personal  email address! Your CodeLab grades will not be recorded unless you use your @mcmaster.ca email address** ![skull](../notes/pix/skullcross_tiny.png)
-4. After registering, close all windows, exit the browser, re-open the browser and log in to CodeLab at https://codelab4.turingscraft.com/login
-5. Click on the  "Add a Course" button in the courses area
-6. enter the Section Access Code: **MCMA-27300-LJBG-42** and click `Next>` and confirm.
-7. Fill in the Alternate ID field with your MacID (letters+numbers, e.g. `smithj1`) and click `Next>`. **You must correctly enter your macid at this stage.**
-8. After clicking on the terms of service agreement you will be able to navigate to the 1MP3 course content.
-
-### Log in
-
-1. Go to https://codelab4.turingscraft.com/login
-3. the **username** is the email address given during registration
-4. the **password** is the password selected during registration
-
-### Getting full access
-
-1. Log in to CodeLab (if you haven't already)
-2. Click the green  `Go` button next to this course
-3. Click on the upgrade link shown in a beige band at the top of the window; follow the subsequent directions.
-4. Follow the payment directions (options include PayPal/credit card, money order, and payment keys). The cost is US$25.
 
 ## Late work and remarking
 
@@ -86,7 +62,7 @@ Marks can be adjusted in this class. If you follow the correct steps we will be 
 Here are some **exceptions**.
 
 - If you used pen or marker on your test, you can take it home and have it adjusted at a later date.
-- If you use pencil we will not adjust your marks after you have taken your test away. In this case we suggeest that you take photos of your work to review and leave the test with a TA; then you can have your mark adjusted later.
+- If you use pencil we will not adjust your marks after you have taken your test away. In this case we suggest that you take photos of your work to review and leave the test with a TA; then you can have your mark adjusted later.
 
 # Policies
 
@@ -94,7 +70,7 @@ The instructors reserve the right to change the weightings in the grading scheme
 
 ### In case of difficulty/problems
 
-Contact Dr. Bolker as soon as possible. Failing that, contact the Associate Dean's Office in BSB 129.
+Contact Dr. Bolker or Dr. Pang as soon as possible. Failing that, contact the Associate Dean's Office in BSB 129.
 
 ## Dates subject to change
 

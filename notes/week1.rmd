@@ -4,12 +4,25 @@ date: "`r format(Sys.time(), '%d %B %Y ')`"
 author: Ben Bolker
 ---
 
+</style>
+<!--    content: url(https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
+>
+<!-- Limit image width and height -->
+<style type="text/css">
+img {     
+  max-height: 560px;     
+  max-width: 800px; 
+}
+</style>
+
 # Introduction
 
 ## Administrative trivia
 
-- Instructors: Ben Bolker and Weijie Pang
-- TAs:  Nik Počuča, Steve Cygu, TBA (marking)
+- Instructors: Dr. Benjamin Bolker and Dr. Weijie Pang
+- TAs:  Nik Počuča, Steve Cygu, Aghigh Farhadi (marking)
+- course web page: http://bbolker.github.io/math1mp
+- course outline: http://bbolker.github.io/math1mp/admin/outline.html
 - Grading
     - Assignments (10%)
     - Quizzes (5%)
@@ -22,9 +35,9 @@ author: Ben Bolker
 ---
 
 - Laptop policy
-- Course material on Github: https://bbolker.github.io/math1mp and Avenue to Learn
+- Course material on web page and Avenue to Learn
 - Expectations of professor and students
-- Textbook (optional); Gries et al. *Practical Programming* 2d ed., available from the bookstore, the publisher ([The Pragmatic Bookshelf](https://pragprog.com/book/gwpy2/practical-programming)), or [amazon.ca](http://www.amazon.ca/Practical-Programming-Introduction-Pragmatic-Programmers/dp/1937785459).
+- Textbook (optional); Gries et al. *Practical Programming* 3d ed. (see outline)
 - also see [resources](https://github.com/bbolker/math1mp/misc/resources.md)
 
 ## Course content
@@ -92,14 +105,14 @@ print(62**2*27/5+3)
 - well suited to mathematical/scientific/technical ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org); [Python in Finance](https://www.safaribooksonline.com/library/view/python-for-finance/9781491945360/ch01.html))
 - ex.: [Sage](http://www.sagemath.org); [BioPython](http://www.biopython.org)
 
-### the "prime walk" (from [math.stackexchange.ca](http://tinyurl.com/primewalk))
+## the "prime walk" (from [math.stackexchange.ca](http://tinyurl.com/primewalk))
 
 1. start at the origin, heading right, counting up from 1
 2. move forward one space, counting up, until you find a prime
 3. turn 90${}^\circ$ clockwise
 4. repeat steps 2 and 3 until you get bored
 
-code [here](code/primewalk.py)
+code [here](code/primewalk.py) (`bbolker.github.io/math1mp/code/primewalk.py`)
 
 **Note**:
 
@@ -113,11 +126,9 @@ code [here](code/primewalk.py)
 - notebooks 
 - **not** MS Word! ![skull](pix/skullcross_tiny.png)
 
-### Features
+## Features
 
-- syntax highlighting
-- bracket-matching
-- hot-pasting
+- syntax highlighting, bracket-matching, hot-pasting
 - integrated help
 - integrated debugging tools
 - integrated project management tools
@@ -135,14 +146,22 @@ code [here](code/primewalk.py)
 	     - what is customary? [convention](https://www.python.org/dev/peps/pep-0008/#id30) is `variables_like_this` ("snake case")
 	     - what works well? `v` vs. `temporary_variable_for_loop`
 		 - same principles apply to file, directory/folder names
+		 
+---
+
 - variables are of different [**types**](https://docs.python.org/3/library/stdtypes.html)
      - built-in: integer (`int`), floating-point (`float`), complex, **Boolean** (`bool`: `True` or `False`),
      - *dynamic* typing
 	     * Python usually "does what you mean", converts types when sensible
-	 - (relatively) *strong* typing
+	 - *strong* typing
          - try `print(type(x))` for different possibilities (`x=3`; `x=3.0`; `x="a"`)
 		 - *what happens if you try `x=a`?*
 		 - **don't be afraid to experiment!**
+		 
+---
+
+**Examples**
+
 ```{python type_examples,eval=FALSE}
 x=3
 y=3.0
@@ -188,8 +207,12 @@ not(d)
 not(c)
 ```
 
+---
 
-- **operator precedence**: same issue as [order of operations in arithmetic](http://xkcd.com/992/); `not` has higher precedence than `and`, `or`.  When in doubt use parentheses ...
+**operator precedence**
+
+- remember [order of operations in arithmetic](http://xkcd.com/992/)
+- `not` has higher precedence than `and`, `or`.  When in doubt use parentheses ...
 
 From [CodingBat](http://codingbat.com/prob/p120546):
 
@@ -201,7 +224,28 @@ monkey_trouble(False, False) → True
 monkey_trouble(True, False) → False
 ```
 
-More [CodingBat](http://codingbat.com) problems:
+## Truth tables
+
+|   A   |  B    |  A and B | A or B | not A  |
+| ----- | ----- | -------- | ------ | ------ |
+| True  | True  |  True    |  True  |  False |
+| True  | False |  False   |  True  |  False |
+| False | True  |  False   |  True  |  True  |
+| False | False |  False   |  False |  True  |
+
+## Logical expressions
+
+- The logical expression: `not not a and not b or a` is
+equivalent to `((not (not a)) and (not b)) or a` since the
+operator `not` takes precedence over the operators `and` and `or`.
+
+- So if `a = True` and `b = False` this evaluates to `True`
+- Since `not not a` is equivalent to `a`, we can simplify the expression to just `(a and not b) or a`. 
+- Can we simplify this further?
+
+What can we do with `not a and not b` ?
+
+## More [CodingBat](http://codingbat.com) problems
 
 - [squirrel_play](http://codingbat.com/prob/p135815)
 - [cigar_party](http://codingbat.com/prob/p195669)
@@ -225,6 +269,7 @@ b*3
 b in a
 ```
 
+---
 
 CodingBat problems:
 
@@ -233,9 +278,9 @@ CodingBat problems:
 
 One more useful string operation: `len(s)` returns the length (number of characters)
 
-## Indexing and slicing
+# Indexing and slicing
 
-### Indexing
+## Indexing
 
 - Extracting elements is called **indexing** a list
 - Indexing [starts from zero](http://xkcd.com/163/)
@@ -245,7 +290,7 @@ One more useful string operation: `len(s)` returns the length (number of charact
 
 ![slicing](pix/string-slicing.png)
 
-### Slicing
+## Slicing
 
 - Extracting (consecutive) sets of elements is called [**slicing**](http://stackoverflow.com/questions/509211/explain-pythons-slice-notation)
 - Slicing non-existent element(s) gives a truncated result
@@ -264,74 +309,10 @@ x[a:b:n]    # from a to b-1 in steps of n
 - generate a list of odd numbers from 3 to 15
 - reverse a string?
 
-### String slicing practice
+## String slicing practice
 
 From CodingBat:
 
 - [first_two](http://codingbat.com/prob/p184816)
 - [first_half](http://codingbat.com/prob/p107010)
 
-# Lists and indexing (PP chapter 8)
-
-*reference*: [Python intro](https://docs.python.org/3/tutorial/introduction.html) section 3.1.3
-
-## Lists
-
-- Use square brackets `[]` to set up a **list**
-- Lists can contain anything but usually homogeneous
-- Put other variables into lists
-- `range()` makes a **range** but you can turn it into a list with `list()`
-     - *Set up a list that runs from 101 to 200*
-- Indexing and slicing lists works almost the same way as indexing and slicing ...
-- Put lists into lists! ("yo dawg ...")
-     - difference between an *item from a list* (indexing, `x[0]`) and a *one-element list* (slicing, `x[0:1]`)
-
-![](pix/saltpepper_python.png)
-
-### Other list operations
-
-- Lots of things you can do with lists!
-- Lists are **mutable**
-```{python list_mut}
-x = [1,2,3]
-y = x
-y[2] = 17
-print(x)
-```
-
-Check it out at [Python Tutor](http://pythontutor.com/visualize.html#mode=edit)
-
-- *operators* vs. *functions* vs. *methods* `x+y` vs. `foo(x,y)` vs. `x.foo(y)`
-    * list [*methods*](http://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch14s07.html)
-    * appending and extending:
-```{python append}
-x = [1,2,3]
-y = [4,5]
-x.append(y)
-print(x)
-```
-```{python extend}
-x = [1,2,3] # reset x
-y = [4,5]
-x.extend(y)
-print(x)
-```
-Can use `+` and `+=` as shortcut for extending:
-```{python operate}
-x = [1,2,3]
-y = [4,5]
-z = x+y
-print(z)
-```
-
-- `x.insert(position,value)`: inserts (or `x=x[0:position]+[value]+x[position+1:len(x)]`)
-- `x.remove(value)`: removes *first* value
-- `x.pop(position)` (or `del x[position]` or `x=x[0:position]+x[position+1:len(x)]`)
-- `x.reverse()` (or `x[::-1]`)
-- `x.sort()`: what it says
-- `x.count(value)`: number of occurrences of `value`
-- `x.index(value)`: first occurrence of `value` 
-- `value in x`: does `value` occur in `x`? (or `logical(x.count(value)==0)`)
-- `len(x)`: length
-
-**Note**: [pythonicity](http://blog.startifact.com/posts/older/what-is-pythonic.html) vs. [TMTOWTDI](http://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it)
