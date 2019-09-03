@@ -11,7 +11,7 @@
 
 
 
-<meta name="date" content="2019-09-02" />
+<meta name="date" content="2019-09-03" />
 
 <title>Getting set up with Python</title>
 
@@ -178,16 +178,32 @@ summary {
 
 
 <h1 class="title toc-ignore">Getting set up with Python</h1>
-<h4 class="date">02 Sep 2019</h4>
+<h4 class="date">03 Sep 2019</h4>
 
 </div>
 
 
-<p>Here are some common combinations of Python stack and/or Integrated Development Environment (IDE) and/or text editor that you can use to get started writing/running/debugging your own Python code, with installation instructions for Linux/OSX/Windows.</p>
-<p>In this course, we will primarily use the IDE Spyder. It comes installed with Anaconda. We will also use Jupyter Notebooks in the course. You can log in to the McMaster Jupyter server using your macid here: <a href="https://mcmaster.syzygy.ca/" class="uri">https://mcmaster.syzygy.ca/</a>.</p>
-<div id="recommended-spyder-anaconda" class="section level2">
-<h2>Recommended: <code>Spyder</code> + <code>Anaconda</code></h2>
-<p>The most straightforward option. Spyder is a simple Python IDE (integrated development environment) that runs on all platforms. Anaconda is a Python distribution containing the core Python stack and a few (300+) of the most common/useful Python packages to save you from having to install them on an as-needed basis. Anaconda also includes Spyder.</p>
+<p>Here are some ways to get started with Python, either online or by installing it on your own computer. The two recommended options are to <a href="#syzygy">use the online servers provided</a> or to <a href="#anaconda">install <code>Anaconda</code> on your own machine</a>.</p>
+<div id="online-services" class="section level2">
+<h2>Online services <a name="syzygy"></a></h2>
+<div id="notebook" class="section level3">
+<h3>notebook</h3>
+<p>The very simplest way to use Python is to go to <a href="http://mcmaster.syzygy.ca" class="uri">http://mcmaster.syzygy.ca</a>, log in with your MacID and password, and open a new “Python 3” notebook.</p>
+</div>
+<div id="script-console-window" class="section level3">
+<h3>script + console window</h3>
+<p>If you want to use a script + console interface (this will be explained in class and tutorial), go to <a href="http://mcmaster.syzygy.ca/jupyter/user-redirect/lab" class="uri">http://mcmaster.syzygy.ca/jupyter/user-redirect/lab</a>, then:</p>
+<ul>
+<li><code>File</code> &gt; <code>New</code> &gt; <code>Text File</code></li>
+<li>right-click or shift-click on “untitled.txt” in the left-hand file bar: <code>Rename</code> the file to <code>&lt;myfile&gt;.py</code> (where <code>&lt;myfile&gt;</code> is whatever you want to name your script, e.g. <code>week1_stuff.py</code>). (Do <strong>not</strong> include spaces or punctuation other than <code>_</code> in your file name.)</li>
+<li>Go to <code>File</code> &gt; <code>New Console for Editor</code>, open a “Python 3” console</li>
+<li>Rearrange your windows so that you can see the editor window and console at the same time.</li>
+</ul>
+</div>
+</div>
+<div id="on-your-own-computer-recommended-anaconda" class="section level2">
+<h2>On your own computer (recommended): <code>Anaconda</code></h2>
+<p><code>Anaconda</code> is a complete Python “stack” (i.e., a set of programs and utilities) that has everything you will need for the class, including <code>Spyder</code> (a script + console environment) and a way to run notebooks.</p>
 <div id="installation" class="section level3">
 <h3>Installation</h3>
 <ul>
@@ -200,18 +216,29 @@ summary {
 </ul></li>
 <li>Windows: go <a href="http://windows.microsoft.com/en-ca/windows/which-operating-system">here</a>, follow instructions for your version of Windows</li>
 </ul></li>
-<li>Install Anaconda with Python 3.7.4 for your platform / architecture from here: <a href="http://docs.continuum.io/anaconda/install/" class="uri">http://docs.continuum.io/anaconda/install/</a>
-<ul>
-<li><code>Spyder</code> will automatically be installed on your system.</li>
-<li><strong>note</strong>: During the installation process you can skip the “Install Microsoft VS Code” step.</li>
-</ul></li>
+<li>Install Anaconda with Python 3.7.4 for your platform / architecture from here: <a href="http://docs.continuum.io/anaconda/install/" class="uri">http://docs.continuum.io/anaconda/install/</a> (includes Spyder and a jupyter notebook server)</li>
 </ul>
+<p><strong>note</strong>: During the installation process you can skip the “Install Microsoft VS Code” step.</p>
+</div>
+<div id="running-spyder" class="section level3">
+<h3>Running Spyder</h3>
+<ul>
+<li>open the “Anaconda navigator” on your computer and select Spyder (“Launch”)</li>
+<li>or, search for the Spyder executable/application on your computer</li>
+</ul>
+</div>
+<div id="running-notebooks" class="section level3">
+<h3>Running notebooks</h3>
+<ul>
+<li>open the “Anaconda navigator” on your computer and select jupyter notebook (“Launch”); click on <code>New &gt; Python3</code></li>
+</ul>
+<hr />
 <p>If you’re new to computing and not interested in other nuts and bolts, you can stop here!</p>
 <hr />
 </div>
 </div>
-<div id="alternative-python-3.7-text-editor" class="section level2">
-<h2>Alternative: Python 3.7 + text editor</h2>
+<div id="alternative-1-python-3.7-text-editor" class="section level2">
+<h2>Alternative 1: Python 3.7 + text editor</h2>
 <p>If you’re running Linux or Mac OSX and are comfortable in the terminal, you can get the basic Python 3.7 stack and use your favourite text editor to work with <code>.py</code> files.</p>
 <div id="installation-1" class="section level3">
 <h3>Installation</h3>
