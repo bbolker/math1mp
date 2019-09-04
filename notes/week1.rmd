@@ -1,7 +1,10 @@
 ---
 title: "introduction (week 1+)"
+author: "Ben Bolker"
 date: "`r format(Sys.time(), '%d %B %Y ')`"
-author: Ben Bolker
+output:
+  tufte_handout:
+     pandoc_args: ["--dpi", "300"]
 ---
 
 </style>
@@ -71,6 +74,8 @@ reasonable balance among
 
 ## Running Python
 
+- via **notebooks** (http://mcmaster.syzygy.ca or on your own computer)
+- via **scripts** + **console** (http://mcmaster.syzygy.ca/jupyter/user-redirect/lab)
 
 ## Fun!
 
@@ -86,7 +91,7 @@ use_python("/usr/bin/python3")
 print('hello, python world!')
 ```
 
-Python as a fancy calculator:
+Python as a fancy calculator (**REPL**, Read-Evaluate-Print-Loop)
 ```{python calc}
 print(62**2*27/5+3)
 ```
@@ -105,7 +110,7 @@ print(62**2*27/5+3)
 - well suited to mathematical/scientific/technical ([NumPy](http://www.numpy.org); [SciPy](http://www.scipy.org); [Python in Finance](https://www.safaribooksonline.com/library/view/python-for-finance/9781491945360/ch01.html))
 - ex.: [Sage](http://www.sagemath.org); [BioPython](http://www.biopython.org)
 
-## the "prime walk" (from [math.stackexchange.ca](http://tinyurl.com/primewalk))
+## the "prime walk" (from [math.stackexchange.com](http://tinyurl.com/primewalk))
 
 1. start at the origin, heading right, counting up from 1
 2. move forward one space, counting up, until you find a prime
@@ -124,7 +129,7 @@ code [here](code/primewalk.py) (`bbolker.github.io/math1mp/code/primewalk.py`)
 - integrated development environment (IDE), command line/console (Spyder)
 - programming editor
 - notebooks 
-- **not** MS Word! ![skull](pix/skullcross_tiny.png)
+  - **not** MS Word! ![skull](pix/skullcross_tiny.png){width=0.25in}
 
 ## Features
 
@@ -316,3 +321,23 @@ From CodingBat:
 - [first_two](http://codingbat.com/prob/p184816)
 - [first_half](http://codingbat.com/prob/p107010)
 
+## Methods
+
+- Objects in Python have **classes** (string, integer, etc.)
+- Classes have **methods** - things you can to do the objects
+- You use a method by calling **<variable_name>.<method>()**
+    - yes, this seems weird at first.
+- methods may or may not have **arguments**
+
+## String methods: examples
+
+Strings have lots of [methods](https://docs.python.org/3/library/stdtypes.html#string-methods), for example:
+
+```{python method1}
+x = "abcdef"
+x.upper()
+x.capitalize()
+x.endswith("f")
+x.startswith("qrs")
+x.islower()
+```

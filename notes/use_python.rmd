@@ -54,6 +54,14 @@ If you want to use a script + console interface (this will be explained in class
 - Go to `File` > `New Console for Editor`, open a "Python 3" console
 - Rearrange your windows so that you can see the editor window and console at the same time.
 
+### troubleshooting
+
+When accessing the server you might get an error like this:
+
+![syzygy error](pix/syzygy-error.png)
+
+In general it should be OK to ignore it and try again.
+
 ## On your own computer (recommended): `Anaconda`
 
 `Anaconda` is a complete Python "stack" (i.e., a set of programs and utilities) that has everything you will need for the class, including `Spyder` (a script + console environment) and a way to run notebooks.
