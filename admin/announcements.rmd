@@ -14,6 +14,7 @@ output:
 - Tutorials will start on Mon 9 September.
 - Classes will be held in TSH B105
     - the first class for section C01 is Tues 3 Sep 4:30
-	- the first class for section C01 is Weds 4 Sep 2:30
+    - the first class for section C02 is Weds 4 Sep 2:30
 - Information on HW#1 (on CodeLab) will be available on Weds evening (Sep 4).
+
 
