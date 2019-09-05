@@ -2,6 +2,9 @@
 title: "conditionals and flow control (week 2)"
 date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
 author: Ben Bolker
+output:
+  tufte_handout:
+     pandoc_args: ["--dpi", "300"]
 ---
 
 </style>
@@ -101,12 +104,12 @@ print(z)
 
 - Do something *if* something is true
 - `if` statement ([reference](https://docs.python.org/3/tutorial/controlflow.html))
-```{r if1}
+```{python if1}
 if False:
     print("no")
 ```
 - else-if (`elif`) and `else` [clauses](http://xkcd.com/764/)
-```{r if2,eval=FALSE}
+```{python if2,eval=FALSE}
 if (x<=0):
     print("what??")
 elif(x==1):
@@ -128,18 +131,18 @@ else:
 ## while 
 
 - repeat code many times, *while* some logical statement is true
-([reference](http://python_while_loop.jpg))
+([reference](https://docs.python.org/3/reference/compound_stmts.html#while))
 
 For example:
-![while loop](http://www.tutorialspoint.com/images/python_while_loop.jpg)
-```{r while1}
+![while loop](pix/python_while_loop.png){width=2in}
+```{python while1}
 x = 17
 while x>1:
     x = x/2
 ```
 
 Maybe we want to know how many steps that took:
-```{r while1B}
+```{python while1B}
 x = 17
 n = 0
 while x>1:
@@ -152,7 +155,7 @@ while x>1:
 
 - We can use logical operators to combine
 
-```{r while1C}
+```{python while1C}
 x = 17
 n = 0
 while x>1 and n<3:
@@ -164,7 +167,7 @@ while x>1 and n<3:
 
 - what if we want to repeat a fixed number of times?  We could use something like
 
-```{r while2,eval=FALSE}
+```{python while2,eval=FALSE}
 n = 0
 while n<n_max:
     # do stuff
@@ -173,7 +176,7 @@ while n<n_max:
 
 Or we could use a `for` loop:
 
-```{r for1,eval=FALSE}
+```{python for1,eval=FALSE}
 for n in range(0,n_max):
     # do stuff
 ```
@@ -182,9 +185,9 @@ for n in range(0,n_max):
 
 - more generally, we can use `for` to iterate over *any list*.
 
-![for loop](http://courses.cs.ut.ee/2011/programmeerimine/uploads/Raamat/_images/flowchart_for.png)
+![for loop](pix/flowchart_for.png){width=2in}
 
-### `for` loop examples
+## `for` loop examples
 
 - [CodingBat > string-2 > countHi](http://codingbat.com/prob/p147448)
 - [CodingBat > string-2 > catDog](http://codingbat.com/prob/p111624)
@@ -194,12 +197,12 @@ Another example: a change-writing program.
 
 *Given an amount of money, return a list of length 5 that gives the (smallest) number of coins of each unit (toonies, loonies, quarters, dimes, and nickels) required to make up that amount.*
 
-```{r intdiv}
+```{python intdiv}
 total=5.73
 toonies = 5.73 // 2 ## integer division
 total = total - 2*toonies
 ```
-```{r change,eval=FALSE}
+```{python change,eval=FALSE}
 total = 5.73
 res = []   # empty list
 denoms = list(2,1,0.25,0.1,0.05)
@@ -227,7 +230,7 @@ Now let's look at the [prime walk program](../code/primewalk.py) again ...
 
 `break` is a way to get out of a `while` or `for` loop early:
 
-```{r pyloop_break, eval=FALSE}
+```{python pyloop_break, eval=FALSE}
 for i in range(0,10):
    if i>5:
       break
@@ -237,7 +240,7 @@ for i in range(0,10):
 
 We can look at (e.g.) all the combinations of `i` and `j` via:
 
-```{r py_nested_loop, eval=FALSE}
+```{python py_nested_loop, eval=FALSE}
 for i in range(0,3):
    for j in range(0,3):
       print([i,j])
@@ -247,7 +250,7 @@ for i in range(0,3):
 
 From [Secret Weblog](http://blog.startifact.com/posts/older/what-is-pythonic.html): all of the following are equivalent ...
 
-```{r pyloop1,eval=FALSE}
+```{python pyloop1,eval=FALSE}
 i = 0
 while i < mylist_length:
    do_something(mylist[i])
@@ -256,7 +259,7 @@ while i < mylist_length:
 
 vs.
 
-```{r pyloop2,eval=FALSE}
+```{python pyloop2,eval=FALSE}
 for i in range(mylist_length):
    do_something(mylist[i])
 ```
@@ -265,12 +268,12 @@ for i in range(mylist_length):
 
 vs.
 
-```{r pyloop3,eval=FALSE}
+```{python pyloop3,eval=FALSE}
 for element in mylist_length:
    do_something(element)
 ```
 
-**Criteria**:
+## Criteria
 
 - speed 
 - memory use
