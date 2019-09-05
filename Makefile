@@ -38,3 +38,5 @@ notes/%.pdf: ${SRCDIR}/notes/%.rmd
 notes/%.docx: ${SRCDIR}/notes/%.rmd
 	echo "rmarkdown::render(\"$<\",output_format='word_document',output_dir='notes')" | R --slave
 
+misc/resources.html: ${SRCDIR}/misc/resources.md
+	echo "rmarkdown::render(\"$<\",output_format='html_document',output_dir='misc')" | R --slave
