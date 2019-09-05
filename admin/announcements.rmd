@@ -18,3 +18,5 @@ output:
 - Information on HW#1: this can be found on CodeLab, in the table of contents under "Python3 Topics > Assignment #1". It is due before 23:59 on Monday September 16. Please be sure to submit your solutions to these 16 questions before then.  You can get practice with similar questions in the relevant CodeLab subsections (Arithmetic; Strings (I) and (II); Conditions and Branches). All the material you need for these questions is in the Week-1 notes, and will be covered by the end of class next Monday (Sep 9).
 
 ## Week #1
+
+- We've set up a Facebook forum for the class at: https://www.facebook.com/groups/406619356725041/ . This forum is available for any course-related questions. Questions about homework are OK, but no spoilers please! Please be polite.

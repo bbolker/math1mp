@@ -5,9 +5,6 @@ This is a general list of interesting and/or useful Python materials. If you fin
 
 ## Books, tutorials, etc.
 
-There is no required textbook for this course, but these resources may be useful.
-
-* [Practical Programming](https://pragprog.com/book/gwpy2/practical-programming) by Paul Gries, Jennifer Campbell, and Jason Montojo is a relatively inexpensive option for an introductory textbook.
 * the official Python3 documentation at [python.org](https://docs.python.org/3/) is the most comprehensive option for everything that is part of the Python3 programming language
 	* these can get a little technical, but they are the final word on what any function or class does
 * [Python for Beginners](https://www.python.org/about/gettingstarted/) from the Python Software Foundation
@@ -23,8 +20,8 @@ There is no required textbook for this course, but these resources may be useful
 ## Other tools
 
 * typing `help("topic")` in Python will give you information about any Python function, class, etc..  Unfortunately you have to know what to ask: for example, `help("power")` doesn't work but `help("pow")` does (because the Python function for raising a number to a power is `pow()`, not `power()`).
-* a [neat little tool](http://pythontutor.com/visualize.html#mode=edit) that shows you what all your variables are doing as you move through a Python program. Be sure to choose Python 3 from the drop-down menu!
-* [IPython notebooks](https://www.pythonanywhere.com/try-ipython/ )
+* [Python Tutor](http://pythontutor.com/visualize.html#mode=edit) is a neat little tool that shows you what all your variables are doing as you move through a Python program. Be sure to choose Python 3 from the drop-down menu!
+* [PythonAnywhere](https://www.pythonanywhere.com) is another resource for developing and running Python in the cloud
 * a handy [online Python3 interpreter](http://www.tutorialspoint.com/execute_python3_online.php)
 
 ## Forums
