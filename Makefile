@@ -1,16 +1,49 @@
-%.html: %.rmd
-	echo "rmarkdown::render(\"$<\",output_format='html_document')" | R --slave
+## This is 1MP3
 
-##%.pdf: %.rmd
-##n	echo "rmarkdown::render(\"$<\",output_format='tufte_handout')" | R --slave
+current: target
+-include target.mk
+
+######################################################################
+
+# Session
+
+vim_session:
+	bash -cl "vmt"
+
+Sources += master.mk
+
+######################################################################
+
+## FRYing up some stuff to work with BB's current structure
 
 admin = $(wildcard admin/*.rmd)
-notes = $(wildcard notes/*.rmd)
-notepages = $(notes:%.rmd=gh-pages/%.html)
-adminpages = $(admin:%.rmd=gh-pages/%.html)
+adminTargets = $(admin:%.rmd=pages/%.html)
 
-pushnotes: $(notepages)
-pushadmin: $(adminpages)
+define rh_r
+echo "rmarkdown::render(\"$<\",,output_dir='.',output_format=\"html_document\")" | R --slave
+mv $(notdir $@) $@
+endef
 
-clean:
-	find . \( -name "*~" -o -name "\#*#" -o -name "__pycache__" -o -name "*.out" -o -name "*.aux" -o -name "*.log" -o -name "*.out" \) -exec rm -Rf {} \;
+adminTargets: $(adminTargets)
+
+$(adminTargets): pages/%.html: %.rmd
+	$(rh_r)
+
+
+######################################################################
+
+### Makestuff
+
+Sources += Makefile
+
+Ignore += makestuff
+msrepo = https://github.com/dushoff
+Makefile: makestuff/Makefile
+makestuff/Makefile:
+	git clone $(msrepo)/makestuff
+	ls $@
+
+-include makestuff/os.mk
+-include makestuff/git.mk
+-include makestuff/visual.mk
+-include makestuff/projdir.mk
