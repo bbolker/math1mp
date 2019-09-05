@@ -21,3 +21,5 @@ private/
 gh-pages/
 old/
 syzygy-intro/
+makestuff/
+target.mk
