@@ -9,6 +9,7 @@ This is a general list of interesting and/or useful Python materials. If you fin
 	* these can get a little technical, but they are the final word on what any function or class does
 * [Python for Beginners](https://www.python.org/about/gettingstarted/) from the Python Software Foundation
 * [Python Programming for the Humanities](http://fbkarsdorp.github.io/python-course/)
+* [CodingBat](codingbat.com) is a good source of practice problems.  Make sure to click on the Python tab rather than the Java tab!
 
 ## Bits and pieces of documentation
 
