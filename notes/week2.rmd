@@ -189,8 +189,8 @@ for n in range(0,n_max):
 
 ## `for` loop examples
 
-- [CodingBat > string-2 > countHi](http://codingbat.com/prob/p147448)
-- [CodingBat > string-2 > catDog](http://codingbat.com/prob/p111624)
+- [CodingBat > string-2 > countHi](https://codingbat.com/prob/p167246)
+- [CodingBat > string-2 > catDog](https://codingbat.com/prob/p164876)
 - [CodingBat > Array-2 > bigDiff](http://codingbat.com/prob/p196640)
 
 Another example: a change-writing program.
