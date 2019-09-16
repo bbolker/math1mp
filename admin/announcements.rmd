@@ -7,6 +7,11 @@ output:
     toc_depth: 2   
 ---
 
+## Week 2
+
+- Dr. Bolker's office hours (HH 314): Tues 1:30-2:20 AM, Thurs 10:30-11:20 AM. (**this week only**, 12 Sep, Thurs office hours will be 11:45-12:20 instead).
+- Dr. Pang's office hours (HH 414): 3:30 - 4:30pm Weds, 12-1pm Fri
+
 ## Week #1
 
 - We've set up a Facebook forum for the class at: https://www.facebook.com/groups/406619356725041/ . This forum is available for any course-related questions. Questions about homework are OK, but no spoilers please! Please be polite.

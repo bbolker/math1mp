@@ -7,7 +7,6 @@ output:
      pandoc_args: ["--dpi", "300"]
 ---
 
-</style>
 <!--    content: url(https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
 >
 <!-- Limit image width and height -->
@@ -217,7 +216,7 @@ not(c)
 **operator precedence**
 
 - remember [order of operations in arithmetic](http://xkcd.com/992/)
-- `not` has higher precedence than `and`, `or`.  When in doubt use parentheses ...
+- `not` has higher precedence than `and` which has higher precedence than `or`.  When in doubt use parentheses ...
 
 From [CodingBat](http://codingbat.com/prob/p120546):
 

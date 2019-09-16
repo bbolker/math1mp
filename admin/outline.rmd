@@ -9,8 +9,8 @@ date: "`r format(Sys.time(), '%d %b %Y')`"
     - **Please include "1MP3" in the subject. Include your Mac ID and student ID, and your (lecture and/or tutorial) section in the body of the e-mail**. 
     - Please allow at least one full business day for responses. **We might not answer e-mails sent less than 24hrs before an exam, assignment, or project is due.** The primary time to get help is during tutorials and office hours.
 - *Instructors*:
-     - Ben Bolker (`bolker@mcmaster.ca`) Office hours TBA, 314 Hamilton Hall; [web page](http://www.math.mcmaster.ca/bolker).
-	 - Weijie Pang (`pangw6@mcmaster.ca`).  Office hours TBA, 414 Hamilton Hall.
+     - Ben Bolker (`bolker@mcmaster.ca`) Office hours 1:30-2:20pm Tues, 10:30-11:20am Thurs, 314 Hamilton Hall; [web page](http://www.math.mcmaster.ca/bolker).
+	 - Weijie Pang (`pangw6@mcmaster.ca`).  Office hours 3:30 - 4:30pm Weds, 12-1pm Fri., 414 Hamilton Hall.
 - *Teaching assistants*: Nik Počuča (`pocucan@mcmaster.ca`) and Steve Cygu (`cygus@mcmaster.ca`), Aghigh Farhadi (marking only).
 
 ## Lectures
