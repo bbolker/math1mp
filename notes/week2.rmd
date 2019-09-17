@@ -269,7 +269,7 @@ for i in range(mylist_length):
 vs.
 
 ```{python pyloop3,eval=FALSE}
-for element in mylist_length:
+for element in mylist:
    do_something(element)
 ```
 
