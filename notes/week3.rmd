@@ -167,22 +167,30 @@ print(add_function.__doc__)
 Next section follows [this presentation](http://space.wccnet.edu/~pmillis/cps120/presentations/program_logic_errs.ppt)
 
 -  infinite loops:
+
+What's wrong with this code? (It's meant to loop until the user enters either "y" or "n" ...)
+
 ```{python infloop,eval=FALSE}
 print("Please enter (y)es or (n)o")
 cin = input()
 while ((response != "y") or (response != "n")):
    print("Please try again")
 ```
- [bad matrix #1](../code/sum_matrix_infloop.py)
-* operator precedence mistakes, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
+
+or (`not response in "yn"`)
+
+[bad matrix #1](../code/sum_matrix_infloop.py)
+ 
+- operator precedence mistakes, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
 ```{python FCconv,eval=FALSE}
 fahrdiff = celsius_high - celsius_low * 1.8
 ```
+
 - off-by-one error ("fencepost problem")
    -  ... more generally, **edge** or **corner cases**
 * code incorrectly inside/outside loops: 
    * [bad matrix #2](../code/sum_matrix_bad2.py)
-   * [bad matrix #3](../code/mandelbrot_bad3.py)
+   * [bad matrix #3](../code/sum_matrix_bad3.py)
 * array index error (outside bounds)
 
 ## Error messages
