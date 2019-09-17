@@ -5,8 +5,8 @@ def sum_matrix(m):
     nrows = len(m)
     ncols = len(m[0])
     for i in range(nrows):
+        total = 0
         for j in range(ncols):
-            total = 0
             total += m[i][j]
     return(total)
 

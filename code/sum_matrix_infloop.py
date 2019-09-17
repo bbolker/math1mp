@@ -6,10 +6,11 @@ def sum_matrix(m):
     ncols = len(m[0])
     i = 0
     j = 0
+    total = 0
     while i<nrows:
         while j<ncols:
-            i += 1
             total += m[i][j]
+        i += 1
     return(total)
 
 if __name__ == "__main__":

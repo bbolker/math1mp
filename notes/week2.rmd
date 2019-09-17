@@ -216,8 +216,35 @@ for d in denoms:
 2. **or** print out change as we go along
 3. **or** save results as an array
 
+## Coin counting continued
+
+Before coding up a solution, first describe it at a high level and then
+refine it:
+
+* Initialization phase
+    * initialize the variables that will be used, such as variables to
+hold the total amount of money, the list of coin denominations
+being used, and a list of the results.
+* Loop. For each denomination d in our list:
+     * determine how many coins of denomination d are needed.
+     * update our result list with this amount.
+     * update the total amount of money left.
+* Print out the results
+
+## Prime walk
 
 Now let's look at the [prime walk program](../code/primewalk.py) again ...
+
+* Initialization phase
+     * retrieve a list of primes
+     * initialize the variables that will be used:
+	     * variables to hold the lists of the x and y coordinates of the points visited on the walk
+		 * the current direction of the walk
+		 * the number of steps taken on the walk so far
+* Loop. For each step of the walk:
+      * update the x and y coordinate lists with the coordinates of the next step
+      * change the walk direction.
+* display the walk.
 
 ## More CodingBat examples:
 
@@ -244,6 +271,23 @@ We can look at (e.g.) all the combinations of `i` and `j` via:
 for i in range(0,3):
    for j in range(0,3):
       print([i,j])
+```
+
+## matrix addition
+
+We can store matrices as a **list of lists**: represents a 2 $\times$ 3 matrix. We can loop over rows and columns to operate on every element, or combine the elements in some way:
+
+```{python mat_sum}
+## initialization
+m = [[1,2,3], [2,7,9]]
+nrows = len(m)
+ncols = len(m[0])
+total = 0
+## loop
+for i in range(nrows):
+    for j in range(ncols):
+        total += m[i][j]
+print(total)
 ```
 
 ## Loops and indices
