@@ -23,3 +23,4 @@ old/
 syzygy-intro/
 makestuff/
 target.mk
+.ipynb_checkpoints/
