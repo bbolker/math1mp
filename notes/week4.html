@@ -291,7 +291,15 @@ add_z(z)</code></pre>
 </div>
 <div id="scoping-rules" class="section level2">
 <h2>Scoping rules</h2>
-<p><strong>LEGB</strong> (Local, Enclosing, Global, Built-in) - <em>Local</em>: symbols defined in the function, and arguments - <em>Enclosing</em>: symbols defined <em>in the function within which this function was defined</em> - <em>Global</em>: elsewhere in the file/module - <em>Built-in</em>: Python keywords</p>
+<ul>
+<li><strong>LEGB</strong> (Local, Enclosing, Global, Built-in)
+<ul>
+<li><em>Local</em>: symbols defined in the function, and arguments</li>
+<li><em>Enclosing</em>: symbols defined <em>in the function within which this function was defined</em></li>
+<li><em>Global</em>: elsewhere in the file/module</li>
+<li><em>Built-in</em>: Python keywords</li>
+</ul></li>
+</ul>
 </div>
 <div id="hexadecimaldecimal-conversion" class="section level2">
 <h2>Hexadecimal/Decimal conversion</h2>
@@ -339,7 +347,7 @@ add_z(z)</code></pre>
 h_{n−1} * 16^{n−1} + h_{n−2} * 16^{n−2} + \dots + h_0 * 16^0 \quad .
 \]</span></li>
 <li>So to convert word into decimal, we can iterate over each digit in <code>word</code> to produce the required value.</li>
-<li>Note that the <span class="math inline">\(j^{\textrm{th}}\)</span> term in the above sum is equal to $h_{n−j−1} ∗ 16^{n−j−1} , with <span class="math inline">\(j = 0, \dots, n − 1\)</span> and that the digit <span class="math inline">\(h_{n−j}\)</span> is just <code>word[j]</code>.</li>
+<li>Note that the <span class="math inline">\(j^{\textrm{th}}\)</span> term in the above sum is equal to <span class="math inline">\(h_{n−j−1} * 16^{n−j−1}\)</span> , with <span class="math inline">\(j = 0, \dots, n − 1\)</span> and that the digit <span class="math inline">\(h_{n−j}\)</span> is just <code>word[j]</code>.</li>
 <li><strong>next step</strong>: Create a function <code>hex_to_decimal(hex_String)</code> with string argument <code>hex_string</code> that will returns the value of the base-10 integer this string represents in hexadecimal …</li>
 </ul>
 </div>

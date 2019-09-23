@@ -281,11 +281,24 @@ Functions can even call themselves! This is like mathematical
 
 \subsection{Scoping rules}\label{scoping-rules}
 
-\textbf{LEGB} (Local, Enclosing, Global, Built-in) - \emph{Local}:
-symbols defined in the function, and arguments - \emph{Enclosing}:
-symbols defined \emph{in the function within which this function was
-defined} - \emph{Global}: elsewhere in the file/module -
-\emph{Built-in}: Python keywords
+\begin{itemize}
+\tightlist
+\item
+  \textbf{LEGB} (Local, Enclosing, Global, Built-in)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Local}: symbols defined in the function, and arguments
+  \item
+    \emph{Enclosing}: symbols defined \emph{in the function within which
+    this function was defined}
+  \item
+    \emph{Global}: elsewhere in the file/module
+  \item
+    \emph{Built-in}: Python keywords
+  \end{itemize}
+\end{itemize}
 
 \subsection{Hexadecimal/Decimal
 conversion}\label{hexadecimaldecimal-conversion}
@@ -377,8 +390,8 @@ decimal}\label{convert-hexadecimal-into-decimal}
   \texttt{word} to produce the required value.
 \item
   Note that the \(j^{\textrm{th}}\) term in the above sum is equal to
-  \$h\_\{n−j−1\} ∗ 16\^{}\{n−j−1\} , with \(j = 0, \dots, n − 1\) and
-  that the digit \(h_{n−j}\) is just \texttt{word{[}j{]}}.
+  \(h_{n−j−1} * 16^{n−j−1}\) , with \(j = 0, \dots, n − 1\) and that the
+  digit \(h_{n−j}\) is just \texttt{word{[}j{]}}.
 \item
   \textbf{next step}: Create a function
   \texttt{hex\_to\_decimal(hex\_String)} with string argument
