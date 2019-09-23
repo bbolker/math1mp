@@ -1,0 +1,426 @@
+\documentclass[]{tufte-handout}
+
+% ams
+\usepackage{amssymb,amsmath}
+
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \makeatletter
+  \@ifpackageloaded{fontspec}{}{\usepackage{fontspec}}
+  \makeatother
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \makeatletter
+  \@ifpackageloaded{soul}{
+     \renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+     \renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+   }{}
+  \makeatother
+
+\fi
+
+% graphix
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+
+% booktabs
+\usepackage{booktabs}
+
+% url
+\usepackage{url}
+
+% hyperref
+\usepackage{hyperref}
+
+% units.
+\usepackage{units}
+
+
+\setcounter{secnumdepth}{-1}
+
+% citations
+
+% pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+
+% longtable
+
+% multiplecol
+\usepackage{multicol}
+
+% strikeout
+\usepackage[normalem]{ulem}
+
+% morefloats
+\usepackage{morefloats}
+
+
+% tightlist macro required by pandoc >= 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% title / author / date
+\title{modules, more functions, hexadecimal, tuples}
+\author{Ben Bolker}
+\date{23 September 2019}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+
+\section{Modules}\label{modules}
+
+Collections of functions you might want to use.
+
+\subsection{importing}\label{importing}
+
+\begin{itemize}
+\tightlist
+\item
+  use \texttt{import} to make functions inside modules available
+\item
+  refer to functions via module prefix
+\item
+  \texttt{import\ VeryLongModuleName\ as\ vlmn}: use abbreviation
+\item
+  can import just one or two functions:
+  \texttt{from\ math\ import\ sqrt,\ log}
+\item
+  can import everything (but usually don't):
+  \texttt{from\ \textless{}module\textgreater{}\ import\ *}
+\item
+  can import \emph{your own modules} (i.e., functions in a \texttt{.py}
+  file)
+\end{itemize}
+
+\subsection{finding out about modules}\label{finding-out-about-modules}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{help("modulename")}
+\item
+  \href{https://docs.python.org/3/py-modindex.html}{official modules}
+\item
+  \href{https://wiki.python.org/moin/UsefulModules}{list of useful
+  modules}
+\item
+  some modules we will definitely be using:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{math}: basic math functions
+  \item
+    \texttt{matplotlib}: drawing pictures
+  \item
+    \texttt{random}: picking random numbers
+  \item
+    \texttt{numpy}: numerical computation\\
+    (including linear algebra and some calculus)
+  \item
+    \texttt{pandas}: data analysis
+  \end{itemize}
+\item
+  more tangential but maybe used:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{nose}: code testing framework
+  \item
+    \texttt{scipy}: even more scientific computing tools
+  \item
+    \texttt{cmath}: math functions handling complex numbers
+  \item
+    \texttt{re}: regular expressions
+  \item
+    \texttt{sympy}: symbolic computation
+  \item
+    \texttt{timeit}: how long does my code take?
+  \end{itemize}
+\end{itemize}
+
+\subsection{Functions calling
+functions}\label{functions-calling-functions}
+
+\begin{itemize}
+\tightlist
+\item
+  You can pass anything to a function as an argument (even a function!)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def} \NormalTok{repeat_fun(f,startval,n):}
+    \CommentTok{"""Given a function f and a starting value startval,}
+\CommentTok{    apply the function n times (each time using the previous}
+\CommentTok{    result as input)}
+\CommentTok{    """}
+    \NormalTok{y }\OperatorTok{=} \NormalTok{startval}
+    \ControlFlowTok{for} \NormalTok{i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n):}
+        \NormalTok{y}\OperatorTok{=}\NormalTok{f(y)}
+    \ControlFlowTok{return}\NormalTok{(y)}
+
+\KeywordTok{def} \NormalTok{sqr(x):}
+    \ControlFlowTok{return}\NormalTok{(x}\OperatorTok{*}\NormalTok{x)}
+
+\NormalTok{repeat_fun(sqr,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 6561
+\end{verbatim}
+
+\subsection{Function composition}\label{function-composition}
+
+\begin{itemize}
+\tightlist
+\item
+  Mathematically this kind of example is called \textbf{composition} of
+  a function with itself (see
+  \href{https://en.wikipedia.org/wiki/Function_composition}{Wikipedia}
+\item
+  in math notation: \((g\circ f)(x) = f(g(x))\)
+\item
+  (notation for multiple composition of a function with itself
+  \href{https://math.stackexchange.com/questions/926247/notation-for-repeated-composition-of-functions}{is
+  harder})
+\item
+  write a function \texttt{compose\_funs(f,g)}
+\end{itemize}
+
+\subsection{Recursion}\label{recursion}
+
+Functions can even call themselves! This is like mathematical
+\href{https://en.wikipedia.org/wiki/Mathematical_induction}{induction}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def} \NormalTok{factorial(x):}
+    \ControlFlowTok{if} \NormalTok{(x}\OperatorTok{==}\DecValTok{1}\NormalTok{):}
+        \ControlFlowTok{return}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{(x}\OperatorTok{*}\NormalTok{factorial(x}\DecValTok{-1}\NormalTok{))}
+
+\NormalTok{factorial(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 120
+\end{verbatim}
+
+\subsection{Scope}\label{scope}
+
+\begin{itemize}
+\tightlist
+\item
+  Where does Python look for things?
+\item
+  What happens here?
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OperatorTok{=} \DecValTok{1}
+\KeywordTok{def} \NormalTok{add_z(x):}
+    \ControlFlowTok{return}\NormalTok{(x}\OperatorTok{+}\NormalTok{z)}
+
+\NormalTok{add_z(z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 2
+\end{verbatim}
+
+\subsection{Scoping rules}\label{scoping-rules}
+
+\textbf{LEGB} (Local, Enclosing, Global, Built-in) - \emph{Local}:
+symbols defined in the function, and arguments - \emph{Enclosing}:
+symbols defined \emph{in the function within which this function was
+defined} - \emph{Global}: elsewhere in the file/module -
+\emph{Built-in}: Python keywords
+
+\subsection{Hexadecimal/Decimal
+conversion}\label{hexadecimaldecimal-conversion}
+
+\begin{itemize}
+\tightlist
+\item
+  The \textbf{hexadecimal} (or ``base 16'') numeral system uses sixteen
+  distinct digits to represent integers.
+\item
+  The digits used are: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f .
+\item
+  The decimal value of the digit \texttt{a} is 10, \texttt{b} is 11,
+  etc.
+\item
+  The hexadecimal number 2c is equal to \(12 ∗ 16^0 + 2 ∗ 16^1 = 44\)
+  (base 10).
+\item
+  Similarly, \texttt{2be13} is equal to 179731 since \[
+  179731 = 3 ∗ 16^0 + 1 ∗ 16^1 + 14 ∗ 16^2 + 11 ∗ 16^3 + 2 ∗ 16^4 \quad.
+  \]
+\item
+  The number 1020304 in hexadecimal is f9190. This can be verified by
+  expanding f9190 as \[
+  0 ∗ 16^0 + 9 ∗ 16^1 + 1 ∗ 16^2 + 9 ∗ 16^3 + 15 ∗ 16^4 ,
+  \] which is equal to \(1020304_{10}\)
+\end{itemize}
+
+\subsection{Problem}\label{problem}
+
+\begin{itemize}
+\tightlist
+\item
+  Write Python code that takes as input from the console two strings
+  that represent numbers in the hexadecimal system.
+\item
+  The program should should print out the representations of these
+  numbers in base 10, and also print a string that represents the sum of
+  these numbers in hexadecimal.
+\end{itemize}
+
+\subsection{High level description of the
+algorithm}\label{high-level-description-of-the-algorithm}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Input the two strings from the console.
+\item
+  Convert each string into a base 10 number.
+\item
+  Print out these two numbers.
+\item
+  Convert the sum of these two numbers into hexadecimal.
+\item
+  Print out this hexadecimal number.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  For Step 1, use the \texttt{input()} function.
+\item
+  Create a function \texttt{get\_hex\_string()} that gets a string from
+  the console that represents a hexadecimal number and returns that
+  string.
+\item
+  Should it check to see if it is a legal string, i.e., only uses 0 − 9,
+  and a − f ?
+\end{itemize}
+
+\subsection{convert hexadecimal into
+decimal}\label{convert-hexadecimal-into-decimal}
+
+\begin{itemize}
+\tightlist
+\item
+  if an integer is represented in hexadecimal by the string of length
+  \(n\) \texttt{word} \(= h_{n−1} h_{n−2} \dots h_1 h_0\)
+\item
+  then it is equal to the number: \[
+  h_{n−1} * 16^{n−1} + h_{n−2} * 16^{n−2} + \dots + h_0 * 16^0 \quad .
+  \]
+\item
+  So to convert word into decimal, we can iterate over each digit in
+  \texttt{word} to produce the required value.
+\item
+  Note that the \(j^{\textrm{th}}\) term in the above sum is equal to
+  \$h\_\{n−j−1\} ∗ 16\^{}\{n−j−1\} , with \(j = 0, \dots, n − 1\) and
+  that the digit \(h_{n−j}\) is just \texttt{word{[}j{]}}.
+\item
+  \textbf{next step}: Create a function
+  \texttt{hex\_to\_decimal(hex\_String)} with string argument
+  \texttt{hex\_string} that will returns the value of the base-10
+  integer this string represents in hexadecimal \ldots{}
+\end{itemize}
+
+\subsection{convert to hexadecimal}\label{convert-to-hexadecimal}
+
+\begin{itemize}
+\tightlist
+\item
+  To find the hexadecimal digits \(h_k h_{k−1} \dots h_1 h_0\) of the
+  non-negative base-10 integer \texttt{num} we use \texttt{//} and
+  \texttt{\%}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{h{[}0{]}\ =\ num\ \%\ 16}
+  \item
+    \texttt{h{[}1{]}\ =\ (num\ //\ 16)\ \%\ 16}
+  \item
+    \texttt{h{[}2{]}\ =\ (num\ //\ 16**2\ )\ \%\ 16}
+  \item
+    \ldots{}
+  \item
+    \texttt{h{[}i{]}\ =\ (num//\ 16**i\ )\ \%\ 16}
+  \end{itemize}
+\item
+  (But we can do this more easily as a variation of the
+  \textbf{coin-counting problem} \ldots{}
+\item
+  Q: How do we decide when to stop?
+\item
+  \textbf{next step}: Produce a function \texttt{decimal\_to\_hex(num)}
+  that computes the hexadecimal representation of the int \texttt{num}
+  and returns this as a string.
+\item
+  To finish, use these functions to produce the final result.
+\end{itemize}
+
+
+
+\end{document}
