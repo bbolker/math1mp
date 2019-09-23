@@ -7,17 +7,23 @@ output:
     toc_depth: 2   
 ---
 
+## Week 3
+
+- **QUIZZES ARE POSTPONED UNTIL NEXT WEEK** due to technical difficulties.
+- Homework #2 is now posted [here](../assignments/math1mp_hw2.ipynb). It is a self-contained Jupyter notebook that includes all of the instructions. Please read these and submit your homework to Avenue to Learn before **11:59 PM on Weds 2 Oct**.
+- there will be quizzes in your lab sessions next week. These will be CodeLab questions covering the material in weeks 1 and 2 (i.e., everything in the notes for these two weeks - not including functions or any material after that). The quizzes will start 10 minutes after the beginning of the class period; you'll have 15 minutes (and 5 tries per question) to answer.
+
 ## Week 2
 
 - Dr. Bolker's office hours (HH 314): Tues 1:30-2:20 AM, Thurs 10:30-11:20 AM. (**this week only**, 12 Sep, Thurs office hours will be 11:45-12:20 instead).
 - Dr. Pang's office hours (HH 414): 3:30 - 4:30pm Weds, 12-1pm Fri
 
-## Week #1
+## Week 1
 
 - We've set up a Facebook forum for the class at: https://www.facebook.com/groups/406619356725041/ . This forum is available for any course-related questions. Questions about homework are OK, but no spoilers please! Please be polite.
 - Student Accessibility Services is looking for a note taker for section C01 (Dr Bolker's section). This is a **volunteer** position. You can get a letter of reference from SAS saying you've done it. It does help motivate you to come to class and take good notes! And you'll be helping someone. If you're interested, please go to https://sas.mcmaster.ca/volunteer-notetaking/ for registration and program instructions, or write to `sasnotes@mcmaster.ca` for more information.
 
-## Week #0
+## Week 0
 
 - You should figure out how to start Python (online or on your computer: instructions [here](../notes/use_python.html)) and register for CodeLab (instructions [here](./notes/use_python.html#codelab)) as soon as possible.
 - Read the [course outline](./outline.html).

@@ -1,5 +1,5 @@
 ---
-title: "functions and modules"
+title: "functions and debugging"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 author: Ben Bolker
 output:
@@ -34,13 +34,12 @@ Reference: [Python tutorial section 4.6](https://docs.python.org/3/tutorial/cont
 - inputs are called **arguments**. outputs are called **return values**
 - when function is called, go to the function, with the arguments, run code until you hit `return()` (return `None` if you get to the end without a `return`)
 
-## Return values
+## return values
 
 - most functions return values
 - might not ... *side effects*
 	* input/output (create a plot, write output to a file, turn on a machine, ...)
     * changing a (mutable!) variable
-
 
 ## Function arguments
 
@@ -59,10 +58,15 @@ print("add_one=",add_one(x),", x=",x)
 
 ```{python add_one_again}
 z = 2
-print("add_one=",add_one(x),", x=",x)
+print("add_one=",add_one(z),", z=",z)
 ```
 
 `z` is **immutable** (a number), so it doesn't change; if you want it to change, use `z=add_one(z)`
+
+## `return()`
+
+The `return()` statement exits the function immediately.
+
 
 ## mutability and functions 
 
@@ -81,6 +85,8 @@ z = [1,2,3]
 no_return(z)
 z
 ```
+
+`None` is a special word in Python.
 
 With:
 
@@ -179,7 +185,7 @@ while ((response != "y") or (response != "n")):
 
 or (`not response in "yn"`)
 
-[bad matrix #1](../code/sum_matrix_infloop.py)
+- [bad matrix #1](../code/sum_matrix_infloop.py)
  
 - operator precedence mistakes, e.g. $\Delta \textrm{fahrenheit} = \Delta \textrm{Celsius} \times 1.8$
 ```{python FCconv,eval=FALSE}
@@ -223,7 +229,9 @@ fahrdiff = celsius_high - celsius_low * 1.8
 * reproducible/minimal workable examples
     * right amount of context
 	* "how to ask" ([StackOverflow](http://stackoverflow.com/help/how-to-ask))
+	* what have you tried? [lmgtfy](http://lmgtfy.com/?q=how+do+i+find+the+last+letter+of+a+string+in+python)
 * browse/lurk in forums first!
+
 * tone
 * where:
     * forums
