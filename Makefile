@@ -29,11 +29,14 @@ all: ${aahtml} ${nnhtml} ${nnpdf} ${nndocx}
 %.html: ${SRCDIR}/notes/%.rmd
 	echo "rmarkdown::render(\"$<\",output_format='html_document',output_dir='notes')" | R --slave
 
+admin/%.html: ${SRCDIR}/admin/%.rmd
+	echo "rmarkdown::render(\"$<\",output_file=\"$@\",output_format='html_document',output_dir='admin')" | R --slave
+
 notes/%.html: ${SRCDIR}/notes/%.rmd
-	echo "rmarkdown::render(\"$<\",,output_file=\"$@\",output_format='html_document',output_dir='notes')" | R --slave
+	echo "rmarkdown::render(\"$<\",output_file=\"$@\",output_format='html_document',output_dir='notes')" | R --slave
 
 notes/%.slides.html: ${SRCDIR}/notes/%.rmd
-	echo "rmarkdown::render(\"$<\",,output_file=\"$@\",output_format='ioslides_presentation',output_dir='notes')" | R --slave
+	echo "rmarkdown::render(\"$<\",output_file=\"$@\",output_format='ioslides_presentation',output_dir='notes')" | R --slave
 
 notes/%.pdf: ${SRCDIR}/notes/%.rmd
 	echo "rmarkdown::render(\"$<\",output_format='tufte_handout',output_dir='notes')" | R --slave
