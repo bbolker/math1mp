@@ -1,0 +1,387 @@
+\documentclass[]{tufte-handout}
+
+% ams
+\usepackage{amssymb,amsmath}
+
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \makeatletter
+  \@ifpackageloaded{fontspec}{}{\usepackage{fontspec}}
+  \makeatother
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \makeatletter
+  \@ifpackageloaded{soul}{
+     \renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+     \renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+   }{}
+  \makeatother
+
+\fi
+
+% graphix
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+
+% booktabs
+\usepackage{booktabs}
+
+% url
+\usepackage{url}
+
+% hyperref
+\usepackage{hyperref}
+
+% units.
+\usepackage{units}
+
+
+\setcounter{secnumdepth}{-1}
+
+% citations
+
+% pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+
+% longtable
+
+% multiplecol
+\usepackage{multicol}
+
+% strikeout
+\usepackage[normalem]{ulem}
+
+% morefloats
+\usepackage{morefloats}
+
+
+% tightlist macro required by pandoc >= 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% title / author / date
+\title{examples from calc 1}
+\author{Ben Bolker}
+\date{03 October 2019}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+
+\subsection{Tuples}\label{tuples}
+
+\begin{itemize}
+\tightlist
+\item
+  simple; \textbf{non-mutable} version of lists
+\item
+  faster, safer
+\item
+  can be expressed as \texttt{x,\ y,\ z} (or \texttt{(x,y,z)}, probably
+  clearer)
+\item
+  empty tuple: \texttt{()}
+\item
+  tuple with one element: \texttt{(x,)}
+\item
+  can do many of the same things as with lists
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{,}\StringTok{"a"}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{1}\NormalTok{])   }\CommentTok{## indexing}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(x[}\DecValTok{2}\NormalTok{:])  }\CommentTok{## slicing}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ('a', 3)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(x}\OperatorTok{+}\NormalTok{(}\DecValTok{3}\NormalTok{,)) }\CommentTok{## appending}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (1, 4, 'a', 3, 3)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(x[:}\DecValTok{2}\NormalTok{] }\OperatorTok{+} \NormalTok{(}\DecValTok{3}\NormalTok{,) }\OperatorTok{+} \NormalTok{x[}\DecValTok{2}\NormalTok{:]) }\CommentTok{## insertion in the middle}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (1, 4, 3, 'a', 3)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.index(}\DecValTok{4}\NormalTok{)    }\CommentTok{## indexing}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{"z"} \KeywordTok{in} \NormalTok{x      }\CommentTok{## looking for stuff}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## False
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x.count(}\DecValTok{4}\NormalTok{)    }\CommentTok{## count}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  you \emph{can't} modify the existing tuple at all (deletion,
+  modification)
+\item
+  unpacking: \texttt{x,y,z\ =\ t}
+\item
+  swapping: \texttt{(a,b)\ =\ (b,a)}
+\item
+  useful as the return value of functions; safe, and can be unpacked
+\item
+  convert to/from lists (\texttt{tuple()}, \texttt{list()})
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\KeywordTok{def} \NormalTok{modify(x):}
+    \NormalTok{y }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(x)}
+    \NormalTok{y[}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \StringTok{"a"}
+    \ControlFlowTok{return}\NormalTok{(}\BuiltInTok{tuple}\NormalTok{(y))}
+
+\BuiltInTok{print}\NormalTok{(modify(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ('a', 2, 3)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (1, 2, 3)
+\end{verbatim}
+
+\subsection{reminders/clarifications}\label{remindersclarifications}
+
+\begin{itemize}
+\tightlist
+\item
+  parentheses (\texttt{()}) vs square brackets (\texttt{{[}{]}})
+\item
+  \textbf{square brackets}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    indexing (lists or strings or tuples): \texttt{x{[}5{]}}
+  \item
+    slicing (lists or strings or tuples): \texttt{x{[}5:7{]}}
+  \item
+    defining lists: \texttt{{[}1,2,3{]}}
+  \end{itemize}
+\item
+  \textbf{parentheses}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    order of operations: \texttt{(1+2)*3},
+    \texttt{a\ and\ (not\ b\ or\ c)}
+  \item
+    calling functions: \texttt{len(x)}, \texttt{range(5)},
+    \texttt{print("hello")}
+  \item
+    calling methods: \texttt{x.sort()}, \texttt{x.append(4)}
+  \item
+    defining functions: \texttt{def\ f(x1,x2,x3):}
+  \item
+    returning values from functions: \texttt{return(x)} (*)
+  \item
+    defining tuples: \texttt{()}, \texttt{(1,)}, \texttt{(2,3)} (*)
+  \end{itemize}
+\end{itemize}
+
+``\emph{" actually (mostly) }optional*: see
+\href{https://stackoverflow.com/questions/4978567/should-a-return-statement-have-parentheses}{here}
+
+\subsection{Root-finding methods}\label{root-finding-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  Assume that \(f(x)\) is a continuous function on the real numbers.
+\item
+  Suppose that \(a < b\)
+\item
+  Suppose \emph{endpoints are of opposite signs}:\\
+  \(f(a)<0\) and \(f(b)> 0\) \textbf{or} \(f(b)<0\) and \(f(a)>0\)
+\item
+  (or \(f(a)\cdot f(b) <0\))
+\item
+  By the Intermediate Value Theorem, there is some number \(c\) between
+  \(a\) and \(b\) with \(f(c) = 0\); this is called a \textbf{root} of
+  the function \(f\)
+\end{itemize}
+
+We will use three methods (Grid, Bisection, and Newton's method) to
+approximate such a number \(c\). (There may be more than one root of
+\(f\) in the interval between \(a\) and \(b\).)
+
+\subsection{Example}\label{example}
+
+\begin{itemize}
+\tightlist
+\item
+  We'll use \(\exp(x)-x-3/2\) as an example
+\item
+  impossible to do analytically!
+\item
+  value at 0 = -3/2
+\item
+  value at 1 = \(\exp(1)-1-3/2 \approx 2.78 - 2.5 = 0.28\)
+\end{itemize}
+
+\subsection{Grid Method}\label{grid-method}
+
+\begin{itemize}
+\tightlist
+\item
+  Break the interval \([a, b]\) into \(n\) subintervals of equal sizes,
+  having endpoints \[
+  x_0 = a, x_1 , \dots , x_{n−1} , x_n = b \quad .
+  \]
+\item
+  Compute \(f(x_0), f(x_1), \dots , f(x_n)\)
+\item
+  Find the index \(i\) such that \(f(x_i)\) is closest to 0 and use this
+  to approximate a root of \(f\) in the interval \([a, b]\).
+\item
+  \textbf{Project:} Create a function
+  \texttt{grid\_search(f,\ a,\ b,\ n)} that implements the grid method.
+\end{itemize}
+
+\subsection{Bisection Method}\label{bisection-method}
+
+\begin{itemize}
+\tightlist
+\item
+  Bisect the interval \([a, b]\) into two equal subintervals \([a, m]\),
+  \([m, b]\), where \(m = (a + b)/2\).
+\item
+  If \(f(a)\) and \(f(m)\) have opposite signs, then there will be a
+  root in \([a, m]\). Otherwise, there will be a root in \([m, b]\).
+\item
+  Bisect this subinterval (\([a, m]\) in the former case, \([m, b]\) in
+  the latter), and continue bisecting until the subinterval is small.
+\item
+  A root of \(f\) will be located in this small subinterval.
+\item
+  \textbf{Project:} Create a function \texttt{bisect(f,\ a,\ b,\ tol)}
+  that approximates a root of \texttt{f} in the interval
+  \texttt{{[}a,\ b{]}} with an error of at most \texttt{tol}.
+\end{itemize}
+
+\subsection{Newton's Method}\label{newtons-method}
+
+\begin{itemize}
+\tightlist
+\item
+  Suppose we know the derivative (\emph{gradient}) \(df/dx=f'(x)\) as
+  well as \(f(x)\)
+\item
+  For a given starting value \(x_0\), guess the position of the root
+  according to \(x_1 = f(x_0)-\frac{x_0}{f'(x_0)}\).
+\item
+  Repeat until we are within tolerance of the root (\(|f(x)|\) is small
+\item
+  \textbf{Project:} Create a function
+  \texttt{newton(f,\ grad,\ x0,\ tol,\ nmax)} that approximates a root
+  of \texttt{f} with an error of at most \texttt{tol}, taking no more
+  than \texttt{nmax} steps.
+\end{itemize}
+
+
+
+\end{document}
