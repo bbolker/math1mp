@@ -1,21 +1,61 @@
 def hex_to_decimal(x):
     """convert one hexadecimal number to decimal"""
-    print("hex_to_decimal: NOT ACTUALLY DOING ANYTHING YET")
     x = str(x)
     total = 0
     digit_string = "0123456789abcdef"
     for i in range(len(x)):
         val = digit_string.index(x[i])
-        total += val*(16**(len(x)-i))
-    return(x)
+        total += val*(16**(len(x)-i-1))
+    return(total)
 
 hex_to_decimal(16)
-
+hex_to_decimal("deadbeef")
 
 def decimal_to_hex(x):
     """convert one decimal number to hexadecimal"""
-    print("decimal_to_hex: NOT ACTUALLY DOING ANYTHING YET")
-    return(x)
+    digit_string = "0123456789abcdef"
+    i = 0
+    result = ""
+    while True:
+        next_n = (x // 16**i) % 16
+        next_digit = digit_string[next_n]
+        result = next_digit + result
+        i = i+1
+        if x < 16**i:
+            break
+    return(result)
+
+def decimal_to_hex_2(x):
+    """convert one decimal number to hexadecimal"""
+    digit_string = "0123456789abcdef"
+    i = 0
+    result = ""
+    while True:
+        next_n = (x // 16**i) % 16
+        next_digit = digit_string[next_n]
+        result = next_digit + result
+        i = i+1
+        h = hex_to_decimal(result)
+        if str(h)==str(x):
+            break
+    return(result)
+
+def decimal_to_hex_3(x,base=16):
+    """convert one decimal number to hexadecimal"""
+    digit_string = "0123456789abcdefghijklmnopqrstuvwyz"
+    result = ""
+    while x>0:
+        next_n = x % base
+        next_digit = digit_string[next_n]
+        result = next_digit + result
+        x = x - next_n
+        x = x // base
+    return(result)
+
+        
+
+decimal_to_hex(257)
+decimal_to_hex_2(257)
 
 def hex_convert():
     """input two hexadecimal numbers,
