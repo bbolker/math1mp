@@ -68,3 +68,33 @@ grid(testfun0,(22.999,23.001))
 ##   i.e. test if f(a)*f(b)<0
 ## ? return both the xmin and the fxmin value
 ##
+
+def bisect(f,endpt,tol=1e-6):
+    """
+    endpt is a tuple containing the endpoints; endpt[1] must be > endpt[0]
+    """
+    a,b = endpt
+    f_a = f(a)
+    if f(b)*f(_)a > 0:
+        raise ValueError("root not bracketed!")
+    while((b-a)>tol):
+        mid = (a+b)/2
+        f_mid = f(mid)
+        root_is_left_of_midpoint = (f_a*f_mid <= 0)
+        ## print("a=",a,"mid=",mid,"b=",b,"f_a=",f_a,"f_b=",f_b,"f_mid=",f_mid)
+        if root_is_left_of_midpoint:
+            b = mid
+        else:
+            a = mid
+            f_a = f_mid
+    return(mid)
+    
+print(bisect(testfun0,(0,1000)))
+print(bisect(testfun,(0,1000)))
+print(bisect(testfun0,(-1000,1000)))
+print(bisect(testfun,(-1000,1000)))
+
+print(bisect(testfun0,(50,1000)))
+
+
+
