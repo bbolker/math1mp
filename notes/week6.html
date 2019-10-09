@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ben Bolker" />
 
-<meta name="date" content="2019-10-08" />
+<meta name="date" content="2019-10-09" />
 
 <title>file I/O, Benford’s Law, sets</title>
 
@@ -180,7 +180,7 @@ summary {
 
 <h1 class="title toc-ignore">file I/O, Benford’s Law, sets</h1>
 <h4 class="author">Ben Bolker</h4>
-<h4 class="date">08 October 2019</h4>
+<h4 class="date">09 October 2019</h4>
 
 </div>
 
@@ -219,9 +219,10 @@ img {
 <pre class="python"><code>f = open(&quot;test.txt&quot;)
 type(f)
 print(f)
-print(f.closed())
+print(f.closed)
 f.close()
-print(f.closed())</code></pre>
+print(f.closed)</code></pre>
+<p><code>.closed</code> is a <em>data attribute</em> (e.g. see <a href="https://stackoverflow.com/questions/28798781/differences-between-data-attributes-and-method-attributes">here</a>): it’s a value rather than a function (unlike a <em>method attribute</em> like <code>list.append()</code>): no parentheses!</p>
 <hr />
 <ul>
 <li>To free up resources, it’s good practice to <code>close(f)</code> to close the file once you’re done with it.</li>
