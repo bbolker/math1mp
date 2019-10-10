@@ -245,7 +245,7 @@ print(s)</code></pre>
 </div>
 <div id="lists" class="section level2">
 <h2>Lists</h2>
-<p>Lists are used to store arrays of any type. They can all be the same type (for example <code>int</code>), or differing types. They can also be added together like strings.</p>
+<p>Lists are used to store arrays of any type. They can all be the same type (for example <code>int</code>), or differing types. They can also be added together like strings. Create a list with square brackets (<code>[1, 2, 3]</code>); an empty list is <code>[]</code>.</p>
 <pre class="python"><code>numlist  = [1, 2, 3, 4, 5, 525600]
 wordlist = ['this', 'is', 'a', 'list', 'of', 'words']
 print(numlist)
@@ -263,12 +263,15 @@ print(numlist + wordlist)</code></pre>
 <p>Lists can be nested too (lists in lists).</p>
 <pre class="python"><code>nestlist = [[1,2,3],[4,5,6],[]]
 print(nestlist)</code></pre>
+<p>Sometimes we represent matrices as lists of equal-length lists:</p>
+<pre class="python"><code>m = [[1,2], [3,4], [5,6]] ## a 3 x 2 (3-row, 2-column) matrix</code></pre>
+<p>A matrix stored this way has <code>len(m</code>) rows and <code>len(m[0])</code> columns.</p>
 <p>Useful methods for working with lists include <code>append()</code> for adding a <strong>single</strong> element to the end of a list, <em>no matter what type it is</em>.</p>
 <pre class="python"><code>numlist = [1, 2, 3]
 print(numlist)
 numlist.append(4)
 print(numlist)
-numlist.append([5])
+numlist.append([5])  ## last element is a list!
 print(numlist)</code></pre>
 <p>An alternative method, <code>extend()</code>, can be used to concatenate lists similar to using the plus (<code>+</code>) operator. Note that <code>extend()</code> expects its argument to be a list.</p>
 <pre class="python"><code>numlist = [1, 2, 3]
@@ -297,13 +300,14 @@ print(L2)</code></pre>
 <div id="useful-methods-for-lists" class="section level2">
 <h2>Useful methods for Lists</h2>
 <p>Some other helpful methods for working with lists (from class notes):</p>
+<p>Suppose <code>x = [17, 35, 29]</code></p>
 <ul>
-<li><code>x.remove(value)</code>: removes <em>first</em> value</li>
-<li><code>x.pop(i)</code>: removes element at index <code>i</code></li>
-<li><code>x.reverse()</code> (or <code>x = x[::-1]</code>)</li>
-<li><p><code>x.sort()</code>: sorts</p></li>
-<li><code>x.index(value)</code>: first occurrence of <code>value</code></li>
-<li><p><code>x.count(v)</code>: number of occurrences of value <code>v</code> in <code>x</code></p></li>
+<li><code>x.remove(value)</code>: removes <em>first</em> value (<code>x.remove(2)</code> results in <code>[17,29]</code>)</li>
+<li><code>x.pop(i)</code>: removes element at index <code>i</code> (<code>x.pop(2)</code> results in <code>[17,35]</code>)</li>
+<li><code>x.reverse()</code> (or <code>x = x[::-1]</code>) (<code>x.reverse()</code> results in <code>[29, 35, 17]</code>)</li>
+<li><p><code>x.sort()</code>: sorts (<code>x.sort()</code> results in <code>[17, 29, 35]</code>)</p></li>
+<li><code>x.index(value)</code>: first occurrence of <code>value</code> (<code>x.index(35)</code> is 1)</li>
+<li><p><code>x.count(v)</code>: number of occurrences of value <code>v</code> in <code>x</code> (<code>x.count(29)</code> is 1)</p></li>
 </ul>
 <p><code>.index()</code> and <code>.count()</code> also work on strings and tuples.</p>
 <hr />
@@ -313,6 +317,7 @@ print(L2)</code></pre>
 <p>Similar to lists, but are <strong>immutable</strong> (more on that later).</p>
 <pre class="python"><code>tup = (1, 2, 3, (4, 5))
 print(tup)</code></pre>
+<p>An empty tuple is <code>()</code>; a tuple with one element is <code>(&quot;hello&quot;,)</code>.</p>
 <hr />
 </div>
 <div id="indexing-and-slicing" class="section level2">
@@ -388,14 +393,14 @@ while True:
 x = 3
 print(add1(x))
 print(x)</code></pre>
-<p>Note that <code>x</code> is not modified in the above example because it is <strong>immutable</strong>. Immutable types are numbers (<code>int</code>/<code>float</code>), strings, and tuples. Imporatant: <strong>lists are mutable</strong>.</p>
-<pre class="python"><code>def append4(list):
-    list.append(4)
-    return(list)
+<p>Note that <code>x</code> is not modified in the above example because it is <strong>immutable</strong>. Immutable types are numbers (<code>int</code>/<code>float</code>), <code>bool</code>, <code>str</code>, and tuples. Important: <strong>lists are mutable</strong>.</p>
+<pre class="python"><code>def append4(L):
+    L.append(4)
+    return(L)
 
-numlist = [1,2,3]
-print(append4(numlist))
-print(numlist)</code></pre>
+numL = [1,2,3]
+print(append4(numL))
+print(numL)</code></pre>
 </div>
 <div id="common-errors" class="section level2">
 <h2>Common errors</h2>
