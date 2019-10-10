@@ -1,0 +1,294 @@
+---
+title: "1MP3 Midterm Review"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  tufte_handout:
+     pandoc_args: ["--dpi", "300"]
+---
+
+</style>
+<!--    content: url(https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
+>
+<!-- Limit image width and height -->
+<style type="text/css">
+img {     
+  max-height: 560px;     
+  max-width: 800px; 
+}
+</style>
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+knitr::opts_chunk$set(eval=FALSE)
+library("reticulate")
+use_python("/usr/bin/python3")
+```
+
+[Python documentation reference](https://docs.python.org/3/tutorial).
+
+***
+
+## Numeric and logical types
+
+- numeric: `float` and `int`.
+  - usual numeric operators (`+`, `-`, `*`, `/`, `**`): BEDMAS
+  - integer operators: `%` (modulo) and `//` (integer division)
+  - comparison: `>`, `<`, `==`, `>=`, `<=`, `!=` (not equal)
+- logical: `bool` (`True` or `False`)
+  - `and`, `or`, `not`
+
+```{python}
+day = 7
+temp = 20
+(day > 7 and temp != 20) or (day<1)
+```
+
+## Strings
+
+Arrays of characters, can be used to hold single characters, words, sentences, user input/output, etc. Strings are declared using single or double quotes.
+
+```{python}
+c   = "a"
+wd  = "moxie"
+sen = "Your midterm is on Friday!"
+print(c)
+print(wd)
+print(sen)
+```
+
+They can be easily concatenated or repeated.
+
+```{python}
+print("hi" + "there")
+print(3*"blah")
+```
+
+## Shortcut operators
+
+The operators `+=`, `*=`, `/=`, `-=` can be used to do something and then assign the value back to a variable: for instance `x+=1` is exactly equivalent to `x = x+1`
+
+#### Building Strings
+
+You can 'build' strings by creating an empty string and adding to it
+
+```{python}
+s = ""
+s += "What's"
+s += " "
+s += "up?"
+print(s)
+```
+
+***
+
+## Lists
+
+Lists are used to store arrays of any type. They can all be the same type (for example `int`), or differing types. They can also be added together like strings.
+
+```{python}
+numlist  = [1, 2, 3, 4, 5, 525600]
+wordlist = ['this', 'is', 'a', 'list', 'of', 'words']
+print(numlist)
+print(wordlist)
+print(numlist + wordlist)
+```
+
+#### Nested Lists
+
+Lists can be nested too (lists in lists).
+
+```{python}
+nestlist = [[1,2,3],[4,5,6],[]]
+print(nestlist)
+```
+
+Useful methods for working with lists include `append()` for adding a **single** element to the end of a list, *no matter what type it is*.
+
+```{python}
+numlist = [1, 2, 3]
+print(numlist)
+numlist.append(4)
+print(numlist)
+numlist.append([5])
+print(numlist)
+```
+
+An alternative method, `extend()`, can be used to concatenate lists similar to using the plus (`+`) operator. Note that `extend()` expects its argument to be a list.
+
+```{python}
+numlist = [1, 2, 3]
+print(numlist)
+numlist.extend([4])
+print(numlist)
+numlist.extend([5, 6, 7])
+print(numlist)
+```
+
+#### Note on Mutability
+
+If you assign a list variable to another variable, both variables will point **at the same list**.
+
+```{python}
+L1 = [1, 2, 3, 4, 5]
+L2 = L1
+L2.append(55)
+print(L1)
+print(L2)
+```
+
+#### Useful methods for Lists
+
+Some other helpful methods for working with lists (from class notes):
+
+* `x.remove(value)`: removes *first* value
+* `x.reverse()` (or `x[::-1]`)
+* `x.index(value)`: first occurrence of `value`
+* `len(x)`: length
+* `v` in `x`: is value `v` found anywhere in `x`?
+* `x.count(v)`: number of occurrences of value `v` in `x`
+
+Note the last four methods also work on strings and tuples.
+
+***
+
+## Tuples
+
+Similar to lists, but are **immutable** (more on that later).
+
+```{python}
+tup = (1, 2, 3, (4, 5))
+print(tup)
+```
+
+***
+
+## Indexing and Slicing
+
+Strings, lists, and tuples all support indexing and slicing. This means we can access individual elements or ranges of elements in any of these types. Recall that element **indices start at 0**.
+
+```{python}
+nums = [1,2,3,4,5]
+s = "Pythons are snakes"
+print(nums[0])		# indexing
+print(nums[1:4])	# slicing
+print(s[-1]) 		# indexing from end
+print(s[-3:])		# slicing to end
+```
+
+With nested lists/tuples, double indexing is used.
+
+```{python}
+tup = ((1,2,3),(4,5))
+print(tup[0])
+print(tup[0][1])
+print(tup[-1][-1])
+```
+
+With lists you can assign *to* elements using indexing/slicing, this **does not** work with strings/tuples as they are **immutable**.
+
+```{python}
+numlist = [[1, 2, 3], [], [4, 5]]
+print(numlist)
+numlist[0][2] = 42
+print(numlist)
+```
+
+***
+
+## If statements
+
+`if` statements can be used to conditionally execute code. We usually check conditions using logical operators such as
+
+* `==` equal to
+* `!=` not equal to
+* `<` less than
+* `<=` less than or equal to
+* `>` greater than
+* `>=` greater than or equal to
+
+For example:
+
+```{python}
+x = 5
+if x < 17:
+	print("x is smaller")
+```
+
+Alternative conditions can be checked at the same time using `elif` statements, and a default action can be set using `else`.
+
+```{python}
+x = 42
+if x < 17:
+	print("x is smaller")
+elif x > 17:
+	print("x is bigger")
+else:
+	print("x is the same")
+```
+
+***
+
+## Loops
+
+We can repeatedly carry out sequences of instructions using `for` or `while` loops. Traditionally, `for` loops are used when we know how long the loop needs to run for, and `while` loops are used when we do not know or would rather have the computer figure it out.
+
+```{python}
+for i in range(10):
+	print(i)
+```
+
+```{python}
+i = 0
+while i**2 < 87:
+	print(i)
+	i += 2
+```
+
+You can also use `break` to get out of a loop:
+
+```{python}
+i = 0
+while True:
+  print(i)
+  i += 2
+  if i**2 >= 87:
+    break
+```
+
+
+## Functions
+
+We can define functions to store sections of code we want to run repeatedly. The input/output is specified using arguments and return statements
+
+```{python}
+def add1(x):
+    x += 1
+    return(x)
+
+x = 3
+print(add1(x))
+print(x)
+```
+
+Note that `x` is not modified in the above example because it is **immutable**. Immutable types are numbers (`int`/`float`), strings, and tuples. Imporatant: **lists are mutable**.
+
+```{python}
+def append4(list):
+	list.append(4)
+	return(list)
+
+numlist = [1,2,3]
+print(append4(numlist))
+print(numlist)
+```
+
+## Common errors
+
+- forgetting to index from zero
+- slicing: forgetting that `a:b` ends at position `b-1`
+- off-by-one errors
+- forgetting to initialize
+- initializing in the wrong place (e.g. inside vs outside loop)
+- type mismatches
+- forgetting to `return` anything
+- `print()` instead of `return`
