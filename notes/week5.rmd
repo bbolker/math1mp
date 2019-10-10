@@ -1,0 +1,129 @@
+---
+title: "examples from calc 1"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+author: Ben Bolker
+output:
+  tufte_handout:
+     pandoc_args: ["--dpi", "300"]
+---
+
+</style>
+<!--    content: url(https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
+>
+<!-- Limit image width and height -->
+<style type="text/css">
+img {     
+  max-height: 560px;     
+  max-width: 800px; 
+}
+</style>
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+library("reticulate")
+use_python("/usr/bin/python3")
+```
+
+
+## Tuples
+
+- simple; **non-mutable** version of lists
+- faster, safer
+- can be expressed as  `x, y, z` (or `(x,y,z)`, probably clearer)
+- empty tuple: `()`
+- tuple with one element: `(x,)`
+- can do many of the same things as with lists
+```{python tuple_stuff}
+x = (1,4,"a",3)
+print(x[1])   ## indexing
+print(x[2:])  ## slicing
+print(x+(3,)) ## appending
+print(x[:2] + (3,) + x[2:]) ## insertion in the middle
+x.index(4)    ## indexing
+"z" in x      ## looking for stuff
+x.count(4)    ## count
+```
+* you *can't* modify the existing tuple at all (deletion, modification)
+* unpacking: `x,y,z = t`
+* swapping:  `(a,b) = (b,a)`
+* useful as the return value of functions; safe, and can be unpacked
+* convert to/from lists (`tuple()`, `list()`)
+```{python tuple_2}
+x = (1,2,3)
+def modify(x):
+    y = list(x)
+    y[0] = "a"
+    return(tuple(y))
+
+print(modify(x))
+print(x)
+```
+## reminders/clarifications
+
+- parentheses (`()`) vs square brackets (`[]`)
+- **square brackets**
+	- indexing (lists or strings or tuples): `x[5]`
+    - slicing (lists or strings or tuples): `x[5:7]`
+	- defining lists: `[1,2,3]`
+- **parentheses**
+    - order of operations: `(1+2)*3`, `a and (not b or c)`
+    - calling functions: `len(x)`, `range(5)`, `print("hello")`
+	- calling methods: `x.sort()`, `x.append(4)`
+    - defining functions: `def f(x1,x2,x3):`
+    - returning values from functions: `return(x)` (*)
+	- defining tuples: `()`, `(1,)`, `(2,3)` (*)
+
+"*" actually (mostly) *optional*: see [here](https://stackoverflow.com/questions/4978567/should-a-return-statement-have-parentheses)
+
+## Root-finding methods
+
+- Assume that $f(x)$ is a continuous function on the real numbers.
+- Suppose that $a < b$
+- Suppose *endpoints are of opposite signs*:  
+$f(a)<0$ and $f(b)> 0$ **or** $f(b)<0$ and $f(a)>0$
+- (or $f(a)\cdot f(b) <0$)
+- By the Intermediate Value Theorem, there is some number $c$ between $a$ and $b$ with $f(c) = 0$; this is called a **root** of the function $f$
+
+We will use three methods (Grid, Bisection, and Newton's method) to approximate such a number $c$. (There may be more than one root of $f$ in the interval between $a$ and $b$.)
+
+## Example
+
+- We'll use $\exp(x)-x-3/2$ as an example 
+- impossible to do analytically!
+- value at 0 = -3/2
+- value at 1 = $\exp(1)-1-3/2 \approx 2.78 - 2.5 = 0.28$
+- the actual answer is (approximately) 0.8576664
+## Grid Method
+
+- Break the interval $[a, b]$ into $n$ subintervals of equal sizes,
+having endpoints
+$$
+x_0 = a, x_1 , \dots , x_{n−1} , x_n = b \quad .
+$$
+- Compute $f(x_0), f(x_1), \dots , f(x_n)$
+- Find the index $i$ such that $f(x_i)$ is closest to 0 and use this to
+approximate a root of $f$ in the interval $[a, b]$.
+- **Project:** Create a function `grid_search(f, a, b, n)` that
+implements the grid method.
+
+## Bisection Method
+
+- Bisect the interval $[a, b]$ into two equal subintervals $[a, m]$,
+$[m, b]$, where $m = (a + b)/2$.
+- If $f(a)$ and $f(m)$ have opposite signs, then there will be a root
+in $[a, m]$. Otherwise, there will be a root in $[m, b]$.
+- Bisect this subinterval ($[a, m]$ in the former case, $[m, b]$ in the
+latter), and continue bisecting until the subinterval is small.
+- A root of $f$ will be located in this small subinterval.
+- **Project:** Create a function `bisect(f, a, b, tol)` that
+approximates a root of `f` in the interval `[a, b]` with an error of
+at most `tol`.
+
+## Newton's Method
+
+- Suppose we know the derivative (*gradient*) $df/dx=f'(x)$ as well as $f(x)$
+- For a given starting value $x_0$, guess the position of the root according to $x_1 = f(x_0)-\frac{x_0}{f'(x_0)}$.
+- Repeat until we are within tolerance of the root ($|f(x)|$ is small
+- **Project:** Create a function `newton(f, grad, x0, tol, nmax)` that
+approximates a root of `f` with an error of at most `tol`, taking no more than `nmax` steps.
+ 
