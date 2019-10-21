@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ben Bolker" />
 
-<meta name="date" content="2019-10-09" />
+<meta name="date" content="2019-10-20" />
 
 <title>file I/O, Benford’s Law, sets</title>
 
@@ -180,7 +180,7 @@ summary {
 
 <h1 class="title toc-ignore">file I/O, Benford’s Law, sets</h1>
 <h4 class="author">Ben Bolker</h4>
-<h4 class="date">09 October 2019</h4>
+<h4 class="date">20 October 2019</h4>
 
 </div>
 
@@ -226,10 +226,13 @@ print(f.closed)</code></pre>
 <hr />
 <ul>
 <li>To free up resources, it’s good practice to <code>close(f)</code> to close the file once you’re done with it.</li>
-<li>By default, <code>open()</code> looks in the <em>current directory</em>: if you want to get a file from somewhere else, you need to specify the full <em>path</em>, e.g.</li>
+<li>By default, <code>open()</code> looks in the <strong>current working directory</strong>: if you want to get a file from somewhere else, you need to specify the full <strong>path</strong>, e.g.</li>
 </ul>
 <pre class="python"><code>f = open('/Users/bolker/Documents/temp/temp.txt', 'r')
 f.close()</code></pre>
+<ul>
+<li>you can use <code>import os; os.getcwd()</code> to check the current working directory and <code>os.listdir()</code> to see what files are there.</li>
+</ul>
 <hr />
 <p>Once a file has been opened, its entire contents can be read in as a <code>str</code> using the <code>read()</code> method on the associated file object.</p>
 <pre class="python"><code>f = open('test.txt', 'r')
