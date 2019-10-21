@@ -7,6 +7,45 @@ output:
     toc_depth: 2   
 ---
 
+## midterm 1
+
+- midterm 1 will be held from 7-8 PM on 22 October (Tues). If your family name begins with the letters A-S, please go to Canadian Martyrs (across Main Street from the hospital) to take the test. If your family name begins with the letters T-Z, please go to BSB B135.
+   - no calculators or other test aids will be allowed (why would you need them anyway?)
+
+## Week 6
+
+- Homework: **don't forget**
+   - delete `raise NotImplementedError()` from your notebook before submitting!
+   - submit your homework as `yourmacid_hw3.ipynb`
+   - Instead of using Avenue, you are encouraged to submit your homework to https://macdrive.mcmaster.ca/u/d/7985d0ce553e467e998a/ instead; please upload exactly one file. If your homework is in the proper format, you will receive an automatic e-mail within an hour. All assignments not in the proper format are automatically deleted. **If you do not receive an email, your assignment was in the wrong format; fix any problems and resubmit.** If there is an issue with the link please contact `pocucan@mcmaster.ca`.
+- The lectures this Thursday (10 Oct: Bolker) and Friday (11 Oct: Pang) will be **review sessions** for the test on 22 October. We will be doing a brief overview of the course outline, but will primarily be focusing on questions from students, so please plan to ask questions!
+- The test will cover everything up to and including the "week 5" notes (**not** covering Newton's method, not covering file I/O). Please see the previous years' midterms posted on the course web page for examples of typical questions.
+   
+## Week 5
+
+- Homework #3 is now posted [here](../assignments/math1mp_hw3.ipynb). It is a self-contained Jupyter notebook that includes all of the instructions. Please read these and submit your homework to Avenue to Learn before **11:59 PM on Fri 11 Oct**.
+
+## Week 4
+
+- don't forget to remove the `raise NotImplementedError()` from your homework notebook before submitting!
+- more details on homework submission:
+    - download the homework template from [here](http://bbolker.github.io/math1mp/assignments/math1mp_hw2.ipynb)
+	- if you're working on syzygy, click the "Upload" button (upper right hand of screen) to copy the file from your computer to the syzygy server
+	- fill in your solutions
+	- rename the file to `yourmacid_hw2.ipynb` (where "yourmacid" is your actual MacID, the same as the beginning of your McMaster email address)
+	- download the notebook as a `.ipynb` file:<br>
+    ![](jupyter_download.png)
+	- upload the file to Avenue to Learn: Avenue > Math 1MP3 > Assignments > HW2
+- more on the `[*]` in syzygy:	
+    - This means that *something* earlier in your session got stuck. There's probably nothing wrong with your code. In order, try these solutions:
+	  - `Kernel > Interrupt` 
+	  - `Kernel > Restart`
+	  - `Kernel > Restart & Clear Output`<br>
+         ![](jupyter_interrupt.png)
+    - Next, try stopping and restarting your server: go to the Control Panel (see below), click the Red "Stop My Server" button, then click the blue "Start My Server" button.
+    - Some students have been stuck even after trying all of these. Waiting a while and then logging back in might help. Do please e-mail and let me know which (if any) of these works!
+    - The bottom line, though, is that (1) it's not your fault if stuff gets stuck and (2) if you can run your code somewhere else (with Anaconda/jupyter notebooks on your own computer, in Python Tutor, on Repl.it, etc.) it should be fine.	
+
 ## Week 3
 
 - **QUIZZES ARE POSTPONED UNTIL NEXT WEEK** due to technical difficulties.

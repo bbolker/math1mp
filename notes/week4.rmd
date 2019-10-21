@@ -113,9 +113,9 @@ add_z(z)
 
 ## Scoping rules
 
-**LEGB** (Local, Enclosing, Global, Built-in)
+- **LEGB** (Local, Enclosing, Global, Built-in)
     - *Local*: symbols defined in the function, and arguments
-	- *Enclosing*: symbols defined *in the function within which this function was defined*
+	  - *Enclosing*: symbols defined *in the function within which this function was defined*
 	- *Global*: elsewhere in the file/module
 	- *Built-in*: Python keywords
 	
@@ -170,7 +170,7 @@ h_{n−1} * 16^{n−1} + h_{n−2} * 16^{n−2} + \dots + h_0 * 16^0 \quad .
 $$
 - So to convert word into decimal, we can iterate over each digit in `word` to produce the required value.
 - Note that the $j^{\textrm{th}}$ term in the above sum is equal to
-$h_{n−j−1} ∗ 16^{n−j−1} , with $j = 0, \dots, n − 1$  and that the digit $h_{n−j}$
+$h_{n−j−1} * 16^{n−j−1}$ , with $j = 0, \dots, n − 1$  and that the digit $h_{n−j}$
 is just `word[j]`.
 - **next step**: Create a function `hex_to_decimal(hex_String)`
 with string argument `hex_string` that will returns the value

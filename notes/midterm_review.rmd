@@ -67,7 +67,12 @@ print(3*"blah")
 
 The operators `+=`, `*=`, `/=`, `-=` can be used to do something and then assign the value back to a variable: for instance `x+=1` is exactly equivalent to `x = x+1`
 
-#### Building Strings
+## built-in functions
+
+* determine the type of a variable: `type()`
+* type conversion: `float()`, `int()`, `str()`, `bool()`, `tuple()`
+
+## Building Strings
 
 You can 'build' strings by creating an empty string and adding to it
 
@@ -83,7 +88,7 @@ print(s)
 
 ## Lists
 
-Lists are used to store arrays of any type. They can all be the same type (for example `int`), or differing types. They can also be added together like strings.
+Lists are used to store arrays of any type. They can all be the same type (for example `int`), or differing types. They can also be added together like strings. Create a list with square brackets (`[1, 2, 3]`); an empty list is `[]`.
 
 ```{python}
 numlist  = [1, 2, 3, 4, 5, 525600]
@@ -93,7 +98,11 @@ print(wordlist)
 print(numlist + wordlist)
 ```
 
-#### Nested Lists
+## `range()`
+
+* `range(n)` creates a list-like object `[0,1,...,n-1]`
+
+## Nested Lists
 
 Lists can be nested too (lists in lists).
 
@@ -102,6 +111,14 @@ nestlist = [[1,2,3],[4,5,6],[]]
 print(nestlist)
 ```
 
+Sometimes we represent matrices as lists of equal-length lists: 
+
+```{python}
+m = [[1,2], [3,4], [5,6]] ## a 3 x 2 (3-row, 2-column) matrix
+```
+
+A matrix stored this way has `len(m`) rows and `len(m[0])` columns.
+
 Useful methods for working with lists include `append()` for adding a **single** element to the end of a list, *no matter what type it is*.
 
 ```{python}
@@ -109,7 +126,7 @@ numlist = [1, 2, 3]
 print(numlist)
 numlist.append(4)
 print(numlist)
-numlist.append([5])
+numlist.append([5])  ## last element is a list!
 print(numlist)
 ```
 
@@ -124,7 +141,7 @@ numlist.extend([5, 6, 7])
 print(numlist)
 ```
 
-#### Note on Mutability
+## Note on Mutability
 
 If you assign a list variable to another variable, both variables will point **at the same list**.
 
@@ -136,18 +153,27 @@ print(L1)
 print(L2)
 ```
 
-#### Useful methods for Lists
+## built-in functions for strings/lists/tuples
+
+* `len(x)`: length
+* `v` in `x`: is value `v` found anywhere in `x`?
+
+## Useful methods for Lists
 
 Some other helpful methods for working with lists (from class notes):
 
-* `x.remove(value)`: removes *first* value
-* `x.reverse()` (or `x[::-1]`)
-* `x.index(value)`: first occurrence of `value`
-* `len(x)`: length
-* `v` in `x`: is value `v` found anywhere in `x`?
-* `x.count(v)`: number of occurrences of value `v` in `x`
+Suppose `x = [17, 35, 29]`
 
-Note the last four methods also work on strings and tuples.
+* `x.remove(value)`: removes *first* value (`x.remove(2)` results in `[17,29]`)
+* `x.pop(i)`: removes element at index `i` (`x.pop(2)` results in `[17,35]`)
+* `x.reverse()` (or `x = x[::-1]`) (`x.reverse()` results in `[29, 35, 17]`)
+* `x.sort()`: sorts (`x.sort()` results in `[17, 29, 35]`)
+
+
+* `x.index(value)`: first occurrence of `value` (`x.index(35)` is 1)
+* `x.count(v)`: number of occurrences of value `v` in `x` (`x.count(29)` is 1)
+
+`.index()` and `.count()` also work on strings and tuples.
 
 ***
 
@@ -159,6 +185,8 @@ Similar to lists, but are **immutable** (more on that later).
 tup = (1, 2, 3, (4, 5))
 print(tup)
 ```
+
+An empty tuple is `()`; a tuple with one element is `("hello",)`.
 
 ***
 
@@ -270,16 +298,16 @@ print(add1(x))
 print(x)
 ```
 
-Note that `x` is not modified in the above example because it is **immutable**. Immutable types are numbers (`int`/`float`), strings, and tuples. Imporatant: **lists are mutable**.
+Note that `x` is not modified in the above example because it is **immutable**. Immutable types are numbers (`int`/`float`), `bool`, `str`, and tuples. Important: **lists are mutable**.
 
 ```{python}
-def append4(list):
-	list.append(4)
-	return(list)
+def append4(L):
+	L.append(4)
+	return(L)
 
-numlist = [1,2,3]
-print(append4(numlist))
-print(numlist)
+numL = [1,2,3]
+print(append4(numL))
+print(numL)
 ```
 
 ## Common errors

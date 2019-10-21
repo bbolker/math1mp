@@ -15,6 +15,7 @@ __pycache__
 *~
 .Rhistory
 */.#*
+\#*
 
 ## machinery
 private/
@@ -24,3 +25,5 @@ syzygy-intro/
 makestuff/
 target.mk
 .ipynb_checkpoints/
+
+
