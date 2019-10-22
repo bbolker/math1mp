@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ben Bolker" />
 
-<meta name="date" content="2019-10-20" />
+<meta name="date" content="2019-10-22" />
 
 <title>file I/O, Benford’s Law, sets</title>
 
@@ -180,7 +180,7 @@ summary {
 
 <h1 class="title toc-ignore">file I/O, Benford’s Law, sets</h1>
 <h4 class="author">Ben Bolker</h4>
-<h4 class="date">20 October 2019</h4>
+<h4 class="date">22 October 2019</h4>
 
 </div>
 
@@ -275,7 +275,7 @@ print(lines[2])
 f.close()</code></pre>
 <hr />
 <ul>
-<li>using <code>for</code> loop automatically reads lines too: <code>for line in f: do_something_with(L)</code>. This is probably the most common way to process a file. For example, if you know there is exactly one floating-point value per line and want to print the squares:</li>
+<li>using <code>for</code> loop automatically reads lines too: <code>for line in f: do_something_with(L)</code>. This is probably the most common way to process a file. For example, if you want to convert each line to uppercase:</li>
 </ul>
 <pre class="python"><code>f = open(&quot;test.txt&quot;)
 for line in f:
@@ -283,6 +283,7 @@ for line in f:
     line_u = line.upper()
     print(line_u)
 f.close()    </code></pre>
+<p>If you wanted instead to print the square of a single number occurring on every line, you could use <code>print(int(line)**2)</code> (<code>int()</code> ignores the <code>\n</code> at the end of the line).</p>
 </div>
 <div id="more-io-details" class="section level2">
 <h2>More I/O details</h2>
@@ -347,7 +348,7 @@ while not finished:
 <li><strong>Project:</strong> Create a python function <code>benford_count</code> that tabulates the occurrence of leading digits from a set of numbers.</li>
 <li>The set of numbers should be read in from a file.</li>
 <li>The filename should be an argument to the function.</li>
-<li>The function should return a tuple <code>digits_count</code> of length 10 (one for each digit) such that <code>digits_count[i]</code> is equal to the number of occurrences of the digit i as the leading digit of some number from the file, for i = 1, 1, …, 9.</li>
+<li>The function should return a tuple <code>digits_count</code> of length 10 (one for each digit) such that <code>digits_count[i]</code> is equal to the number of occurrences of the digit i as the leading digit of some number from the file, for i = 1, 2, …, 9.</li>
 <li>So <code>digits_count[2]</code> is the count of the number of times the digit 2 occurred as the leading digit of some number from the file.</li>
 <li>Note that the digit 0 doesn’t occur as the leading digit of a number, except for the number 0, so we really don’t need to count the number of 0’s that occur.</li>
 </ul>
