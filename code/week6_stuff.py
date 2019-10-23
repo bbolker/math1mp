@@ -89,7 +89,11 @@ while not finished:
 def benford_count(fn):
     """fn is the file name"""
     f = open(fn)
-    count = [0,0,0,0,0,0,0,0,0,0]
+    bad_number = 0
+    ## count = []
+    ## for i in range(100):
+    ##    count.append(0)
+    counts = [0]*10 ## [0,0,0,0,0,0,0,0,0,0]
     ## go through the file one line at a time
     ## for each line:
     ##    split the line into words
@@ -99,10 +103,50 @@ def benford_count(fn):
     ##    increment the appropriate counter
     for line in f:
         print(line)
-        words = line.split(" ")
-        number = int(words[1][0])
+        words = line.split(" ") ## list of words
+        try:
+            last_word = words[-1]
+            first_letter = last_word[0]
+            number = int(first_letter)
+            ##number = int(words[1][0])
+        except ValueError:
+            bad_number += 1
+        ##    print("bad number")
         counts[number] = counts[number]+1
     f.close()
-    return(tuple(count))
+    s = sum(counts)
+    for i in range(len(counts)-1):
+     ## counts[i] /= s
+        counts[i] = counts[i]/counts[i+1]
+    if bad_number>0:
+        print(bad_number,"bad number(s)")
+    return(tuple(counts[1:-1]))
 
 benford_count("benford_pop.txt")
+
+vowels = {'a', 'e', 'i', 'o', 'u'}
+print(type(vowels))
+print(vowels)
+vowels2 = {'u','a', 'e', 'i', 'o', 'u', 'e', 'a'}
+print(vowels2)
+vowels == vowels2
+print({1, 2, 3, 'a'} == {'a', 1, 1, 3, 2, 'a'})
+print(set('hello world!'))
+
+'a' in vowels
+
+
+small = {0, 1, 2, 3}
+mid = {3, 4, 5, 6, 7}
+big = {7, 8, 9}
+big.add(10)
+small.remove(0)
+print(small, big)
+print(small.intersection(mid))
+print(small.union(big))
+
+word_char = "1a2b"
+bad_word = "ghij"
+hex_chars = "0123456789abcdef"
+set(word_char) <=  set(hex_chars)
+set(bad_word) <=  set(hex_chars)
