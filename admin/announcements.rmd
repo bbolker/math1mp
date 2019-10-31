@@ -7,6 +7,18 @@ output:
     toc_depth: 2   
 ---
 
+## Week 8
+
+* homework 4: Codelab questions. These are due on Weds Nov 6 at 11:59 PM.
+    - Sets:
+        - Initialization/creation: 51804
+        - Addition/removal: 51805  51810
+        - Iteration: 51301
+    - Dictionaries: 
+        - Adding/removal: 51818  51819  51302
+        -  Traversal:  51828  51826  51281
+    - Files:  51356  51361
+
 ## midterm 1
 
 - midterm 1 will be held from 7-8 PM on 22 October (Tues). If your family name begins with the letters A-S, please go to Canadian Martyrs (across Main Street from the hospital) to take the test. If your family name begins with the letters T-Z, please go to BSB B135.
