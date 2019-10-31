@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ben Bolker" />
 
-<meta name="date" content="2019-10-28" />
+<meta name="date" content="2019-10-31" />
 
 <title>Markov models; numpy</title>
 
@@ -365,7 +365,7 @@ summary {
 
 <h1 class="title toc-ignore">Markov models; numpy</h1>
 <h4 class="author">Ben Bolker</h4>
-<h4 class="date">28 October 2019</h4>
+<h4 class="date">31 October 2019</h4>
 
 </div>
 
@@ -474,26 +474,310 @@ print(clean_string(x))</code></pre>
 <h2>the <code>random</code> module</h2>
 <ul>
 <li>The <code>random</code> module can be used to generate pseudo-random numbers or to pseudo-randomly select items.</li>
-<li>Doc: <a href="https://docs.python.org/3/library/random.html" class="uri">https://docs.python.org/3/library/random.html</a></li>
+<li>docs: <a href="https://docs.python.org/3/library/random.html" class="uri">https://docs.python.org/3/library/random.html</a></li>
 <li><code>randrange()</code> picks a random integer from a prescribed range can be generated</li>
 <li><code>choice(seq)</code> randomly chooses an element from a sequence, such as a list or tuple</li>
 <li><code>shuffle</code> shuffles (permutes) the items in a list; <code>sample()</code> samples elements from a list, tuple, or set</li>
+<li><code>random.seed()</code> sets the starting value for a (pseudo-)random number sequence [<strong>important</strong>]</li>
 </ul>
 </div>
 <div id="random-examples" class="section level2">
 <h2><code>random</code> examples</h2>
 <pre class="python"><code>import random
-random.randrange(2, 102, 2) # random even numbers</code></pre>
-<pre><code>## 52</code></pre>
+random.seed(101)    ## any integer you want
+random.randrange(2, 102, 2) # random even integers</code></pre>
+<pre><code>## 76</code></pre>
 <pre class="python"><code>random.choice([1, 2, 3, 4, 5]) # random choice from list
-## random.choices([1, 2, 3, 4, 5],9) # multiple choices (Python &gt;=3.6)</code></pre>
+## random.choices([1, 2, 3, 4, 5], 9) # multiple choices (Python &gt;=3.6)</code></pre>
 <pre><code>## 2</code></pre>
 <pre class="python"><code>random.sample([1, 2, 3, 4, 5], 3) # rand. sample of 3 items</code></pre>
-<pre><code>## [2, 5, 4]</code></pre>
-<pre class="python"><code>random.random() # random float between 0 and 1</code></pre>
-<pre><code>## 0.8985344874566497</code></pre>
-<pre class="python"><code>random.uniform(3, 7) # random num between 3 and 7</code></pre>
-<pre><code>## 4.22407117581882</code></pre>
+<pre><code>## [5, 3, 2]</code></pre>
+<pre class="python"><code>random.random() # uniform random float between 0 and 1</code></pre>
+<pre><code>## 0.048520987208713895</code></pre>
+<pre class="python"><code>random.uniform(3, 7) # uniform random between 3 and 7</code></pre>
+<pre><code>## 5.014081424907534</code></pre>
+</div>
+<div id="why-random-number-seeds" class="section level2">
+<h2>why random-number seeds?</h2>
+<ul>
+<li>start from the same point every time</li>
+<li>for <strong>reproducibility</strong> and <strong>debugging</strong>
+<ul>
+<li>across computers</li>
+<li>across operating systems</li>
+<li>across sessions</li>
+</ul></li>
+<li>set seed at the beginning of each session/notebook</li>
+</ul>
+<pre class="python"><code>random.seed(101)
+for i in range(3):
+    print(random.randrange(10))</code></pre>
+<pre><code>## 9
+## 3
+## 8</code></pre>
+<pre class="python"><code>random.seed(101)
+for i in range(3):
+    print(random.randrange(10))</code></pre>
+<pre><code>## 9
+## 3
+## 8</code></pre>
+</div>
+<div id="numpy-installation" class="section level2">
+<h2>numpy Installation</h2>
+<p><code>numpy</code> is the fundamental package for scientific computing with Python. It contains among other things:</p>
+<ul>
+<li>a powerful N-dimensional array object</li>
+<li><strong>broadcasting</strong> to run a function across rows/columns</li>
+<li>linear algebra and random number capabilities</li>
+</ul>
+<p><code>numpy</code> should already be installed with Anaconda or on syzygy. If not, you Good documentation can be found <a href="https://docs.scipy.org/doc/numpy/user/">here</a> and <a href="http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf">here</a>.</p>
+</div>
+<div id="arrays" class="section level2">
+<h2>arrays</h2>
+<ul>
+<li>The <code>array()</code> is numpy’s main data structure.</li>
+<li>Similar to a Python <code>list</code>, but must be <em>homogeneous</em> (e.g. floating point (<code>float64</code>) or integer (<code>int64</code>) or <code>str</code>)</li>
+<li>numpy is also more precise about numeric types (e.g. <code>float64</code> is a <em>64-bit</em> floating point number)</li>
+</ul>
+</div>
+<div id="array-examples" class="section level2">
+<h2>array examples</h2>
+<pre class="python"><code>import numpy as np  ## use &quot;as np&quot; so we can abbreviate
+x = [1, 2, 3]
+a = np.array([1, 4, 5, 8], dtype=float)
+print(a)</code></pre>
+<pre><code>## [1. 4. 5. 8.]</code></pre>
+<pre class="python"><code>print(type(a))</code></pre>
+<pre><code>## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
+<pre class="python"><code>print(a.shape)</code></pre>
+<pre><code>## (4,)</code></pre>
+</div>
+<div id="shape" class="section level2">
+<h2>shape</h2>
+<ul>
+<li>the <code>shape</code> of an array is a tuple that lists its dimensions</li>
+<li><code>np.array([1,2])</code> produces a 1-dimensional (1-D) array of length 2 whose entries have type <code>int</code></li>
+<li><code>np.array([1,2], float)</code> produces a 1-dimensional (1-D) array of length 2 whose entries have type <code>float64</code>.</li>
+</ul>
+<pre class="python"><code>a1 = np.array([1,2])
+print(a1.dtype)</code></pre>
+<pre><code>## int64</code></pre>
+<pre class="python"><code>print(a1.shape)</code></pre>
+<pre><code>## (2,)</code></pre>
+<pre class="python"><code>print(len(a1))</code></pre>
+<pre><code>## 2</code></pre>
+<pre class="python"><code>a2 = np.array([1,2],float)
+print(a2.dtype)</code></pre>
+<pre><code>## float64</code></pre>
+<hr />
+<ul>
+<li>arrays can be created from lists or tuples.</li>
+<li>arrays can also be created using the <code>range</code> function.</li>
+<li><code>numpy</code> has a function called <code>np.arange</code> (like <code>range</code>) that creates arrays</li>
+<li><code>np.zeros()</code> and <code>np.ones()</code> create arrays of all zeros or all ones</li>
+</ul>
+</div>
+<div id="more-array-examples" class="section level2">
+<h2>more array examples</h2>
+<pre class="python"><code>x = [1, &#39;a&#39;, 3]
+a = np.array(x)  ## what happens?
+b = np.array(range(10), float)
+c = np.arange(5, dtype=float)
+d = np.arange(2,4, 0.5, dtype=float)
+np.ones(10)</code></pre>
+<pre><code>## array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])</code></pre>
+<pre class="python"><code>np.zeros(4)</code></pre>
+<pre><code>## array([0., 0., 0., 0.])</code></pre>
+</div>
+<div id="slicing-and-indexing" class="section level2">
+<h2>slicing and indexing</h2>
+<ul>
+<li>slicing and indexing of 1-D arrays works the same way as lists/tuples/strings</li>
+<li>arrays are <em>mutable</em> like lists/dictionaries, so we can set elements (e.g. <code>a[1]=0</code>)</li>
+<li>or use the <code>.copy()</code> method to make a new, independent copy (works for lists etc. too!)</li>
+</ul>
+</div>
+<div id="slicingindexing-examples" class="section level2">
+<h2>slicing/indexing examples</h2>
+<pre class="python"><code>a1 = np.array([1.0, 2, 3, 4, 5, 6])
+a1[1]</code></pre>
+<pre><code>## 2.0</code></pre>
+<pre class="python"><code>a1[:-3]</code></pre>
+<pre><code>## array([1., 2., 3.])</code></pre>
+<pre class="python"><code>b1 = a1
+c1 = a1.copy()
+b1[1] = 23
+a1[1]</code></pre>
+<pre><code>## 23.0</code></pre>
+<pre class="python"><code>c1[1]</code></pre>
+<pre><code>## 2.0</code></pre>
+</div>
+<div id="multi-dimensional-arrays" class="section level2">
+<h2>Multi-dimensional arrays</h2>
+<ul>
+<li>We have used nested lists of lists to represent matrices.</li>
+<li>numpy’s 2-dimensional arrays serve the same purpose but are (much) easier to work with</li>
+<li>they can be created by passing a list of lists/tuple of tuples to the <code>np.array()</code> function</li>
+<li><strong>Elements of an array are indexed via <code>a[i,j]</code> rather than <code>a[i][j]</code></strong></li>
+</ul>
+</div>
+<div id="examples" class="section level2">
+<h2>examples</h2>
+<pre class="python"><code>nested = [[1, 2, 3], [4, 5, 6]]
+a = np.array(nested, float)
+nested[0][2]</code></pre>
+<pre><code>## 3</code></pre>
+<pre class="python"><code>a[0,2]</code></pre>
+<pre><code>## 3.0</code></pre>
+<pre class="python"><code>a</code></pre>
+<pre><code>## array([[1., 2., 3.],
+##        [4., 5., 6.]])</code></pre>
+<pre class="python"><code>a.shape</code></pre>
+<pre><code>## (2, 3)</code></pre>
+</div>
+<div id="slicing-and-reshaping-multi-dimensional-arrays" class="section level2">
+<h2>slicing and reshaping multi-dimensional arrays</h2>
+<ul>
+<li>slicing of multiple dimensional arrays works similarly to lists and strings.</li>
+<li>for each dimension, we can specify a particular slice</li>
+<li><code>:</code> indicates that everything along a dimension will be used.</li>
+</ul>
+</div>
+<div id="examples-1" class="section level2">
+<h2>examples</h2>
+<pre class="python"><code>a = np.array([[1, 2, 3], [4, 5, 6]], float)
+a[1, :]     ## row index 1</code></pre>
+<pre><code>## array([4., 5., 6.])</code></pre>
+<pre class="python"><code>a[:, 2]     ## column index 2</code></pre>
+<pre><code>## array([3., 6.])</code></pre>
+<pre class="python"><code>a[-1:, -2:] ## slicing rows and columns</code></pre>
+<pre><code>## array([[5., 6.]])</code></pre>
+</div>
+<div id="reshaping" class="section level2">
+<h2>reshaping</h2>
+<p>An array can be reshaped using the <code>reshape(t)</code> method, where we specify a tuple <code>t</code> that gives the new dimensions of the array.</p>
+<pre class="python"><code>a = np.array(range(10), float)
+a = a.reshape((5,2))
+print(a)</code></pre>
+<pre><code>## [[0. 1.]
+##  [2. 3.]
+##  [4. 5.]
+##  [6. 7.]
+##  [8. 9.]]</code></pre>
+</div>
+<div id="flattening-an-array" class="section level2">
+<h2>flattening an array</h2>
+<p><code>.flatten()</code> converts an array with a given shape to a 1-D array:</p>
+<pre class="python"><code>a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(a)</code></pre>
+<pre><code>## [[1 2 3]
+##  [4 5 6]
+##  [7 8 9]]</code></pre>
+<pre class="python"><code>print(a.flatten())</code></pre>
+<pre><code>## [1 2 3 4 5 6 7 8 9]</code></pre>
+</div>
+<div id="zeroone-arrays" class="section level2">
+<h2>zero/one arrays</h2>
+<ul>
+<li><code>np.zeros(shape)</code> and <code>np.ones(shape)</code> work for multidimensional arrays if we provide a tuple of length &gt; 1</li>
+<li>use <code>np.ones_like()</code>, <code>np.zeros_like()</code>, or the <code>.fill()</code> method to create arrays of just zeros or ones (or some other value) and are the same shape as an existing array</li>
+</ul>
+<pre class="python"><code>b = np.ones_like(a)
+b.fill(33)</code></pre>
+</div>
+<div id="identity-matrices" class="section level2">
+<h2>identity matrices</h2>
+<ul>
+<li>Use <code>np.identity()</code> or <code>np.eye()</code> to create an identity matrix (all zeros except for ones down the diagonal)</li>
+<li><code>np.eye()</code> also lets you fill in <em>off-diagonal</em> elements</li>
+</ul>
+<hr />
+<pre class="python"><code>print(np.identity(4, dtype=float)),</code></pre>
+<pre><code>## [[1. 0. 0. 0.]
+##  [0. 1. 0. 0.]
+##  [0. 0. 1. 0.]
+##  [0. 0. 0. 1.]]
+## (None,)</code></pre>
+<pre class="python"><code>print(np.eye(4, k = -1, dtype=int))</code></pre>
+<pre><code>## [[0 0 0 0]
+##  [1 0 0 0]
+##  [0 1 0 0]
+##  [0 0 1 0]]</code></pre>
+</div>
+<div id="array-mathematics" class="section level2">
+<h2>array mathematics</h2>
+<ul>
+<li>for lists (or tuples or strings), the <code>+</code> operation concatenates two objects to create a longer one</li>
+<li><strong>this works differently for arrays</strong></li>
+<li>use <code>np.concatenate()</code> to stick two suitably shaped arrays together: to concatenate two arrays of suitable shapes, the</li>
+</ul>
+<pre class="python"><code>a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = np.array([[10, 11,12], [13, 14, 15], [16, 17, 18]])
+print(np.concatenate((a,b)))</code></pre>
+<pre><code>## [[ 1  2  3]
+##  [ 4  5  6]
+##  [ 7  8  9]
+##  [10 11 12]
+##  [13 14 15]
+##  [16 17 18]]</code></pre>
+</div>
+<div id="array-operators" class="section level2">
+<h2>array operators</h2>
+<ul>
+<li>When the + operation is used on arrays, it is applied on an element-by-element basis.</li>
+<li>This also applies to most other standard mathematical operations.</li>
+</ul>
+<pre class="python"><code>print(a+b)</code></pre>
+<pre><code>## [[11 13 15]
+##  [17 19 21]
+##  [23 25 27]]</code></pre>
+<pre class="python"><code>print(a*b)</code></pre>
+<pre><code>## [[ 10  22  36]
+##  [ 52  70  90]
+##  [112 136 162]]</code></pre>
+<pre class="python"><code>print(a**b)</code></pre>
+<pre><code>## [[                 1               2048             531441]
+##  [          67108864         6103515625       470184984576]
+##  [    33232930569601   2251799813685248 150094635296999121]]</code></pre>
+</div>
+<div id="adding-arrays-and-scalars" class="section level2">
+<h2>adding arrays and scalars</h2>
+<ul>
+<li>To add a number, say 1, to every element of an array a, type <code>a + 1</code></li>
+<li>similarly for other operations, like <code>-</code>, <code>*</code>, <code>**</code>, <code>/</code>, . . .</li>
+</ul>
+<pre class="python"><code>print(a + 1)</code></pre>
+<pre><code>## [[ 2  3  4]
+##  [ 5  6  7]
+##  [ 8  9 10]]</code></pre>
+<pre class="python"><code>print(a/2)</code></pre>
+<pre><code>## [[0.5 1.  1.5]
+##  [2.  2.5 3. ]
+##  [3.5 4.  4.5]]</code></pre>
+<pre class="python"><code>print(a ** 3)</code></pre>
+<pre><code>## [[  1   8  27]
+##  [ 64 125 216]
+##  [343 512 729]]</code></pre>
+</div>
+<div id="more-math-functions" class="section level2">
+<h2>more math functions</h2>
+<ul>
+<li><code>numpy</code> comes with a large library of common functions (sin, cos, log, exp, . . .): these work element-wise</li>
+<li>some functions that can be applied to arrays
+<ul>
+<li>for example <code>a.sum()</code> and <code>a.prod()</code> will produce the sum and the product of the items in <code>a</code>:</li>
+</ul></li>
+</ul>
+<pre class="python"><code>print(np.sin(a))</code></pre>
+<pre><code>## [[ 0.84147098  0.90929743  0.14112001]
+##  [-0.7568025  -0.95892427 -0.2794155 ]
+##  [ 0.6569866   0.98935825  0.41211849]]</code></pre>
+<pre class="python"><code>print(a.sum())</code></pre>
+<pre><code>## 45</code></pre>
+<pre class="python"><code>print(a.prod())</code></pre>
+<pre><code>## 362880</code></pre>
+<pre class="python"><code>print(a.mean())</code></pre>
+<pre><code>## 5.0</code></pre>
 </div>
 
 
