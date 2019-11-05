@@ -116,19 +116,248 @@ functions:
 ## the `random` module
 
 - The `random` module can be used to generate pseudo-random numbers or to pseudo-randomly select items.
-- Doc: https://docs.python.org/3/library/random.html
+- docs: https://docs.python.org/3/library/random.html
 - `randrange()` picks a random integer from a prescribed range can be generated
 - `choice(seq)` randomly chooses an element from a sequence, such as a list or tuple
 - `shuffle` shuffles (permutes) the items in a list; `sample()` samples elements from a list, tuple, or set
+- `random.seed()` sets the starting value for a (pseudo-)random number sequence [**important**]
 
 ## `random` examples
 
 ```{python random,eval=TRUE}
 import random
-random.randrange(2, 102, 2) # random even numbers
+random.seed(101)    ## any integer you want
+random.randrange(2, 102, 2) # random even integers
 random.choice([1, 2, 3, 4, 5]) # random choice from list
-## random.choices([1, 2, 3, 4, 5],9) # multiple choices (Python >=3.6)
+## random.choices([1, 2, 3, 4, 5], 9) # multiple choices (Python >=3.6)
 random.sample([1, 2, 3, 4, 5], 3) # rand. sample of 3 items
-random.random() # random float between 0 and 1
-random.uniform(3, 7) # random num between 3 and 7
+random.random() # uniform random float between 0 and 1
+random.uniform(3, 7) # uniform random between 3 and 7
+```
+
+## why random-number seeds?
+
+- start from the same point every time
+- for **reproducibility** and **debugging**
+    - across computers
+	- across operating systems
+	- across sessions
+- set seed at the beginning of each session/notebook
+
+```{python random_seed,eval=TRUE}
+random.seed(101)
+for i in range(3):
+    print(random.randrange(10))
+random.seed(101)
+for i in range(3):
+    print(random.randrange(10))
+```
+
+## numpy Installation
+
+`numpy` is the fundamental package for scientific computing
+with Python. It contains among other things:
+
+- a powerful N-dimensional array object
+- **broadcasting** to run a function across rows/columns
+- linear algebra and random number capabilities
+
+`numpy` should already be installed with Anaconda or on syzygy. If not, you 
+Good documentation can be found [here](https://docs.scipy.org/doc/numpy/user/) and [here](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf).
+
+
+## arrays
+
+- The `array()` is numpy’s main data structure.
+- Similar to a Python `list`, but must be *homogeneous* (e.g. floating point (`float64`) or integer (`int64`) or `str`)
+- numpy is also more precise about numeric types (e.g. `float64` is a *64-bit* floating point number)
+
+## array examples
+
+```{python,eval=TRUE}
+import numpy as np  ## use "as np" so we can abbreviate
+x = [1, 2, 3]
+a = np.array([1, 4, 5, 8], dtype=float)
+print(a)
+print(type(a))
+print(a.shape)
+```
+
+## shape
+
+- the `shape` of an array is a tuple that lists its dimensions
+- `np.array([1,2])` produces a 1-dimensional (1-D) array of length 2 whose entries have type `int`
+- `np.array([1,2], float)` produces a 1-dimensional (1-D) array of length 2 whose entries have type `float64`.
+
+```{python,eval=TRUE}
+a1 = np.array([1,2])
+print(a1.dtype)
+print(a1.shape)
+print(len(a1))
+a2 = np.array([1,2],float)
+print(a2.dtype)
+```
+
+---
+
+- arrays can be created from lists or tuples.
+- arrays can also be created using the `range` function.
+- `numpy` has a function called `np.arange` (like `range`) that creates arrays
+- `np.zeros()` and `np.ones()` create arrays of all zeros or all ones
+
+## more array examples
+
+```{python,eval=TRUE}
+x = [1, 'a', 3]
+a = np.array(x)  ## what happens?
+b = np.array(range(10), float)
+c = np.arange(5, dtype=float)
+d = np.arange(2,4, 0.5, dtype=float)
+np.ones(10)
+np.zeros(4)
+```
+
+## slicing and indexing
+
+- slicing and indexing of 1-D arrays works the same way as lists/tuples/strings
+- arrays are *mutable* like lists/dictionaries, so we can set elements (e.g. `a[1]=0`)
+- or use the `.copy()` method to make a new, independent copy (works for lists etc. too!) 
+
+## slicing/indexing examples
+
+```{python,eval=TRUE}
+a1 = np.array([1.0, 2, 3, 4, 5, 6])
+a1[1]
+a1[:-3]
+b1 = a1
+c1 = a1.copy()
+b1[1] = 23
+a1[1]
+c1[1]
+```
+
+## Multi-dimensional arrays
+
+- We have used nested lists of lists to represent matrices.
+- numpy's 2-dimensional arrays serve the same purpose but are (much) easier to work with
+- they can be created by passing a list of lists/tuple of tuples to the `np.array()` function
+- **Elements of an array are indexed via `a[i,j]` rather than `a[i][j]`**
+
+## examples
+
+```{python,eval=TRUE}
+nested = [[1, 2, 3], [4, 5, 6]]
+a = np.array(nested, float)
+nested[0][2]
+a[0,2]
+a
+a.shape
+```
+
+
+## slicing and reshaping multi-dimensional arrays
+
+- slicing of multiple dimensional arrays works similarly to lists and strings.
+- for each dimension, we can specify a particular slice
+- `:` indicates that everything along a dimension will be used.
+
+## examples
+
+```{python,eval=TRUE}
+a = np.array([[1, 2, 3], [4, 5, 6]], float)
+a[1, :]     ## row index 1
+a[:, 2]     ## column index 2
+a[-1:, -2:] ## slicing rows and columns
+```
+
+## reshaping
+
+An array can be reshaped using the `reshape(t)` method, where we specify a tuple `t` that gives the new dimensions of the array.
+
+```{python,eval=TRUE}
+a = np.array(range(10), float)
+a = a.reshape((5,2))
+print(a)
+```
+
+## flattening an array
+
+`.flatten()` converts an array with a given shape to a 1-D array:
+
+```{python,eval=TRUE}
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(a)
+print(a.flatten())
+```
+
+## zero/one arrays
+
+- `np.zeros(shape)` and `np.ones(shape)` work for multidimensional arrays if we provide a tuple of length > 1
+- use `np.ones_like()`, `np.zeros_like()`, or the `.fill()` method to create arrays of just zeros or ones (or some other value) and are the same shape as an existing array
+
+```{python,eval=TRUE}
+b = np.ones_like(a)
+b.fill(33)
+```
+
+## identity matrices
+
+- Use `np.identity()` or `np.eye()` to create an identity matrix (all zeros except for ones down the diagonal)
+- `np.eye()` also lets you fill in *off-diagonal* elements
+
+---
+
+```{python,eval=TRUE}
+print(np.identity(4, dtype=float)),
+print(np.eye(4, k = -1, dtype=int))
+```
+
+
+## array mathematics
+
+- for lists (or tuples or strings), the `+` operation concatenates two objects to create a longer one
+- **this works differently for arrays**
+- use `np.concatenate()` to stick two suitably shaped arrays together:
+to concatenate two arrays of suitable shapes, the
+
+```{python,eval=TRUE}
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = np.array([[10, 11,12], [13, 14, 15], [16, 17, 18]])
+print(np.concatenate((a,b)))
+```
+
+## array operators
+
+- When the + operation is used on arrays, it is applied on an element-by-element basis.
+- This also applies to most other standard mathematical operations.
+
+```{python,eval=TRUE}
+print(a+b)
+print(a*b)
+print(a**b)
+```
+
+## adding arrays and scalars
+
+- To add a number, say 1, to every element of an array a, type `a + 1`
+- similarly for other operations, like `-`, `*`, `**`, `/`, . . .
+
+```{python,eval=TRUE}
+print(a + 1)
+print(a/2)
+print(a ** 3)
+```
+
+## more math functions
+
+- `numpy` comes with a large library of common functions (sin, cos, log, exp, . . .): these work element-wise
+- some functions that can be applied to arrays
+    - for example `a.sum()` and `a.prod()` will produce the sum and
+the product of the items in `a`:
+
+```{python,eval=TRUE}
+print(np.sin(a))
+print(a.sum())
+print(a.prod())
+print(a.mean())
 ```

@@ -9,6 +9,7 @@ output:
 
 ## Week 8
 
+* problem 51826 **has a typographical error**.  For now, you should use a dictionary called `wwii_battle_winners` (all lowercase) in your solution, not `wwII_battle_winners`. If you run out of attempts because of this mistake, please let me know.  (I've told the CodeLab folks folks about this, so there is some chance they will fix it.)
 * homework 4: Codelab questions. These are due on Weds Nov 6 at 11:59 PM.
     - Sets:
         - Initialization/creation: 51804

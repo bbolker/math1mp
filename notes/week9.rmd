@@ -1,0 +1,237 @@
+---
+title: "numpy continued"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+author: Ben Bolker
+output:
+  tufte_handout:
+     pandoc_args: ["--dpi", "300"]
+---
+
+</style>
+<!--    content: url(https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
+>
+<!-- Limit image width and height -->
+<style type="text/css">
+img {     
+  max-height: 560px;     
+  max-width: 800px; 
+}
+</style>
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+knitr::opts_chunk$set(eval=TRUE)
+library("reticulate")
+use_python("/usr/bin/python3")
+```
+
+## operations along axes
+
+- array axes are numbered
+    - 0 = rows
+	- 1 = columns
+	- 2 = "slices"
+
+From [here](https://www.sharpsightlabs.com/blog/numpy-axes-explained/):
+
+> When you use the NumPy sum function with the axis parameter, the axis that you specify is the axis that gets collapsed.
+
+## examples
+
+```{python,eval=TRUE}
+import numpy as np
+a = np.arange(25).reshape((5,5))
+print(a)
+```
+
+```{python,eval=TRUE}
+print(a.sum())       ## axis=None, collapse everything
+print(a.sum(axis=0)) ## sum *across* rows, collapse rows
+print(a.sum(axis=1)) ## sum *across* columns, collapse columns
+```
+
+## try a 3-D array
+
+```{python}
+b = np.arange(24).reshape((2,3,4))
+print(b)  ## 2 slices, 3 rows, 4 columns
+```
+
+```{python}
+print(b.sum())
+print(b.sum(axis=0))
+print(b.sum(axis=1))
+print(b.sum(axis=2))
+```
+
+## broadcasting
+
+- **broadcasting** means matching up dimensions when doing operations on two non-matching arrays.
+- errors may be thrown if arrays do not match in size, e.g.
+```{python,eval=FALSE}
+np.array([1, 2, 3]) + np.array([4, 5])
+## ValueError: operands could not be broadcast together with shapes (3,) (2,)
+```
+- arrays that do not match in the number of **dimensions** will be broadcast (to perform mathematical operations)
+- the smaller array will be repeated as necessary
+```{python}
+a = np.array([[1, 2], [3, 4], [5, 6]], float)
+b = np.array([-1, 3], float)
+print(a + b)
+```
+
+---
+
+- sometimes it doesn't work
+
+```{python}
+c = np.arange(3)
+```
+
+```{python,eval=FALSE}
+a + c
+## ValueError: operands could not be broadcast together with shapes (3,2) (3,)
+```
+
+- you could reshape it:
+```{python}
+a + c.reshape(3,1)
+```
+- or use slicing with `np.newaxis`
+```{python,newaxis}
+print(c)
+print(c[:])
+print(c[np.newaxis,:])
+print(c[:,np.newaxis])
+a + c[:,np.newaxis]
+```
+- think of `np.newaxis` as adding a new, *length-one* dimension
+
+## matrix and vector math
+
+- dot products: use the `np.dot()` function
+```{python}
+c = np.arange(4,7)
+d = np.arange(-1,-4,-1)
+print(np.dot(c,d))
+```
+- `.dot()` also works for matrix multiplication
+-  here we multiply `a` = (3x2) x `e` = (2x4) to get a 3x4 matrix
+```{python}
+e = np.array([[1, 0, 2, -1], [0, 1, 2, -3]])
+print(np.dot(a,e))
+```
+
+## more matrix math
+
+- get transposes with `a.T` or `np.transpose(a)`
+- the `linalg` submodule does non-trivial linear algebra:
+determinants, inverses, eigenvalues and eigenvectors
+
+```{python}
+a = np.array([[4, 2, 0], [9, 3, 7], [1, 2, 1]])
+print(np.linalg.det(a))
+import numpy.linalg as npl  ## shortcut
+npl.det(a)
+```
+
+## inverses
+
+```{python}
+print(npl.inv(a))
+m = np.dot(a,npl.inv(a))
+print(m)
+print(m.round())
+```
+
+## eigenstuff
+
+```{python}
+vals, vecs = npl.eig(a) ## unpack
+print(vals)
+print(vecs)
+```
+
+## testing eigenstuff
+
+We expect $A e_0 = \lambda_a e_0$. Does it work?
+```{python}
+e0 = vecs[:,0]
+print(np.isclose(np.dot(a,e0),vals[0]*e0))
+```
+
+## array iteration
+
+- arrays can be iterated over in a similar way to lists
+- the statement `for x in a:` will iterate over the *first* (0) axis of `a`
+
+```{python,eval=FALSE}
+c = np.arange(2, 10, 3, dtype=float)
+for x in c:
+   print(x)
+```
+
+```{python}
+for x in a:
+    print(a)
+```
+
+## logical arrays
+
+* vectorized logical comparisons
+* e.g. `a>0` gives an array of `bool`
+
+```{python}
+a = np.array([2, 4, 6], float)
+b = np.array([4, 2, 6], float)
+result1 = (a > b)
+result2 = (a == b)
+print(result1, result2)
+```
+
+## more examples
+
+```{python}
+## compare with scalar
+print(a>3)
+```
+
+* `any` and `all` and logical expressions work:
+
+```{python}
+c = np.array([True, False, False])
+d = np.array([False, False, True])
+print(any(c), all(c))
+print(np.logical_and(c,d))
+print(np.logical_or(a>4,a<3))
+```
+
+## selecting based on logical values
+
+```{python}
+print(a[a >= 6])
+sel = np.logical_and(a>5, a<9)
+print(a[sel])
+```
+
+Set all elements of `a` that are >4 to 0:
+
+```{python}
+a[a>4] = 0
+print(a)
+```
+
+## examples
+
+Many examples [here](http://www.labri.fr/perso/nrougier/teaching/numpy.100/index.html) (or [here](http://mybinder.org/repo/rougier/numpy-100/notebooks/100_Numpy_exercises.ipynb)), e.g.
+
+-calculate the mean of the squares of the natural numbers up to 7
+- create a 5 x 5 array with row values ranging from 0 to 1 by 0.2
+- create a 3 x 7 array containing the values 0 to 20 and a 7 x 3 array containing the values 0 to 20 and matrix-multiply them: the result should be
+
+```{python,echo=FALSE}
+print(np.dot(np.arange(21).reshape((3,7)),
+       np.arange(21).reshape((7,3))))
+```
+
+**coming soon: Mandelbrot set example**
