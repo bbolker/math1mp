@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ben Bolker" />
 
-<meta name="date" content="2019-11-05" />
+<meta name="date" content="2019-11-07" />
 
 <title>numpy continued</title>
 
@@ -365,7 +365,7 @@ summary {
 
 <h1 class="title toc-ignore">numpy continued</h1>
 <h4 class="author">Ben Bolker</h4>
-<h4 class="date">05 November 2019</h4>
+<h4 class="date">07 November 2019</h4>
 
 </div>
 
@@ -624,7 +624,181 @@ print(a)</code></pre>
 <pre><code>## [[ 273  294  315]
 ##  [ 714  784  854]
 ##  [1155 1274 1393]]</code></pre>
-<p><strong>coming soon: Mandelbrot set example</strong></p>
+</div>
+<div id="gamblers-ruin-revisited" class="section level2">
+<h2>gambler’s ruin revisited</h2>
+<p>A slightly more compact version of the “gambler’s ruin” code (i.e., a Markov chain starting at a particular value and going up or down by one unit at each step with a probability of <span class="math inline">\(p\)</span> or <span class="math inline">\(1-p\)</span> respectively.</p>
+<pre class="python"><code>import numpy as np
+import numpy.random as npr
+def gamblers_ruin(start=10,max=50,prob=0.5):
+    ## iterate until you get to zero or max
+    ## return tuple: (0 = lost, 1 = won,
+    ##   [number of steps]
+    i = 0
+    x = start
+    while x&gt;0 and x&lt;max:
+        r = npr.uniform()
+        x += np.sign(prob-r) ## +/- 1
+    result = int(x&gt;0)
+    return(np.array((result, i)))</code></pre>
+<p>Simulate 1000 games:</p>
+<pre class="python"><code>sim = np.zeros((1000,2))
+for i in range(1000):
+    sim[i,:] = gamblers_ruin()</code></pre>
+<p>Evaluate results:</p>
+<pre class="python"><code>sim[:,0].mean()  ## prob of winning</code></pre>
+<pre><code>## 0.176</code></pre>
+<pre class="python"><code>sim[:,1].max()   ## max number of steps</code></pre>
+<pre><code>## 0.0</code></pre>
+<pre class="python"><code>sim[:,1].min()   ## min number of steps</code></pre>
+<pre><code>## 0.0</code></pre>
+<pre class="python"><code>lost = sim[:,0]==0
+sim[lost,1].mean()</code></pre>
+<pre><code>## 0.0</code></pre>
+<pre class="python"><code>sim[np.logical_not(lost),1].mean()</code></pre>
+<pre><code>## 0.0</code></pre>
+<p>We can try this for different starting values, upper bounds, probabilities of winning, etc.: see e.g. <a href="http://www.columbia.edu/~ks20/FE-Notes/4700-07-Notes-GR.pdf">here</a> for the derivation of the analytical solution:</p>
+<p><span class="math display">\[
+P_i = \begin{cases}
+\frac{1- \left( \frac{q}{p} \right)^i}{1- \left( \frac{q}{p}\right)^N} \quad , 
+&amp; \textrm{if } p \neq q \\
+\frac{i}{N} \quad , &amp; \textrm{if } p=q=0.5
+\end{cases}
+\]</span> where <span class="math inline">\(i\)</span>=starting value; <span class="math inline">\(p\)</span>=winning probability; <span class="math inline">\(q=1-p\)</span>; <span class="math inline">\(N\)</span>=upper bound</p>
+</div>
+<div id="numerics" class="section level1">
+<h1>numerics</h1>
+<div id="section" class="section level2">
+<h2></h2>
+<ul>
+<li>In Python, numbers are stored as binary digits (bits).</li>
+<li>If <code>n</code> bits are available to store a <strong>signed</strong> integer, we use one bit to indicate the sign; this gives room to store <strong>signed</strong> values between <span class="math inline">\(−2^{n−1}\)</span> and <span class="math inline">\(2^{n−1} − 1\)</span></li>
+<li>So, 64 bits can be used to store any integer between -9223372036854775808 and 9223372036854775807 (since <span class="math inline">\(2^63 - 1\)</span> = 9223372036854775807). Fortunately, base Python automatically uses as many bits as necessary to store arbitrary-length integers</li>
+</ul>
+<pre class="python"><code>a = 2 ** 63 - 1
+b = a * 100000
+print(&quot;a = &quot;,a, &quot;, b = &quot;,b)</code></pre>
+<pre><code>## a =  9223372036854775807 , b =  922337203685477580700000</code></pre>
+<hr />
+<ul>
+<li>In other languages, and with <code>numpy</code> arrays, you need to be careful!</li>
+<li>The default type for integers within numpy is int32 or int64 but this might depend on your hardware/operating system</li>
+</ul>
+<pre class="python"><code>a = np.array([2 ** 63 - 1])
+b = np.array([2 ** 31 - 1])
+print(a.dtype, b.dtype)</code></pre>
+<pre><code>## int64 int64</code></pre>
+<ul>
+<li>If you’re not using huge integers (i.e. &gt; <span class="math inline">\(2^63-1\)</span>), you don’t need to worry</li>
+<li>You have <a href="https://docs.scipy.org/doc/numpy/user/basics.types.html">lots of choices</a>, including
+<ul>
+<li>int8, int16, int32, int64</li>
+<li><strong>unsigned</strong> values: uint8, uint16, uint32 uint64</li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li>for small sizes, or huge numbers, you can get <strong>overflow</strong></li>
+</ul>
+<pre class="python"><code>a = np.array([1], dtype=&quot;int8&quot;) ## 8-bit integer (-127 to 128)
+print(bin(a[0]))</code></pre>
+<pre><code>## 0b1</code></pre>
+<pre class="python"><code>a[0] = 127
+print(bin(a[0]))</code></pre>
+<pre><code>## 0b1111111</code></pre>
+<pre class="python"><code>a[0] += 1
+print(bin(a[0]))</code></pre>
+<pre><code>## -0b10000000</code></pre>
+<pre class="python"><code>print(a)</code></pre>
+<pre><code>## [-128]</code></pre>
+<p><strong>be careful</strong> (<a href="https://xkcd.com/571/">obligatory xkcd</a>)</p>
+</div>
+<div id="floats" class="section level2">
+<h2>floats</h2>
+<ul>
+<li>Floating point numbers are represented in computer hardware as <strong>binary fractions</strong> plus</li>
+<li>Many decimal fractions cannot be represented exactly as binary fractions</li>
+<li>This can lead to unexpected or suprising results.</li>
+</ul>
+<pre class="python"><code>print(&quot;2/3 = &quot;,2 / 3,&quot; 2/3 + 1 =&quot;,2/3 + 1, &quot;\n&quot;,
+&quot; 5/3 =&quot;, 5/3)</code></pre>
+<pre><code>## 2/3 =  0.6666666666666666  2/3 + 1 = 1.6666666666666665 
+##   5/3 = 1.6666666666666667</code></pre>
+<pre class="python"><code>print(&quot;1.13 - 1.1 =&quot;, 1.13 - 1.1, &quot;\n3.13 - 1.1 =&quot;, 3.13 - 1.1)</code></pre>
+<pre><code>## 1.13 - 1.1 = 0.029999999999999805 
+## 3.13 - 1.1 = 2.03</code></pre>
+<pre class="python"><code>print(&quot;1+1e-15 =&quot;,1+1e-15, &quot;\n1+1e-16 =&quot;,1+1e-16)</code></pre>
+<pre><code>## 1+1e-15 = 1.000000000000001 
+## 1+1e-16 = 1.0</code></pre>
+<pre class="python"><code>a = float(1234567890123456)
+print(&quot;a=&quot;,a,&quot;\na*10=&quot;,a*10)</code></pre>
+<pre><code>## a= 1234567890123456.0 
+## a*10= 1.234567890123456e+16</code></pre>
+<hr />
+<ul>
+<li>None of these results are errors: they are an inevitable outcome of finite precision</li>
+<li>Small differences <strong>might</strong> not matter, but they can accumulate, and</li>
+</ul>
+<pre class="python"><code>sqrt2 = np.sqrt(2)
+sqrt2**2==2.0</code></pre>
+<pre><code>## False</code></pre>
+<pre class="python"><code>np.isclose(sqrt2**2,2.0)</code></pre>
+<pre><code>## True</code></pre>
+<hr />
+<ul>
+<li>floating point values are stored as a <strong>mantissa</strong> (digits) and an <strong>exponent</strong></li>
+</ul>
+<pre class="python"><code>import sys
+sys.float_info()</code></pre>
+<ul>
+<li><code>max</code>=1.7976931348623157e+308 (the largest float that can be stored)</li>
+<li><code>max_exp</code>=1024 (so 11 bits are needed to store the signed exponent)</li>
+<li><code>max_10_exp</code>=308</li>
+<li><code>min</code>=2.2250738585072014e-308 (closest to zero [almost])</li>
+<li><code>min_10_exp</code>=-307</li>
+<li><code>dig=15</code> (number of decimal digits)</li>
+<li><code>mant_dig</code>=53 (bits in mantissa)</li>
+<li><code>epsilon=2.220446049250313e-16</code> (smallest number such that 1+x &gt; x)</li>
+</ul>
+</div>
+<div id="overflow-and-underflow" class="section level2">
+<h2>overflow and underflow</h2>
+<pre class="python"><code>x = 1e308
+small_x = 2e-323
+print(&quot;x*1000=&quot;,x*1000,
+      &quot;\nx*1000-x*1000=&quot;,x*1000-x*1000,
+      &quot;\nsmall_x/1000&quot;,small_x/1000)</code></pre>
+<pre><code>## x*1000= inf 
+## x*1000-x*1000= nan 
+## small_x/1000 0.0</code></pre>
+<p><code>inf</code> means “infinity” and <code>nan</code> means “not a number”</p>
+</div>
+<div id="what-should-you-do-instead" class="section level2">
+<h2>What should you do instead?</h2>
+<ul>
+<li>devise a more stable algorithm (e.g. one that adds items in increasing order)</li>
+<li>work on the log scale (i.e. add log values rather than multiplying values)</li>
+<li>use extended/arbitrary precision floats: decimal module (built in), or mpmath</li>
+<li><strong>always be careful comparing floating point</strong></li>
+</ul>
+</div>
+<div id="higher-precision" class="section level2">
+<h2>higher precision</h2>
+<ul>
+<li>temptation is just to increase precision
+<ul>
+<li><code>float128</code> in numpy</li>
+<li><code>mpmath</code> module for <strong>arbitrary-precision</strong> numbers (but infinite precision!)</li>
+</ul></li>
+</ul>
+<pre class="python"><code>import mpmath
+print(+1*mpmath.pi)</code></pre>
+<pre><code>## 3.14159265358979</code></pre>
+<pre class="python"><code>mpmath.mp.dps=1000
+print(+1*mpmath.pi)</code></pre>
+<pre><code>## 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949129833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132000568127145263560827785771342757789609173637178721468440901224953430146549585371050792279689258923542019956112129021960864034418159813629774771309960518707211349999998372978049951059731732816096318595024459455346908302642522308253344685035261931188171010003137838752886587533208381420617177669147303598253490428755468731159562863882353787593751957781857780532171226806613001927876611195909216420198</code></pre>
+<p>but you will often be disappointed</p>
+</div>
 </div>
 
 
