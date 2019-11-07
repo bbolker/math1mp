@@ -647,7 +647,7 @@ for i in range(1000):
     sim[i,:] = gamblers_ruin()</code></pre>
 <p>Evaluate results:</p>
 <pre class="python"><code>sim[:,0].mean()  ## prob of winning</code></pre>
-<pre><code>## 0.176</code></pre>
+<pre><code>## 0.212</code></pre>
 <pre class="python"><code>sim[:,1].max()   ## max number of steps</code></pre>
 <pre><code>## 0.0</code></pre>
 <pre class="python"><code>sim[:,1].min()   ## min number of steps</code></pre>
@@ -672,8 +672,8 @@ P_i = \begin{cases}
 <h2></h2>
 <ul>
 <li>In Python, numbers are stored as binary digits (bits).</li>
-<li>If <code>n</code> bits are available to store a <strong>signed</strong> integer, we use one bit to indicate the sign; this gives room to store <strong>signed</strong> values between <span class="math inline">\(−2^{n−1}\)</span> and <span class="math inline">\(2^{n−1} − 1\)</span></li>
-<li>So, 64 bits can be used to store any integer between -9223372036854775808 and 9223372036854775807 (since <span class="math inline">\(2^63 - 1\)</span> = 9223372036854775807). Fortunately, base Python automatically uses as many bits as necessary to store arbitrary-length integers</li>
+<li>If <code>n</code> bits are available to store a <strong>signed</strong> integer, we use one bit to indicate the sign; this gives room to store <strong>signed</strong> values between <span class="math inline">\(-2^{n-1}\)</span> and <span class="math inline">\(2^{n-1} - 1\)</span></li>
+<li>So, 64 bits can be used to store any integer between -9223372036854775808 and 9223372036854775807 (since <span class="math inline">\(2^{63} - 1\)</span> = 9223372036854775807). Fortunately, base Python automatically uses as many bits as necessary to store arbitrary-length integers</li>
 </ul>
 <pre class="python"><code>a = 2 ** 63 - 1
 b = a * 100000
@@ -689,7 +689,7 @@ b = np.array([2 ** 31 - 1])
 print(a.dtype, b.dtype)</code></pre>
 <pre><code>## int64 int64</code></pre>
 <ul>
-<li>If you’re not using huge integers (i.e. &gt; <span class="math inline">\(2^63-1\)</span>), you don’t need to worry</li>
+<li>If you’re not using huge integers (i.e. &gt; <span class="math inline">\(2^{63}-1\)</span>), you don’t need to worry</li>
 <li>You have <a href="https://docs.scipy.org/doc/numpy/user/basics.types.html">lots of choices</a>, including
 <ul>
 <li>int8, int16, int32, int64</li>
@@ -798,6 +798,7 @@ print(+1*mpmath.pi)</code></pre>
 print(+1*mpmath.pi)</code></pre>
 <pre><code>## 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949129833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132000568127145263560827785771342757789609173637178721468440901224953430146549585371050792279689258923542019956112129021960864034418159813629774771309960518707211349999998372978049951059731732816096318595024459455346908302642522308253344685035261931188171010003137838752886587533208381420617177669147303598253490428755468731159562863882353787593751957781857780532171226806613001927876611195909216420198</code></pre>
 <p>but you will often be disappointed</p>
+<p><a href="https://www.smbc-comics.com/comic/2013-06-05">obligatory smbc</a></p>
 </div>
 </div>
 
