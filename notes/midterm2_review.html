@@ -406,7 +406,7 @@ img {
 <li>collections of objects (any type)</li>
 <li><strong>unordered</strong> (can’t index or slice), <strong>mutable</strong></li>
 <li><strong>iterable</strong>: can use <code>for i in S:</code>, <code>len()</code>, <code>in</code></li>
-<li>define a new set with <code>{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;}</code> (empty set is <code>{}</code>) …</li>
+<li>define a new set with <code>{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;}</code>; empty set is <code>set()</code>, <strong>NOT</strong> <code>{}</code> (which is a <code>dict</code>) …</li>
 <li>… or convert from a list/tuple/etc. <code>set([&quot;a&quot;,&quot;b&quot;,&quot;c&quot;])</code></li>
 <li>add new elements with <code>S.add(&quot;d&quot;)</code>. remove with <code>remove()</code></li>
 <li><strong>duplicated elements are silently removed</strong></li>
@@ -500,7 +500,8 @@ img {
 <div id="numerics" class="section level2">
 <h2>numerics</h2>
 <ul>
-<li><code>numpy</code> integers: for an <span class="math inline">\(n\)</span>-bit integer, one is the sign bit, so the maximum positive value is <span class="math inline">\(2^{n-1}\)</span>; maximum negative is <span class="math inline">\(-2^n\)</span></li>
+<li><code>numpy</code> integers: for an <span class="math inline">\(n\)</span>-bit <em>signed</em> integer (the default, one bit is used as the sign bit, so the maximum positive value is <span class="math inline">\(2^{n-1}-1\)</span>; maximum negative is <span class="math inline">\(-2^{n-1}\)</span></li>
+<li>for an <em>unsigned</em> integer (e.g. <code>uint32</code>), the range is from <span class="math inline">\(-2^n\)</span> to <span class="math inline">\(2^n-1\)</span></li>
 <li>going out of bounds “wraps around”</li>
 <li>plain (not <code>numpy</code>) integers are special, won’t overflow</li>
 <li>floating-point: <strong>often experience rounding error</strong>. Don’t assume math works exactly.</li>
