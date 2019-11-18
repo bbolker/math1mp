@@ -1,0 +1,290 @@
+---
+title: "numerical integration; more on random numbers; Game of Life"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+author: Ben Bolker
+output:
+  tufte_handout:
+     pandoc_args: ["--dpi", "300"]
+---
+
+</style>
+<!--    content: url(https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
+>
+<!-- Limit image width and height -->
+<style type="text/css">
+img {     
+  max-height: 560px;     
+  max-width: 800px; 
+}
+</style>
+
+```{r opts,message=FALSE,echo=FALSE}
+library("knitr")
+knitr::opts_chunk$set(eval=TRUE)
+library("reticulate")
+use_python("/usr/bin/python3")
+```
+
+```{python echo=FALSE}
+import matplotlib.pyplot as plt
+```
+
+## numerical integration
+
+In first year calculus the definite integral of a function $f(x)$ over the interval $[a, b]$ is defined to be the limit of a sequence of *Riemann sums*:
+$$
+\int_a^b f(x)\, dx = \lim_{n \to \infty} \sum_{i=0}^{n-1} f(x_i) \, \Delta x
+$$
+where $\Delta x = (b - a)/n$ and $x_i = a + i \cdot \Delta x$
+- So the definite integral can be approximated using Riemann sums for suitably large values of $n$
+
+## coding Riemann sums in numpy 
+
+```{python numint1}
+import numpy as np
+def num_int(f, a, b, n):
+   dx = (b-a)/n
+   x = np.arange(a, b, step = dx)
+   y = f(x)
+   return y.sum() * dx
+```
+
+Note this takes a *function* `f` as input.
+
+## example
+
+Try approximating $\int_0^1 x^2 \, dx$ with $n=\{10,50,5000\}$
+
+```{python intsqx}
+def x_squared(x):
+   return x ** 2
+approx1 = num_int(x_squared, 0, 1, 10)
+approx2 = num_int(x_squared, 0, 1, 50)
+approx3 = num_int(x_squared, 0, 1, 5000)
+print(approx1, approx2, approx3)
+```
+
+We could create an *adaptive* version of this that keeps trying larger values of `n` until the results are "close enough"
+
+## refinements
+
+- `num_int` uses the *left endpoint* rule to compute Riemann sums for a function $f(x)$
+- In Section 7.7 of Dr. Stewart’s Calculus textbook, several other methods are presented.
+- The *right endpoint* and *midpoint* rules are simple variations of the left endpoint rule:
+
+$$
+\begin{split}
+\int_a^b f(x)\, dx & = \lim_{n \to \infty} \sum_{i=0}^{n-1} f(x_{i+1}) \, \Delta x \qquad \textrm{right endpoint}  \\
+\int_a^b f(x)\, dx & = \lim_{n \to \infty} \sum_{i=0}^{n-1} f\left((x_i+x_{i+1})/2\right) \, \Delta x \qquad \textrm{midpoint}
+\end{split}
+$$
+
+## other rules
+
+- **trapezoid rule**: use the average of the approximations obtained by using the left and right endpoint rules
+- **Simpson's method**: use quadratic functions (parabolas) instead of linear functions to interpolate
+$$
+\int_a^b f(x)\, dx \approx \sum (\Delta x/6)\left(f(x_i) + 4f((x_i+x_{i+1})/2) +f(x_{i+1})\right)
+$$
+
+We'll write a function that implements any of these rules, and check it with $\int_0^1 x^2 \, dx$ and $\int_0^1 x^3 \, dx$.
+
+## area of a circle
+
+- what if we want to figure out the area of a circle with radius 1?
+- (we already know it's 1)
+- because $x^2+y^2=1$, one quadrant is traced out by the function $y=\sqrt{1-x^2}$ from $x=0$ to 1
+- (we could do this symbolically: = $1/2 \left(x \sqrt{1-x^2} + \sin^{-1}(x)\right)_0^1$)
+- let's try it with our integrator from above
+
+## Monte Carlo integration
+
+- "Monte Carlo" in general refers to **any** algorithm that uses (pseudo) random numbers
+- a Monte Carlo method to approximate $\pi$:
+- draw a square of area 1
+- inscribe a quarter circle (with radius = 1)
+- the area $A$ of the quarter-circle is equal to $\pi/4$
+- randomly throw darts in the square and count the number of them that fall within the circle (i.e. $x^2+y^2<1$)
+- the ratio of the number that fall into the circle to the total number thrown should be close to the ratio of the area of the circle to the area of the square
+- the more darts thrown, the better the approximation.
+
+## 
+
+```{python circplot}
+import matplotlib.pyplot as plt
+import numpy.random as npr
+x = np.linspace(0,1,101)
+y = np.sqrt(1-x**2)
+fig, ax = plt.subplots()
+ax.plot(x,y)
+xr = npr.uniform(size=200)
+yr = npr.uniform(size=200)
+incirc = xr**2+yr**2<1
+plt.plot(xr[incirc],yr[incirc],"b-*")
+plt.plot(xr[np.logical_not(incirc)],yr[np.logical_not(incirc)],"r-*")
+```
+## another example
+
+Overlap of circles at (1.5,2.5) (radius 1), (4,3) (radius 3), (1,2) (radius 2)
+```{python overlaps,echo=FALSE, results="hide"}
+import matplotlib.pyplot as plt
+import matplotlib.lines as mlines
+import matplotlib.patches as mpatches
+fig, ax1 = plt.subplots(figsize=(4,4))
+ax1.set_xlim(-2,8)
+ax1.set_ylim(-2,8)
+cc1 = mpatches.Circle(xy=(2,2.5),radius=1.5,color='red',alpha=0.2)
+cc2 = mpatches.Circle(xy=(4,3),radius=3,color='blue',alpha=0.2)
+cc3 = mpatches.Circle(xy=(1,2),radius=2,color='green',alpha=0.2)
+ax1.add_patch(cc1)
+ax1.add_patch(cc2)
+ax1.add_patch(cc3)
+fig.savefig("pix/circles.png")
+```
+![](pix/circles.png)
+
+```{python overlaps2}
+import numpy.random as npr
+import numpy as np
+c = ((2,2.5),(4,3),(1,2))
+r = (1.5,3,2)
+npr.seed(101)
+x = npr.uniform(c[0][0]-r[0],c[0][0]+r[0],size=1000000)
+y = npr.uniform(c[0][1]-r[0],c[0][1]+r[0],size=1000000)
+tests = np.tile(True,10**6)
+def incirc(x,y,ctr,radius):
+    dsq = (x-ctr[0])**2+(y-ctr[1])**2
+    return(dsq<radius**2)
+for c0,r0 in zip(c,r):
+    tests = tests & incirc(x,y,c0,r0)
+    print(np.mean(tests))
+print(r[0]**2*np.mean(tests))
+```
+
+![](pix/mc1.png)
+
+## More on random number generation
+
+## (Pseudo)random numbers
+
+- From [Wikipedia](http://en.wikipedia.org/wiki/Pseudorandom_number_generator): "Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin" (von Neumann) ([original paper](https://dornsifecms.usc.edu/assets/sites/520/docs/VonNeumann-ams12p36-38.pdf)) ... "We are here dealing with mere 'cooking recipes' for making digits; probably they can not be justified, but should merely be judged by their results ..."
+
+## linear congruential generators
+
+
+- $x_n = (a x_{n-1} + c) \textrm{mod} m$
+- or `x = (a*x +c ) % m`
+- from [here](http://www.eternallyconfuzzled.com/tuts/algorithms/jsw_tut_rand.aspx):
+
+Simple example:
+
+```{python prng1}
+x = [5]         ## starting value
+a,c,m = 2,3,10  ## constants
+for i in range(9):
+    newx = (a*x[-1]+c) % m
+    x.append(newx)
+print(x)
+```
+
+## Park-Miller *minimal standard generator*
+
+```{python prng2}
+a,c,m = 16807,0,2147483647
+x = [5]
+for i in range(9):
+    newx = (a*x[-1]+c) % m
+    x.append(newx)
+print(np.array(x)/m)
+```
+
+## run for longer
+
+```{python echo=FALSE}
+x = [5]
+for i in range(1000):
+    newx = (a*x[-1]+c) % m
+    x.append(newx)
+a = np.array(x)/m
+plt.figure(figsize=(4,4))
+plt.plot(a)
+plt.savefig("pix/ran1.png")
+```
+![random values](pix/ran1.png)
+
+- using `numpy`: [reference](http://docs.scipy.org/doc/numpy/reference/routines.random.html)
+```{python}
+import numpy.random as npr
+a = npr.rand(1000)
+```
+- can also do useful things like
+   - pick from a list: `choice()` (with or without replacement)
+   - shuffle values: `shuffle()` (in-place)
+   - pick values from different distributions
+   - sample from a large range of non-uniform distributions (Poisson, Normal, binomial ...)
+- using random number generators for serious work:
+   - know what generator is used (Mersenne twister is OK)
+   - set the seed: `seed()`
+- using random numbers for cryptography: be super-paranoid: see e.g. [this](http://stackoverflow.com/questions/20936993/how-can-i-create-a-random-number-that-is-cryptographically-secure-in-python)
+
+## Conway's game of life
+
+Rules:
+
+- set up a rectangular array of cells
+- set some cells to 1 ("alive") and some to 0 ("dead")
+- live cells with exactly 2 or 3 neighbours live; others die
+- dead cells with exactly 2 neighbours become living; others stay dead
+
+## pieces
+
+- `life_init(size, init_dens)`: set up a `size*size` 2D array of zeros; set a density `init_dens` to 1
+- `life_step(w,nw)`: run the Conway rules on an array `w` and return the new array `nw`
+- `count_nbr(w,i,j)`: count the number of neighbours in the 3x3 square around `w[i,j]`
+- `life_show(w, ax)`: plot an image of the current array `w` on axes `ax`
+
+## examples
+
+```{python life1}
+import os
+import matplotlib.pyplot as plt
+os.chdir("../code")
+from life import *
+os.chdir("../notes")
+w = life_init()
+fig, ax = plt.subplots()
+life_show(w, ax)
+fig.savefig("pix/life1.png")
+```
+
+```{python life2}
+nw = w.copy()
+(nw, w) = life_step(w,nw)
+life_show(w, ax)
+fig.savefig("pix/life2.png")
+```
+
+![](pix/life2.png)
+
+```{python life3,results="hide"}
+fig, ax = plt.subplots(5,5)
+for i in range(ax.shape[0]):
+    for j in range(ax.shape[1]):
+        nw, w = life_step(w,nw)
+        life_show(w, ax[i][j])
+fig.savefig("pix/life3.png")
+```
+
+![](pix/life3.png)
+
+```{python life4, results="hide"}
+fig, ax = plt.subplots(5,5)
+for i in range(ax.shape[0]):
+    for j in range(ax.shape[1]):
+        for k in range(10):
+            life_show(w, ax[i][j])
+            nw, w = life_step(w,nw)
+fig.savefig("pix/life4.png")
+```
+
+![](pix/life4.png)
