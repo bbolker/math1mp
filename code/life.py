@@ -5,6 +5,21 @@ import matplotlib.pyplot as plt
 def count_nbr(w,i,j):
     return np.sum(w[i-1:i+2,j-1:j+2])-w[i,j]
 
+def wrap(i,n):
+    if i==-1:
+        return n-1
+    if i==n:
+        return 0
+    return i
+
+def count_nbr(w,i,j,n):
+    count = 0
+    for k in range(i-1,i+2):
+        for l in range(j-1,j+2):
+            if not (i==k and j==l):
+                count += w[wrap(k,n),wrap(l,n)]
+    return count
+
 def life_show(w,ax):
     ax.imshow(w, interpolation="none")
     ax.axis("off")
@@ -14,7 +29,7 @@ def life_step(w,nw):
     size = w.shape[0]
     for i in range(size):
         for j in range(size):
-            nbrs = count_nbr(w,i,j)
+            nbrs = count_nbr(w,i,j,size)
             if (w[i,j]==0 and nbrs==3) or (w[i,j]==1 and nbrs in (2,3)):
                 nw[i,j]=1
             else:
