@@ -56,8 +56,8 @@ fig, ax = plt.subplots()
 ax.plot(r["Total Snow (cm)"])
 fig.savefig("tmp.png")
 
-np.isnan(get_weather(4931, year=1957)["Total Snow (cm)"]).sum()
-np.isnan(get_weather(4931, year=1958)["Total Snow (cm)"]).sum()
-np.isnan(get_weather(4931, year=1959)["Total Snow (cm)"]).sum()
-np.isnan(get_weather(4931, year=1960)["Total Snow (cm)"]).sum()
+ax.plot(r["Mean Temp (°C)"])
+fig.savefig("tmp2.png")
+
+
                   
