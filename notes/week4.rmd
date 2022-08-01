@@ -81,7 +81,7 @@ repeat_fun(sqr,3,3)
 
 ## Function composition
 
-- Mathematically this kind of example is called **composition** of a function with itself (see [Wikipedia](https://en.wikipedia.org/wiki/Function_composition)
+- Mathematically this kind of example is called [**composition**](https://www.scaler.com/topics/association-composition-and-aggregation-in-java/) of a function with itself (see [Wikipedia](https://en.wikipedia.org/wiki/Function_composition)
 - in math notation: $(g\circ f)(x) = f(g(x))$
 - (notation for multiple composition of a function with itself [is harder](https://math.stackexchange.com/questions/926247/notation-for-repeated-composition-of-functions))
 - write a function `compose_funs(f,g)`
